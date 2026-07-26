@@ -1,5 +1,71 @@
 {
-  "sources": [],
+  "sources": [
+    {
+      "id": "src-0001",
+      "url": "https://arxiv.org/abs/2503.23175",
+      "title": "Large Language Models Are Unreliable for Cyber Threat Intelligence",
+      "type": "paper",
+      "added_cycle": 1,
+      "file": "state/knowledge/src-0001.md",
+      "key_claims": [
+        "LLMs cannot guarantee sufficient performance on real-size (350-report) CTI evaluation while also being inconsistent across repeated queries and overconfident in stated certainty.",
+        "Few-shot learning and fine-tuning only partially improve results, indicating the unreliability persists across zero-shot, few-shot, and fine-tuning paradigms rather than being solved by more examples.",
+        "Reliability for CTI should be measured as a multi-dimensional property (accuracy + consistency + confidence calibration), not accuracy alone."
+      ]
+    },
+    {
+      "id": "src-0002",
+      "url": "https://arxiv.org/abs/2406.07599",
+      "title": "CTIBench: A Benchmark for Evaluating LLMs in Cyber Threat Intelligence",
+      "type": "benchmark",
+      "added_cycle": 1,
+      "file": "state/knowledge/src-0002.md",
+      "key_claims": [
+        "Task difficulty is highly uneven across CTI sub-tasks: best-model accuracy reaches 71-72% on knowledge recall (CTI-MCQ) and CVE-to-CWE mapping (CTI-RCM), but MITRE ATT&CK technique extraction (CTI-ATE) F1 tops out at 0.64 even for the strongest model (GPT-4-turbo).",
+        "On threat-actor attribution (CTI-TAA over 50 real reports), every tested model's 'plausible-sounding' attribution rate is far higher than its 'correct' attribution rate (e.g. GPT-4-turbo: 86% plausible vs 52% correct), a quantified instance of confident-but-wrong CTI output.",
+        "No evaluated model (GPT-4-turbo, GPT-3.5-turbo, Gemini-1.5, LLAMA3-70B, LLAMA3-8B) exceeded ~72% on any single task, showing scale alone had not solved CTI reliability as of this 2024-era benchmark."
+      ]
+    },
+    {
+      "id": "src-0003",
+      "url": "https://arxiv.org/html/2506.11325v2",
+      "title": "Revealing the True Indicators: Understanding and Improving IoC Extraction From Threat Reports",
+      "type": "paper",
+      "added_cycle": 1,
+      "file": "state/knowledge/src-0003.md",
+      "key_claims": [
+        "The authors built PRISM, described as the first open, fully manually-validated benchmark of 1,791 IoCs from 50 real-world threat reports, to ground-truth IoC extraction evaluation.",
+        "Their hybrid regex+LLM+human-validation system LANCE reached 97.6% overall F1 against PRISM, outperforming IoC Searcher+whitelist (76%), AlienVault OTX (72%), and VirusTotal threshold=1 (86%).",
+        "Human-in-the-loop use of LANCE reduced junior analysts' manual annotation time by 43% and models trained on LANCE-labeled data outperformed VirusTotal-labeled training data by over 6% F1, suggesting narrow, human-validated LLM assistance is far more reliable for mechanical IoC extraction than for open-ended CTI reasoning tasks (contrast with src-0001, src-0002)."
+      ]
+    },
+    {
+      "id": "src-0004",
+      "url": "https://www.heise.de/en/news/EU-cyber-agency-secretly-uses-AI-for-reports-and-gets-caught-11136978.html",
+      "title": "EU cyber agency secretly uses AI for reports – and gets caught",
+      "type": "article",
+      "added_cycle": 1,
+      "file": "state/knowledge/src-0004.md",
+      "key_claims": [
+        "Two ENISA 'Threat Landscape 2025' reports (published Oct/Nov 2025) contained AI-hallucinated citations; one report had 26 of 492 footnotes incorrect, discovered by Westfälische Hochschule researchers after finding non-functional source links.",
+        "A specific hallucination fingerprint was identified: a passage attributed the name 'APT29' to Microsoft's own naming convention, when Microsoft actually calls that group 'Midnight Blizzard' — a technical signature consistent with LLM-generated text.",
+        "ENISA's official response called the errors 'human errors' while confirming AI was permitted for 'minor editorial revisions', illustrating institutional under-acknowledgment of AI-attributable failure even after public exposure."
+      ]
+    },
+    {
+      "id": "src-0005",
+      "url": "https://arxiv.org/abs/2509.20166",
+      "title": "CyberSOCEval: Benchmarking LLMs Capabilities for Malware Analysis and Threat Intelligence Reasoning",
+      "type": "benchmark",
+      "added_cycle": 1,
+      "file": "state/knowledge/src-0005.md",
+      "key_claims": [
+        "Released by CrowdStrike/Meta-affiliated authors as part of CyberSecEval 4; larger/more modern LLMs perform better on malware analysis and threat-intel reasoning tasks, consistent with scaling laws, as of 2025-era models.",
+        "Reasoning models using test-time scaling do not get the same performance boost on these CTI/malware tasks that they get on coding and math benchmarks, suggesting generic reasoning post-training does not transfer well to cybersecurity threat analysis.",
+        "As of publication, 'current LLMs are far from saturating' the CyberSOCEval evaluations — substantial measured unreliability/headroom remains industry-wide, not just in academic benchmarks."
+      ]
+    }
+  ],
   "_schema": {
     "sources[]": {
       "id": "src-NNNN (zero-padded, monotonically increasing)",

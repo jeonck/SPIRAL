@@ -1,5 +1,5 @@
 {
-  "cycle": 0,
+  "cycle": 1,
   "topic": {
     "id": "cti-ai-reliability",
     "title": "Reliability assessment of AI-generated Cyber Threat Intelligence (CTI)",
@@ -7,6 +7,6 @@
     "scope": "How reliable is LLM/AI-generated CTI (IOC extraction, TTP mapping, threat reports)? What are the failure modes, how are they measured, and what mitigation strategies exist? Focus on published research, industry benchmarks, and documented incidents.",
     "out_of_scope": "Building new CTI tools; offensive security techniques; malware development."
   },
-  "started": null,
+  "started": "2026-07-26",
   "notes": "cycle is incremented by run_cycle.sh at the start of each successful run."
 }
