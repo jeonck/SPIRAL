@@ -1,5 +1,120 @@
 {
-  "issues": [],
+  "issues": [
+    {
+      "id": "ttp-attack-mapping-reliability",
+      "title": "How reliable are LLMs at mapping malware/threat behavior to MITRE ATT&CK techniques (TTP mapping)?",
+      "depends_on": [],
+      "open_questions": [
+        "Does the CTI-ATE F1 ceiling of 0.64 (src-0002, mid-2024 models) generalize to the newer/larger models evaluated in CyberSOCEval (src-0005, 2025-era), which did not report a directly comparable ATT&CK-technique-extraction metric?",
+        "Is there a human-analyst baseline F1 for ATT&CK technique extraction to contextualize whether 0.64 is 'close to human' or far below it?",
+        "Does fine-tuning specifically on ATT&CK-technique-extraction data close the gap, given src-0001's finding that fine-tuning only 'partially improves' CTI tasks in general?"
+      ],
+      "candidate_resolutions": [
+        {
+          "summary": "MITRE ATT&CK technique extraction from threat/malware text remains a hard, unsolved sub-task for LLMs: best-in-class F1 was only 0.6388 (GPT-4-turbo) on CTIBench's CTI-ATE task, far below the ~71-72% accuracy the same models reach on knowledge-recall tasks. Newer, larger 2025-era models improve on general malware-analysis/threat-intel-reasoning benchmarks per scaling laws, but test-time-scaling 'reasoning' gains that help coding/math do not transfer to these cybersecurity reasoning tasks, so the ATT&CK-mapping gap specifically has not been shown to close with the latest model generation.",
+          "evidence": ["src-0002", "src-0005"],
+          "status": "supported"
+        }
+      ],
+      "created_cycle": 2,
+      "attempts": []
+    },
+    {
+      "id": "ioc-extraction-reliability",
+      "title": "How reliable is LLM-assisted extraction of mechanical indicators of compromise (IPs, domains, URLs, hashes) from threat reports?",
+      "depends_on": [],
+      "open_questions": [
+        "Is the 97.6% F1 result for LANCE independently reproducible by a team not affiliated with PRISM's authors (current evidence is a single in-house benchmark/system pair, a conflict-of-interest risk noted in src-0003's limitations)?",
+        "Does the result generalize beyond the 4 indicator types tested (IPs, domains, URLs, hashes) to e.g. registry keys, mutexes, YARA/Sigma rules?",
+        "How much of LANCE's gain over IoC Searcher/AlienVault OTX/VirusTotal comes from the LLM component specifically vs. the regex pre-filtering and human-validation loop around it?"
+      ],
+      "candidate_resolutions": [
+        {
+          "summary": "For narrow, mechanical IoC extraction (as opposed to open-ended CTI reasoning), a hybrid regex+LLM+human-validation pipeline (LANCE) reached 97.6% F1 against the manually-validated PRISM benchmark, substantially outperforming legacy tools (IoC Searcher+whitelist 76%, AlienVault OTX 72%, VirusTotal@threshold=1 86%) and also improving downstream analyst speed (43% less annotation time) and downstream model training data quality (+6% F1). This is a single-study result from the benchmark's own authors, not yet independently replicated.",
+          "evidence": ["src-0003"],
+          "status": "supported"
+        }
+      ],
+      "created_cycle": 2,
+      "attempts": []
+    },
+    {
+      "id": "consistency-calibration-as-failure-mode",
+      "title": "Beyond raw accuracy, are LLM-generated CTI outputs consistent across repeated queries and well-calibrated in stated confidence?",
+      "depends_on": [],
+      "open_questions": [
+        "What are the actual per-model, per-paradigm (zero-shot/few-shot/fine-tuned) numeric consistency and calibration scores in src-0001's full paper? Only qualitative claims ('inconsistent and overconfident') were captured from the abstract-level summary this cycle.",
+        "Which 3 LLMs were tested in src-0001? Model identities were not captured in the current source file and are needed to compare against src-0002's/src-0005's model lists.",
+        "Does the multi-dimensional reliability framing (accuracy + consistency + calibration) proposed in src-0001 apply equally across the other CTI sub-tasks measured in src-0002/src-0005 (MCQ, RCM, ATE, TAA, malware analysis), or was it only measured in src-0001's own report-QA evaluation setting?"
+      ],
+      "candidate_resolutions": [
+        {
+          "summary": "Reliability for CTI cannot be reduced to accuracy alone: on a 350-real-report evaluation, tested LLMs were both inconsistent across repeated/paraphrased queries and overconfident relative to their actual correctness, and this did not resolve with few-shot learning or fine-tuning (only partial improvement across all three paradigms tested). Exact per-model numeric scores are not yet captured in our knowledge base and are needed before this can be scored as strongly (vs. qualitatively) supported.",
+          "evidence": ["src-0001"],
+          "status": "supported"
+        }
+      ],
+      "created_cycle": 2,
+      "attempts": []
+    },
+    {
+      "id": "attribution-confident-wrong-gap",
+      "title": "How large is the gap between 'plausible-sounding' and 'factually correct' LLM threat-actor attribution?",
+      "depends_on": ["consistency-calibration-as-failure-mode"],
+      "open_questions": [
+        "Does the plausible-vs-correct gap measured on 2024-era models (CTI-TAA in CTIBench) narrow for the 2025-era models evaluated in CyberSOCEval, which did not report a directly comparable plausible-vs-correct attribution split?",
+        "Is attribution error correlated with how well-documented a threat actor group is (e.g. major APTs with abundant public reporting vs. obscure/emerging groups)?",
+        "Did ENISA's APT29/'Midnight Blizzard' naming-convention hallucination (src-0004) contribute to, or correlate with, the kind of plausible-but-wrong attribution measured quantitatively in src-0002, or is it a distinct hallucination sub-type (citation/naming fabrication vs. attribution judgment)?"
+      ],
+      "candidate_resolutions": [
+        {
+          "summary": "On CTI-TAA (threat-actor attribution over 50 real reports), every one of the 5 tested models' 'plausible-sounding' attribution rate substantially exceeds its 'correct' attribution rate (e.g. GPT-4-turbo: 86% plausible vs 52% correct; Gemini-1.5: 74% vs 38%), a quantified benchmark instance of the broader confident-but-wrong pattern also observed qualitatively in src-0001 and, in a production setting, in src-0004's ENISA incident (misattributed threat-actor naming convention published in an official report).",
+          "evidence": ["src-0002", "src-0004"],
+          "status": "supported"
+        }
+      ],
+      "created_cycle": 2,
+      "attempts": []
+    },
+    {
+      "id": "task-dependent-reliability-framing",
+      "title": "Is 'AI-generated CTI reliability' a single property, or does it vary sharply by task type (mechanical extraction vs. open-ended reasoning)?",
+      "depends_on": ["ttp-attack-mapping-reliability", "ioc-extraction-reliability", "consistency-calibration-as-failure-mode", "attribution-confident-wrong-gap"],
+      "open_questions": [
+        "Is there a principled taxonomy of CTI sub-tasks by reliability risk (e.g. mechanical extraction < classification < attribution < open-ended narrative generation), or is the extraction-vs-reasoning split too coarse?",
+        "Would a hybrid human-validated pipeline like LANCE (src-0003), which works well for IoC extraction, also raise reliability on ATT&CK mapping or attribution if applied there, or does the reasoning-heavy nature of those tasks make human-in-the-loop validation less effective?",
+        "Since src-0003's strong result is single-study/in-house, would the task-dependence conclusion survive an independent replication showing a smaller IoC-extraction advantage?"
+      ],
+      "candidate_resolutions": [
+        {
+          "summary": "Across the 5 collected sources, reliability of AI-generated CTI is strongly task-dependent rather than a uniform property: narrow, mechanical extraction (IoC extraction, src-0003) reaches near-97% F1 when LLM output is constrained and human-validated, while open-ended reasoning tasks (ATT&CK technique mapping, threat-actor attribution, general threat-intel reasoning: src-0001, src-0002, src-0005) remain unreliable (accuracy ceilings around 52-72%, confidence miscalibration, and plausible-but-wrong outputs) even as model scale increases. This framing is a synthesis of currently-available evidence, not itself directly measured by any single source, and should be treated as a working hypothesis pending the open questions above.",
+          "evidence": ["src-0001", "src-0002", "src-0003", "src-0005"],
+          "status": "proposed"
+        }
+      ],
+      "created_cycle": 2,
+      "attempts": []
+    },
+    {
+      "id": "institutional-incident-real-world-impact",
+      "title": "Have AI-generated CTI failures already reached production/publication at real institutions, and how do institutions respond when caught?",
+      "depends_on": [],
+      "open_questions": [
+        "What is the base rate of hallucinated citations/content across CTI publishers generally? ENISA is one high-profile discovered case, not a systematic sample -- have other government agencies or commercial threat-intel vendors had similar undisclosed AI usage discovered in the same period (2025-2026)?",
+        "Was ENISA's AI usage disclosed to readers before publication, or only acknowledged after external researchers found it -- and did ENISA (or peer agencies) change disclosure policy as a result?",
+        "Does the primary source (Der Spiegel's original reporting, or ENISA's own erratum/statement) confirm the 26/492 incorrect-footnote figure independently of Heise's secondary reporting?"
+      ],
+      "candidate_resolutions": [
+        {
+          "summary": "At least one major institutional CTI publisher (ENISA, the EU's cybersecurity agency) published AI-hallucinated citations in production threat-landscape reports (Oct/Nov 2025), including a technical fingerprint (misattributing the name 'APT29' to Microsoft's naming convention, when Microsoft actually uses 'Midnight Blizzard') consistent with LLM-generated text. The failure was caught by external academic researchers checking footnote links, not by internal QA, and the agency's public response ('human errors') did not fully acknowledge AI attribution even after exposure. This establishes existence of the failure mode in production but not its frequency/base rate across the CTI industry.",
+          "evidence": ["src-0004"],
+          "status": "supported"
+        }
+      ],
+      "created_cycle": 2,
+      "attempts": []
+    }
+  ],
   "contradictions": [],
   "_schema": {
     "issues[]": {
