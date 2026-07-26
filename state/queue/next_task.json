@@ -1,0 +1,7 @@
+{
+  "cycle_created": 0,
+  "task_type": "T1",
+  "target_issue": null,
+  "instructions": "Initial collection for the seeded topic. Gather foundational sources: (1) peer-reviewed or arXiv papers on LLM-generated CTI quality/reliability, (2) industry benchmarks or evaluations of AI CTI tools, (3) at least one documented failure case or critique. Max 5 sources this cycle. Prioritize primary sources over blog commentary.",
+  "attempt_count": 0
+}

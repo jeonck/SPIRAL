@@ -1,0 +1,14 @@
+{
+  "sources": [],
+  "_schema": {
+    "sources[]": {
+      "id": "src-NNNN (zero-padded, monotonically increasing)",
+      "url": "primary URL (must resolve; gate G1)",
+      "title": "source title",
+      "type": "paper | benchmark | report | article | dataset",
+      "added_cycle": 0,
+      "file": "state/knowledge/src-NNNN.md",
+      "key_claims": ["1-3 sentence claims this source supports"]
+    }
+  }
+}

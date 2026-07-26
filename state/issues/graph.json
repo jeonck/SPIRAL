@@ -1,0 +1,28 @@
+{
+  "issues": [],
+  "contradictions": [],
+  "_schema": {
+    "issues[]": {
+      "id": "kebab-case unique id",
+      "title": "short issue statement",
+      "depends_on": ["ids of upstream issues"],
+      "open_questions": ["unresolved questions"],
+      "candidate_resolutions": [
+        {
+          "summary": "proposed resolution",
+          "evidence": ["source ids from state/knowledge/index.json"],
+          "status": "proposed | supported | rejected"
+        }
+      ],
+      "created_cycle": 0,
+      "attempts": []
+    },
+    "contradictions[]": {
+      "id": "unique id",
+      "issue_id": "affected issue",
+      "description": "claims in conflict, with source ids",
+      "opened_cycle": 0,
+      "resolved_cycle": null
+    }
+  }
+}

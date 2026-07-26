@@ -1,0 +1,18 @@
+# SPIRAL configuration
+budget:
+  max_turns: 50          # claude -p --max-turns per cycle
+  max_new_sources: 5     # T1: max sources added per collect cycle
+
+schedule:
+  collect_refresh_every: 7   # every Nth cycle, T5 schedules a T1 for the weakest issue
+
+gates:
+  g1_check_urls: true        # validator: every new source URL must resolve (HTTP < 400)
+  g1_url_timeout_sec: 15
+  g2_retrospect_count: 1     # each cycle re-verifies this many random prior conclusions
+  g3_contradiction_demotion: 2   # score points deducted when a contradiction flag is open
+
+scoring:
+  scale_min: 0
+  scale_max: 5
+  tie_break_recent_attempt_penalty: 1   # per attempt within last 5 cycles

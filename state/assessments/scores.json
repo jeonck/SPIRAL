@@ -1,0 +1,12 @@
+{
+  "last_assessed_cycle": 0,
+  "scores": {},
+  "_schema": {
+    "scores.<issue_id>": {
+      "score": "0-5 integer; 0=unexamined, 5=resolved with strong evidence",
+      "rationale": "why this score, citing source ids",
+      "evidence": ["source ids"],
+      "assessed_cycle": 0
+    }
+  }
+}
