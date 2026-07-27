@@ -1,0 +1,7 @@
+Cycle 3 complete. Summary:
+
+**T3 investigate** on `consistency-calibration-as-failure-mode` — successfully fetched src-0001's full text (HTML render), which had previously only been summarized from its abstract. Added 3 new key_claims naming the 3 tested models (gpt4o, gemini-1.5-pro-latest, mistral-large-2) and giving concrete consistency (bootstrapped CI) and calibration (ECE/Brier) numbers, plus a notable sharpening: fine-tuning/few-shot sometimes *worsened* accuracy and calibration rather than merely "partially improving" it. Appended to `src-0001.md`, added a second `candidate_resolution` to the issue, and rewrote its open questions.
+
+**Retrospection**: re-verified the cycle-2 CTIBench (src-0002) numbers against the paper's HTML table — all confirmed exactly, no contradiction.
+
+**Next task queued**: T4 (Assess) — score all 6 issues in `scores.json`, which has never been populated, per the state machine T3→T4.

@@ -43,19 +43,25 @@
       "title": "Beyond raw accuracy, are LLM-generated CTI outputs consistent across repeated queries and well-calibrated in stated confidence?",
       "depends_on": [],
       "open_questions": [
-        "What are the actual per-model, per-paradigm (zero-shot/few-shot/fine-tuned) numeric consistency and calibration scores in src-0001's full paper? Only qualitative claims ('inconsistent and overconfident') were captured from the abstract-level summary this cycle.",
-        "Which 3 LLMs were tested in src-0001? Model identities were not captured in the current source file and are needed to compare against src-0002's/src-0005's model lists.",
-        "Does the multi-dimensional reliability framing (accuracy + consistency + calibration) proposed in src-0001 apply equally across the other CTI sub-tasks measured in src-0002/src-0005 (MCQ, RCM, ATE, TAA, malware analysis), or was it only measured in src-0001's own report-QA evaluation setting?"
+        "Table 6's calibration numbers were captured for gpt4o only across a handful of entity types (Campaign, APT, CVE extraction; CVE, attack-vector generation) -- do gemini-1.5-pro-latest and mistral-large-2 show the same fine-tuning-can-worsen-calibration pattern, or is it gpt4o-specific?",
+        "None of src-0001's 3 tested models (gpt4o, gemini-1.5-pro-latest, mistral-large-2) overlap with src-0002's (GPT-4-turbo, GPT-3.5-turbo, Gemini-1.5, LLAMA3-70B/8B) or src-0005's model lists -- would the consistency/calibration findings replicate on the specific models shown to struggle with ATT&CK mapping and attribution in those benchmarks?",
+        "Does the multi-dimensional reliability framing (accuracy + consistency + calibration) proposed in src-0001 apply equally across the other CTI sub-tasks measured in src-0002/src-0005 (MCQ, RCM, ATE, TAA, malware analysis), or was it only measured in src-0001's own information-extraction/-generation evaluation setting?",
+        "Fine-tuning and few-shot were both shown to sometimes worsen accuracy and calibration (e.g. gpt4o APT-extraction P/R 0.87->0.68 after fine-tuning; CVE-generation ECE 0.15->0.91) rather than merely 'partially improving' as the abstract states -- is this degradation specific to small fine-tuning dataset size / overfitting, or a more general risk for CTI fine-tuning regardless of data volume?"
       ],
       "candidate_resolutions": [
         {
           "summary": "Reliability for CTI cannot be reduced to accuracy alone: on a 350-real-report evaluation, tested LLMs were both inconsistent across repeated/paraphrased queries and overconfident relative to their actual correctness, and this did not resolve with few-shot learning or fine-tuning (only partial improvement across all three paradigms tested). Exact per-model numeric scores are not yet captured in our knowledge base and are needed before this can be scored as strongly (vs. qualitatively) supported.",
           "evidence": ["src-0001"],
           "status": "supported"
+        },
+        {
+          "summary": "Full-text retrieval (cycle 3) confirms and sharpens the above with concrete numbers. The 3 tested models were gpt4o, gemini-1.5-pro-latest, and mistral-large-2. Consistency (10-re-prompt bootstrapped confidence intervals) was tight for mechanical information-extraction (max CI width 0.02) but notably wider for open-ended information-generation (max CI width 0.06). Calibration (ECE/Brier, gpt4o) was substantially worse for generation than extraction sub-tasks, and critically, fine-tuning and few-shot prompting often WORSENED both accuracy and calibration rather than uniformly 'partially improving' them -- e.g. gpt4o APT-extraction precision/recall fell from 0.87 (zero-shot) to 0.68 (fine-tuned), and CVE-generation ECE rose from 0.15 to 0.91 after fine-tuning. This refines the cycle-2 resolution: the unreliability is not just persistent across paradigms -- more training examples or fine-tuning can actively degrade both accuracy and calibration on some CTI sub-tasks.",
+          "evidence": ["src-0001"],
+          "status": "supported"
         }
       ],
       "created_cycle": 2,
-      "attempts": []
+      "attempts": [3]
     },
     {
       "id": "attribution-confident-wrong-gap",

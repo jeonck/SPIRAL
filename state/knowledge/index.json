@@ -10,7 +10,10 @@
       "key_claims": [
         "LLMs cannot guarantee sufficient performance on real-size (350-report) CTI evaluation while also being inconsistent across repeated queries and overconfident in stated certainty.",
         "Few-shot learning and fine-tuning only partially improve results, indicating the unreliability persists across zero-shot, few-shot, and fine-tuning paradigms rather than being solved by more examples.",
-        "Reliability for CTI should be measured as a multi-dimensional property (accuracy + consistency + confidence calibration), not accuracy alone."
+        "Reliability for CTI should be measured as a multi-dimensional property (accuracy + consistency + confidence calibration), not accuracy alone.",
+        "The 3 tested LLMs were gpt4o (OpenAI), gemini-1.5-pro-latest (Google), and mistral-large-2 (Mistral); consistency was measured via bootstrapped confidence intervals across 10 re-prompts per input, staying narrow for information-extraction tasks (max CI width 0.02, e.g. Gemini campaign-retrieval precision/recall CI [0.73, 0.74]) but widening notably for information-generation tasks (max CI width 0.06, e.g. Gemini CVE-generation recall CI [0.19, 0.25], a ~27% relative range).",
+        "Confidence calibration (ECE and Brier score, reported for gpt4o) was markedly worse for information-generation than information-extraction sub-tasks, e.g. CVE-generation ECE 0.15 (zero-shot), and calibration did not uniformly improve with fine-tuning: Campaign-extraction ECE rose from 0.25 (zero-shot) to 0.48 (fine-tuned) and CVE-generation ECE rose from 0.15 to 0.91, though CVE-extraction ECE improved from 0.28 to 0.18 -- effects were inconsistent across sub-tasks rather than uniform partial improvement.",
+        "Fine-tuning and few-shot prompting frequently degraded raw extraction accuracy rather than improving it: GPT-4o APT-entity extraction precision/recall fell from 0.87 (zero-shot) to 0.68 (fine-tuned), a ~22% relative drop, and few-shot prompting reduced APT extraction performance by ~8% for Gemini/Mistral -- sharpening the abstract's 'only partially improve' framing into a more specific finding that additional training examples or fine-tuning can actively worsen both accuracy and calibration on certain CTI sub-tasks."
       ]
     },
     {
