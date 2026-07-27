@@ -16,6 +16,7 @@ cd "$(dirname "$0")/.."
 # one cycle instead of erroring.
 INTERVAL_SEC=$(python -c "import yaml;print(int(round(float(yaml.safe_load(open('config.yml'))['schedule']['cycle_interval_min'])*60)))")
 END_UTC=$(python -c "import yaml;print(yaml.safe_load(open('config.yml'))['schedule']['window_end_utc'])")
+MAX_FAIL=$(python -c "import yaml;print(int(yaml.safe_load(open('config.yml'))['schedule']['abort_after_consecutive_failures']))")
 
 # Wall-clock deadline: today's window_end_utc. A late cron firing shortens the
 # night rather than pushing it past the intended local end time.
@@ -31,23 +32,42 @@ EOF
 echo "SPIRAL night batch — start $(date -u +%FT%TZ), window ends ${END_UTC}Z, interval ${INTERVAL_SEC}s"
 
 n=0
+consec_fail=0
 while true; do
   n=$((n + 1))
   START=$(date +%s)
   echo "════════ night cycle #${n} @ $(date -u +%T)Z ════════"
 
-  bash scripts/run_cycle.sh \
-    || echo "run_cycle.sh exited non-zero — state left as-is, continuing" >&2
+  if bash scripts/run_cycle.sh; then
+    consec_fail=0
+  else
+    consec_fail=$((consec_fail + 1))
+    echo "run_cycle.sh exited non-zero (${consec_fail} in a row) — continuing" >&2
+  fi
 
   # Persist immediately so a killed runner never loses a validated cycle.
   git add -A
   CYCLE=$(python -c "import json;print(json.load(open('state/meta.json'))['cycle'])")
-  MSG="cycle ${CYCLE}: $(cat state/queue/last_completed_task.txt 2>/dev/null || echo run)"
-  if git commit -q -m "$MSG"; then
+  if [ "$consec_fail" -gt 0 ]; then
+    # last_completed_task.txt still names the previous cycle's task — don't label
+    # a failed run with it.
+    MSG="cycle ${CYCLE}: run failed, no state change"
+  else
+    MSG="cycle ${CYCLE}: $(cat state/queue/last_completed_task.txt 2>/dev/null || echo run)"
+  fi
+  if git commit -q -m "$MSG" >/dev/null 2>&1; then
     git push -q || { git pull --rebase -q && git push -q; }
     echo "pushed — ${MSG}"
   else
     echo "nothing to commit"
+  fi
+
+  # Fail loudly rather than burning the night on a broken setup: a silent success
+  # here would look identical to a productive night for as long as it stayed broken.
+  if [ "$consec_fail" -ge "$MAX_FAIL" ]; then
+    echo "ABORT — ${consec_fail} consecutive hard failures. Check CLAUDE_CODE_OAUTH_TOKEN" >&2
+    echo "(expired?) and the claude CLI install. Failing the job so a notification fires." >&2
+    exit 1
   fi
 
   # The next slot must *start* inside the window; a cycle is never begun late.

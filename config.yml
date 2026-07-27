@@ -9,6 +9,10 @@ schedule:
   # night wastes the idle-quota window; cycles run back-to-back instead.
   cycle_interval_min: 10     # start-to-start spacing, so quota refills between cycles
   window_end_utc: "11:00"    # hard stop = 06:00 CDT (UTC-5); 05:00 CST in winter
+  # Hard failures (expired OAuth token, missing CLI) would otherwise burn every slot
+  # and still report success. Validation failures are exempt: run_cycle.sh exits 0 on
+  # those by design, so the self-healing retry path does not trip this.
+  abort_after_consecutive_failures: 3
 
 gates:
   g1_check_urls: true        # validator: every new source URL must resolve (HTTP < 400)

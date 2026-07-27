@@ -74,6 +74,10 @@ T1 Collect ──→ T2 Structure ──→ T3 Investigate ──→ T4 Assess �
 - Per-cycle cap: `--max-turns` (config: `budget.max_turns`); Actions job timeout 240 min.
 - Nightly window: `schedule.cycle_interval_min` (start-to-start spacing, so the
   subscription quota refills between cycles) and `schedule.window_end_utc` (hard stop).
+- Failsafe: `schedule.abort_after_consecutive_failures` fails the job when that many
+  cycles die outright (expired `CLAUDE_CODE_OAUTH_TOKEN`, missing CLI), so a broken
+  setup raises a notification instead of silently reporting a successful empty night.
+  Validation failures do not trip it — those are the designed self-healing retry path.
 - OAuth token = uses the personal subscription quota → off-peak hours mean marginal
   cost ≈ 0 (the paper's idle-quota argument).
 - Per-cycle usage is recorded in `logs/cycle-NNN.md` per the prompt instructions.

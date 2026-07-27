@@ -99,11 +99,20 @@ techniques, building new CTI tooling.
   off baseline execution in this Cowork session (trigger_id:
   `trig_012sFG51DzCcQBCjoXK3k44L`). If the actual deployment start (Day 0) slips, this
   should be rescheduled accordingly.
-- Day 0 = the date of the repo push + first cycle run (not yet recorded).
+- **Day 0 = 2026-07-26** — repo pushed to `github.com/jeonck/SPIRAL` (public) and
+  cycle-001 (T1 collect) ran the same day. Cycles 1–3 ran one-per-night under the
+  original single-firing cron; the nightly batch (up to 18 cycles/night) starts
+  2026-07-28.
+- **Planned run: ~1 month, to ≈2026-08-26.** Not expected to terminate: reaching the
+  T5 stop condition (all issues at 5) needs roughly 8+ nights at the mechanical rate,
+  and T3 generates open questions as it closes them, so "all 5" behaves as an
+  asymptote. The month is a deployment observation window, not a run-to-completion.
+- No DST transition falls inside this window (US DST ends 2026-11-01), so the UTC cron
+  holds at 03:00–06:00 local throughout.
 
 ## Next milestones (corresponds to outline §8 roadmap)
 
-- [ ] Record the deployment start date (28 days = N in the paper).
+- [x] Record the deployment start date — Day 0 = 2026-07-26.
 - [ ] ~Day 14: run baselines (B1–B4, per `eval/baselines/README.md`).
 - [x] Rubric-scoring pipeline (included in v2).
 - [x] Per-cycle error-accumulation measurement script (included in v2).
