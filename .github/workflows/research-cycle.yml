@@ -2,8 +2,12 @@ name: research-cycle
 
 on:
   schedule:
-    # 18:00 UTC = 03:00 KST — off-peak window for personal subscription quota
-    - cron: "0 18 * * *"
+    # 08:00 UTC = 03:00 CDT — off-peak window for personal subscription quota.
+    # GitHub cron is UTC-only and routinely fires 60-100 min late, so the job
+    # itself owns the pacing: it loops until config.yml schedule.window_end_utc
+    # (11:00 UTC = 06:00 CDT) rather than relying on a fan-out of cron slots.
+    # In winter (CST, UTC-6) this lands an hour earlier: 02:00-05:00 local.
+    - cron: "0 8 * * *"
   workflow_dispatch: {}
 
 concurrency:
@@ -16,7 +20,8 @@ permissions:
 jobs:
   cycle:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    # 3h window + slack for a late cron firing. Public repo → Actions minutes are free.
+    timeout-minutes: 240
     steps:
       - uses: actions/checkout@v4
         with:
@@ -36,16 +41,21 @@ jobs:
       - name: Install validator deps
         run: pip install pyyaml requests
 
-      - name: Run one research cycle
-        env:
-          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-        run: bash scripts/run_cycle.sh
-
-      - name: Commit and push state
+      - name: Configure git
         run: |
           git config user.name "SPIRAL-bot"
           git config user.email "spiral-bot@users.noreply.github.com"
+
+      - name: Run nightly research batch
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: bash scripts/run_night.sh
+
+      # run_night.sh pushes after every cycle; this only catches state left behind
+      # by a cycle that was cut short (job timeout, cancellation).
+      - name: Push trailing state
+        if: always()
+        run: |
           git add -A
-          CYCLE=$(python -c "import json;print(json.load(open('state/meta.json'))['cycle'])")
-          git commit -m "cycle ${CYCLE}: $(cat state/queue/last_completed_task.txt 2>/dev/null || echo 'run')" || echo "nothing to commit"
-          git push
+          git commit -m "partial cycle state" || echo "nothing to commit"
+          git push || echo "push failed"

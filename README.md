@@ -1,9 +1,10 @@
 # SPIRAL — Scheduled Progressive Incremental Research Automation Loop
 
 A reference implementation of a cron-driven, time-sliced autonomous research loop.
-Every day at dawn (default 03:00 KST), a GitHub Actions cron job executes **one
-research unit task**, commits the full research state to git, and **leaves the next
-task in the queue for the next run to pick up.**
+Each night (default 03:00–06:00 CDT), a GitHub Actions job executes **one research
+unit task at a time**, commits the full research state to git after each one, and
+**leaves the next task in the queue for the following cycle to pick up.** A cycle
+takes ~4–5 min, so the nightly window fits up to 18 of them.
 
 Paper correspondence: this repository's commit history *is* the deployment log (§4)
 and the auditable evidence artifact.
@@ -11,16 +12,23 @@ and the auditable evidence artifact.
 ## How one cycle works
 
 ```
-cron(03:00 KST)
-  → run_cycle.sh
-      1. Read state/queue/next_task.json        # the "next task" left by the previous cycle
-      2. claude -p (headless, OAuth token)       # task prompt + state file paths passed in
-         the agent edits state/ files directly
-         and writes the next task to the queue
-      3. validate_state.py                       # verification gates (G1/G3, mechanical)
-         on failure → revert git state (log-only commit) → next cron retries the same task
-      4. git commit + push                       # cycle complete
+cron(08:00 UTC = 03:00 CDT)
+  → run_night.sh                                 # loops until 11:00 UTC (06:00 CDT)
+    └─ per slot, spaced 10 min start-to-start:
+       → run_cycle.sh
+          1. Read state/queue/next_task.json     # the "next task" left by the previous cycle
+          2. claude -p (headless, OAuth token)   # task prompt + state file paths passed in
+             the agent edits state/ files directly
+             and writes the next task to the queue
+          3. validate_state.py                   # verification gates (G1/G3, mechanical)
+             on failure → revert state (log-only commit) → next slot retries the same task
+       → git commit + push                       # cycle durable before the next one starts
 ```
+
+The pacing lives in the job, not in cron: GitHub's scheduled events routinely fire
+60–100 min late, so a fan-out of cron slots would drift out of the window. One
+firing starts the night; `run_night.sh` owns the spacing and the hard stop. A late
+firing shortens the night instead of running past it.
 
 ## Research state R_t = (K, I, A, q)
 
@@ -59,11 +67,13 @@ T1 Collect ──→ T2 Structure ──→ T3 Investigate ──→ T4 Assess �
 3. Check/edit the `topic` in `state/meta.json` (currently seeded with a CTI topic).
 4. From the Actions tab, manually run the `research-cycle` workflow
    (`workflow_dispatch`) once to test a single cycle.
-5. From then on, the cron runs automatically every day. Disable the workflow to stop it.
+5. From then on, the nightly batch runs automatically. Disable the workflow to stop it.
 
 ## Cost / budget constraints (paper RQ4)
 
-- Per-run cap: `--max-turns` (config: `budget.max_turns`), Actions job timeout 30 min.
+- Per-cycle cap: `--max-turns` (config: `budget.max_turns`); Actions job timeout 240 min.
+- Nightly window: `schedule.cycle_interval_min` (start-to-start spacing, so the
+  subscription quota refills between cycles) and `schedule.window_end_utc` (hard stop).
 - OAuth token = uses the personal subscription quota → off-peak hours mean marginal
   cost ≈ 0 (the paper's idle-quota argument).
 - Per-cycle usage is recorded in `logs/cycle-NNN.md` per the prompt instructions.
@@ -74,7 +84,8 @@ T1 Collect ──→ T2 Structure ──→ T3 Investigate ──→ T4 Assess �
 .github/workflows/research-cycle.yml   # cron + manual trigger
 prompts/system.md                      # shared rules (gates, file conventions, budget)
 prompts/t1_collect.md … t5_select.md   # per-task-type prompts
-scripts/run_cycle.sh                   # orchestrator
+scripts/run_night.sh                   # nightly batch: paces cycles within the window
+scripts/run_cycle.sh                   # orchestrator for exactly one cycle
 scripts/validate_state.py              # verification gates (G1/G3)
 config.yml                             # schedule / budget / gate settings
 docs/                                  # paper-facing documents (related work, outline, implementation notes)

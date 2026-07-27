@@ -7,12 +7,16 @@ is ready to run.
 ## Confirmed design decisions (to be written into the paper as-is)
 
 1. **LLM execution**: headless Claude Code CLI (`claude -p`) + an OAuth token
-   (`claude setup-token`) = uses the personal subscription quota. Since the cron runs
-   at 03:00 KST, this uses idle-quota hours → the marginal-cost-≈-0 argument matches
-   the actual implementation.
-2. **Scheduler/logic separation**: the cron provides only the timing. What to do is
-   always decided by `state/queue/next_task.json`, committed by the previous cycle
+   (`claude setup-token`) = uses the personal subscription quota. The batch runs
+   03:00–06:00 CDT, i.e. idle-quota hours → the marginal-cost-≈-0 argument matches
+   the actual implementation. Cycles are spaced 10 min start-to-start so the quota
+   refills between them rather than being drawn down in one burst.
+2. **Scheduler/logic separation**: the scheduler provides only the timing. What to do
+   is always decided by `state/queue/next_task.json`, committed by the previous cycle
    (trigger chaining). Portable to any scheduler.
+   *Measured caveat:* GitHub's `schedule` events fired 77 and 100 min late in the
+   first two runs, so the nightly pacing was moved out of cron and into the job
+   (`run_night.sh`), which loops to a wall-clock deadline. Cron only starts the night.
 3. **Four state components**: knowledge (K, append-only) / issue graph (I) /
    assessments (A, 0–5 rubric) / queue (q). All committed to git → the commit history
    is an auditable deployment log = the paper's evidence artifact.
@@ -77,8 +81,8 @@ report, and dry-ran the judge prompt — all confirmed working (2026-07-26).
 2. Locally run `claude setup-token` → register the token as the repo secret
    `CLAUDE_CODE_OAUTH_TOKEN`.
 3. Actions tab → research-cycle → Run workflow (one manual test run).
-4. Confirm the cycle-001 commit, then leave it — runs automatically every day at
-   03:00 KST.
+4. Confirm the cycle-001 commit, then leave it — the batch runs automatically every
+   night, 03:00–06:00 CDT (up to 18 cycles per night).
 5. Skim the logs about once a week (not intervening is actually favorable for the
    paper's argument — intervention count is the RQ4 metric).
 
