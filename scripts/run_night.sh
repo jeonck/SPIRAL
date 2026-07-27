@@ -17,6 +17,7 @@ cd "$(dirname "$0")/.."
 INTERVAL_SEC=$(python -c "import yaml;print(int(round(float(yaml.safe_load(open('config.yml'))['schedule']['cycle_interval_min'])*60)))")
 END_UTC=$(python -c "import yaml;print(yaml.safe_load(open('config.yml'))['schedule']['window_end_utc'])")
 MAX_FAIL=$(python -c "import yaml;print(int(yaml.safe_load(open('config.yml'))['schedule']['abort_after_consecutive_failures']))")
+MAX_INVALID=$(python -c "import yaml;print(int(yaml.safe_load(open('config.yml'))['schedule']['abort_after_consecutive_invalid']))")
 
 # Wall-clock deadline: today's window_end_utc. A late cron firing shortens the
 # night rather than pushing it past the intended local end time.
@@ -33,17 +34,23 @@ echo "SPIRAL night batch — start $(date -u +%FT%TZ), window ends ${END_UTC}Z, 
 
 n=0
 consec_fail=0
+consec_invalid=0
 while true; do
   n=$((n + 1))
   START=$(date +%s)
   echo "════════ night cycle #${n} @ $(date -u +%T)Z ════════"
 
-  if bash scripts/run_cycle.sh; then
-    consec_fail=0
-  else
-    consec_fail=$((consec_fail + 1))
-    echo "run_cycle.sh exited non-zero (${consec_fail} in a row) — continuing" >&2
-  fi
+  bash scripts/run_cycle.sh
+  rc=$?
+  case "$rc" in
+    0) consec_fail=0; consec_invalid=0 ;;
+    # The agent ran and the gates rejected it: the token works, so this is not a hard
+    # failure. run_cycle.sh escalates the per-task retries; this only counts the streak.
+    2) consec_invalid=$((consec_invalid + 1)); consec_fail=0
+       echo "cycle failed validation (${consec_invalid} in a row) — continuing" >&2 ;;
+    *) consec_fail=$((consec_fail + 1))
+       echo "run_cycle.sh died with rc=${rc} (${consec_fail} in a row) — continuing" >&2 ;;
+  esac
 
   # Persist immediately so a killed runner never loses a validated cycle.
   git add -A
@@ -67,6 +74,15 @@ while true; do
   if [ "$consec_fail" -ge "$MAX_FAIL" ]; then
     echo "ABORT — ${consec_fail} consecutive hard failures. Check CLAUDE_CODE_OAUTH_TOKEN" >&2
     echo "(expired?) and the claude CLI install. Failing the job so a notification fires." >&2
+    exit 1
+  fi
+
+  # Per-task escapes keep the queue moving, so a streak this long means nothing is
+  # landing anywhere — the gates themselves or the state are broken, not one task.
+  if [ "$consec_invalid" -ge "$MAX_INVALID" ]; then
+    echo "ABORT — ${consec_invalid} consecutive cycles failed validation despite the" >&2
+    echo "per-task escape hatch. State or gates need a human; see state/queue/escapes.json" >&2
+    echo "and the newest logs/cycle-*.md." >&2
     exit 1
   fi
 

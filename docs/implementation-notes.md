@@ -17,6 +17,17 @@ is ready to run.
    *Measured caveat:* GitHub's `schedule` events fired 77 and 100 min late in the
    first two runs, so the nightly pacing was moved out of cron and into the job
    (`run_night.sh`), which loops to a wall-clock deadline. Cron only starts the night.
+5. **Bounded retries (added for the month-long run)**: at-least-once retry alone lets
+   one stuck queue entry consume every slot indefinitely, because the T5 attempt
+   penalty can only demote an issue on a cycle that actually reaches T5. After
+   `schedule.max_task_attempts` the orchestrator abandons the entry and resumes at the
+   next stage, logging it to `state/queue/escapes.json`. Two night-level breakers cover
+   what that cannot: consecutive hard failures (token/CLI) and consecutive gate
+   rejections. Both fail the job so a notification fires.
+   *Deliberately not added:* a gate requiring `last_completed_task.txt` to be freshly
+   written. It would catch commits mislabelled with the previous cycle's task name, but
+   adding a gate changes the validation-failure rate — which is itself an RQ4 metric —
+   so it must not be introduced mid-deployment.
 3. **Four state components**: knowledge (K, append-only) / issue graph (I) /
    assessments (A, 0–5 rubric) / queue (q). All committed to git → the commit history
    is an auditable deployment log = the paper's evidence artifact.

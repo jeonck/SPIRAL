@@ -74,10 +74,26 @@ T1 Collect ──→ T2 Structure ──→ T3 Investigate ──→ T4 Assess �
 - Per-cycle cap: `--max-turns` (config: `budget.max_turns`); Actions job timeout 240 min.
 - Nightly window: `schedule.cycle_interval_min` (start-to-start spacing, so the
   subscription quota refills between cycles) and `schedule.window_end_utc` (hard stop).
-- Failsafe: `schedule.abort_after_consecutive_failures` fails the job when that many
-  cycles die outright (expired `CLAUDE_CODE_OAUTH_TOKEN`, missing CLI), so a broken
-  setup raises a notification instead of silently reporting a successful empty night.
-  Validation failures do not trip it — those are the designed self-healing retry path.
+
+## Circuit breakers (unattended-run safety)
+
+A month-long deployment has to fail loudly rather than spin. Three limits, all in
+`config.yml` under `schedule`:
+
+| Setting | Trips on | Effect |
+|---|---|---|
+| `max_task_attempts` | one queue entry failing the gates N times | abandon it, resume the pipeline at the next stage (T1/T2/T3→T4, T4→T5, T5→T4) |
+| `abort_after_consecutive_failures` | cycles dying outright (expired `CLAUDE_CODE_OAUTH_TOKEN`, missing CLI) | fail the job → GitHub notification |
+| `abort_after_consecutive_invalid` | cycles running but failing the gates, despite escapes | fail the job → GitHub notification |
+
+`run_cycle.sh` signals these apart by exit code: `0` validated, `2` ran but was
+rejected by the gates, anything else a hard failure. Without the first limit a single
+stuck task would consume every slot of every night indefinitely; without the other two
+a broken token or a broken gate would report success on an empty night.
+
+Escapes are recorded in `state/queue/escapes.json` (cycle, abandoned task, target
+issue, attempts, escaped-to). They are intervention-free recoveries, so the file is
+RQ4 evaluation data — check it before reading a quiet month as a healthy one.
 - OAuth token = uses the personal subscription quota → off-peak hours mean marginal
   cost ≈ 0 (the paper's idle-quota argument).
 - Per-cycle usage is recorded in `logs/cycle-NNN.md` per the prompt instructions.
