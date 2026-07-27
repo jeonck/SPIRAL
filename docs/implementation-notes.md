@@ -24,10 +24,14 @@ is ready to run.
    next stage, logging it to `state/queue/escapes.json`. Two night-level breakers cover
    what that cannot: consecutive hard failures (token/CLI) and consecutive gate
    rejections. Both fail the job so a notification fires.
-   *Deliberately not added:* a gate requiring `last_completed_task.txt` to be freshly
-   written. It would catch commits mislabelled with the previous cycle's task name, but
-   adding a gate changes the validation-failure rate — which is itself an RQ4 metric —
-   so it must not be introduced mid-deployment.
+   *Commit labels are orchestrator-derived, not agent-derived:* `run_night.sh` reads the
+   task type from the queue entry it is about to dispatch, so the history stays accurate
+   even when a cycle dies before writing `last_completed_task.txt`. The alternative —
+   gating on that file — was rejected: adding a gate changes the validation-failure
+   rate, which is itself an RQ4 metric, and it would have bought nothing, since
+   `## Task performed` in the (already gated) cycle log records the task authoritatively.
+   The label is derived data; nothing is lost if it is wrong, so it does not warrant a
+   measurement-perturbing gate.
 3. **Four state components**: knowledge (K, append-only) / issue graph (I) /
    assessments (A, 0–5 rubric) / queue (q). All committed to git → the commit history
    is an auditable deployment log = the paper's evidence artifact.

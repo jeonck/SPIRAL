@@ -40,6 +40,16 @@ while true; do
   START=$(date +%s)
   echo "════════ night cycle #${n} @ $(date -u +%T)Z ════════"
 
+  # Read the label from the queue entry being dispatched, not from the agent-written
+  # last_completed_task.txt: this is what actually ran, so the commit history stays
+  # accurate even when a cycle dies before writing that file.
+  TASK=$(python -c "
+import json
+n = {'T1':'collect','T2':'structure','T3':'investigate','T4':'assess','T5':'select'}
+t = json.load(open('state/queue/next_task.json'))['task_type']
+print(f\"{t} {n.get(t,'')}\".strip())
+" 2>/dev/null) || TASK="unknown task"
+
   bash scripts/run_cycle.sh
   rc=$?
   case "$rc" in
@@ -55,13 +65,11 @@ while true; do
   # Persist immediately so a killed runner never loses a validated cycle.
   git add -A
   CYCLE=$(python -c "import json;print(json.load(open('state/meta.json'))['cycle'])")
-  if [ "$consec_fail" -gt 0 ]; then
-    # last_completed_task.txt still names the previous cycle's task — don't label
-    # a failed run with it.
-    MSG="cycle ${CYCLE}: run failed, no state change"
-  else
-    MSG="cycle ${CYCLE}: $(cat state/queue/last_completed_task.txt 2>/dev/null || echo run)"
-  fi
+  case "$rc" in
+    0) MSG="cycle ${CYCLE}: ${TASK}" ;;
+    2) MSG="cycle ${CYCLE}: ${TASK} failed validation" ;;
+    *) MSG="cycle ${CYCLE}: ${TASK} run failed, no state change" ;;
+  esac
   if git commit -q -m "$MSG" >/dev/null 2>&1; then
     git push -q || { git pull --rebase -q && git push -q; }
     echo "pushed — ${MSG}"
