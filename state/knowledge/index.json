@@ -67,6 +67,19 @@
         "Reasoning models using test-time scaling do not get the same performance boost on these CTI/malware tasks that they get on coding and math benchmarks, suggesting generic reasoning post-training does not transfer well to cybersecurity threat analysis.",
         "As of publication, 'current LLMs are far from saturating' the CyberSOCEval evaluations — substantial measured unreliability/headroom remains industry-wide, not just in academic benchmarks."
       ]
+    },
+    {
+      "id": "src-0006",
+      "url": "https://arxiv.org/abs/2509.23573",
+      "title": "Uncovering Vulnerabilities of LLM-Assisted Cyber Threat Intelligence",
+      "type": "paper",
+      "added_cycle": 6,
+      "file": "state/knowledge/src-0006.md",
+      "key_claims": [
+        "LLM failures in CTI stem from properties of the threat landscape itself (heterogeneous, volatile, fragmented evidence) more than from generic model architecture issues, per a human-in-the-loop failure-categorization framework applied across the CTI lifecycle.",
+        "The paper's three identified failure patterns (spurious correlations, contradictory knowledge, constrained generalization) occur across all four CTI pipeline stages it defines (Contextualization, Attribution, Prediction, Mitigation), not concentrated in reasoning-heavy stages -- evidence that a simple mechanical-extraction-vs-open-ended-reasoning binary may be too coarse to explain where reliability breaks down.",
+        "Within one consistent study/methodology, reliability varies enormously by specific sub-task (F1/AUC roughly 0.20-0.90 across tasks and models, e.g. Source Reliability Scoring AUC 0.912 vs 0.547 for different models on the same task), directly demonstrating task-dependent reliability in a single unified design rather than only via cross-benchmark synthesis; targeted causal-intervention mitigations produced measurable but comparatively modest gains on attribution-adjacent tasks (e.g. +0.055 accuracy on Threat Actor Linking) relative to LANCE's mechanical-IoC-extraction gain (src-0003)."
+      ]
     }
   ],
   "_schema": {

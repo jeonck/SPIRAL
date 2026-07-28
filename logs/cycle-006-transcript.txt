@@ -1,0 +1,9 @@
+Structure is intact and valid. All the state files are updated correctly.
+
+Cycle 6 (T3 investigate) is complete:
+- Investigated `task-dependent-reliability-framing`, added new source **src-0006** (arXiv:2509.23573), and added a supported candidate_resolution that confirms task-dependence is real (now directly measured within one study) while showing the specific extraction-vs-reasoning ordinal taxonomy is likely too coarse.
+- Rewrote all 3 open_questions and appended cycle 6 to `attempts`.
+- G2 retrospection re-verified `ttp-attack-mapping-reliability`'s CTIBench figures — confirmed, no contradiction.
+- Caught and discarded a fabricated WebFetch response (hallucinated taxonomy from an unparseable PDF) before it could pollute the knowledge base — documented in src-0006.md's limitations.
+- Fixed a JSON syntax error (missing comma) I introduced in `index.json` before finishing.
+- Queued T4 (assess) as the next task with detailed handoff notes.

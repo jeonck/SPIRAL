@@ -87,19 +87,24 @@
       "title": "Is 'AI-generated CTI reliability' a single property, or does it vary sharply by task type (mechanical extraction vs. open-ended reasoning)?",
       "depends_on": ["ttp-attack-mapping-reliability", "ioc-extraction-reliability", "consistency-calibration-as-failure-mode", "attribution-confident-wrong-gap"],
       "open_questions": [
-        "Is there a principled taxonomy of CTI sub-tasks by reliability risk (e.g. mechanical extraction < classification < attribution < open-ended narrative generation), or is the extraction-vs-reasoning split too coarse?",
-        "Would a hybrid human-validated pipeline like LANCE (src-0003), which works well for IoC extraction, also raise reliability on ATT&CK mapping or attribution if applied there, or does the reasoning-heavy nature of those tasks make human-in-the-loop validation less effective?",
-        "Since src-0003's strong result is single-study/in-house, would the task-dependence conclusion survive an independent replication showing a smaller IoC-extraction advantage?"
+        "The cross-cutting 'mechanical extraction < classification < attribution < generation' ordinal axis is not confirmed and is now positively in doubt: src-0006 (cycle 6), the first source to measure multiple distinct CTI sub-tasks within one consistent study, found its 3 failure patterns (spurious correlations, contradictory knowledge, constrained generalization) occur across all 4 pipeline stages it defines, including 'contextualization'-type tasks that would loosely be called extraction, with reliability ranging F1/AUC ~0.20-0.90 by specific sub-task rather than cleanly by extraction-vs-reasoning category. Is there a better explanatory variable (e.g. heterogeneity/volatility/ambiguity of the specific task's input data, or the size/discreteness of its output label space) than a coarse extraction-vs-reasoning binary?",
+        "src-0006's causal-intervention mitigations raised an attribution-adjacent task (Threat Actor Linking) by only +0.055 accuracy, a much smaller gain than LANCE's ~72-86%->97.6% F1 jump on IoC extraction (src-0003) -- but the two are not a controlled comparison (different tasks, metrics, mitigation types: automated retrieval/inference intervention vs. human-in-the-loop regex+LLM pipeline). No source yet tests a LANCE-style human-validated pipeline specifically on ATT&CK mapping or attribution; a search this cycle for such a study (and for RAM/src-2502.02337, an automated non-human-in-the-loop ATT&CK mapper) found none. Does human-in-the-loop validation specifically (not just any targeted mitigation) transfer to reasoning-heavy tasks, and if so how much of the IoC-extraction gain would it recover?",
+        "Since src-0003's strong result is single-study/in-house, would the task-dependence conclusion survive an independent replication showing a smaller IoC-extraction advantage? A cycle-6 search for independent LANCE/PRISM replication or critique found none published yet."
       ],
       "candidate_resolutions": [
         {
           "summary": "Across the 5 collected sources, reliability of AI-generated CTI is strongly task-dependent rather than a uniform property: narrow, mechanical extraction (IoC extraction, src-0003) reaches near-97% F1 when LLM output is constrained and human-validated, while open-ended reasoning tasks (ATT&CK technique mapping, threat-actor attribution, general threat-intel reasoning: src-0001, src-0002, src-0005) remain unreliable (accuracy ceilings around 52-72%, confidence miscalibration, and plausible-but-wrong outputs) even as model scale increases. This framing is a synthesis of currently-available evidence, not itself directly measured by any single source, and should be treated as a working hypothesis pending the open questions above.",
           "evidence": ["src-0001", "src-0002", "src-0003", "src-0005"],
           "status": "proposed"
+        },
+        {
+          "summary": "The core, narrower claim -- that AI-generated CTI reliability is genuinely task-dependent rather than a single uniform property -- is now supported, not just proposed: src-0006 (cycle 6) directly measures reliability across multiple distinct CTI sub-tasks within one consistent study design (rather than only via cross-benchmark synthesis across different teams/models) and finds F1/AUC ranging roughly 0.20-0.90 by specific sub-task, corroborating the cross-study pattern already visible in src-0001/0002/0003/0005. However, the SPECIFIC ordinal axis proposed above (mechanical extraction < classification < attribution < generation) is not confirmed by this evidence and is likely too coarse: src-0006 found its failure patterns cut across all 4 CTI pipeline stages it defines, including extraction/contextualization-type tasks, rather than concentrating in 'reasoning' stages. So: task-dependence itself = supported; the specific extraction-vs-reasoning explanatory axis = open, and now positively questioned rather than merely unverified.",
+          "evidence": ["src-0001", "src-0002", "src-0003", "src-0005", "src-0006"],
+          "status": "supported"
         }
       ],
       "created_cycle": 2,
-      "attempts": []
+      "attempts": [6]
     },
     {
       "id": "institutional-incident-real-world-impact",
