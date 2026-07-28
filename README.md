@@ -80,7 +80,12 @@ T1 Collect ──→ T2 Structure ──→ T3 Investigate ──→ T4 Assess �
 
 ## Cost / budget constraints (paper RQ4)
 
-- Per-cycle cap: `--max-turns` (config: `budget.max_turns`); Actions job timeout 240 min.
+- Pinned runtime: `runtime.model` and `runtime.cli_version`. Both are stamped into
+  `state/meta.json` every cycle, so git history records which model produced which
+  conclusion. An unpinned model is an uncontrolled variable in a study that measures
+  accumulation over weeks — a mid-run upgrade would be indistinguishable from an
+  accumulation effect. Cycles 1–6 predate the pin and are unattributable.
+- Per-cycle cap: `--max-turns` (config: `budget.max_turns`); Actions job timeout 330 min.
 - Nightly window: `schedule.cycle_interval_min` (start-to-start spacing, so the
   subscription quota refills between cycles) and `schedule.window_end_utc` (hard stop).
 

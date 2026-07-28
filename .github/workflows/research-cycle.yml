@@ -37,11 +37,17 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install Claude Code CLI
-        run: npm install -g @anthropic-ai/claude-code
-
       - name: Install validator deps
         run: pip install pyyaml requests
+
+      # Pinned from config.yml (single source of truth with the recorded provenance).
+      # An unpinned `@latest` would let the CLI change mid-deployment, confounding the
+      # accumulation measurement this repository exists to produce.
+      - name: Install Claude Code CLI (pinned)
+        run: |
+          V=$(python -c "import yaml;print(yaml.safe_load(open('config.yml'))['runtime']['cli_version'])")
+          echo "pinning @anthropic-ai/claude-code@${V}"
+          npm install -g "@anthropic-ai/claude-code@${V}"
 
       - name: Configure git
         run: |

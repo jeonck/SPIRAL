@@ -1,4 +1,14 @@
 # SPIRAL configuration
+
+# Pinned execution environment. The paper measures accumulation over N weeks, so an
+# unpinned model or CLI is an uncontrolled variable in a longitudinal experiment: a
+# mid-run upgrade would be indistinguishable from an accumulation effect. Both values
+# are recorded into state/meta.json every cycle, so git history carries per-cycle
+# provenance. Cycles 1-6 (2026-07-26..28) ran before this pin and are unattributable.
+runtime:
+  model: claude-opus-5
+  cli_version: "2.1.220"
+
 budget:
   max_turns: 50          # claude -p --max-turns per cycle
   max_new_sources: 5     # T1: max sources added per collect cycle

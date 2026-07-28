@@ -5,6 +5,10 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 MAX_TURNS=$(python -c "import yaml;print(yaml.safe_load(open('config.yml'))['budget']['max_turns'])")
+MODEL=$(python -c "import yaml;print(yaml.safe_load(open('config.yml'))['runtime']['model'])")
+# Actual installed version, not the pinned string: if the pin ever fails to take, the
+# per-cycle record shows what really ran rather than what was supposed to.
+CLI_VERSION=$(claude --version 2>/dev/null | cut -d' ' -f1 || echo unknown)
 MAX_ATTEMPTS=$(python -c "import yaml;print(int(yaml.safe_load(open('config.yml'))['schedule']['max_task_attempts']))")
 TASK_TYPE=$(python -c "import json;print(json.load(open('state/queue/next_task.json'))['task_type'])")
 
@@ -18,15 +22,19 @@ case "$TASK_TYPE" in
   *) echo "Unknown task type: $TASK_TYPE" >&2; exit 1 ;;
 esac
 
-# Increment cycle counter (start of run; a failed run is still a numbered cycle)
-python - <<'EOF'
-import json, datetime
+# Increment cycle counter (start of run; a failed run is still a numbered cycle) and
+# stamp the runtime. meta.json is committed every cycle, so git history becomes the
+# per-cycle provenance record without a separate file.
+SPIRAL_MODEL="$MODEL" SPIRAL_CLI="$CLI_VERSION" python - <<'EOF'
+import json, datetime, os
 m = json.load(open('state/meta.json'))
 m['cycle'] += 1
 if not m.get('started'):
     m['started'] = datetime.date.today().isoformat()
+m['runtime'] = {'model': os.environ['SPIRAL_MODEL'], 'cli_version': os.environ['SPIRAL_CLI']}
 json.dump(m, open('state/meta.json', 'w'), indent=2, ensure_ascii=False)
-print(f"cycle {m['cycle']}, task {open('state/queue/next_task.json').read()[:120]}...")
+print(f"cycle {m['cycle']} on {m['runtime']['model']} (cli {m['runtime']['cli_version']}), "
+      f"task {open('state/queue/next_task.json').read()[:100]}...")
 EOF
 CYCLE=$(python -c "import json;print(json.load(open('state/meta.json'))['cycle'])")
 
@@ -48,6 +56,7 @@ The queue entry you are executing is state/queue/next_task.json. Begin."
 
 # Headless run. OAuth token comes from CLAUDE_CODE_OAUTH_TOKEN env (set by CI).
 claude -p "$PROMPT" \
+  --model "$MODEL" \
   --max-turns "$MAX_TURNS" \
   --allowedTools "WebSearch,WebFetch,Read,Write,Edit,Glob,Grep" \
   --permission-mode acceptEdits \
@@ -112,11 +121,14 @@ if n >= MAX:
 
 json.dump(q, open('state/queue/next_task.json', 'w'), indent=2, ensure_ascii=False)
 EOF
-  # cycle counter still advances (it did run), meta is re-applied
-  python - <<EOF
-import json
+  # cycle counter still advances (it did run), meta is re-applied. The revert restored
+  # meta.json from PRE_SHA, so re-stamp the runtime too — a rejected cycle still ran on
+  # this model and must be attributable.
+  SPIRAL_CYCLE="$CYCLE" SPIRAL_MODEL="$MODEL" SPIRAL_CLI="$CLI_VERSION" python - <<'EOF'
+import json, os
 m = json.load(open('state/meta.json'))
-m['cycle'] = ${CYCLE}
+m['cycle'] = int(os.environ['SPIRAL_CYCLE'])
+m['runtime'] = {'model': os.environ['SPIRAL_MODEL'], 'cli_version': os.environ['SPIRAL_CLI']}
 json.dump(m, open('state/meta.json','w'), indent=2, ensure_ascii=False)
 EOF
   cp -r /tmp/spiral_logs/* logs/ 2>/dev/null || true

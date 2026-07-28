@@ -6,6 +6,14 @@ is ready to run.
 
 ## Confirmed design decisions (to be written into the paper as-is)
 
+0. **Pinned runtime (from cycle 7, 2026-07-28)**: `runtime.model: claude-opus-5` and
+   `runtime.cli_version: "2.1.220"`, both stamped into `state/meta.json` every cycle so
+   git history carries per-cycle provenance. Until cycle 6 the workflow installed
+   `@anthropic-ai/claude-code` unpinned and passed no `--model`, so cycles 1–6 ran on an
+   unrecorded, server-default model and **cannot be attributed retroactively** — treat
+   that segment as a separate, unlabelled condition when analysing the accumulation
+   curve. Pinning matters here specifically because RQ2/RQ3 measure change over weeks:
+   a silent model upgrade mid-run would be confounded with the accumulation effect.
 1. **LLM execution**: headless Claude Code CLI (`claude -p`) + an OAuth token
    (`claude setup-token`) = uses the personal subscription quota. The batch runs
    03:00–06:00 CDT, i.e. idle-quota hours → the marginal-cost-≈-0 argument matches
