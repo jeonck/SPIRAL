@@ -14,9 +14,14 @@ is ready to run.
 2. **Scheduler/logic separation**: the scheduler provides only the timing. What to do
    is always decided by `state/queue/next_task.json`, committed by the previous cycle
    (trigger chaining). Portable to any scheduler.
-   *Measured caveat:* GitHub's `schedule` events fired 77 and 100 min late in the
-   first two runs, so the nightly pacing was moved out of cron and into the job
+   *Measured caveat:* GitHub's `schedule` events fired 77, 100 and 151 min late on the
+   first three runs, so the nightly pacing was moved out of cron and into the job
    (`run_night.sh`), which loops to a wall-clock deadline. Cron only starts the night.
+   The 151-min delay on 2026-07-28 cost all but 3 of that night's 18 cycles, so cron
+   was additionally moved 2h earlier (06:00 UTC) with the job holding until
+   `window_start_utc` — delay is now absorbed by the hold rather than deducted from the
+   window. This is worth reporting in the paper: on free CI, scheduled-trigger latency
+   is itself a variable the design has to absorb, not an implementation detail.
 5. **Bounded retries (added for the month-long run)**: at-least-once retry alone lets
    one stuck queue entry consume every slot indefinitely, because the T5 attempt
    penalty can only demote an issue on a cycle that actually reaches T5. After

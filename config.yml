@@ -8,6 +8,10 @@ schedule:
   # Nightly batch (scripts/run_night.sh). A cycle takes ~4-5 min, so one firing per
   # night wastes the idle-quota window; cycles run back-to-back instead.
   cycle_interval_min: 10     # start-to-start spacing, so quota refills between cycles
+  # Cron fires early (see the workflow) to absorb GitHub's scheduling delay, which has
+  # been 77/100/151 min on the runs so far. The job waits for window_start_utc if it
+  # fires before it, so an on-time firing does not start research hours early.
+  window_start_utc: "08:00"  # 03:00 CDT — earliest a cycle may start
   window_end_utc: "11:00"    # hard stop = 06:00 CDT (UTC-5); 05:00 CST in winter
   # Circuit breakers. Without these an unattended month can spin on one stuck task.
   max_task_attempts: 3       # retries of ONE queue entry before escaping to the next stage

@@ -12,8 +12,9 @@ and the auditable evidence artifact.
 ## How one cycle works
 
 ```
-cron(08:00 UTC = 03:00 CDT)
-  → run_night.sh                                 # loops until 11:00 UTC (06:00 CDT)
+cron(06:00 UTC, early on purpose)
+  → run_night.sh                                 # holds until 08:00 UTC (03:00 CDT),
+                                                 # then loops until 11:00 UTC (06:00 CDT)
     └─ per slot, spaced 10 min start-to-start:
        → run_cycle.sh
           1. Read state/queue/next_task.json     # the "next task" left by the previous cycle
@@ -25,10 +26,18 @@ cron(08:00 UTC = 03:00 CDT)
        → git commit + push                       # cycle durable before the next one starts
 ```
 
-The pacing lives in the job, not in cron: GitHub's scheduled events routinely fire
-60–100 min late, so a fan-out of cron slots would drift out of the window. One
-firing starts the night; `run_night.sh` owns the spacing and the hard stop. A late
-firing shortens the night instead of running past it.
+The pacing lives in the job, not in cron: GitHub's scheduled events fired 77, 100 and
+151 min late on the first three runs here, so a fan-out of cron slots would drift out
+of the window. One firing starts the night; `run_night.sh` owns the spacing and the
+hard stop.
+
+Cron therefore fires two hours *before* the window opens and the job waits out the
+gap. Delay is absorbed instead of being deducted from the night, while an on-time
+firing still begins at the intended local hour. Measured against the observed delays,
+firing at 08:00 yielded 3 of 18 cycles on 2026-07-28; firing at 06:00 yields 15 for
+the same delay, and a full 18 for anything up to 120 min. The window end stays a hard
+stop, so a very late firing still shortens the night rather than running past 06:00
+local.
 
 ## Research state R_t = (K, I, A, q)
 

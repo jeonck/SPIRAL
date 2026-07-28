@@ -2,12 +2,13 @@ name: research-cycle
 
 on:
   schedule:
-    # 08:00 UTC = 03:00 CDT — off-peak window for personal subscription quota.
-    # GitHub cron is UTC-only and routinely fires 60-100 min late, so the job
-    # itself owns the pacing: it loops until config.yml schedule.window_end_utc
-    # (11:00 UTC = 06:00 CDT) rather than relying on a fan-out of cron slots.
-    # In winter (CST, UTC-6) this lands an hour earlier: 02:00-05:00 local.
-    - cron: "0 8 * * *"
+    # Fires 2h before the research window opens (08:00-11:00 UTC = 03:00-06:00 CDT,
+    # config.yml schedule.window_{start,end}_utc). GitHub's scheduled events have run
+    # 77, 100 and 151 min late here, and firing at 08:00 cost all but 3 of 18 cycles
+    # on 2026-07-28. Firing at 06:00 absorbs up to 120 min of delay at no cost: the job
+    # holds until the window opens, so an on-time firing still starts at 03:00 local.
+    # In winter (CST, UTC-6) the whole window lands an hour earlier: 02:00-05:00 local.
+    - cron: "0 6 * * *"
   workflow_dispatch: {}
 
 concurrency:
@@ -20,8 +21,9 @@ permissions:
 jobs:
   cycle:
     runs-on: ubuntu-latest
-    # 3h window + slack for a late cron firing. Public repo → Actions minutes are free.
-    timeout-minutes: 240
+    # Up to 2h holding for the window to open + the 3h window itself, plus slack.
+    # Public repo → Actions minutes are free, so the hold costs nothing.
+    timeout-minutes: 330
     steps:
       - uses: actions/checkout@v4
         with:

@@ -15,22 +15,37 @@ cd "$(dirname "$0")/.."
 # config value, and without `set -e` that failure would silently end the night after
 # one cycle instead of erroring.
 INTERVAL_SEC=$(python -c "import yaml;print(int(round(float(yaml.safe_load(open('config.yml'))['schedule']['cycle_interval_min'])*60)))")
+START_UTC=$(python -c "import yaml;print(yaml.safe_load(open('config.yml'))['schedule']['window_start_utc'])")
 END_UTC=$(python -c "import yaml;print(yaml.safe_load(open('config.yml'))['schedule']['window_end_utc'])")
 MAX_FAIL=$(python -c "import yaml;print(int(yaml.safe_load(open('config.yml'))['schedule']['abort_after_consecutive_failures']))")
 MAX_INVALID=$(python -c "import yaml;print(int(yaml.safe_load(open('config.yml'))['schedule']['abort_after_consecutive_invalid']))")
 
-# Wall-clock deadline: today's window_end_utc. A late cron firing shortens the
-# night rather than pushing it past the intended local end time.
-DEADLINE=$(python - <<'EOF'
-import datetime, yaml
-end = str(yaml.safe_load(open('config.yml'))['schedule']['window_end_utc'])
-h, m = (int(x) for x in end.split(':'))
+# Wall-clock bounds from today's window_{start,end}_utc. The end is a hard stop: a late
+# cron firing shortens the night rather than pushing it past the intended local time.
+BOUNDS=$(python - <<'EOF'
+import datetime, sys, yaml
+s = yaml.safe_load(open('config.yml'))['schedule']
 now = datetime.datetime.now(datetime.timezone.utc)
-print(int(now.replace(hour=h, minute=m, second=0, microsecond=0).timestamp()))
+def stamp(v):
+    h, m = (int(x) for x in str(v).split(':'))
+    return int(now.replace(hour=h, minute=m, second=0, microsecond=0).timestamp())
+start, end = stamp(s['window_start_utc']), stamp(s['window_end_utc'])
+if start >= end:
+    sys.exit("window_start_utc must be earlier than window_end_utc")
+print(start, end)
 EOF
 )
+read -r START_AT DEADLINE <<< "$BOUNDS"
 
-echo "SPIRAL night batch — start $(date -u +%FT%TZ), window ends ${END_UTC}Z, interval ${INTERVAL_SEC}s"
+# Cron fires early on purpose; wait out the gap so research still runs at the intended
+# local hour. A late firing skips this and starts immediately on what is left.
+WAIT=$((START_AT - $(date +%s)))
+if [ "$WAIT" -gt 0 ]; then
+  echo "cron fired early — holding ${WAIT}s until the window opens at ${START_UTC}Z"
+  sleep "$WAIT"
+fi
+
+echo "SPIRAL night batch — start $(date -u +%FT%TZ), window ${START_UTC}Z-${END_UTC}Z, interval ${INTERVAL_SEC}s"
 
 n=0
 consec_fail=0
