@@ -1,6 +1,43 @@
 {
-  "last_assessed_cycle": 0,
-  "scores": {},
+  "last_assessed_cycle": 4,
+  "scores": {
+    "ttp-attack-mapping-reliability": {
+      "score": 3,
+      "rationale": "Primary candidate resolution (status: supported) cites 2 independent sources: src-0002 (CTIBench, 2024-era academic benchmark; provides the core CTI-ATE F1=0.6388 ceiling for the best model, GPT-4-turbo, far below the ~71-72% seen on knowledge-recall tasks) and src-0005 (CyberSOCEval, CrowdStrike/Meta-affiliated, 2025-era; shows newer/larger models scale generally per scaling laws but test-time-scaling 'reasoning' gains that help coding/math do not transfer to cybersecurity reasoning, and 'current LLMs are far from saturating' these evals). These are genuinely independent research groups converging on 'ATT&CK-technique-level reasoning remains unreliable and unclosed by newer models.' Capped at 3, not 4: src-0005 does not report a directly comparable ATT&CK-extraction metric (open_questions[0]), so the specific F1=0.6388 figure itself is still single-sourced, and no counterarguments have been explicitly addressed -- the cross-generation generalization and the human-baseline comparison (open_questions[1]) remain open.",
+      "evidence": ["src-0002", "src-0005"],
+      "assessed_cycle": 4
+    },
+    "ioc-extraction-reliability": {
+      "score": 2,
+      "rationale": "Sole candidate resolution's evidence array is src-0003 only (LANCE/PRISM benchmark, 97.6% F1 vs. legacy tools). Single-source support = partially evidenced (2) per rubric, despite the candidate's own status label being 'supported' -- that label was set at collection time (T1) and has not been independently corroborated since. src-0003's own stated limitation (PRISM benchmark and LANCE system share authors, a conflict-of-interest risk explicitly noted in open_questions[0]) has not been resolved by any second source. No independent replication exists in the knowledge base.",
+      "evidence": ["src-0003"],
+      "assessed_cycle": 4
+    },
+    "consistency-calibration-as-failure-mode": {
+      "score": 2,
+      "rationale": "Two candidate_resolutions exist (cycle 2 qualitative framing, cycle 3 numeric detail), but both cite evidence=[\"src-0001\"] only -- the cycle-3 addition 'confirms and sharpens' the cycle-2 claim using the SAME single source, not an independent one. Per rubric, single-source support caps this at 2 (partially evidenced) regardless of how numerically detailed or how many restated candidates exist. None of open_questions[0-2] (whether the pattern generalizes beyond gpt4o, beyond src-0001's 3 models, or beyond info-extraction/-generation to other CTI sub-tasks) have been addressed by a second source. No open contradiction exists for this issue, so no g3 demotion applies.",
+      "evidence": ["src-0001"],
+      "assessed_cycle": 4
+    },
+    "attribution-confident-wrong-gap": {
+      "score": 3,
+      "rationale": "Evidence=[\"src-0002\", \"src-0004\"], 2 independent sources: src-0002 (CTIBench CTI-TAA, quantified plausible-vs-correct gap across 5 models on 50 real reports, e.g. GPT-4-turbo 86% plausible vs 52% correct, Gemini-1.5 74% vs 38%) and src-0004 (Heise/Der Spiegel investigative reporting on ENISA's 2025 Threat Landscape reports, a real production instance of confident-but-wrong AI-generated attribution/naming re-verified this cycle by re-fetching the URL -- see Retrospection). These are genuinely independent (academic benchmark vs. investigative journalism on a live institutional incident) and both directly on-topic. Capped at 3, not 4: open_questions[2] explicitly flags that whether src-0004's APT29/Midnight-Blizzard naming hallucination is the 'same' phenomenon as src-0002's quantified plausible/correct split, or a distinct hallucination sub-type (citation/naming fabrication vs. attribution judgment), is itself unresolved -- so this counterargument/alternate-explanation has not been addressed, keeping the score at supported rather than robust.",
+      "evidence": ["src-0002", "src-0004"],
+      "assessed_cycle": 4
+    },
+    "task-dependent-reliability-framing": {
+      "score": 1,
+      "rationale": "Sole candidate_resolution's status is explicitly 'proposed', not 'supported' -- per the rubric this is a framed hypothesis, not a verified resolution. It cites 4 sources (src-0001, src-0002, src-0003, src-0005), but these back the 4 underlying dependency issues' own claims individually; none of them directly measures or verifies this issue's own cross-cutting synthesis claim (that reliability is task-dependent along an extraction-vs-reasoning axis) as a unit. The candidate's own text states it 'is a synthesis of currently-available evidence, not itself directly measured by any single source... should be treated as a working hypothesis.' All 3 open_questions are fully unaddressed (no taxonomy proposed, no cross-task hybrid-pipeline test, no replication check on src-0003). This matches rubric level 1 ('framed: open questions articulated, no supported resolution') rather than 2, since the defining fact here is the absence of a supported resolution, not merely single-source support for one.",
+      "evidence": ["src-0001", "src-0002", "src-0003", "src-0005"],
+      "assessed_cycle": 4
+    },
+    "institutional-incident-real-world-impact": {
+      "score": 2,
+      "rationale": "Sole candidate resolution's evidence is src-0004 only (Heise/Der Spiegel reporting on ENISA). Single-source support caps this at 2 (partially evidenced). Re-verified this cycle via a fresh fetch of the src-0004 URL (see Retrospection): the 26/492 incorrect-footnote figure and the APT29/Midnight-Blizzard hallucination fingerprint both re-confirmed, and ENISA's 'human errors' response with AI permitted for 'minor editorial revisions' also re-confirmed. Re-verification strengthens confidence in the single source itself but does not add a second independent source, so the score stays at 2 per rubric. All 3 open_questions (industry base rate, pre-publication disclosure timeline, primary-source i.e. Der Spiegel/ENISA-erratum confirmation of the 26/492 figure independent of Heise's secondary reporting) remain unaddressed.",
+      "evidence": ["src-0004"],
+      "assessed_cycle": 4
+    }
+  },
   "_schema": {
     "scores.<issue_id>": {
       "score": "0-5 integer; 0=unexamined, 5=resolved with strong evidence",

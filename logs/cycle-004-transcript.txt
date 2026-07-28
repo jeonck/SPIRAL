@@ -1,0 +1,8 @@
+Cycle 4 (T4 — Assess) complete. Summary:
+
+- Scored all 6 issues in `state/assessments/scores.json` (previously empty): task-dependent-reliability-framing=1, ioc-extraction-reliability=2, consistency-calibration-as-failure-mode=2, institutional-incident-real-world-impact=2, ttp-attack-mapping-reliability=3, attribution-confident-wrong-gap=3. Applied stingy-when-torn scoring per the rubric, capping several issues at "partially evidenced" (2) because their core numeric claims are backed by only one source despite optimistic "supported" status labels in the issue graph.
+- Retrospection: re-fetched the live src-0004 (ENISA/Heise) URL and confirmed all three key claims still hold — no contradiction needed.
+- No contradictions were open, so no g3 demotion applied to any issue.
+- Wrote the next task (T5 — select weakest link) to `state/queue/next_task.json`, updated `last_completed_task.txt` to `T4 assess`, and wrote `logs/cycle-004.md` with the full task/retrospection/changes/rationale/budget breakdown.
+
+Next cycle will run T5, which is expected to select `task-dependent-reliability-framing` (score 1, the clear weakest link) and dispatch a T3 investigation into it.
