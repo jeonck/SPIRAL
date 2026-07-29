@@ -1,0 +1,14 @@
+Cycle 11 (T5 — Select) complete.
+
+**Selected: `institutional-incident-real-world-impact` → next task is T3 (11 % 7 = 4 ≠ 0, so not a refresh cycle).**
+
+**Ranking derivation** (full table in `logs/cycle-011.md`): base scores gave a three-way tie at 2. Tie-break 3b (attempt penalty, window = cycles 6–10) pushed `ioc-extraction-reliability` to effective 3 on its cycle-9 attempt, leaving `consistency-calibration-as-failure-mode` and `institutional-incident-real-world-impact` tied at 2 — and 3c couldn't separate them because both were created in cycle 2. The written policy ran out; I broke the tie by judgement and said so explicitly, on the grounds that `institutional` is the only issue never targeted by any T1/T3 in eleven cycles, has an entirely unsearched question space, and is the sole coverage of the topic's real-world-impact arm while resting on one secondary news article.
+
+Two things worth flagging:
+
+- **The queue entry I was handed contained a false premise.** Cycle 10 asserted that none of the three tied issues was depended upon by anything, and told me to check it myself. It's wrong: `consistency-calibration` has in-degree 2 and `ioc-extraction` in-degree 1. This matters — under an in-degree reading of tie-break 3a, `consistency-calibration` would have won mechanically. I applied the strict pairwise reading (what the sentence actually says: "outranks *its dependents*"), which leaves 3a inert on unrelated nodes, and recorded that the two readings select different issues.
+- **G2 retrospection passed.** Target `src-0005` (CyberSOCEval), chosen over the never-verified `src-0007` because `src-0005` was collected by automated summarisation, passed cycle 9 only on substance, and holds `ttp-attack-mapping-reliability` at 3. All four stored quotes verified **verbatim** against the arXiv abstract. But the pass is abstract-level only — that source has still never had a single number captured, which is now carry-forward item 10.
+
+New carry-forwards: tie-break 3a's under-specification (item 11), and the structural finding that after the first lap the state machine runs T3→T4→T5→T3 forever and **never returns to T2** — the only task type with standing to do the split, the new triage issue, and the g3 prompt/validator reconciliation, which have now been blocked for five, two and three cycles respectively (item 12).
+
+Files written: `logs/cycle-011.md`, `state/queue/next_task.json`, `state/queue/last_completed_task.txt`. `graph.json`, `scores.json` and `state/knowledge/` deliberately untouched. JSON validity was checked by construction only — `python3` remains blocked in this sandbox, so the validator did not run.
