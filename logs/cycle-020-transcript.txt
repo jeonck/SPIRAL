@@ -1,0 +1,30 @@
+Cycle 20 (T5 — Select) complete.
+
+## G2 retrospection — src-0015: **PASSED, with strengthening**
+
+Single fetch to `arxiv.org/html/2601.21083v3` carrying both a whole-table transcription request and a nine-string verbatim search. Every figure exact: FP rates 82.5/65/57.5/45%, containment 100/92.5/75/62.5%, EGAR 0.375/0.392/0.429/0.542. All nine strings PRESENT; affiliation confirmed ABSENT.
+
+Two corrections to what I was handed, plus one new finding:
+- The handoff claimed src-0015's figures rest on "a single abstract-page fetch." `src-0015.md` attributes its Table 1 to `/html/...v3` at collection — so this was a **second independent pull returning identical cells**, a stronger result than requested.
+- **New: Table 1 has a `Reward` column nobody recorded.** Sonnet 4.5 — the model the paper itself calls best-calibrated — earns the **lowest reward** (2.37); the two highest-containment models take the two highest. That is evidence on the *harness* side of `automated-triage-under-refusal`'s central open question. Logged as carry-forward [27], not written into the state — a T5 has no standing to enter claims.
+
+## Selection: `ioc-extraction-reliability` — and this overturns the handoff
+
+Applying the policy mechanically, three issues tie at score 2. Rule 3b eliminates `consistency-calibration-as-failure-mode` (penalty 2). The remaining pair both carry penalty 0, and **rule 3c decides cleanly: created_cycle 2 < 16**.
+
+Cycle 19's `scores.json` asserts twice that `automated-triage-under-refusal` "is the unique weakest link on the configured tie-break." It isn't — those rationales stop at 3b and never apply 3c. I reported that plainly rather than deferring, and noted the failure mode: a genuine asymmetry ("never worked on") was read back into rules that don't contain it.
+
+I also had to rule on tie-break 3a's long-standing ambiguity (carry-forward [11]), since under the in-degree reading a different issue would have won *before* the penalty was consulted. I ruled for the strict pairwise reading on textual grounds ("*its* dependents" is relational) and coherence grounds (in-degree would render the anti-thrashing rule inoperative on the most-attempted issue). Applied as reasoning, not written to `prompts/`.
+
+## Two handoff defects found and corrected
+
+1. **`prompts/t3_investigate.md` step 2 permits a T3 to add sources** — the queue entry stated in capitals that it may not. This was decisive: `ctr-0001`'s resolution path *requires* fetching src-0007's released code, which the false constraint would have closed off.
+2. **The inherited schedule projection is wrong.** "Cycle 21's T5 is the next refresh" — cycle 21 is a **T3**. T5 lands on 20, 23, 26, 29, 32, **35**; the next refresh is ~15 cycles out, not next cycle. Flagged for a human, since the two highest-value uncollected items both need a T1.
+
+## Files written
+
+- `logs/cycle-020.md` — full auditable ranking table, the 3a ruling, and carry-forward [1]–[30]
+- `state/queue/next_task.json` — T3 targeting `ioc-extraction-reliability`; `jq`-validated (I initially omitted `attempt_count`, caught by the validation call and fixed)
+- `state/queue/last_completed_task.txt` — `T5 select`
+
+No edits to `state/knowledge/` or `state/issues/`. Budget: 1 fetch, 0 searches, ~12 of 50 turns.
