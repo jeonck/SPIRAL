@@ -80,6 +80,33 @@
         "The paper's three identified failure patterns (spurious correlations, contradictory knowledge, constrained generalization) occur across all four CTI pipeline stages it defines (Contextualization, Attribution, Prediction, Mitigation), not concentrated in reasoning-heavy stages -- evidence that a simple mechanical-extraction-vs-open-ended-reasoning binary may be too coarse to explain where reliability breaks down.",
         "Within one consistent study/methodology, reliability varies enormously by specific sub-task (F1/AUC roughly 0.20-0.90 across tasks and models, e.g. Source Reliability Scoring AUC 0.912 vs 0.547 for different models on the same task), directly demonstrating task-dependent reliability in a single unified design rather than only via cross-benchmark synthesis; targeted causal-intervention mitigations produced measurable but comparatively modest gains on attribution-adjacent tasks (e.g. +0.055 accuracy on Threat Actor Linking) relative to LANCE's mechanical-IoC-extraction gain (src-0003)."
       ]
+    },
+    {
+      "id": "src-0007",
+      "url": "https://arxiv.org/abs/2603.09452",
+      "title": "CyberThreat-Eval: Can Large Language Models Automate Real-World Threat Research?",
+      "type": "benchmark",
+      "added_cycle": 9,
+      "file": "state/knowledge/src-0007.md",
+      "key_claims": [
+        "On an expert-annotated benchmark drawn from a real company's daily CTI workflow (1310 IoCs), vanilla LLMs extracting IoCs reached precision 0.8240 (GPT-4o) and 0.8503 (o3-mini); fine-tuning raised GPT-4o to 0.8846 but fine-tuned GPT-4o-mini fell to 0.6944. Recall and F1 are not reported for this task and the paper gives no reason for their absence.",
+        "In the same study and table, MITRE ATT&CK TTP identification scored far lower than IoC extraction -- precision 0.2787 / recall 0.2270 (GPT-4o), 0.3480 / 0.1759 (o3-mini) -- a second within-study demonstration that mechanical indicator extraction and technique mapping are very different in difficulty for the same models on the same corpus.",
+        "Automated triage showed an extreme precision/recall asymmetry (recall Accepted 0.90-1.00 but precision Accepted 0.27-0.40 across all four models): the models accept nearly everything a human analyst would reject.",
+        "Authors are affiliated with Microsoft Research, Microsoft and HKUST, are unaffiliated with PRISM/LANCE's authors, and the paper does not cite arXiv 2506.11325 (src-0003) -- making this an independent measurement rather than a replication attempt or a critique."
+      ]
+    },
+    {
+      "id": "src-0008",
+      "url": "https://arxiv.org/abs/2605.06910",
+      "title": "Benchmarking Large Language Models for IoC Recovery under Adversarial Code Obfuscation and Encryption",
+      "type": "benchmark",
+      "added_cycle": 9,
+      "file": "state/knowledge/src-0008.md",
+      "key_claims": [
+        "Recovering an IoC that appears in plain text is near-free for current LLMs: ~100% detection at baseline and through four levels of syntactic obfuscation (variable renaming, Base64) for GPT-4 Turbo, Claude 3 Sonnet, Gemini 1.5 Pro and Grok-2, over a 336-program JavaScript dataset.",
+        "Cryptographic concealment (XOR, AES-256) collapses detection to roughly 0-1% and the failure persists through combined transformations, identifying encryption as an adversary-controlled evasion of LLM-based indicator recovery.",
+        "SCOPE LIMIT, do not cite as a replication of src-0003: the task is recovering a planted indicator from JavaScript source code under adversarial transformation, not separating malicious from benign indicators in narrative threat reports; the per-level percentages were read from the results tables by automated fetch and are approximate pending a verbatim table pull."
+      ]
     }
   ],
   "_schema": {

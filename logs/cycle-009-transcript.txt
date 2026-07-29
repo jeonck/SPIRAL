@@ -1,0 +1,20 @@
+Cycle 9 (T3 investigate, `ioc-extraction-reliability`) is complete.
+
+## Result
+
+The queue's directive was to stop re-reading `src-0003` and widen the search for an independent second source. **The widened search succeeded.**
+
+**src-0007 — CyberThreat-Eval** (arXiv 2603.09452, Mar 2026, Microsoft Research/Microsoft/HKUST): an expert-annotated benchmark built from a real company's production CTI workflow. Reports vanilla-LLM IoC extraction **precision 0.8240 (GPT-4o), 0.8503 (o3-mini), 0.8846 (GPT-4o FT), 0.6944 (GPT-4o-mini FT)** over 1310 IoCs. It's the first non-`src-0003` measurement of this quantity in the knowledge base, by a team unaffiliated with PRISM/LANCE that doesn't cite them at all. Table 4 was pulled verbatim across all four model columns per cycle 8's rule, and cross-checked against the body text.
+
+**src-0008** (arXiv 2605.06910, UC3M): IoC recovery from obfuscated JavaScript — added with an explicit scope limit written into the source file saying it must *not* be cited as a replication of `src-0003`. Value is as a boundary condition (~100% on plaintext, ~0–1% under XOR/AES-256) and the first evidence on adversarial evasion.
+
+**ctr-0001 opened** — the graph's first contradiction. A bare LLM at 0.82–0.88 precision lands at or below the 86% VirusTotal baseline `src-0003` presents as the tool it beats. I did not adjudicate it: the entry names all three confounds (system: scaffolded vs "Vanilla LLMs"; metric: F1 vs precision-only; corpus) and states the path by which it may legitimately dissolve.
+
+## Things worth your attention
+
+- **I deviated from the queue on one point and flagged it in the log**: it said to append `8` to `attempts`; I appended `9`, matching the T3 prompt and the existing convention.
+- **`src-0007` cuts *against* the prior two cycles' reading** of the extraction-vs-reasoning ordinal axis. Same team, corpus and models: IoC extraction 0.82–0.88 vs ATT&CK TTP identification P 0.2787 / R 0.2270. Cycles 7 and 8 recorded that axis as in doubt on `src-0006`'s strength; this is contrary evidence, carried forward rather than acted on.
+- **The G3 gate is specified two different ways** and ctr-0001 makes it live for the first time. `prompts/t4_assess.md` describes a subtraction (3 → 1); `scripts/validate_state.py:144-156` implements a ceiling (≤ 3). I checked the code rather than assuming, wrote the discrepancy into the T4 queue entry, and left reconciliation alone — it's a change to the system's rules, not the research state.
+- **Incomplete coverage, stated plainly**: the citation-graph sweep failed (Semantic Scholar 404), the baseline-evaluation direction was never reached, and a directly relevant paper (eLLM-CTI, ScienceDirect) is paywalled at 403. All three are recorded as carry-forwards. Sandbox blocked `python3`/`curl`, so JSON validity was checked by reading the edited regions back rather than by parsing — a weaker check, noted in the log's budget section.
+
+Next task queued: **T4 assess**, with the scoring tension spelled out rather than left to be discovered.

@@ -24,19 +24,31 @@
       "title": "How reliable is LLM-assisted extraction of mechanical indicators of compromise (IPs, domains, URLs, hashes) from threat reports?",
       "depends_on": [],
       "open_questions": [
-        "Is the 97.6% F1 result for LANCE independently reproducible by a team not affiliated with PRISM's authors (current evidence is a single in-house benchmark/system pair, a conflict-of-interest risk noted in src-0003's limitations)?",
-        "Does the result generalize beyond the 4 indicator types tested (IPs, domains, URLs, hashes) to e.g. registry keys, mutexes, YARA/Sigma rules?",
-        "How much of LANCE's gain over IoC Searcher/AlienVault OTX/VirusTotal comes from the LLM component specifically vs. the regex pre-filtering and human-validation loop around it?"
+        "STILL OPEN, BUT SHARPENED (cycle 9): no direct replication or critique of LANCE/PRISM exists -- cycle 6 searched for one and cycle 9 searched again over a wider net (see logs/cycle-009.md for exact queries), and 2603.09452 and 2605.06910 do not cite arXiv 2506.11325 at all. What now exists instead is an independent measurement of a DIFFERENT system on a DIFFERENT corpus (src-0007, vanilla LLM IoC extraction, precision 0.82-0.88) sitting ~10-15 points below LANCE's 97.6% F1. The live question is no longer 'has anyone replicated LANCE' (no) but 'is the gap between 97.6% and 0.82-0.88 explained by LANCE's regex pre-filter + human-validation loop, by corpus difficulty, or by the metric difference (F1 vs precision-only)?' Answering it needs a head-to-head: run LANCE on CyberThreat-Eval's IoC set, or run a vanilla LLM on PRISM.",
+        "Does the result generalize beyond the 4 indicator types tested (IPs, domains, URLs, hashes) to e.g. registry keys, mutexes, YARA/Sigma rules? Cycle 9 note: src-0007 does NOT extend the coverage -- its ground truth is described as 'file hashes, IP addresses, or domain names'. Two independent benchmarks now both confine themselves to the same small family of network/file indicators, which suggests the field has not measured the harder indicator types at all rather than that they were measured and found comparable.",
+        "How much of LANCE's gain over IoC Searcher/AlienVault OTX/VirusTotal comes from the LLM component specifically vs. the regex pre-filtering and human-validation loop around it? Cycle 9 gives the first indirect evidence: src-0007's Table 4 is explicitly headed 'Vanilla LLMs' and a bare LLM there reaches only 0.82-0.85 precision on expert-annotated real-world data, which is consistent with (though it does not prove) the LLM component alone not being what delivers high-90s performance. Confounded by corpus and metric differences.",
+        "NEW (cycle 9): src-0007 reports precision only for IoC extraction, with no recall or F1 and no stated reason. Recall is exactly the axis on which the legacy baselines were weakest in src-0003, so the comparison is currently one-sided. The authors state code is available on GitHub and HuggingFace -- can recall/F1 be recovered from the released benchmark to make a like-for-like comparison with src-0003's F1?",
+        "NEW (cycle 9): src-0008 shows LLM recovery of plaintext indicators from code is ~100% but collapses to ~0-1% under XOR/AES-256 concealment. Report-based extraction has never been evaluated under an adversarial threat model at all -- if report authors or adversaries defang/encode indicators (a routine practice in published reporting), does extraction accuracy degrade similarly? No source measures this."
       ],
       "candidate_resolutions": [
         {
           "summary": "For narrow, mechanical IoC extraction (as opposed to open-ended CTI reasoning), a hybrid regex+LLM+human-validation pipeline (LANCE) reached 97.6% F1 against the manually-validated PRISM benchmark, substantially outperforming legacy tools (IoC Searcher+whitelist 76%, AlienVault OTX 72%, VirusTotal@threshold=1 86%) and also improving downstream analyst speed (43% less annotation time) and downstream model training data quality (+6% F1). This is a single-study result from the benchmark's own authors, not yet independently replicated.",
           "evidence": ["src-0003"],
           "status": "supported"
+        },
+        {
+          "summary": "ADDED cycle 9. A second, fully independent measurement of LLM IoC extraction from real-world CTI material now exists: CyberThreat-Eval (src-0007; Microsoft Research/Microsoft/HKUST, Mar 2026), an expert-annotated benchmark built from a production CTI workflow covering 1310 IoCs, reports vanilla-LLM extraction precision of 0.8240 (GPT-4o), 0.8503 (o3-mini), 0.8846 (fine-tuned GPT-4o) and 0.6944 (fine-tuned GPT-4o-mini). Read narrowly, this establishes that a bare LLM prompted to extract indicators from real analyst-workflow material errs on roughly 1 in 6 of the indicators it emits -- materially short of the near-solved impression left by src-0003's 97.6% F1, and short of even the 86% VirusTotal@threshold=1 baseline src-0003 reports. It does NOT refute src-0003, because it measures a different system (no regex pre-filter, no human validation loop), on a different corpus, with a different metric (precision only; no recall or F1 given). See contradiction ctr-0001, opened this cycle rather than resolved either way.",
+          "evidence": ["src-0007"],
+          "status": "supported"
+        },
+        {
+          "summary": "ADDED cycle 9, deliberately weak status. Candidate synthesis: the reliability of mechanical IoC extraction is set mainly by the scaffolding around the model (regex pre-filtering, whitelisting, human validation) rather than by the LLM itself, which is why src-0003's scaffolded pipeline reports 97.6% F1 while src-0007's 'Vanilla LLMs' reach 0.82-0.88 precision and src-0008 finds an unscaffolded LLM recovers plaintext indicators ~100% of the time but is defeated entirely by encryption it has no tooling for. This is a plausible reading of three sources that were never designed to be compared, and no source tests it directly -- it is recorded as proposed so a later cycle can attack it, NOT as a finding.",
+          "evidence": ["src-0003", "src-0007", "src-0008"],
+          "status": "proposed"
         }
       ],
       "created_cycle": 2,
-      "attempts": []
+      "attempts": [9]
     },
     {
       "id": "consistency-calibration-as-failure-mode",
@@ -126,7 +138,15 @@
       "attempts": []
     }
   ],
-  "contradictions": [],
+  "contradictions": [
+    {
+      "id": "ctr-0001",
+      "issue_id": "ioc-extraction-reliability",
+      "description": "MAGNITUDE CONFLICT on how reliable LLM-based IoC extraction from real-world threat material actually is. src-0003 (LANCE/PRISM, arXiv 2506.11325): 97.6% overall F1 against a manually-validated 1,791-IoC benchmark, with the best legacy baseline at 86% (VirusTotal@threshold=1). src-0007 (CyberThreat-Eval, arXiv 2603.09452): vanilla-LLM IoC extraction precision 0.8240 (GPT-4o) / 0.8503 (o3-mini) / 0.8846 (GPT-4o FT) / 0.6944 (GPT-4o-mini FT) over 1310 expert-annotated IoCs from a production CTI workflow -- i.e. an unscaffolded LLM lands at or below the level src-0003 assigns to the LEGACY tools it set out to beat. Taken at face value the two sources leave a reader with opposite impressions of whether mechanical IoC extraction is a solved problem. NEITHER SIDE IS PICKED, and this entry deliberately records that the conflict may dissolve on inspection, because three confounds are unresolved: (1) SYSTEM -- LANCE is regex pre-filter + LLM + human validation, src-0007's Table 4 is explicitly headed 'Vanilla LLMs', so this may be a measurement of scaffolding value rather than a disagreement; (2) METRIC -- 97.6% is an F1, 0.82-0.88 are precision with no recall reported anywhere in src-0007 and no reason given for the omission; (3) CORPUS -- PRISM is 50 public threat reports, src-0007's material is an unnamed company's internal daily workflow of unknown relative difficulty. Neither paper cites the other. RESOLUTION PATH for a future cycle: recover recall/F1 from src-0007's released code (GitHub/HuggingFace per its abstract) to make the metrics comparable, and/or find any source running an unscaffolded LLM against PRISM or a LANCE-style scaffolded pipeline against CyberThreat-Eval. If confound (1) is confirmed as the explanation, this contradiction should be closed and its content folded into ioc-extraction-reliability's third candidate_resolution (scaffolding, not the model, sets extraction reliability) rather than left open as a conflict.",
+      "opened_cycle": 9,
+      "resolved_cycle": null
+    }
+  ],
   "_schema": {
     "issues[]": {
       "id": "kebab-case unique id",
