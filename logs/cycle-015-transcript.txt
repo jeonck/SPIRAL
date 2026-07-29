@@ -1,0 +1,28 @@
+Cycle 15 complete. All deliverables written and verified.
+
+## G2 Retrospection — src-0007 (the only never-verified source in the base)
+
+**PASS, unqualified.** Re-fetched `arxiv.org/abs/2603.09452` and asked for *every row* of Table 4 verbatim (not "is value X still correct"). All nine stored rows matched exactly to 4 dp; abstract, all eight authors, submission date and subject classes matched. No contradiction opened, and none was warranted.
+
+The whole-table rule paid off again: the pull returned **25 rows no cycle had seen**, including threat-actor rubric scores where GPT-4o reads 1.140/5 on Attribution against o3-mini's 2.968 — a third quantitative datapoint on attribution quality for an issue that cites neither src-0007 nor these numbers. I did not attach it (T1 has no standing); it's routed to the T2 as agenda item 4 and logged as carry-forward [19].
+
+## T1 Collect — 4 sources added (ceiling was 5)
+
+The target issue was stuck at 2 since cycle 3 purely because both its candidate_resolutions cite src-0001 and nothing else. Four independent teams now measure the same axes on security tasks:
+
+| id | source | axis |
+|---|---|---|
+| src-0013 | Security Calibration in LLMs for Code (ICSME 2026, peer reviewed) | **ECE + Brier**, False Trust |
+| src-0014 | PromptAudit (arXiv 2605.24171) | prompt-sensitivity, **abstention** |
+| src-0015 | OpenSec (arXiv 2601.21083) | **under-refusal**, evidence-gating |
+| src-0016 | Snyk VulnBench JS 1.0 | **repeat-identical-query stability** |
+
+Two of src-0001's most fragile-looking findings are independently echoed: *interventions meant to help can worsen calibration* (src-0013: ECE 0.411→0.697 moving to realistic settings) and *grounded output is stable while volunteered output is not* (src-0016: 134/158 matched findings recur in all five identical runs vs 80/161 unmatched appearing in only one of five).
+
+**What I'm not claiming:** none of the four measures CTI — they're secure code generation, CVE detection, JS SAST, simulated IR. Open questions (i) and (ii) remain fully open; no source tests a model from src-0001's, src-0002's or src-0005's lists. I recorded this as one **`proposed`** candidate_resolution that explicitly hands the promote-or-not judgement to a T4, and flagged an unreconciled internal discrepancy in src-0013 (False Trust 33.9% vs "16.9%→83.2%") rather than picking one.
+
+**Dead ends, recorded so they aren't re-walked:** the forward-citation sweep of arXiv 2503.23175 failed exactly as it did on 2506.11325 — treat that technique as unavailable infrastructure. No CTIBench v2 or CyberSOCEval companion with a consistency axis exists; that was the single highest-value possible find.
+
+## Handoff
+
+Next task is **T2 (Structure)** — the first since the opening pass, reachable only via the T5→T1→T2 refresh chain, at most once every seven cycles. I wrote a five-item agenda with evidence and the arguments *against* acting for each, rather than a generic instruction: the nine-cycle-old issue split, the triage/under-refusal new issue (now backed by two independent sources), the G3 gate specification conflict, the src-0007 attachments, and the scope-boundary judgement my own collect created.

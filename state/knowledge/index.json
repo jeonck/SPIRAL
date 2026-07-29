@@ -162,6 +162,62 @@
         "Institutional response CONTRASTS with ENISA's: EY Canada removed the study from its website following publication of the GPTZero report and said it was reviewing why the study was published, stating (per corroborating outlet Going Concern) 'EY Canada takes the accuracy of all the content we publish seriously and we have an organisation-wide commitment to the responsible use of AI.'",
         "CAVEATS: the 16/27 figure rests on two mutually independent outlets reporting one upstream GPTZero investigation, not on independent re-examination; the '72% AI' figure is output of GPTZero's own commercial AI-detection product and is weaker evidence than the manually-checkable citation count; and loyalty-systems fraud is security-adjacent published content rather than threat intelligence in the narrow IoC/TTP/attribution sense."
       ]
+    },
+    {
+      "id": "src-0013",
+      "url": "https://arxiv.org/abs/2606.31159",
+      "title": "An Empirical Study of Security Calibration in Large Language Models for Code",
+      "type": "paper",
+      "added_cycle": 15,
+      "file": "state/knowledge/src-0013.md",
+      "key_claims": [
+        "FIRST source in this base other than src-0001 to measure confidence calibration with ECE and Brier score on a security task, by an unrelated team (Siddiq, Rahman, Santos; ICSME 2026 Research Track): on the SALLM benchmark with verbalized confidence, GPT-4o-mini ECE 0.456-0.481 (Brier 0.37-0.39), Qwen3-Coder-Next ECE 0.408-0.421 (Brier 0.36-0.38), Gemini-2.0-Flash ECE 0.247-0.263 (Brier 0.26), ranges taken across six temperature settings 0.0-1.0.",
+        "Calibration degrades sharply when the evaluation setting becomes realistic rather than controlled -- the same direction-of-surprise as src-0001's fine-tuning result, via a different mechanism: 'Repository-level generation has higher calibration error across all models', GPT-4o-mini average ECE rising 0.411 -> 0.697 (delta +0.286) and Gemini-2.0-Flash 0.161 -> 0.721 (delta +0.560); the authors state architectural gating 'improves calibration on controlled benchmarks' while 'calibration deteriorates in realistic repository-level settings'.",
+        "Miscalibration is quantified as operational risk via a False Trust rate, FT(tau) = |{i : p_i >= tau AND y_i = 0}| / N at tau = 0.8: GPT-4o-mini 33.9%, Gemini-2.0-Flash 17.5%, Qwen3-Coder-Next 38.3%; and calibration is itself task-dependent within one study, functional calibration being consistently worse than security calibration (delta ECE negative for every model, -0.15/-0.16 GPT-4o-mini, -0.26/-0.27 Gemini, -0.52/-0.53 Qwen).",
+        "SCOPE LIMIT, do not cite as a CTI calibration measurement: the task is generating code and self-assessing whether it is secure, not IoC extraction, TTP mapping, attribution or report drafting; models (GPT-4o-mini, Gemini-2.0-Flash, Qwen3-Coder-Next) do not overlap src-0001's, src-0002's or src-0005's lists, so it does NOT answer open_question (ii); and the FT figures 33.9% vs the separately reported 16.9%->83.2% for GPT-4o-mini use different aggregations that the fetched text does not reconcile -- the ECE/Brier/FT tables have not yet been pulled in full."
+      ]
+    },
+    {
+      "id": "src-0014",
+      "url": "https://arxiv.org/html/2605.24171",
+      "title": "PromptAudit: Auditing Prompt Sensitivity in LLM-Based Vulnerability Detection",
+      "type": "paper",
+      "added_cycle": 15,
+      "file": "state/knowledge/src-0014.md",
+      "key_claims": [
+        "Output instability under prompt variation is large and highly model-dependent, measured in a controlled design that fixes dataset, decoding and parsing and varies only prompting strategy (5 strategies x 5 open-weight models x 1,000 CVEs / 6,074 code samples / 16 languages): Gemma shows the largest cross-strategy F1 range at 0.398 (F1 0.102 under adaptive-CoT to 0.499 under self-consistency) while Mistral shows the smallest at 0.103 -- roughly a 4x spread in prompt-sensitivity between two models on identical data.",
+        "An intervention widely assumed to help sharply degraded performance, an independent instance of the pattern src-0001 found for fine-tuning and few-shot: 'The A-CoT template reduces recall relative to CoT for every model', with drops CodeLlama 0.685->0.279, Falcon 0.541->0.223, Gemma 0.420->0.057, Mistral 0.423->0.280.",
+        "FIRST abstention / selective-prediction data in this knowledge base: self-consistency buys agreement by refusing to answer, coverage falling to 51.00% (CodeLlama), 48.93% (Mistral), 60.85% (Gemma), 39.04% (DeepSeek) and 24.04% (Falcon) when sampled outputs disagree, versus plain CoT at mean F1 0.465 / mean effective F1 0.427 with 7.28% mean abstention -- consistency and coverage trade off directly rather than improving together.",
+        "SCOPE LIMIT: not CTI (vulnerability detection over CVE code samples); and it measures PROMPT-STRATEGY sensitivity, NOT the same-input repeat-query consistency src-0001 measured with 10 re-prompts and bootstrapped CIs, so its F1 ranges are NOT comparable to src-0001's CI widths of 0.02/0.06. It reports no ECE, no Brier and no reliability diagram. v1 preprint, no stated venue; results tables not yet pulled in full."
+      ]
+    },
+    {
+      "id": "src-0015",
+      "url": "https://arxiv.org/abs/2601.21083",
+      "title": "OpenSec: Measuring Incident Response Agent Calibration Under Adversarial Evidence",
+      "type": "benchmark",
+      "added_cycle": 15,
+      "file": "state/knowledge/src-0015.md",
+      "key_claims": [
+        "Frontier incident-response agents systematically over-trigger, measured over 40 standard-tier episodes per model on the CURRENT model generation (the first source in this base to test one): GPT-5.2 contains in 100% of episodes at 82.5% false-positive rate acting at step 4.1; DeepSeek 3.2 92.5% at 65% FP; Gemini 3 75% at 57.5% FP; Claude Sonnet 4.5 62.5% at 45% FP with TTFC 10.6. GPT-5.2 is 'the only model classified as uncalibrated', Sonnet 4.5 shows 'partial calibration', and the author concludes 'calibration is not reliably present across frontier models'.",
+        "The failure is restraint, not detection -- a mechanism separation no other source in this base can make, since accuracy-based evaluation would score these agents well: 'All models correctly identify the ground-truth threat when they act; the calibration gap is not in detection but in restraint.' This is the same shape of failure as src-0007's triage asymmetry (recall Accepted 0.90-1.00 vs precision Accepted 0.27-0.40), from a different team on a different model generation: the models under-refuse.",
+        "Evidence-gating is measurably rare across all four models. EGAR -- 'the fraction of containment actions preceded by fetching trusted evidence about the target entity; it measures whether the model checks before it acts' -- is 0.375 (GPT-5.2), 0.392 (Sonnet 4.5), 0.429 (Gemini 3), 0.542 (DeepSeek 3.2): every model acts without first checking trusted evidence on a majority or near-majority of containment actions.",
+        "WEAKEST-PROVENANCE SOURCE IN THIS BASE, do not use as sole support for any candidate_resolution: single-author preprint filed cs.AI with no stated venue, peer review or affiliation; n = 40 episodes per model from a 60-seed evaluation pool with no confidence intervals, so only the GPT-5.2-vs-Sonnet-4.5 contrast is robust and the middle two models' ordering is unresolved; 'calibration' here is an action-threshold construct (FP rate, evidence-gating), NOT ECE/Brier confidence calibration, and must not be pooled with src-0001's or src-0013's ECE; and episodes are synthetic RL seeds, not real incidents as in src-0007."
+      ]
+    },
+    {
+      "id": "src-0016",
+      "url": "https://snyk.io/blog/snyk-vulnbench-js-1-0-llm-security-review-repeatability/",
+      "title": "Snyk VulnBench JS 1.0: LLM Bug Repeatability",
+      "type": "benchmark",
+      "added_cycle": 15,
+      "file": "state/knowledge/src-0016.md",
+      "key_claims": [
+        "ONLY source found that measures the same axis as src-0001 by the same method -- repeating an IDENTICAL query N times and quantifying how much the output moves ('Each configuration ran each task five times: 10 tasks x 6 configurations x 5 repetitions = 300 runs', holding code, prompt and harness constant). Repeatability splits sharply by grounding: '134 of 158 unique reference-matched findings appeared in all five repetitions' (84.8% fully stable), whereas '80 of 161 unique-unmatched findings appeared in only one of five identical repetitions, while only 22 appeared in all five' -- about half of the model's volunteered extra findings are single-run artefacts and only ~14% are fully reproducible.",
+        "Because no prompt or input varied between repetitions, the variance is intrinsic to model sampling rather than to prompt formulation -- an independent, non-academic confirmation on a security task of the phenomenon src-0001 quantified with bootstrapped CIs, and a stability split (grounded/mechanical stable, volunteered/open-ended unstable) that parallels src-0001's extraction-vs-generation CI-width divide (0.02 vs 0.06).",
+        "VENDOR SELF-INTEREST IS DIRECT AND STRUCTURAL, stronger than src-0005's CrowdStrike/Meta or src-0007's Microsoft affiliation: Snyk sells static analysis and Snyk Code SAST is the baseline the LLM configurations are measured against, so the finding is commercially favourable to the publisher -- do not use this source alone to support a claim that LLM security review is unreliable.",
+        "SCOPE AND COVERAGE LIMITS: not CTI (JavaScript SAST-style review of 10 small Express fixture projects with 44 reference findings, same broad task family as src-0008 so the two do not cover distinct domains); every non-baseline configuration is an Anthropic Claude model (Opus 4.6 Medium/High, Opus 4.7 Max, Sonnet 4.6 Medium/High), the narrowest model coverage in this base; company blog post, not peer reviewed, no DOI; and the repetition counts cannot be converted into src-0001's CI widths, so the two agree in DIRECTION only."
+      ]
     }
   ],
   "_schema": {
