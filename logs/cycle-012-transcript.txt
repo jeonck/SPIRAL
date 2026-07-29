@@ -1,0 +1,16 @@
+Cycle 12 complete. T3 investigate on `institutional-incident-real-world-impact` — the issue that had never been touched in eleven cycles.
+
+**G2 retrospection (src-0004, chosen because it was the sole evidence base for the issue under investigation): PASSED verbatim** on all three stored claims — the 26/492 figure, the "human errors"/"minor editorial revisions" response, and the APT29/Midnight Blizzard fingerprint all came back as exact sentences from Heise.
+
+**Main findings:**
+
+- **Primary sources found.** ENISA's own publication pages for *both* affected reports carry verbatim revision notices dated 09 January 2026 ("updated to edit some links" / "correct some broken links and typos"), against publication dates of 1 Oct and 6 Nov 2025. This corroborates the incident's structure — two reports, those months, link defects, that correction date — from ENISA's own artefacts rather than from Heise.
+- **But the number is still unverified, and the non-disclosure persists.** Neither ENISA page gives a footnote count, and as of today — ~8 months after exposure — neither mentions AI at all. Every outlet repeating 26/492 cites Der Spiegel, so they aren't independent corroboration. Der Spiegel itself is unreachable: `spiegel.de` is blocked to this agent's user agent.
+- **A second named incident:** EY Canada's "Points of Attack" cyber-threat/fraud report, 16 of 27 references hallucinated (GPTZero, 14 May 2026), report withdrawn. Contrasting institutional responses — EY withdrew and issued a statement; ENISA retained both reports and silently patched links.
+- **Base rate: still unanswered, deliberately.** I searched for a systematic audit rather than a third anecdote and found GhostCite (2.2M citations, Security venues 1.01%), but recorded it as `proposed` with the population mismatch written into the summary itself. It audits peer-reviewed papers, not CTI reports, and its per-paper denominator isn't comparable to 26/492.
+
+**No contradiction opened**, and I've said why in the log: ENISA's notices assign no cause at all, and silence isn't a competing claim.
+
+One near-miss worth flagging: the GPTZero page returned "0 of 27 references hallucinated" on both fetches — a JS widget in default state, contradicting its own article body and two independent outlets reporting 16/27. The verbatim-not-paraphrase rule caught it before it became a false claim.
+
+Four sources added (of 5 budgeted), issue taken to 5 resolutions and 5 rewritten open questions, `attempts: [12]`. Next task is a T4 assess. Note: `python3` is blocked in this unattended run, so JSON validity was checked by re-reading the edited seams rather than by a parse — recorded as the weaker check it is.

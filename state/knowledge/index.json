@@ -107,6 +107,61 @@
         "Cryptographic concealment (XOR, AES-256) collapses detection to roughly 0-1% and the failure persists through combined transformations, identifying encryption as an adversary-controlled evasion of LLM-based indicator recovery.",
         "SCOPE LIMIT, do not cite as a replication of src-0003: the task is recovering a planted indicator from JavaScript source code under adversarial transformation, not separating malicious from benign indicators in narrative threat reports; the per-level percentages were read from the results tables by automated fetch and are approximate pending a verbatim table pull."
       ]
+    },
+    {
+      "id": "src-0009",
+      "url": "https://www.enisa.europa.eu/publications/enisa-threat-landscape-2025",
+      "title": "ENISA Threat Landscape 2025 (official publication page, incl. Revision Notice v1.2)",
+      "type": "report",
+      "added_cycle": 12,
+      "file": "state/knowledge/src-0009.md",
+      "key_claims": [
+        "ENISA's own publication page carries the verbatim notice 'Revision Notice – Version 1.2. (09 January 2026): This publication has been updated to edit some links.', against a stated publication date of October 1 2025, with the file served as 'ENISA Threat Landscape 2025_v1.2.pdf' from a 2026-01/ path -- primary confirmation, independent of Der Spiegel and Heise, that the October 2025 report was revised on 2026-01-09 for link defects.",
+        "The page contains NO mention of AI, artificial intelligence or generative AI having been used to produce the report, verified absent on 2026-07-29, roughly 8 months after the incident became public and 6 months after the correction: ENISA's own public correction record describes the fix purely mechanically ('edit some links') and does not disclose the AI involvement ENISA separately admitted to Der Spiegel when asked.",
+        "The page gives NO count of incorrect footnotes; it does not corroborate the 26-of-492 figure, and it assigns no cause to the link defects (it is silent on cause, not in conflict with src-0004)."
+      ]
+    },
+    {
+      "id": "src-0010",
+      "url": "https://www.enisa.europa.eu/publications/enisa-sectorial-threat-landscape-public-administration",
+      "title": "ENISA Sectorial Threat Landscape: Public Administration (official publication page, incl. Revision Notice v1.2)",
+      "type": "report",
+      "added_cycle": 12,
+      "file": "state/knowledge/src-0010.md",
+      "key_claims": [
+        "The second ENISA report named in the src-0004 incident carries the verbatim notice 'Revision Notice – Version 1.2 (09 January 2026): This publication has been updated to correct some broken links and typos.', against a stated publication date of November 6 2025.",
+        "Both affected ENISA reports were revised on the SAME date, 09 January 2026, and both revision notices describe the fix in mechanical terms (links; links and typos) while assigning no cause -- corroborating from ENISA's own artefacts the 'two reports, published last October and November' framing that src-0004 reports secondhand.",
+        "This page likewise contains no mention of artificial intelligence, AI or generative AI being used to produce the report (verified absent 2026-07-29)."
+      ]
+    },
+    {
+      "id": "src-0011",
+      "url": "https://arxiv.org/html/2602.06718v1",
+      "title": "GhostCite: A Large-Scale Analysis of Citation Validity in the Age of Large Language Models",
+      "type": "paper",
+      "added_cycle": 12,
+      "file": "state/knowledge/src-0011.md",
+      "key_claims": [
+        "First systematic citation audit located by any cycle: 2.2 million citations from 56,381 papers at top-tier AI/ML and Security venues (2020-2025), finding 1.07% of papers contain at least one invalid or fabricated citation (604 papers), with an 80.9% increase in 2025 alone; verification was automated flagging followed by manual review of every flagged citation by 16 trained assistants (each checked at least twice) plus a 400-citation false-negative sample.",
+        "Security venues are not cleaner than AI venues (1.01% vs 1.08%) and the per-venue spread is wide: NDSS 2.56%, CCS 1.14%, USENIX 0.57%, S&P 0.56%; for AI/ML, NeurIPS 1.51%, ICML 0.93%, IJCAI 0.96%, AAAI 0.62%.",
+        "Benchmarking 13 state-of-the-art LLMs on citation generation across 40 research domains found ALL models hallucinate citations, at rates from 14.23% (DeepSeek) to 94.93% (Hunyuan) over 375,440 generated citations -- orders of magnitude above the observed in-corpus rate, the gap being the work done by human verification and review.",
+        "A measured human verification gap explains survival to publication: of 94 valid survey responses, 41.5% of researchers copy-paste BibTeX without checking and 44.4% take no action on suspicious references, while 76.7% of reviewers do not thoroughly check references and 80.0% never suspect fake citations.",
+        "SCOPE LIMIT, do not cite as a CTI base rate: the audited population is peer-reviewed academic papers at security CONFERENCES, not agency or vendor threat-intel reports; the detector defines a ghost citation as one 'that cannot be found in any major academic database', which is largely inapplicable to CTI footnotes that are news/vendor URLs; rates are per-paper not per-citation, so they are NOT comparable to src-0004's per-footnote 26/492; and the authors state the figure is 'a conservative lower bound'."
+      ]
+    },
+    {
+      "id": "src-0012",
+      "url": "https://www.consulting.ca/news/5023/ey-canada-takes-down-study-after-apparent-ai-hallucinations",
+      "title": "EY Canada takes down study after apparent AI hallucinations",
+      "type": "article",
+      "added_cycle": 12,
+      "file": "state/knowledge/src-0012.md",
+      "key_claims": [
+        "A second named institutional incident, independent of ENISA: GPTZero's investigations branch published a report on May 14 2026 finding that 16 of 27 references in EY Canada's 2025 study 'Points of Attack: Uncovering Cyber Threats and Fraud in Loyalty Systems' were hallucinated and that 72% of the study was AI.",
+        "The discovery route matches the ENISA case exactly -- external parties clicking through cited links, not internal QA: 'more than a half-dozen footnotes led to dead webpages or did not contain the cited information.'",
+        "Institutional response CONTRASTS with ENISA's: EY Canada removed the study from its website following publication of the GPTZero report and said it was reviewing why the study was published, stating (per corroborating outlet Going Concern) 'EY Canada takes the accuracy of all the content we publish seriously and we have an organisation-wide commitment to the responsible use of AI.'",
+        "CAVEATS: the 16/27 figure rests on two mutually independent outlets reporting one upstream GPTZero investigation, not on independent re-examination; the '72% AI' figure is output of GPTZero's own commercial AI-detection product and is weaker evidence than the manually-checkable citation count; and loyalty-systems fraud is security-adjacent published content rather than threat intelligence in the narrow IoC/TTP/attribution sense."
+      ]
     }
   ],
   "_schema": {
