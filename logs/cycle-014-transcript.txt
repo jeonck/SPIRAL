@@ -1,0 +1,23 @@
+Cycle 14 complete. Summary:
+
+**Task: T5 (Select).** Selected `consistency-calibration-as-failure-mode`; wrote a **T1 (collect)**, not a T3.
+
+**The refresh rule fired for the first time in the loop's history.** Verified at source: `config.yml:17` `collect_refresh_every: 7`, `meta.json:2` `"cycle": 14`, 14 % 7 == 0. Cycle 7 was the only prior multiple and happened to be a T4, so there was no precedent to copy.
+
+**Ranking** (candidate set = all six, all score < 5):
+
+| rank | issue | score | attempts | 3b penalty | effective |
+|---|---|---|---|---|---|
+| **1** | **consistency-calibration-as-failure-mode** | 2 | [3] | 0 | **2** ← selected |
+| 2 | ioc-extraction-reliability | 2 | [9] | 0 | 2 |
+| 3= | ttp-attack-mapping / attribution-confident-wrong-gap | 3 | [] | 0 | 3 |
+| 5 | task-dependent-reliability-framing | 3 | [6] | 0 | 3 |
+| 6 | institutional-incident-real-world-impact | 3 | [12] | +1 | 4 |
+
+**The edge case, decided and recorded:** I counted "the last 5 cycles" as {10,11,12,13,14}, putting cycle 9 outside — the alternative test (`14−9 ≤ 5`) makes a six-cycle-wide window, contradicting "5". So `ioc` took *no* penalty and the 2-vs-2 tie survived 3b; 3c ties on identical `created_cycle: 2`. The tie broke two ways that agreed: tie-break 3a's in-degree reading (consistency is depended on by 2 issues vs ioc's 1), and — under cycle 11's strict pairwise reading — a fallthrough to carry-forward [11]'s proposed 3d, whose *first* clause also ties (both issues have exactly one attempt) and whose second clause, "longest time since new evidence," decides it (cycle 1 vs cycle 9). I did not edit `t5_select.md`.
+
+**Retrospection: src-0011 (GhostCite) — PASSES.** Table 3's eight per-venue rates confirmed verbatim (NDSS 2.56%, CCS 1.14%, USENIX 0.57%, S&P 0.56%, NeurIPS 1.51%, ICML 0.93%, IJCAI 0.96%, AAAI 0.62%, Total 1.07%), as were the 604/56,381 count, the 80.9% figure, the 16-assistant procedure and the lower-bound caveat. The load-bearing **1.01% Security vs 1.08% AI** figure was *not in Table 3 at all* — a second targeted fetch recovered it from body prose. No contradiction opened. Method refinement now written into the handoff: absence from the artefact you pulled is not a refutation; pull again against the literal string.
+
+**A correction worth flagging.** Carry-forward [12] has claimed for several cycles — and this cycle's own queue entry repeated it — that there is "no escape to T2". `prompts/system.md:46` specifies `T1→T2`, so the refresh rule chains **T5 → T1 → T2**: cycle 16 will be the first T2 since the opening pass. Items [1], [3] and [4] have aged eight, five and six cycles on that false belief; all three are now written into the T1's instructions as the cycle-16 T2's agenda. Three consecutive cycles repeated the overstatement without checking — a carry-forward no cycle can act on is also one no cycle re-verifies.
+
+Files written: `logs/cycle-014.md` (ranking table, retrospection, 18 carry-forward items), `state/queue/next_task.json` (T1, open_questions quoted verbatim from `graph.json`), `state/queue/last_completed_task.txt`. No graph, score, prompt or script edits. `python3`/`curl` remain blocked, so JSON validity was checked by construction — quote characters counted (16, exactly accounting for the five key/value pairs) and every backslash confirmed to be a `\n` escape — not by a parse.
