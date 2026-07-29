@@ -1,0 +1,22 @@
+Cycle 10 (T4 Assess) complete.
+
+**Scores — all six issues re-scored, none moved:**
+
+| issue | c7 | c10 |
+|---|---|---|
+| `ttp-attack-mapping-reliability` | 3 | 3 |
+| `ioc-extraction-reliability` | 2 | 2 |
+| `consistency-calibration-as-failure-mode` | 2 | 2 |
+| `attribution-confident-wrong-gap` | 3 | 3 |
+| `task-dependent-reliability-framing` | 3 | 3 |
+| `institutional-incident-real-world-impact` | 2 | 2 |
+
+**The g3 call.** First time the gate has fired. I applied the **ceiling** reading (validator), not the prompt's subtraction, and said why: the rubric's levels are state definitions — 0 = "no candidate resolutions", 1 = "no supported resolution" — and this issue has three candidates, two supported, so a subtraction to 0/1 assigns a label that is factually false. I also rejected the queue's premise that pre-demotion is 3: the rubric's bar is that the *primary candidate* have ≥2 independent sources, and per-candidate every one here is single-source except the deliberately-`proposed` synthesis. Substantively the same conclusion — src-0003 and src-0007 pull in opposite directions on magnitude, which is corroboration's opposite. Pre-demotion 2, post-demotion 2, both stated in the rationale. Flagged that the gate reading changes the *agenda*, not just a number: under subtraction this issue would be the unique weakest link at 1.
+
+**Retrospection (src-0008) — pass on substance, with three concrete results.** Table 7's hallucination rates verified cell-for-cell (Anthropic 0.11%, ChatGPT 0.23%, Gemini 4.8%, Grok 0, Cohere 0) — that caveat can be lifted. The ~100%/~0-1% dichotomy is confirmed by verbatim body text but **is not in any table** — it's pie charts, so it can't be verified by row pull at all, and the paper never prints "0-1%". I did find independent corroboration by arithmetic: Table 6's overall detection rates (38.5/38.6/38.5%) match 5/13 phases = 38.46% exactly, which is what "100% at P0–P4, ~0 after" predicts. Also found a phase-label slip in cycle 9's transcription (AES-256 is P7–P8, not P6); recorded, not silently corrected, and not opened as a contradiction since both readings are automated fetches of the same HTML.
+
+I declined to open a contradiction for the src-0006 vs src-0007 tension on the ordinal axis — mechanisms spanning all stages is compatible with performance levels differing by stage.
+
+**Next:** T5 select, with a genuine three-way tie at 2 that its own policy runs out on (both remaining candidates were created in cycle 2), deliberately left unpre-selected. Carried forward: the `task-dependent-reliability-framing` split, now for a **fourth** cycle — worth noting that four consecutive carries is evidence the state machine has no reliable path to structural work, since only T2 can do it and nothing schedules a T2.
+
+Two verification caveats: `python3` and `curl` are sandbox-blocked, so JSON validity was checked by construction rather than by a parse, and I could not run `scripts/validate_state.py`.
