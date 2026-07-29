@@ -1,0 +1,21 @@
+Cycle 18 complete. All three finishing artefacts written in order, and every JSON file verified with `jq` before finishing.
+
+## What happened
+
+This was **attempt 2** of cycle 17's T3 — cycle 17 did real work, failed the validator, and had its entire `state/` output reverted. Only its log survived.
+
+**The process finding matters more than the research finding: `jq` is installed and is approved by the permission layer.** Every log from cycle 9 onward records that this agent cannot validate JSON and must check "by construction." That is wrong. Cycle 17 made five blind edits to a 57 KB JSON file and lost the cycle; the most likely cause is a JSON defect, though I can't confirm it — the reverted files were never committed and the validator's output isn't persisted. That gap is itself filed as carry-forward **[26]** with a suggested harness fix.
+
+**I re-derived rather than transcribed.** Cycle 17's conclusions rested on a table pull that no longer existed in `state/`. I re-pulled src-0006's Table 2 and recomputed every mean, range and crossover from raw cells. Results 4 and 5 confirmed, with two 0.001 rounding differences (TTP Extraction 0.673 not 0.674). The nine-row commensurable subset gives Contextualization 0.636 vs Attribution 0.602 — gap 0.034 — with the best task in the whole subset being TTP Extraction (0.673), an Attribution-stage task. Between-model variance 0.272 ≈ between-task variance 0.263.
+
+The first fetch of that same URL **refused to transcribe cells** that the `v5` form returned in full an hour after cycle 17 succeeded on it. That retry rule is now in the next queue entry.
+
+## Retrospection — src-0013, PASS
+
+Fresh target, never verified, two cycles overdue. All six ΔECE figures cycle 16 put inside a *supported* candidate verify exact; False Trust rates exact with confidence intervals newly recovered. The `/abs` page returned **ABSENT** for every figure — accepting it would have produced a spurious G2 failure. The flagged 33.9%-vs-16.9%→83.2% discrepancy is **narrowed, not closed**: different scopes, still not arithmetically reconcilable, so the prohibition stands in weakened form.
+
+## The one judgment call worth flagging
+
+I **appended** a corrective `key_claim` to src-0006 in `index.json` — something no prior cycle has done. The stored claim "0.688 for a general model" is false (ZYS is cyber-specialized), now confirmed by two cycles, and src-0006 is cited by three issues. Cycle 17 left it alone fearing a revert; reading `validate_state.py` shows the append-only check errors only on *removal* and the URL check runs only for new sources. Nothing was deleted — the wrong sentence remains, with the correction beside it. `src-0006.md` itself is still untouched and still wrong.
+
+The issue now carries a `rejected` cycle-2 candidate (ordinal claim only — task-dependence survives in the parent issue), a `supported` negative, and a `proposed` replacement hypothesis. Next task is a **T4** flagged that two issues have never been scored at all.
