@@ -1,0 +1,27 @@
+Cycle 19 complete. All files valid.
+
+## T4 Assess — what landed
+
+**All 8 issues scored for the first time.** `scores.json` had 6 entries against 8 issues with `last_assessed_cycle` stuck at 13. The two issues cycle 16 created — `extraction-vs-reasoning-ordinal-axis` and `automated-triage-under-refusal` — had never been scored at all (carry-forward **[B]**, six cycles old). Both now have first scores. **[B] and [A] discharged.**
+
+| Issue | c13 | c19 |
+|---|---|---|
+| task-dependent-reliability-framing | 3 | **4** |
+| ttp-attack-mapping / attribution-gap / institutional-incident | 3 | 3 |
+| extraction-vs-reasoning-ordinal-axis | *never* | **3** |
+| ioc-extraction / consistency-calibration | 2 | 2 |
+| automated-triage-under-refusal | *never* | **2** |
+
+**One score moved.** `task-dependent-reliability-framing` 3→4, because cycle 16's split removed the exact blocker five prior assessments named — a single score averaging a near-4 narrow claim against a disputed ordinal axis. The counterargument that could sink it (dependence on src-0003's unreplicated LANCE result, itself one side of `ctr-0001`) is defeated by construction: the two strongest legs are *within-study* designs that exclude src-0003 entirely. I was genuinely torn 3-vs-4 and recorded the case for holding, so a successor can reverse it cleanly.
+
+**G3 gate applied as a ceiling** (the enforced reading, still in the minority against two spec files) — **it did not bind**, since the only issue with an open contradiction scores 2 on the merits. Verified via `jq` that `ctr-0001` is the graph's sole open contradiction rather than trusting the handoff.
+
+## G2 retrospection — src-0014, PASSED and strengthened
+
+Every stored figure returned verbatim and exact, zero discrepancies. Beyond re-confirmation, I pulled Tables 2 and 3 whole for the first time (carry-forward **[20]** discharged for this source) and got a cross-check the stored claims never had: **all five coverage figures are exact arithmetic complements of Table 2's abstention column** — a table the coverage sentence doesn't appear in — and Table 3 reproduces all four recall-collapse pairs cell for cell.
+
+Two things I'd flag rather than let read as fuller coverage than it was: **no F1 table was returned**, so src-0014's 0.398/0.103/0.465/0.427 remain body-sentence-only and I did not resolve whether such a table exists. And a new observation worth carrying — Table 3's precision sits near 0.5 for every model under every strategy on a binary task, a real limit on what any of that F1 movement can mean.
+
+## Next
+
+**T5 (Select)** queued. Cycle 20 is not a refresh cycle — I pinned the phase from git history (cycle 14 T5 → cycle 15 T1) rather than inference, so the T5 emits a **T3**; cycle 21 is the next refresh, next T2 due cycle 23. Pre-computed the attempt penalties: three issues tie at 2, `consistency-calibration` is eliminated on penalty 2, leaving `automated-triage-under-refusal` (never worked on, empty attempts) and `ioc-extraction-reliability` for the T5's own tie-break. I named the asymmetry without pre-empting the selector.
