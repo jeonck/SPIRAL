@@ -1,0 +1,25 @@
+Cycle 17 complete. All three finishing artefacts written in order.
+
+## What happened
+
+**The headline is a correction to cycle 16.** It wrote that the study needed to settle this issue does not exist. It does — and it has been in the knowledge base since cycle 6. `src-0006`'s Table 2 has **nine rows all reported in F1**, over one corpus and one 15-model set, spanning both ends of the proposed ordering. No cycle had pulled that table whole in eleven cycles. **The ordering is not reproduced**, so the issue's title question is answered in the negative and the inherited cycle-2 candidate is now `rejected` rather than left at `proposed`.
+
+Five results, all from the existing base:
+
+1. **The commensurability objection fails for the extraction-vs-classification rung.** Solving `2PR/(P+R)` for the unreported IoC recall at which each model's IoC F1 would drop to its own TTP F1 gives crossovers of 0.089–0.148 — all *below* that model's measured TTP recall. The precision-only omission is a real reporting defect but not an explanation of the gap.
+2. **It holds decisively for the third rung.** GPT-4o's 1.140/5 attribution rubric normalises to 0.228 (`x/5`) or 0.035 (`(x−1)/4`) against a TTP F1 of 0.250 — so attribution either *ties* classification or is *seven times worse*, purely on a normalisation the paper never states.
+3. **The ordering reverses between two models in one table.** o3-mini ranks attribution above classification under both normalisations; GPT-4o ranks it at-or-below under both.
+4. **The commensurable subset gives a stage gap of 0.034 F1** — an eighth of the between-model spread — and the *best* task in it is TTP Extraction (0.674), an Attribution-stage task.
+5. **Between-model variance ≈ between-task variance** (0.272 vs 0.263, equal to within 0.009). Task identity is not the dominant explanatory variable.
+
+## Retrospection — a partial failure, reported plainly
+
+G2 on `src-0006`. Every number verified exact. **One label did not**: `src-0006.md` says Infrastructure Reuse peaks at "0.754 for a specialized agent vs. 0.688 for a general model" — ZYS (0.688) is *cyber-specialized*. I established that from the paper's own body text, not the fetch tool's answer, which was self-contradictory (claimed 14 model columns while listing 15). The stored "F1 range roughly 0.20–0.90" is also loose; the true span is 0.286–0.882.
+
+No contradiction entry opened — G3 is for two supported claims in conflict, and this is our file misdescribing its source, the same class as carry-forwards [5] and [18]. I also left `src-0006.md` untouched; the correction is in the log, carry-forward [21], and the issue's `open_questions`.
+
+Separately, I found **11 of Table 2's 28 rows are strictly monotone across all eight general-purpose columns in printed order** (p ≈ 1/40,320 per row). I re-pulled ten rows from a second URL form before building anything on them — identical cell-for-cell, so it's in the paper, not the tool. My headline deliberately rests on non-monotone rows and survives excluding all four monotone F1 rows.
+
+**Two searches, both empty against the bar**, recorded verbatim with three new collection leads (SEvenLLM's 13-understanding/15-generation split is directly on this axis). No sources added — 0 of 5.
+
+Next task is a **T4**, flagged that the graph has 8 issues and `scores.json` has only 6 entries, both cycle-16 issues never scored. Carry-forwards now run [1]–[23] plus [A] and [B]. I did not commit — that appears to be the runner's step.
