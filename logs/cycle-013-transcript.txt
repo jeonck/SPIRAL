@@ -1,0 +1,29 @@
+Cycle 13 (T4 assess) complete. The harness (`scripts/run_night.sh`) handles the commit.
+
+## What I did
+
+**G2 retrospection first.** Target: src-0012's load-bearing "16 of 27 references hallucinated" figure — chosen over the never-re-verified src-0007 because src-0012 carried a *recorded, unresolved* conflict: its primary (`gptzero.me/investigations/ey`) returned "0 of 27" on both of cycle 12's fetches.
+
+**Result: passes, and the doubt is now settled rather than assumed.** Both secondary outlets re-fetched verbatim-identical. The GPTZero page returned "0 of 27" a *third* time — but this fetch surfaced more of the body, which refutes its own widget in the page's own words: *"We chased down every citation. **Most were hallucinated.**"*, *"Almost all of the URLs are broken or fake, and more than half of the titles don't correspond to real sources"*, followed by eight individually enumerated references each labelled "Hallucinated". A page cannot say "0 of 27" while enumerating eight. No contradiction opened — now for a documented reason, not an inference. Cycle 12 reached the right call on weaker grounds.
+
+**Scoring — one score moved, five held:**
+
+| issue | c10 | c13 |
+|---|---|---|
+| ttp-attack-mapping-reliability | 3 | 3 |
+| ioc-extraction-reliability | 2 | 2 |
+| consistency-calibration-as-failure-mode | 2 | 2 |
+| attribution-confident-wrong-gap | 3 | 3 |
+| task-dependent-reliability-framing | 3 | 3 |
+| **institutional-incident-real-world-impact** | 2 | **3** |
+
+The raise is evidence-driven: cycle 12's src-0009/src-0010 (ENISA's own revision notices) and src-0012 (EY Canada, a second institution) removed the single-source cap cycle 10 had explicitly invoked. I did **not** take it to 4 — the base rate is still unmeasured and blocked by scope (src-0011 audits peer-reviewed papers with a database-keyed ghost-citation definition and per-*paper* rates, none of which transfer to CTI footnotes), and the AI-*causation* leg is still Der Spiegel-via-Heise for ENISA and a commercial detector score for EY. What's robust is that *fabricated citations* reached production at two named institutions.
+
+G3: ceiling reading applied to ctr-0001 (fifth cycle carried), consistent with cycles 10–11, arithmetic recorded. No rule files edited.
+
+## Two things worth flagging
+
+- **The refresh rule fires on cycle 14** (14 % 7 == 0) — it has never fired in thirteen cycles, so cycle 14 must write a **T1**, not a T3 out of habit. Fortunate timing: the likely selection (`consistency-calibration-as-failure-mode`) is stuck at 2 purely because both its candidates cite src-0001 alone, which only a collect can fix.
+- **New carry-forward [16]:** GPTZero states verbatim it runs an automated pipeline scanning consulting-firm reports and has already investigated a government publication and *two Deloitte reports*. That's the best lead any cycle has found on the base-rate question — it's a T1 lead, not evidence, and I scored nothing on it.
+
+`python3`/`node` are blocked in this unattended run (carry-forward [9]), so JSON was verified by construction plus a per-line structural check confirming no unescaped quotes in any rationale or the instructions string — weaker than a parse, and logged as such.
