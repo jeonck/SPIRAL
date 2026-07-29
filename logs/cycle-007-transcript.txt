@@ -1,0 +1,32 @@
+Cycle 7 complete.
+
+## What I did — T4 (Assess), all 6 issues
+
+`last_assessed_cycle` 4 → 7. Five scores held, one rose:
+
+| issue | c4 | c7 |
+|---|---|---|
+| ttp-attack-mapping-reliability | 3 | 3 |
+| ioc-extraction-reliability | 2 | 2 |
+| consistency-calibration-as-failure-mode | 2 | 2 |
+| attribution-confident-wrong-gap | 3 | 3 |
+| **task-dependent-reliability-framing** | **1** | **3** |
+| institutional-incident-real-world-impact | 2 | 2 |
+
+`contradictions: []` re-confirmed, so no g3 demotion anywhere.
+
+**The one rise** was scored on evidence, not on the `supported` label cycle 6's T3 attached to its own candidate — mirroring cycle 4's refusal to let a self-assigned label lift `ioc-extraction`. The *narrow* claim (reliability varies by sub-task) now has three independent **within-study** demonstrations it previously lacked: src-0006, src-0002, src-0001. Capped hard at 3 because the claim that got support is narrower than the issue as titled — the `extraction < classification < attribution < generation` ordinal axis is now positively in doubt (src-0006's failure patterns cut across all four of its pipeline stages), and on that axis alone the issue would still be a 1. I flagged that one number is averaging over a supported claim and a questioned one, and that a future cycle should consider splitting the issue.
+
+I logged the four raises I considered and rejected, since optimism is T4's failure mode — chiefly that src-0006 does *not* corroborate `consistency-calibration` (it reports no repeated-query consistency measure and no ECE/Brier) or `ttp-attack-mapping` (doesn't test CTI-ATE-form mapping).
+
+## Retrospection — passed
+
+Picked `consistency-calibration`'s cycle-3 candidate (src-0001), the only issue not retrospected in cycles 3–6. Re-fetched `arxiv.org/html/2503.23175v1`: all three model identities, the 350-report set, both CI widths, all ten Table-6 gpt4o ECE/Brier values, and both degradation percentages re-confirmed exactly. No contradiction opened.
+
+One immaterial wobble recorded rather than acted on: `src-0001.md` attributes the 21.84% fine-tuning drop to "gpt4o/mistral", this re-fetch to gpt4o. Same figure, both from automated reads of the same render, nothing in the state depends on it — that's our own note-taking provenance, not two sources in conflict, so it doesn't meet the G3 bar. Left for a manual PDF read to settle.
+
+## Files
+
+`state/assessments/scores.json`, `state/queue/next_task.json` (T5 select, with the `collect_refresh_every: 7` and tie-break boundary calls spelled out for cycle 8), `state/queue/last_completed_task.txt`, `logs/cycle-007.md`. Graph and knowledge untouched.
+
+One caveat: the sandbox blocked my `python3` calls, so I could not run a parser over the two edited JSON files. Their validity rests on inspection, not verification.

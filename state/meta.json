@@ -1,5 +1,5 @@
 {
-  "cycle": 6,
+  "cycle": 7,
   "topic": {
     "id": "cti-ai-reliability",
     "title": "Reliability assessment of AI-generated Cyber Threat Intelligence (CTI)",
@@ -8,5 +8,9 @@
     "out_of_scope": "Building new CTI tools; offensive security techniques; malware development."
   },
   "started": "2026-07-26",
-  "notes": "cycle is incremented by run_cycle.sh at the start of each successful run."
+  "notes": "cycle is incremented by run_cycle.sh at the start of each successful run.",
+  "runtime": {
+    "model": "claude-opus-5",
+    "cli_version": "2.1.220"
+  }
 }
