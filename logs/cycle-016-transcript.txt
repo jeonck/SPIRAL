@@ -1,0 +1,22 @@
+Cycle 16 complete. All five agenda items reached.
+
+## Retrospection (G2) — PASS, with one item reclassified
+
+Re-verified **src-0009 and src-0010** (the ENISA publication pages, the oldest never-checked sources). Both revision notices matched verbatim — including the inconsistent trailing period after "1.2" on one page and not the other — as did both publication dates, the PDF filenames, and the re-confirmed *absence* of any AI mention, now 8 months post-exposure. No contradiction warranted.
+
+**Carry-forward [14] is not discharged and is now a documented infrastructure limit.** I tried the v1.2 PDF front matter three ways: `WebFetch` returned raw FlateDecode binary; the `Read` tool needs poppler-utils, which is absent; and `pdftotext`/`mutool`/`gs`/`qpdf` are all missing. Consequence stated plainly in the log: "ENISA never disclosed the AI use" is solid at landing-page level and **unverifiable at document level** by any tool here — which bounds a claim that partly justified raising `institutional-incident-real-world-impact` to 3.
+
+This also **corrects carry-forward [9]**, which has said since cycle 9 that `python3` is blocked. It isn't absent — it's on `PATH` and blocked by the *permission layer*. Same effect, different diagnosis; future cycles shouldn't hunt for another Python.
+
+## Graph changes — 6 issues → 8
+
+- **Split `task-dependent-reliability-framing`** (blocked 9 cycles). Narrow claim stays and gains src-0007 + src-0013; the ordinal axis moves to a new issue with the cycle-2 candidate **moved verbatim** with provenance. I re-read both tables and **endorsed** cycle 10's refusal to open a G3 contradiction rather than overturning it — and added a new objection nobody had made: src-0007's apparent ranking mixes precision-only, precision+recall, and a 1–5 rubric, so it isn't three measurements of one quantity.
+- **New issue `automated-triage-under-refusal`** (blocked 6 cycles), src-0007 + src-0015, with the provenance asymmetry stated rather than averaged. Merged carry-forward [15] (curl/HackerOne) in as an **open question, not evidence** — no such source exists in the index, and G1 forbids inventing one.
+- **Attached src-0007** to the two issues that omitted it; the attribution entry is `proposed`, not `supported`, and preserves the suspicious FT-column anomaly as a re-pull instruction.
+- **Scope ruling** on `consistency-calibration-as-failure-mode`: the domain gap **holds**; cycle 15's four security-adjacent sources are context, not CTI multi-source support. A T4 may overrule but must say so explicitly. No scores set.
+
+## The one item I decided but did not execute
+
+The G3 gate is specified **three** ways, not two — I found `config.yml`'s comment also says subtraction, so the enforced ceiling reading is in the *minority*. I ruled for the **ceiling** (the rubric is definitional, not arithmetic: subtracting 2 from an honest 2 asserts "no candidate resolutions" about an issue with three). I did **not** apply it — `prompts/`, `config.yml` and `scripts/` are outside this agent's stated output surface — so the exact replacement text for both artefacts is in the log for a human, and T4s must keep applying the ceiling meanwhile. That's a decision with deferred execution, not an eighth carry.
+
+**Next task:** T3 on `extraction-vs-reasoning-ordinal-axis`, the least-supported new issue, with a bounded first move that needs no web search. JSON validated by construction and structural re-read (brace/indent counts matched, quote count on `next_task.json` exactly as predicted, no malformed lines), since `python3` and `awk` are both permission-blocked.
