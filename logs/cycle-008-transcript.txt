@@ -1,0 +1,22 @@
+Cycle 8 (T5 Select) complete.
+
+## Retrospection (G2)
+Re-verified the cycle-6 conclusion on `task-dependent-reliability-framing` against src-0006 (arXiv 2509.23573) — the only source never previously re-checked. **It passed.** The four pipeline stages, the three failure patterns, and critically the load-bearing claim that failures span *all four* stages were confirmed at table level (Table 5: "Co-mention bias (Type 1.1) — ❶❷❸❹"), along with every numeric figure (AUC 0.912/0.547, F1 0.688/0.754, +0.055/+0.08/+0.115 mitigation gains). No contradiction opened.
+
+One process finding worth flagging: my first fetch *appeared* to refute two stored figures ("0.738, not 0.547"; "+0.018 to +0.065, not exactly +0.055"). Both were artifacts of my own prompt asking whether a value was the *best* for a model class rather than for the full row. A targeted re-fetch found both values present. Had I stopped there I'd have opened a spurious contradiction, which under `g3_contradiction_demotion: 2` would have demoted that issue 3→1 and changed this cycle's selection. I recorded a standing rule in the log and next task: re-verify numeric claims by demanding the entire table row verbatim.
+
+## Selection
+**`ioc-extraction-reliability`** (effective score 2, rank 1). Full ranking table is in `logs/cycle-008.md`. Three boundary calls the policy didn't settle, now documented so later cycles don't re-litigate them:
+
+1. "Within the last 5 cycles" read inclusively → `consistency-calibration`'s cycle-3 attempt incurs +1, dropping it to effective 3. This penalty expires next cycle.
+2. Tie-break (a) "upstream first" treated as a *pairwise* relation, so it's a no-op among unrelated issues — not a global sort by dependent-count. The alternative reading would have let (a) resolve everything and the anti-thrashing penalty at (b) would never fire.
+3. The policy runs out entirely on the final tie (both at effective 2, both `created_cycle: 2`). Resolved by dependent-count descending, and documented as the residual rule.
+
+## Refresh rule — does not fire
+`8 % 7 = 1 ≠ 0`, so next task is T3, not T1. I rejected cycle 7's "cycles since last T1" reading: the modulo rule is what's specified, and it isn't dead — cycle 14 is both `% 7 == 0` and a T5 under the current cadence.
+
+Cycle 7's *underlying* concern was right, though: all three issues stuck at 2 are stuck on single-source support, and a T3 that re-reads the held source provably can't move them (cycle 3 is the proof case). I addressed that inside the task rather than by overriding the rule — T3 isn't restricted to held sources (cycle 6's T3 added src-0006), so the queued T3 is directed to spend its budget hunting an independent second source, with re-reading src-0003 explicitly ruled out and cycle 6's already-exhausted narrow query ruled out too.
+
+Also carried forward into the next task's instructions: the cycle-7 recommendation to split `task-dependent-reliability-framing`, since T5 has no standing to restructure the issue graph.
+
+Files written: `logs/cycle-008.md`, `state/queue/next_task.json` (T3, `attempt_count: 0`), `state/queue/last_completed_task.txt`. No knowledge or issue-graph edits. One caveat: `python3 -m json.tool` validation was permission-gated in this unattended run, so I verified `next_task.json` by reading it back rather than by parser — the other four state JSON files are untouched by this cycle.
