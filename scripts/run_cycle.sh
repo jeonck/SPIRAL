@@ -55,6 +55,9 @@ Current cycle number: ${CYCLE}
 The queue entry you are executing is state/queue/next_task.json. Begin."
 
 # Headless run. OAuth token comes from CLAUDE_CODE_OAUTH_TOKEN env (set by CI).
+# The exit code is captured instead of being allowed to abort the script: under `set -e`
+# a dead agent skipped the rollback below and its half-written state was committed.
+set +e
 claude -p "$PROMPT" \
   --model "$MODEL" \
   --max-turns "$MAX_TURNS" \
@@ -62,11 +65,31 @@ claude -p "$PROMPT" \
   --permission-mode acceptEdits \
   --output-format text \
   2>&1 | tee "logs/cycle-$(printf '%03d' "$CYCLE")-transcript.txt" | tail -20
+AGENT_RC=${PIPESTATUS[0]}
+set -e
+
+# Tell "never started" apart from "died partway". If no research state was touched, the
+# agent failed before doing anything — a bad token or a missing CLI — and there is
+# nothing to roll back. Report it as a hard failure so run_night.sh trips the fast
+# token/CLI breaker rather than the slower one meant for cycles that produced output.
+if [ "$AGENT_RC" -ne 0 ] && \
+   git diff --quiet "$PRE_SHA" -- state/issues state/knowledge state/assessments state/queue; then
+  echo "AGENT FAILED TO START (rc=${AGENT_RC}) — no research state touched" >&2
+  exit "$AGENT_RC"
+fi
 
 # Verification gates (G1/G3 mechanical checks). On failure: revert state, keep logs,
 # restore the queue so the next cron retries the same task (at-least-once semantics).
-if ! python scripts/validate_state.py; then
-  echo "VALIDATION FAILED — reverting state, keeping logs" >&2
+# An agent that died mid-cycle (turn budget exhausted, API error) takes the same path:
+# its partial edits never passed the gates, so committing them would put unverified
+# content into the evidence artifact. Short-circuit order matters — the gates are not
+# worth running, and their verdict not worth recording, when the agent never finished.
+if [ "$AGENT_RC" -ne 0 ] || ! python scripts/validate_state.py; then
+  if [ "$AGENT_RC" -ne 0 ]; then
+    echo "AGENT ABORTED (rc=${AGENT_RC}) — reverting state, keeping logs" >&2
+  else
+    echo "VALIDATION FAILED — reverting state, keeping logs" >&2
+  fi
   mkdir -p /tmp/spiral_logs && cp -r logs/* /tmp/spiral_logs/ 2>/dev/null || true
   git checkout "$PRE_SHA" -- state/
   # Bump attempt_count on the (restored) queue entry. Past max_task_attempts the entry
@@ -132,8 +155,15 @@ m['runtime'] = {'model': os.environ['SPIRAL_MODEL'], 'cli_version': os.environ['
 json.dump(m, open('state/meta.json','w'), indent=2, ensure_ascii=False)
 EOF
   cp -r /tmp/spiral_logs/* logs/ 2>/dev/null || true
-  echo "T${TASK_TYPE#T} failed validation (attempt bumped)" > state/queue/last_completed_task.txt
-  exit 2   # distinct from a hard failure: the agent ran, the gates rejected its output
+  # Distinct exit codes so the night log and the commit label tell the two apart:
+  # 2 = the agent finished and the gates rejected its output,
+  # 3 = the agent never finished, so there was no output to judge.
+  if [ "$AGENT_RC" -ne 0 ]; then
+    echo "${TASK_TYPE} aborted mid-cycle, rc=${AGENT_RC} (attempt bumped)" > state/queue/last_completed_task.txt
+    exit 3
+  fi
+  echo "${TASK_TYPE} failed validation (attempt bumped)" > state/queue/last_completed_task.txt
+  exit 2
 fi
 
 echo "Cycle ${CYCLE} (${TASK_TYPE}) completed and validated."

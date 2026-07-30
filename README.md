@@ -105,10 +105,23 @@ A month-long deployment has to fail loudly rather than spin. Three limits, all i
 | `abort_after_consecutive_failures` | cycles dying outright (expired `CLAUDE_CODE_OAUTH_TOKEN`, missing CLI) | fail the job → GitHub notification |
 | `abort_after_consecutive_invalid` | cycles running but failing the gates, despite escapes | fail the job → GitHub notification |
 
-`run_cycle.sh` signals these apart by exit code: `0` validated, `2` ran but was
-rejected by the gates, anything else a hard failure. Without the first limit a single
-stuck task would consume every slot of every night indefinitely; without the other two
-a broken token or a broken gate would report success on an empty night.
+`run_cycle.sh` signals these apart by exit code:
+
+| code | meaning | state |
+|---|---|---|
+| 0 | validated | committed |
+| 2 | agent finished, gates rejected it | rolled back, attempt counted |
+| 3 | agent died mid-cycle (turn budget, API error) | rolled back, attempt counted |
+| other | agent never started (bad token, missing CLI) | untouched |
+
+Codes 2 and 3 both roll back and both feed the per-task escape, so a task that
+repeatedly exhausts the turn budget is eventually abandoned rather than retried all
+night. The distinction that matters is whether the agent touched research state: if it
+did not, the failure is a setup problem and trips the fast token/CLI breaker instead.
+
+Without the first limit a single stuck task would consume every slot of every night
+indefinitely; without the other two a broken token or a broken gate would report
+success on an empty night.
 
 Escapes are recorded in `state/queue/escapes.json` (cycle, abandoned task, target
 issue, attempts, escaped-to). They are intervention-free recoveries, so the file is

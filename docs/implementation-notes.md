@@ -34,6 +34,19 @@ is ready to run.
    Worth reporting in the paper: on free CI, scheduled-trigger latency is a first-class
    variable the design must absorb, not an implementation detail — and it is large
    enough (≈2.5 h) to dominate a 3 h nightly window if ignored.
+6. **Rollback covers agent death, not just gate rejection (fixed after cycle 31,
+   2026-07-30)**: `run_cycle.sh` ran under `set -e`, so a `claude -p` that exited
+   non-zero aborted the script *before* `validate_state.py` — skipping both the gates
+   and the revert. Cycle 31 exhausted `budget.max_turns` and its partial edits (issue
+   graph, knowledge index, four appended `key_claims`) were committed unvalidated,
+   under a label that read "no state change". The content happened to be compliant, so
+   nothing was corrupted, but the mechanism would have admitted an unchecked source URL
+   or an append-only violation permanently. The agent exit code is now captured and a
+   death takes the same rollback path as a gate rejection (exit 3 vs 2), which also
+   feeds the per-task escape — so a task too large for the turn budget is abandoned
+   after `max_task_attempts` instead of retried indefinitely. A failure that touched no
+   research state is still classified as a hard failure, so token/CLI problems keep
+   tripping the fast breaker.
 5. **Bounded retries (added for the month-long run)**: at-least-once retry alone lets
    one stuck queue entry consume every slot indefinitely, because the T5 attempt
    penalty can only demote an issue on a cycle that actually reaches T5. After

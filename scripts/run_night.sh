@@ -73,6 +73,12 @@ print(f\"{t} {n.get(t,'')}\".strip())
     # failure. run_cycle.sh escalates the per-task retries; this only counts the streak.
     2) consec_invalid=$((consec_invalid + 1)); consec_fail=0
        echo "cycle failed validation (${consec_invalid} in a row) — continuing" >&2 ;;
+    # The agent died mid-cycle and run_cycle.sh rolled its state back. The CLI and token
+    # demonstrably work, so this counts with the gate rejections rather than the hard
+    # failures — and it feeds the same per-task escape, so a task that keeps exhausting
+    # the turn budget is eventually abandoned instead of retried all night.
+    3) consec_invalid=$((consec_invalid + 1)); consec_fail=0
+       echo "agent aborted mid-cycle, state reverted (${consec_invalid} in a row)" >&2 ;;
     *) consec_fail=$((consec_fail + 1))
        echo "run_cycle.sh died with rc=${rc} (${consec_fail} in a row) — continuing" >&2 ;;
   esac
@@ -83,6 +89,7 @@ print(f\"{t} {n.get(t,'')}\".strip())
   case "$rc" in
     0) MSG="cycle ${CYCLE}: ${TASK}" ;;
     2) MSG="cycle ${CYCLE}: ${TASK} failed validation" ;;
+    3) MSG="cycle ${CYCLE}: ${TASK} agent aborted, state reverted" ;;
     *) MSG="cycle ${CYCLE}: ${TASK} run failed, no state change" ;;
   esac
   if git commit -q -m "$MSG" >/dev/null 2>&1; then
