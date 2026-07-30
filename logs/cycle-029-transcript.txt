@@ -1,0 +1,22 @@
+Cycle 29 (T4 — assess) complete. All state validated with `jq`; no commit made (the runner handles that).
+
+## What I did
+
+**G2 retrospection first** — target `src-0008` (stalest source, last verified cycle 10; its own stored limitations section asked for exactly this pull "before they are used to support a scored resolution", which cycle 26 then skipped). Three fetches, verbatim-or-`ABSENT`/`CANNOT READ`.
+
+**It failed, and in a new way.** Every stored quotation and number *passed* — but `key_claims[0]` is quantified over "current LLMs" and the paper evaluates **five** models, not four. Verbatim: *"Cohere, however, shows progressive degradation: 1% missed detections in P1, 2% in P2, 5% in P3, and in P4, 65% misses plus 35% explicit 'Don't Know' responses"* — and P1–P4 contain **no cryptography**. So "encryption is the boundary" is not what the paper shows. `ctr-0007` opened; I recorded that this cuts *both* ways for the scaffolding hypothesis and asserted neither (a T3's call). Repaired by append in both `index.json` and `src-0008.md`.
+
+Three by-products: **carry-forward [5] discharged after nineteen cycles** — the phase-label discrepancy is a self-contradiction *in the source* and our stored mapping is the majority reading (no PDF needed, contrary to what the item claimed); the source **defines its own metrics twice, incompatibly**, so "100% detection" is undetermined between "100% correct" and "100% answered YES"; and **Table 6 is readable text and had gone uncaptured for twenty cycles**.
+
+## Scores
+
+One moved: **`ttp-attack-mapping-reliability` 3 → 2**. `ctr-0006` hollowed out its first supported candidate, and the candidate cycle 26 said carried the 3 lost both distinctive contributions — its within-table control is compromised by `ctr-0004`'s one-directional matcher, and neither leg now has a stated ATT&CK correctness rule while one leg's metric is ambiguous between Micro- and Macro-F1 *by its own paper's text*. Stated explicitly as a merit judgement, not a gate artefact.
+
+Seven held. Two things the handoff specifically asked me to decide rather than mechanize:
+
+- **`ctr-0005`**: no demotion applied. Its content is that the base was *under*-citing src-0018 — scoring it as weakness would penalise an issue for a correction that improved it, and would discourage filing such corrections at all.
+- **"unmeasured" vs "answered negatively"**: the rubric scores an issue's `candidate_resolutions`, not its title, so I scored the candidates. I refused to count the survey candidate's three ids as two-source support — each is cited for what it *lacks*.
+
+The G3 ceiling bound on nothing, for the fourth T4 running. New evidence for the human holding [4]: `ioc-extraction-reliability` now carries three open contradictions, where the ceiling reading gives 3 whether the gate is per-issue or per-contradiction (a ceiling saturates) while subtraction gives 0 or −6-floored-to-0 with nobody having specified which.
+
+**One thing worth flagging:** my demotion makes the bottom tier five issues wide, and after tie-breaks 3a/3b it reduces to `ttp` vs `ioc` — identical on score, dependents, penalty *and* `created_cycle`. That is carry-forward [11]'s unspecified terminal tie-break, hit for the second time in four cycles. Cycle 30's T5 has the full ranking data and is told to state its reading rather than inherit one.
