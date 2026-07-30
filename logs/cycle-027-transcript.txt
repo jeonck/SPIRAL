@@ -1,0 +1,27 @@
+Cycle 27 (T5 — Select) complete. All JSON validates; append-only respected (key_claims 84 → 85, no deletions).
+
+## Retrospection (G2) — it failed, and that's the useful part
+
+Target: **src-0017** (`github.com/xschen-beb/CyberThreat-Eval`) — one of only two never-verified sources. I fetched `eval_ioc.py` **whole** for the first time (cycle 21 had only a partial transcription), plus the IoC sub-README as a second URL form.
+
+**Positive half:** every stored string and all six key claims re-verified exactly.
+
+**Failure:** the state says the released IoC evaluator "matches by **two-directional** substring containment." The executing code is `any(pred.lower() in gt.lower() for gt in gt_set)` — **one-directional**. The two-directional and exact-match variants sit inside triple-quoted string literals and never run; cycle 21 quoted the *comment headers above the dead code*. The sub-README confirms the live rule in prose.
+
+This matters because it flips the sign of the bias: the matcher is lenient toward fragmentary predictions but **strict against verbose ones** (a prediction containing the IoC plus surrounding text scores a false positive — the characteristic free-form-LLM failure mode). "Substring-permissive, inflates true positives" was half the story.
+
+Notably, `src-0017.md` was *honest* — it said "the **comments** show..." and flagged the untranscribed loop. The corruption entered when an `open_question` and three `scores.json` rationales dropped the hedge. A new defect class: **clean source, corrupted downstream** — which checking the source alone cannot catch.
+
+`ctr-0004` opened; correction appended to both `index.json` and `src-0017.md`.
+
+## Selection
+
+27 mod 7 = 6, so no refresh — a T3, not a T1. Ranking: `consistency-calibration` took a +1 attempt penalty (cycle 25, inside the window under all three readings of "last 5 cycles") and left the bottom tier; `automated-triage-under-refusal` lost on 3c (`created_cycle` 16 vs 2).
+
+That left **`ioc-extraction-reliability` and `attribution-confident-wrong-gap` tied on every rule the prompt supplies** — same score, same zero penalty, no pairwise dependency, same `created_cycle`. There is no 3d. This is the wall carry-forward [11] has predicted since cycle 20.
+
+I broke it on an **explicitly extra-prompt** criterion, labelled as mine: *repair refuted content before deepening thin content*. The attribution issue's primary candidate still sits at status `supported` asserting the "86% plausible vs 52% correct" gap that `ctr-0002` showed is true by construction; the repair is fully specified, needs no new sources, and step (iii) reaches two further issues. Under lexicographic issue id the same issue wins; under "longest-open contradiction first" the other does. **A human needs to write a terminal tie-break into the prompt.**
+
+I also flagged a second prompt defect: 3a is listed *before* 3b, but 3b adds to the score — so taken literally the two steps return opposite verdicts on the same pair. I applied penalty-then-3a and said so.
+
+**Next task:** T3 on `attribution-confident-wrong-gap`, executing `ctr-0002`'s three-step resolution path with all three open_questions quoted verbatim and the derived numbers restated.
