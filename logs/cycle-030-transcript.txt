@@ -1,0 +1,25 @@
+Cycle 30 (T5 — Select) complete.
+
+## Selection
+
+**`ttp-attack-mapping-reliability`** → **T3 (investigate)** at cycle 31. The refresh rule does not fire (30 mod 7 = 2), re-derived from `config.yml` rather than inherited.
+
+The prompt's tie-breaks ran out. After 3a (upstream first) and 3b (attempt penalty), the bottom tier reduced to `ttp` vs `ioc-extraction-reliability` — identical on score (2), dependents, penalty (0) and `created_cycle` (2). There is no 3d. I broke it on an **explicitly extra-prompt criterion**: most-recent-attempt age (`ttp` c16, `ioc` c21), chosen because it extends 3b's own logic past its five-cycle cliff rather than importing an unrelated rule. Three corroborating considerations and the honest counter-argument (`ioc` carries three open contradictions to `ttp`'s one, so a "most-contradicted-first" rule would flip the answer) are recorded in the log. The full auditable ranking table is there too.
+
+Two procedural notes for the human holding carry-forward [11]: a **second, independent terminal tie** appeared simultaneously at ranks 3/4, and my reading of 3b's window (25–29, stated with reasons) was load-bearing — under the other defensible reading the tier would have included an issue whose defining problem only a T2 can fix.
+
+## G2 — the conclusion failed re-verification
+
+Re-checked `attribution-confident-wrong-gap`'s third candidate against `src-0007`'s Table 4 (single unreplicated pull since cycle 15).
+
+**Numbers passed completely** — all 34 rows identical on a third pull; the GPT-4o (FT) anomaly reproduced a third time, still unexplained.
+
+**The metric definition failed.** Appendix C.2 defines the rubric dimension `Attribution` **two different ways**: in the Threat Actor block it is *source linking* ("all details are clearly linked to the original article", no anchor mentioning an actor); in the Root Cause block it is *actor identification* ("clearly identifies the threat actor"). The state's load-bearing "within-table contrast" differences 1.140 against 3.612 as though they were one metric — and the labels run opposite to how the state read them: the cell taken as the actor-attribution deficit is the one that isn't about identifying an actor. Confirmed on two URL renderings with all anchors.
+
+The finding's *direction* survives at block level (GPT-4o scores lower on all six dimensions for Threat Actor content), so this relocates the support rather than destroying it. Separately: **the judge is GPT-4o**, one of the four scored models — never recorded in twenty-one cycles. Self-preference cuts *against* the easy reading, since GPT-4o scores lowest.
+
+**`ctr-0008` opened.** Two other issues inherit the defect; the heaviest exposure is `task-dependent-reliability-framing`, whose level-3 bar rests on a leg the cycle-29 T4 called "immune" to exactly this objection. A T5 does not score, so I flagged it for the cycle-32 T4 rather than acting.
+
+This was the tenth source-check and the ninth to find a defect — a ninth defect shape (*metric-identity*: same label, two definitions). Standing lesson added: verifying a value does not verify what the value measures, and a summarised "PRESENT" is as untrustworthy as a bare "ABSENT" — my first fetch returned the rubric as a paraphrase and hid this.
+
+All six state files validate; `scores.json` and every `attempts` field untouched.
