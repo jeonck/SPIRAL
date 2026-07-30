@@ -1,0 +1,17 @@
+Cycle 28 complete. All JSON validates and every field was read back.
+
+## What was done
+
+**G2 retrospection — src-0018** (the only never-verified source in the base). Every stored quotation re-verified exact; the four performance charts confirmed unreadable images for a third time. **But the stored scope failed**: `key_claims[1]` said "NO NUMBER ON THE PAGE IS RECOVERABLE … supplies ZERO citable magnitudes", and the page states in plain text a 41-min/report human-analyst baseline against ~3.3 min, and — load-bearing — *"the LLM temperature parameter was set to 0"*. That means both of `consistency-calibration-as-failure-mode`'s independent consistency sources measure residual non-determinism *under* a determinism setting. **`ctr-0005` opened.** This is the first defect in this base that is too cautious rather than too bold; a hedge written so broadly it fenced off real evidence for three cycles.
+
+**Main task — `ctr-0002`'s three steps, all done, entry closed (`resolved_cycle: 28`).**
+
+- **(i)** The 86-vs-52 framing is retired by name and replaced with the paper's own hallucination-inclusive incorrect rate (14/38/26/20/64%), with the derivation-by-subtraction stated in the candidate's own text.
+- **(ii)** Decision recorded as a new supported candidate: **(a) for the number, (b) for the issue as titled**. The survey behind (b) — no source in this base measures expressed *confidence* on threat-actor attribution — means the issue's titular quantity is unmeasured by every source it cites. I did not adopt (a) alone because cycle 26 expected it would score better, and said so.
+- **(iii)** The unscoped step **did not come back clean**. CTIBench says *"We adopt the Micro-F1 score"* in Section 4.2 while Table 1's header reads *"CTI-ATE (Macro-F1)"* — so 0.6388's metric is ambiguous by the paper's own text. The cross-task difficulty comparison is our gloss and subtracts non-commensurable metrics. And `key_claims[2]` ("no model exceeded ~72% on any single task") is **false against the printed table** — CTI-TAA Plausible reads 86/80/74. **`ctr-0006` opened** against `ttp-attack-mapping-reliability`, whose supported candidate makes the comparison explicitly.
+
+**`open_question[2]` answered after ten cycles**: the ENISA APT29 error is a *distinct* sub-type — CTI-TAA scores an alias as correct, so the ENISA defect is invisible to the instrument. This cuts against the issue (src-0004 dropped from its primary evidence) and I recorded it anyway.
+
+**Deferred honestly**: `open_question[1]` was not worked, and now says so. No budget spent on the unreachable Der Spiegel/ENISA-PDF limb. No new sources added — a deliberate choice, recorded as such.
+
+Corrections were appended to **both** `index.json` and the `.md` files for src-0002 and src-0018. One edit was malformed (backslash-escaped quotes) and `jq -e` caught it on the first check.
