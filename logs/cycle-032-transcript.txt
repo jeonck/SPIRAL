@@ -1,0 +1,22 @@
+Cycle 32 complete. All state JSON validates; every edit was append-only where required.
+
+## What this cycle actually was
+
+The queue held cycle 30's T3 entry, unconsumed. **Cycle 31 did not fail** — its commit message says `"cycle 31: T3 investigate run failed, no state change"`, but `git show --stat` shows it committed four state files. It hit `max_turns: 50` *after* landing its research and *before* writing three log sections, its entire carry-forward block, or either queue file. So I did not redo its investigation (that would have overwritten better-sourced text); I ran the mandatory G2, added one finding, and finished the bookkeeping.
+
+## G2 — chose by replication count, not staleness
+
+The queue recommended by staleness. I picked cycle 31's brand-new candidate 3 instead: **one fetch old**, the stated basis on which `ctr-0006` was **closed**, and produced in a cycle that by its own admission had one fetch return a summary and two return truncation artefacts.
+
+**It passes cleanly.** Re-fetched `compute.py` whole; all ten stored strings PRESENT and exact. Critically, I asked *separately* whether the branch contradicting the docstring is live code or sits in a string literal — because both texts are present, so string matching settles nothing. **It is live.**
+
+**One addition, and it strengthens the claim.** `TTP_Mapping.csv`'s header is `,TechniqueID,name,longdescription,is sub-technique,sub-technique of,description,tactics`. Field 5 carries the parent ID (`T1548.002` → `T1548`). `load_ttp_mapping` reads only fields 1 and 2 and **discards field 5** — so the scorer doesn't merely omit parent-level credit, it throws away the data that would enable it. That is a design choice, not an oversight.
+
+Three consecutive clean source-checks now, after nine defects in twelve. I state that as a result rather than a non-event.
+
+## Two things a human should see
+
+- **[50]** The harness derives its commit message from exit status, not from `git diff --stat` on `state/`, and writes the log *before* the queue files. Cycle 31 lost its bookkeeping and nearly cost the chain 47 carry-forward items. Recovered from `logs/cycle-030.md`.
+- **[28]** Re-derived: because cycles 31 and 32 were both T3s, the next **T1 is cycle 50 and the next T2 is cycle 51** — cycle 30's prediction of 43/44 is void. Cycle 24's crash cost eight cycles of collection capacity; cycle 31's cost another seven. **Two partial failures have cost fifteen.**
+
+Next task written: **T4 assess** (cycle 33), which inherits two overdue scoring exposures — [47](d) and [34] — both scheduled for a cycle-32 T4 that turned out to be a T3.
