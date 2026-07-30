@@ -1,0 +1,15 @@
+Cycle 25 complete. Summary of what landed:
+
+**T3 on `consistency-calibration-as-failure-mode`** — the issue had been stuck at score 2 since cycle 3 because both supported resolutions cited `src-0001` and nothing else, and the cycle-16 scope ruling barred the four security-adjacent sources from counting.
+
+- **Blocker broken, for one of the two axes.** Added **`src-0018`** (SentinelLabs, Milenkoski & Cirstea, 9 Mar 2026) — the first non-src-0001 source in the base measuring repeat-query output consistency *on a CTI task* (IOC/hash/playbook extraction from real threat reports, 343 IOCs / 1859 attribute instances, 5 current-gen models, repeated identical runs, two defined decision-consistency metrics). Independence is clean. It's CTI proper, so the cycle-16 ruling is satisfied rather than overturned.
+- **Honest limit recorded three times over:** every quantitative artefact on that page is an image; two fetches returned `IMAGE - CANNOT READ`. It corroborates direction only, no magnitudes. And its abstention (FDR/FNR) construct is *not* ECE/Brier — calibration on CTI stays single-source.
+
+**G2 on `src-0001` (stalest source, last checked cycle 7)** — numbers passed, interpretation failed:
+- Table 6 pulled whole for the first time: **nine rows, not the five stored**. Every stored cell exact.
+- The carried gloss "calibration markedly worse for generation than extraction" **doesn't hold row-wise at zero-shot** — its own worked example (CVE generation 0.15) is better calibrated than CVE extraction (0.28). **`ctr-0003` opened.** What survives is stronger and different: fine-tuning worsened ECE on 7 of 9 rows.
+- Two by-products: src-0001 is **peer-reviewed (ARES 2025)**, not the preprint the base called it for 24 cycles; and a `/html` fetch reported a stored quotation ABSENT that `/abs` returned verbatim — **a single fetch's ABSENT is not evidence of absence**, which undercuts how two earlier defect records were established.
+
+**Also:** CTIArena (a lead dangling since cycle 17) was found, fetched, and killed for this issue — it measures neither consistency nor calibration. Cycle 24 died on an API 529, shifting the loop phase; re-deriving the schedule shows **the next T1 collect is cycle 43, not 35** — one failed cycle pushed it back eight.
+
+Files: `state/knowledge/src-0018.md` (new), appends to `index.json` and `src-0001.md`, graph updates (2 new supported candidates, open_questions 4→6, attempts +25, `ctr-0003`), `logs/cycle-025.md` with carry-forward [1]–[39], T4 queued. All JSON validated with `jq`.
