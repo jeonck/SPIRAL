@@ -2,13 +2,15 @@ name: research-cycle
 
 on:
   schedule:
-    # Fires 2h before the research window opens (08:00-11:00 UTC = 03:00-06:00 CDT,
+    # Fires 2.5h before the research window opens (08:00-11:00 UTC = 03:00-06:00 CDT,
     # config.yml schedule.window_{start,end}_utc). GitHub's scheduled events have run
-    # 77, 100 and 151 min late here, and firing at 08:00 cost all but 3 of 18 cycles
-    # on 2026-07-28. Firing at 06:00 absorbs up to 120 min of delay at no cost: the job
-    # holds until the window opens, so an on-time firing still starts at 03:00 local.
+    # 77, 100, 151 and 149 min late here — the delay has settled near 150 min, so the
+    # lead time is sized to absorb that in full. Firing at 08:00 cost all but 3 of 18
+    # cycles on 2026-07-28; 06:00 recovered 14 of 18 on 07-29, still losing ~29 min to
+    # the residual delay. The job holds until the window opens, so an on-time firing
+    # still starts at 03:00 local and the extra lead time costs nothing.
     # In winter (CST, UTC-6) the whole window lands an hour earlier: 02:00-05:00 local.
-    - cron: "0 6 * * *"
+    - cron: "30 5 * * *"
   workflow_dispatch: {}
 
 concurrency:
@@ -21,9 +23,10 @@ permissions:
 jobs:
   cycle:
     runs-on: ubuntu-latest
-    # Up to 2h holding for the window to open + the 3h window itself, plus slack.
-    # Public repo → Actions minutes are free, so the hold costs nothing.
-    timeout-minutes: 330
+    # Up to 2.5h holding for the window to open + the 3h window itself, plus slack for
+    # a final cycle that overruns the window end. Public repo → Actions minutes are
+    # free, so the hold costs nothing. (GitHub caps hosted jobs at 360 min.)
+    timeout-minutes: 360
     steps:
       - uses: actions/checkout@v4
         with:

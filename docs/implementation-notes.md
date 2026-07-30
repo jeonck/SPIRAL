@@ -26,10 +26,14 @@ is ready to run.
    first three runs, so the nightly pacing was moved out of cron and into the job
    (`run_night.sh`), which loops to a wall-clock deadline. Cron only starts the night.
    The 151-min delay on 2026-07-28 cost all but 3 of that night's 18 cycles, so cron
-   was additionally moved 2h earlier (06:00 UTC) with the job holding until
-   `window_start_utc` — delay is now absorbed by the hold rather than deducted from the
-   window. This is worth reporting in the paper: on free CI, scheduled-trigger latency
-   is itself a variable the design has to absorb, not an implementation detail.
+   was moved 2h earlier (06:00 UTC) with the job holding until `window_start_utc` —
+   delay is absorbed by the hold rather than deducted from the window. That recovered
+   14 of 18 cycles on 07-29 against a 149-min delay; the residual 29 min was reclaimed
+   by moving the firing to 05:30 UTC (2.5 h lead). Latency has been 77/100/151/149 min,
+   i.e. it settled near 150 min rather than staying in the 60-100 range first observed.
+   Worth reporting in the paper: on free CI, scheduled-trigger latency is a first-class
+   variable the design must absorb, not an implementation detail — and it is large
+   enough (≈2.5 h) to dominate a 3 h nightly window if ignored.
 5. **Bounded retries (added for the month-long run)**: at-least-once retry alone lets
    one stuck queue entry consume every slot indefinitely, because the T5 attempt
    penalty can only demote an issue on a cycle that actually reaches T5. After

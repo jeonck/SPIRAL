@@ -12,7 +12,7 @@ and the auditable evidence artifact.
 ## How one cycle works
 
 ```
-cron(06:00 UTC, early on purpose)
+cron(05:30 UTC, early on purpose)
   → run_night.sh                                 # holds until 08:00 UTC (03:00 CDT),
                                                  # then loops until 11:00 UTC (06:00 CDT)
     └─ per slot, spaced 10 min start-to-start:
@@ -26,18 +26,23 @@ cron(06:00 UTC, early on purpose)
        → git commit + push                       # cycle durable before the next one starts
 ```
 
-The pacing lives in the job, not in cron: GitHub's scheduled events fired 77, 100 and
-151 min late on the first three runs here, so a fan-out of cron slots would drift out
-of the window. One firing starts the night; `run_night.sh` owns the spacing and the
-hard stop.
+The pacing lives in the job, not in cron: GitHub's scheduled events fired 77, 100, 151
+and 149 min late on the runs here, so a fan-out of cron slots would drift out of the
+window. One firing starts the night; `run_night.sh` owns the spacing and the hard stop.
 
-Cron therefore fires two hours *before* the window opens and the job waits out the
-gap. Delay is absorbed instead of being deducted from the night, while an on-time
-firing still begins at the intended local hour. Measured against the observed delays,
-firing at 08:00 yielded 3 of 18 cycles on 2026-07-28; firing at 06:00 yields 15 for
-the same delay, and a full 18 for anything up to 120 min. The window end stays a hard
-stop, so a very late firing still shortens the night rather than running past 06:00
-local.
+Cron therefore fires 2.5 h *before* the window opens and the job waits out the gap.
+Delay is absorbed instead of being deducted from the night, while an on-time firing
+still begins at the intended local hour. The lead time is sized from the observed
+delays, which have settled near 150 min:
+
+| cron | 2026-07-28 (151 min late) | 2026-07-29 (149 min late) |
+|---|---|---|
+| 08:00 (none) | 3 of 18 cycles | — |
+| 06:00 (2 h lead) | — | 14 of 18 cycles |
+| 05:30 (2.5 h lead) | \>18 expected | 18 expected |
+
+The window end stays a hard stop, so a delay beyond the lead time still shortens the
+night rather than running past 06:00 local.
 
 ## Research state R_t = (K, I, A, q)
 
