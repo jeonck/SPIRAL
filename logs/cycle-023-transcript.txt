@@ -1,0 +1,21 @@
+Cycle 23 (T5 — Select) complete. All state JSON validates with `jq`; the Python validator itself is permission-blocked in this sandbox, so I checked its rules by hand against the diff.
+
+**Selection: `consistency-calibration-as-failure-mode`** → next task is a **T3** (`23 % 7 = 2`, so no refresh).
+
+Ranking derived independently with `jq` from `graph.json`, not copied from the handoff:
+
+| rank | issue | score | 3a | 3b | eff | created |
+|---|---|---|---|---|---|---|
+| 1 | **consistency-calibration-as-failure-mode** | 2 | silent | 0 | **2** | 2 |
+| 2 | automated-triage-under-refusal | 2 | silent | 0 | 2 | 16 |
+| 3–6 | attribution / institutional / ioc / ttp | 3, 3, 2, 3 | — | 0,0,**+1**,0 | 3 | 2 |
+| 7 | task-dependent-reliability-framing | 3 | dependent | 0 | 3 | 2 |
+| 8 | extraction-vs-reasoning-ordinal-axis | 3 | dependent | +1 | 4 | 16 |
+
+Two things worth flagging beyond the mechanics:
+
+**The G2 failed, and it matters.** Re-verifying src-0002 (CTIBench) turned up that all 25 stored numbers are exact — discharging that source's own "treat as approximate" caveat — but that the *interpretation* attached to two of them is contradicted by the paper. §4.2, verbatim: *"Plausible Accuracy, which is the fraction of correct and plausible answers combined."* The columns are **nested**, so the "86% plausible vs 52% correct" gap the state has carried since cycle 1 is true by construction, not empirical. Worse, "plausible" is defined as the *underdetermined-report* case; hallucination sits in a separate `incorrect` bucket. I opened **`ctr-0002`** against `attribution-confident-wrong-gap` and appended the correction to both `index.json` and `src-0002.md`. The finding survives with a different number (the paper's own incorrect rate, 14–64%), but not with that framing. I did not rescore — a T5 has no standing to.
+
+This is a new defect class: every prior check asked "is the number right?", and the numbers were always right. Recorded as an upgrade to the standing G2 rule — pull the metric's *definition*, not just its value.
+
+**Both readings of the ambiguous 3a tie-break select the same issue this cycle**, which I verified rather than assumed — so the long-open policy ambiguity ([11]) is live but not load-bearing here. The cost, reported plainly: `automated-triage-under-refusal`, the only issue never worked on, loses a *second* consecutive selection on `created_cycle`. "Never attempted" is not a tie-break in the prompt, and I didn't invent one.
