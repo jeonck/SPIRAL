@@ -1,0 +1,22 @@
+Cycle 21 complete. All JSON validates.
+
+## What I did
+
+**G2 retrospection — src-0016** (the last never-verified source; a vendor blog). **Substance passed, provenance partially failed.** Every figure confirmed exact, but two record defects found and repaired by appendix:
+
+- A stored *"verbatim"* quote is a **composite that does not exist on the page** — it splices a real sentence to a table cell. Numbers all correct; the quotation was manufactured. First case in this project of quote-splicing surviving in the knowledge base.
+- The collection note *"no table was present to pull"* is **false — there are four tables**, including the per-model breakdown a prior cycle asked someone to go find. Transcribed all four. They show the stability split is an order of magnitude wide across configurations, and that the Snyk baseline row scores 100% *by definition* (the reference set is Snyk's own output).
+
+No contradiction opened — nothing conflicts with a supported claim.
+
+**Main task — T3 on `ioc-extraction-reliability` / `ctr-0001`.** I executed the primary resolution path and **left the contradiction open**, which I judge correct.
+
+- **The recall number is not recoverable** — src-0007's model outputs are unpublished.
+- **But the question behind it is answered better than a number would have:** the released evaluator computes recall in the same function as precision and prints it on the next line. The omission is a reporting choice, not a measurement limit.
+- **The METRIC confound is now eliminated** — cycle 18's arithmetic (reconciliation needs recall 0.09–0.15) plus a newly recovered Section 4.3 sentence where the authors call IoC extraction *"relatively robust, although improvements in recall… remain necessary"*. Entered as a new `supported` resolution.
+- **Why not close it:** eliminating a rival reading isn't demonstrating the survivor; the corpus confound is untouched; and the system argument's anchor got *weaker* — Table 4's "Vanilla LLMs" caption sits over two fine-tuned columns, so "vanilla" must mean *unscaffolded*, a reading the paper never states. Nine cycles treated an inference as a quotation.
+- **New obstacle nobody had noticed:** the evaluator matches by two-directional substring containment, not strict equality, and the ground truth isn't stated to be exhaustive. Either could make the two figures incommensurable regardless of recall.
+
+Added one source (src-0017, of 5 permitted). Discharged carry-forward [19] and [25] as a by-product of a single bundled arXiv fetch — Table 4 is now pulled whole, and the triage asymmetry that carries another issue's entire score is table-verified for the first time.
+
+Sandbox notes for future cycles: `gh` is refused outright; `cat >>` heredoc and the Grep tool work where `awk` and Bash `grep -n` don't; OpenReview is unreachable behind a bot challenge.
