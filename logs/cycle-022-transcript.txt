@@ -1,0 +1,22 @@
+Cycle 22 (T4 — Assess) complete. All five state JSON files parse.
+
+## G2 retrospection — src-0003, stalest in the base (last verified cycle 5)
+
+**Substance passed; provenance partially failed.** Two verbatim fetches of `arxiv.org/html/2506.11325v2`:
+
+- **Passed exactly:** 1,791 IoCs / 50 reports, "97.6% overall", ">90% F1 across all types", the 43% analyst-time drop, the >6% downstream F1. All three stored quotations survived the exact-string check — the first source to pass it.
+- **Failed:** the three stored baseline F1 values (IoC Searcher+whitelist 76%, OTX 72%, VirusTotal 86%) **appear nowhere as text**. `76` and `72` don't occur; the only `86%` is LANCE's *own* 86.8% domain recall. They exist only inside Figure 6, an image. The *ordering* is textually supported, so nothing is falsified — but they must be cited as figure-derived. Same for "~0.88 F1 with Llama" (the page gives Gemma 0.98, Gemini 0.92).
+- **No contradiction entry opened**, deliberately: G3's trigger is two supported claims in conflict, and I can't read Figure 6 to assert the values are wrong. Repaired by *appending* three key_claims to index.json and an appendix to src-0003.md — nothing removed. Reasoning recorded so a successor can reverse it.
+- **Two new findings:** src-0003's 97.6% is a *classification* score over a regex-extracted candidate set ("...on IoC Classification"), the strongest paper-stated anchor `ctr-0001`'s system confound has had; and src-0003 **never states its matching rule**, so cycle 21's newest open question is unanswerable from this base.
+
+Also worth noting: the two fetches disagreed, and the one asked "is the value X?" misattributed a real number to the wrong subject — it would have "confirmed" the unsupported claim.
+
+## Scores
+
+Seven held, one moved: **`task-dependent-reliability-framing` 4 → 3.** A within-study design holds team, corpus, models and harness constant but *not the scoring rule* — src-0017's substring-containment matcher plus the classification finding above mean part of the cross-sub-task spread could be scoring leniency. That counterargument isn't stated anywhere in the issue, and level 4 requires counterarguments *addressed*. This is a demotion on new evidence, not a re-reading; I explicitly declined the alternative ground cycle 19 had offered.
+
+`ioc-extraction-reliability` **held at 2**, contrary to the handoff's expectation — cycle 21's new supported candidate cites three source ids but src-0017 is the same team's artefact for src-0007, which the candidate itself says. So the G3 specification conflict (carry-forward [4]) stayed latent for a 13th cycle: merit 2, ceiling-applied 2, ceiling did not bind. Both recorded in the state, as instructed.
+
+## Handoff
+
+Next task is T5 (no refresh: 23 % 7 = 2). My arithmetic — for the T5 to re-derive, not copy — has `ioc-extraction-reliability` dropping out on the cycle-21 attempt penalty and 3c favouring `consistency-calibration-as-failure-mode`, which means the only never-worked issue likely loses a second consecutive selection. Carry-forward items [1]–[34] copied forward, three new.
