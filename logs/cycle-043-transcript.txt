@@ -1,0 +1,21 @@
+Cycle 43 complete. All state files valid, all four new source files present and indexed.
+
+## T1 Collect — 4 sources added (5 permitted)
+
+**The headline result — `open_questions[3]` answered, in the negative, by evidence.** The CTIBench artefact (`src-0019`) is released and ships `data/cti-ate.tsv`, but `evaluation/evaluation.ipynb` — the only scorer file — covers **four tasks and contains no CTI-ATE scorer and no F1 computation at all**. Confirmed against a second mirror under a different owner carrying the byte-identical 12,961-byte notebook, so rule (v) is discharged rather than assumed. The CTI-ATE correctness rule is unrecoverable from paper *and* code, and Micro-vs-Macro stays unsettled. The route four successive T4s named as the way out of that leg is now **closed by evidence rather than merely untried**.
+
+**Two new independent papers.** `src-0020` (best micro-F1 **0.22**, seven open-source LLMs, parent-level) and `src-0021` TTPrint — **the first source here evaluating ATT&CK mapping on 2026-era frontier models** (Claude Sonnet 4.6, Gemini 2.5 Flash, GPT-4o, Qwen 3 235B, DeepSeek v3.2), with metric aggregation and label granularity both stated verbatim. Together they supply the base's first inter-annotator agreement figures for ATT&CK labelling: **κ = 0.68, 0.76, 0.74** from two independent teams. That *advances* the 22-cycle human-baseline question but does not discharge it — an agreement statistic is not an accuracy baseline, and I said so in the state rather than letting it read as closed.
+
+**`src-0022`** is the curl/HackerOne closure from Stenberg's own post, overdue by eight cycles. I refused to enter two widely-reported numbers (the "~20% AI-generated" figure and the January report counts) because neither is in the primary source — they're recorded as prohibited-until-primary-sourced.
+
+## G2 — failed, `ctr-0014` opened
+
+Re-checking **src-0003** (stalest, cycle 22) found a stored *correction* is partly false — the second instance of that shape. Cycle 22 claimed VirusTotal-threshold-1's 86% F1 was figure-only; two independent renderings both return it verbatim in prose in §5.1.1.
+
+I scoped it narrowly: **only the 86% is refuted.** The 76%/72% claims stay unverified *in both directions*, because both renderings truncated (rule xvi voids their ABSENTs) — and one returned a **fabricated PRESENT**, quoting a sentence containing "9.2%" as containing "76%". Catching that is the only reason this didn't become an over-claim. Also recorded for the first time in 42 cycles: src-0003 is an unreviewed preprint with no venue, which matters since its 97.6% is the base's highest number and one side of ctr-0001.
+
+## What I did not do
+
+The fifth source slot went unspent — the G2 turned into a multi-rendering investigation. The **src-0017 triage scorer** and a **second ECE/Brier calibration source** were not collected; both are T1-only work, and since the next T1 isn't scheduled, I flagged that as a real starvation risk compounding carry-forward [55]. Also uncaptured: src-0021's per-backbone bare-LLM baselines (without them, its 76.48%/87.39% are scaffold scores that would reproduce the exact ctr-0001 system-vs-model confound if compared to src-0002 or src-0007).
+
+Next task queued: **T2 (structure)**, first since cycle 16 — update the target issue's now-stale open_questions, and split `attribution-confident-wrong-gap`, which carry-forward [45] has requested since cycle 25.
