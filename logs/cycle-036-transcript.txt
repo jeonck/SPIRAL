@@ -1,0 +1,19 @@
+Cycle 36 (T4 — Assess) complete. All state files validate.
+
+## What I did
+
+**G2 retrospection first** — re-verified `src-0014` (PromptAudit), the stalest source in the base (last checked cycle 19) and one whose provenance label had never been checked. **Verdict: CLEAN.** All four stored F1 figures and all eight A-CoT recall-drop figures reproduce verbatim; provenance confirmed at source for the first time (v1 only, 22 May 2026, no `Comments:`, no journal reference, no venue anywhere, filed cs.LG not cs.CR). New: the five coverage percentages are now **anchored to Table 2** — they are exactly `100 −` its self-consistency abstention cells for all five models.
+
+The useful part was a near-miss. The first fetch returned a *summarised* claim that Table 2's percentages "refer to abstention rates … not a separate coverage column" — the metric-identity defect shape that produced `ctr-0007` and `ctr-0008`. A verbatim table pull disproved it. Rule (ix) in this project has always said a summarised PRESENT is untrustworthy; this adds the direction — **a summary can manufacture a defect, not only hide one**, and a false contradiction is more expensive than a missed one because it gets inherited. Filed as carry-forward [60].
+
+**Main task** — scored all eight issues. **No score moved**: `institutional-incident-real-world-impact` 3, the other seven 2. `assessed_cycle` 36 on all entries, `last_assessed_cycle` 36.
+
+**`ctr-0010` step (i) discharged.** Replaced the mis-scoped "0.09–0.15 reconciles src-0003 with src-0007" sentence in place (`scores.json` is not append-only-protected), keeping the superseded wording quoted so the correction is auditable. I re-derived the entailment rather than copying it: `dF1/dR = 2P²/(P+R)² > 0`, so `F1 ≤ 2P/(P+1)`; `2P/(P+1) ≥ 0.976` gives `1.024P ≥ 0.976`, i.e. `P ≥ 0.953125`. Both margins reproduce (0.069, 0.129). The 0.09–0.15 figure is retained with its true scope named — a within-src-0007 IoC-versus-TTP crossover.
+
+**Two overstatements corrected unprompted.** Cycle 35 established the one-directional IoC matcher's bias is asymmetric with *unknown net sign*; two rationales still said "the confound's sign is known". Restated in both. Neither score moved — the level-3 bar turns on independent-source support, which is untouched, and weakening an objection doesn't restore a level.
+
+**Honest summary of `ioc`:** cycle 35's work made it better *understood*, not better *supported*. I considered and rejected a new argument for 3 (candidate 4's entailment does cite two genuinely independent sources) — it's an eliminative claim that answers no part of the issue's titular question.
+
+**G3:** ceiling applied, subtraction refused, ceiling bound on none of the four contradicted issues. Carry-forward [4], twenty-seventh cycle, still awaiting a human.
+
+Queue set to T5 (select) for cycle 37, with the starvation proof passed on in full — `automated-triage-under-refusal` has now lost seven consecutive selections and I verified against the graph (not the tracker) that its two blocked items are genuinely still undone.
