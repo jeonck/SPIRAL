@@ -1,0 +1,27 @@
+Cycle 37 (T5 — Select) is complete. All state edits validated with `jq`.
+
+## Selection
+
+Seven of eight issues sit at score 2, so the tie-break *was* the decision. I read `prompts/t5_select.md` at source and found the handoff had **omitted tie-break (a) entirely** — it reported only the attempt penalty and `created_cycle`, but the prompt specifies three tie-breaks in order: (a) upstream first, (b) attempt penalty, (c) older `created_cycle`. Tie-break (a) eliminated three of the seven.
+
+**Selected: `consistency-calibration-as-failure-mode`** — survives (a) as the most upstream node (2 direct dependents, 3 transitive), carries no attempt in the last 5 cycles, oldest `created_cycle`. Same winner under both orderings of (a)/(b) and both attempt-window conventions. Full ranking table is in the log. `37 % 7 ≠ 0`, so the next task is a T3, not a T1.
+
+A schema trap worth flagging: the prompt names the field `depend_on`; the graph uses `depends_on`. A jq projection written from the prompt returns `null` for every issue and makes tie-break (a) silently vanish. Filed as new carry-forward [63].
+
+## G2 retrospection — src-0015 (OpenSec), stalest source, provenance never checked
+
+**PASS.** All six stored quotations and all four EGAR cells reproduce verbatim against `/html/v3`. Every provenance label confirmed at source for the first time — the "weakest-provenance source in this base" label is now verified rather than asserted.
+
+**New finding: three arXiv versions, and the results changed between them.** v1 (28 Jan 2026) reports 90–97% false-positive rates and Sonnet at 85%/72%; v3 (6 Feb) reports 82.5%/57.5%/65% and Sonnet at 62.5%/45%. v1 has **no EGAR metric at all** — the whole of `key_claims[2]` describes something introduced after v1. The base stores v3 throughout, so nothing is wrong; the record was incomplete. No contradiction opened: these are additions, not corrections.
+
+A `/html/…v1` fetch also asserted a v1 "95% Wilson CIs" sentence that would have contradicted the stored "no confidence intervals." It was a **summarised** read and contradicted the verbatim v1 abstract on seed-pool size, so I refused it entry and fenced it as NOT-ENTERED rather than filing a contradiction on it.
+
+**By-product: carry-forward [27] discharged** after 17 cycles. Pulling the whole table got src-0015's Reward column (3.07 / 2.37 / 2.61 / 3.45) plus a `Threshold` column nobody knew existed — three models are classified "Part. Cal.", not the one the abstract names. It sat blocked because the tracker assumed it needed a graph edit on a starved issue; its source-fact half was appendable by any cycle.
+
+## Starvation finding, refined
+
+`automated-triage-under-refusal` lost again — but it survives (a) and (b) cleanly and dies **solely** at `created_cycle` 16 vs 2. I found no discretion in the prompt and invented none. Cycle 36's outputs disagree with themselves on the running count of lost selections (handoff says six, its own carry-forward [3] says seven); I did not adjudicate. Verifiable: `attempts: []` in its twenty-first cycle.
+
+## Files changed
+
+`state/knowledge/index.json` (3 key_claims appended to src-0015), `state/knowledge/src-0015.md`, `state/queue/next_task.json` (T3 targeting the selected issue, first action named: resolve `ctr-0003`), `state/queue/last_completed_task.txt`, `logs/cycle-037.md` (all 61 carry-forward items copied forward verbatim with inline updates, plus new [62]–[64]). The issue graph and `scores.json` are untouched — a T5 has no standing over them.
