@@ -1,1 +1,1 @@
-T3 aborted mid-cycle, rc=1 (attempt bumped)
+T3 investigate

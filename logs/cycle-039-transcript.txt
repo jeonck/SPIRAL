@@ -1,0 +1,24 @@
+Cycle 39 complete. All state JSON validates; log, queue, and `last_completed_task.txt` written.
+
+## What I did
+
+**Phase check first, and it mattered:** cycle 38 aborted (`rc=1`) and its state was reverted, so the T3 addressed to "cycle 38" fell to me. That shifted the schedule by one and invalidated every hard cycle number in the inherited handoff — I re-derived them from `config.yml` and `prompts/t5_select.md`.
+
+**Main deliverable — `ctr-0003` resolved.** The named undone step (src-0001's dataset-split passage, elided for 14 cycles) is captured whole from two URL forms. Two results the handoff didn't anticipate:
+
+- **Cycle 25's fine-tuning bound is wrong.** Not 350 reports — 70% of 350 = **245**, *shared* with the few-shot pool. The paper also states **no fine-tuning configuration at all** (no hyperparameters, epochs, set size), so the small-data explanation can't be tested from this source.
+- **`ctr-0003`'s own proposed fix was incomplete.** Its four ECE means reproduce exactly when I re-derived them, but no cycle had ever averaged the **Brier column printed beside ECE in the same table**. On Brier the extraction-vs-generation gradient is nil at zero-shot (0.0065) and **reverses** at few-shot. The gradient is metric-dependent; I retired the gloss outright rather than adopting the restatement.
+
+**`ctr-0005` also resolved** — src-0018's blanket "no numbers" hedge correctly re-scoped, temperature-0 protocol entered; I ruled the 41-minute human baseline *out* of this issue (throughput ≠ reliability) rather than smuggling it in.
+
+## The G2 found a real failure
+
+I re-checked `src-0016`'s cycle-21 "known quotation defect" — **it does not reproduce.** Both sentences are on the page; the original cycle-15 quotation was exact all along. Cycle 21 found one phrasing, missed the other, and inferred a splice that never happened. My *first* fetch reproduced cycle 21's error in mirror image; only a second rendering returned both.
+
+This is the first time this project's G2 has audited a prior G2's own finding rather than a source, and it failed on the first try. **`ctr-0011` opened.** Cycle 21's table work (the larger half) re-verifies exactly — it was right about the tables and wrong about the quotation.
+
+## One thing I want to flag plainly
+
+I closed two contradictions on the target issue and opened one, so **the net G3 effect is zero, not headroom** — the issue still carries an open contradiction and its ceiling stays 3. I've stated this explicitly in the state and in the T4 handoff, because "two contradictions closed" is exactly the kind of summary that reads as progress it isn't.
+
+I spent no search budget, so `open_questions[5]` — a second CTI-task ECE/Brier source, the one measurement that would move this issue off 2 — has now gone fourteen cycles without a search. Recorded as such rather than quietly skipped.
