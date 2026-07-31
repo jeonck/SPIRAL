@@ -1,0 +1,22 @@
+Cycle 41 (T4 — Assess) complete. All state files validate.
+
+## What I did
+
+**Phase check first.** Cycle 40 was a T4 that aborted (rc=1) and had its entire `state/` output reverted — its 1,218-line log survives in git, but `scores.json` still read `last_assessed_cycle: 36` and `graph.json` had no `ctr-0012`. I treated that log as a prior cycle's *claim*, not as state, and re-derived everything from source.
+
+**G2 retrospection — `src-0004` (heise/ENISA), the source that had never been checked.** The source **passes** on every number and quotation stored. Three defects are in *this base's account* of it → **`ctr-0012` opened**, the first contradiction ever filed against the highest-scored issue:
+
+1. **Omitted subordinate clause** (material): the article reads *"admitted the errors … speaking of 'deficiencies' for which it takes responsibility."* That clause appears nowhere in the state — every rendering keeps the two deflecting phrases and drops the admission in the same sentence. New defect shape, eleventh in the class.
+2. Report titles attributed to src-0004 that it never names (confirmed ABSENT by three reads).
+3. The APT29 fingerprint is a **fabricated hyperlink**, not a prose attribution — a *stronger* finding than the state recorded.
+
+Two by-products: the canonical URL now serves a paywall teaser (`?seite=all` works; the validator can't catch this since it checks liveness for new sources only), and a fetch that refuses whole-body reproduction will still return whole sentences under a PRESENT/ABSENT verification prompt — recorded as rule (xv).
+
+**All eight issues scored, no score moved:** seven at 2, one at 3. Rationale blocks appended, nothing rewritten.
+
+## Two findings that matter beyond this cycle
+
+- **The next T1 is cycle 43, not cycle 50 or 57.** Every prior handoff and rationale had it wrong. Cycle 40's abort shifted the phase so the T5 cycles are now 42, 45, 48 …, and 42 % 7 == 0, firing the collect-refresh rule. Six of eight issues have a stated route to a 3 that is a *collection* problem — live for the first time since cycle 22.
+- **The G3 gate is load-bearing for the first time in 41 cycles.** With `ctr-0012` open and the issue at 3, it sits exactly at the ceiling; any T4 raising it to 4 will fail the validator. I also settled one sub-question of carry-forward [4] at source: `validate_state.py` line 146 is a set comprehension over `issue_id`, so the enforced gate is **per-issue by construction**. The subtraction-vs-ceiling conflict itself is untouched — 32nd cycle awaiting a human.
+
+Queue written for the cycle-42 T5 (with the refresh-rule derivation in capitals), `last_completed_task.txt` set to `T4 assess`, and `logs/cycle-041.md` written with the full carry-forward chain copied mechanically via `sed`.

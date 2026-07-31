@@ -1,1 +1,1 @@
-T4 aborted mid-cycle, rc=1 (attempt bumped)
+T4 assess
