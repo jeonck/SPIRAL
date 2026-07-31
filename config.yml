@@ -10,7 +10,12 @@ runtime:
   cli_version: "2.1.220"
 
 budget:
-  max_turns: 50          # claude -p --max-turns per cycle
+  # Raised 50 -> 75 on 2026-07-31. At 50, three of twelve cycles that night died on the
+  # turn budget (cycles 38/40/44), burning 34 of 174 min and producing nothing: an
+  # aborted cycle is rolled back and its successor restarts from scratch. Trading a
+  # longer cycle for a completed one is the better side of that exchange. Watch the
+  # cycles/night count — this is a throughput/depth tradeoff, not a free win.
+  max_turns: 75          # claude -p --max-turns per cycle
   max_new_sources: 5     # T1: max sources added per collect cycle
 
 schedule:

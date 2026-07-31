@@ -80,8 +80,9 @@ is ready to run.
 6. **Failure semantics**: on validator failure → revert `state/`, keep only the logs,
    increment attempt_count → the next cron retries the same task (at-least-once). The
    CI job is not marked as failed (the loop is self-healing).
-7. **Budget caps**: `--max-turns 50`, a 30-minute job timeout, at most 5 new sources
-   per cycle.
+7. **Budget caps**: `--max-turns 75` (raised from 50 on 2026-07-31 after three of that
+   night's twelve cycles died on the budget), a 360-minute job timeout covering the
+   pre-window hold plus the 3 h window, at most 5 new sources per cycle.
 
 ## Evaluation pipeline (added in v2, 2026-07-26)
 

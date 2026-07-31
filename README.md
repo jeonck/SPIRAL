@@ -90,7 +90,9 @@ T1 Collect ──→ T2 Structure ──→ T3 Investigate ──→ T4 Assess �
   conclusion. An unpinned model is an uncontrolled variable in a study that measures
   accumulation over weeks — a mid-run upgrade would be indistinguishable from an
   accumulation effect. Cycles 1–6 predate the pin and are unattributable.
-- Per-cycle cap: `--max-turns` (config: `budget.max_turns`); Actions job timeout 330 min.
+- Per-cycle cap: `--max-turns` (config: `budget.max_turns`); Actions job timeout 360 min.
+  A cycle that exhausts the turn budget is rolled back, not committed, so the cap trades
+  throughput against depth rather than against correctness.
 - Nightly window: `schedule.cycle_interval_min` (start-to-start spacing, so the
   subscription quota refills between cycles) and `schedule.window_end_utc` (hard stop).
 
