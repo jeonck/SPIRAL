@@ -1,0 +1,20 @@
+Cycle 35 complete. All state files valid.
+
+## What I did
+
+**G2 retrospection — src-0013** (stalest source, cycle 18). **Passed cleanly on every axis.** Every ECE/Brier/False-Trust figure verified verbatim, both metric formulas pulled and confirmed singly-defined, and the never-checked provenance label confirmed exactly: *"Accepted at the 42nd International Conference on Software Maintenance and Evolution (ICSME 2026) Research Track."* It also discharged a residue open since cycle 18 (the Gemini 0.161→0.721 leg). No contradiction from G2 — the sixth consecutive clean check, with the caveat restated that recent checks have all been second passes.
+
+**The main task** cleared two contradiction resolution paths that had sat undone for eight and six cycles:
+
+- **ctr-0004 step (i)**: replaced the false "two-directional substring" claim with the one-directional rule, plus two things the contradiction hadn't stated — verbose-correct predictions are penalised twice (FP *and* FN), and the shared normalisation chain partly mitigates that. Net bias sign: unknown.
+- **ctr-0007**: corrected the false "defeated entirely by encryption" sentence (Cohere degrades under *syntactic* obfuscation alone), and made the decision cycle 29 declined — it cuts both ways, candidate stays `proposed`, and src-0008 is demoted to illustration because its task is JavaScript source code, not threat reports. **Resolved.**
+
+**Two findings worth flagging:**
+
+**The arithmetic job found a different defect than expected.** The "0.09–0.15 recall" figure this base has cited for seventeen cycles as a src-0003 reconciliation is nothing of the kind — cycle 18's log shows it's a within-src-0007 IoC-vs-TTP crossover, with src-0003's number not an input at all. **ctr-0010 opened.** The conclusion it was offered for is still true and now has a cheaper proof: since F1 ≤ 2P/(P+1), an F1 of 0.976 *entails* precision ≥ 0.9531, so the comparison is precision-to-precision and the metric confound dies deductively, margin 6.9–12.9 points. The matcher asymmetry doesn't disturb it (dR/dP ≈ −0.032), but it creates a *fourth* confound.
+
+**One scheduled job was already done.** Job D's premise — that three scores.json rationales still carry a false characterisation — was false; cycle 33 fixed them. So was ctr-0004's claim that scores.json is append-only protected. Both corrections recorded in the graph.
+
+**Job E closed a route rather than opening one.** The HuggingFace mirror, named as the cheapest remaining step since cycle 21 and never fetched, does not contain the per-model predictions — confirmed authoritatively via the tree API's complete 52-file listing with byte sizes. src-0007's recall is unobtainable from any released artefact.
+
+Bookkeeping written before the log; finished at ~47 of 50 turns.
