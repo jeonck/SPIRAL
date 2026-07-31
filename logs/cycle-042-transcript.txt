@@ -1,0 +1,23 @@
+Cycle 42 complete. All state files valid; bookkeeping written in the mandated order.
+
+## What I did
+
+**Phase verified at source first.** `last_completed_task.txt` read `T4 assess`, `scores.json` read `last_assessed_cycle: 41`, and `git show --stat` confirmed cycle 41's T4 actually landed (not another abort like 38/40). I was the T5.
+
+**G2 retrospection — the conclusion FAILED, and `ctr-0013` is open.** I audited the stalest source, `src-0006` (last checked cycle 18), whose never-read per-task scoring definitions five prior cycles had flagged as the highest-value unfetched item in the project. Result is genuinely mixed:
+
+- **In the state's favour:** the feared assumption is false — all nine F1 rows *do* share one scoring form (binary per-item decisions). This is the **first time** in the project that reading a scoring rule confirmed rather than broke a state assumption, so the prior repeated in five rationales ("every single time... it has differed") is now seven-of-eight.
+- **Against it:** "TTP Extraction" is defined as *"Binary decision per candidate technique ID: is T#### evidenced (yes/no)"* — it is **not extraction**, it's verification of supplied candidates. So the commensurable subset doesn't vary the extraction-vs-reasoning variable at all, which voids route 1's positive argument. Since route 2 was already void under `ctr-0008`, both routes on that issue's only supported candidate are now defective *in the same way*.
+
+**A false ABSENT nearly buried this.** Two fetches returned clean ABSENT verdicts — one while admitting `[Content truncated due to length...]`. Both were truncation artefacts; only the shorter **v1** rendering reaches the appendix. That's new methodological rule (xvi). I also recorded, for the first time in 36 cycles, that src-0006 is at **v5** (unreviewed preprint) with no cycle ever noting which version its figures came from.
+
+**Selection — and the policy ran out.** Base priority is degenerate (seven of eight issues at 2), so the tie-break is the whole selector. After applying all three tie-breaks, `ttp-attack-mapping-reliability` and `ioc-extraction-reliability` were **exactly tied on every criterion** — the ladder has no fourth rule. I broke it by older-last-attempt-first, **labelled explicitly as an extension I invented**, and logged it as new policy gap [75] for a human. Full ranking table is in the log.
+
+**Refresh rule fired** (42 % 7 == 0), so cycle 43 is a **T1 — the first in 21 cycles.**
+
+Two things worth flagging for you:
+
+1. `automated-triage-under-refusal` lost an **eighth consecutive selection** to a structural exclusion cycle 34 proved is permanent. This was the cycle where it cost most: a T1 is the only task type that can collect the curl/HackerOne source, which eight cycles have called the project's most valuable uncollected item. I applied the policy as written and did **not** invent an anti-starvation rule — but I listed both starved items as explicit lower-priority collection targets in the T1 instructions. Items [30] and [55] still need a human.
+2. I caught a numbering collision late — my new carry-forward items initially reused [56]–[60], which the inherited list already occupies (it runs to [74]). Renumbered to [75]–[79] in both the log and the handoff.
+
+I did not touch `scores.json` or `state/knowledge/` — a T5 has no standing to rescore or collect, and `ctr-0013`'s four repair steps are passed on undone.
