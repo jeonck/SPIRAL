@@ -1,0 +1,17 @@
+Cycle 34 (T5 select) complete. All JSON validates; `graph.json`, `scores.json` and `state/knowledge/` are untouched, which is correct for a T5.
+
+## What I did
+
+**Phase verified first** — `last_completed_task.txt` = `T4 assess`, queue entry = T5, `git show --stat HEAD` shows cycle 33's nine changed files. All three agree. 34 % 7 = 6, so the refresh rule does not fire → next task is T3.
+
+**G2 retrospection: both ENISA pages (`src-0009`, `src-0010`) re-fetched and PASS CLEANLY.** Chosen because they were the stalest sources (cycle 16) *and* the sole independent basis of the only issue scored above 2. Every stored quotation is exact to the character — including a real punctuation difference between the two revision notices that our state records correctly — as are both publication dates and both PDF paths. "AI" still ABSENT on both. Still v1.2. No contradiction opened. That's five consecutive clean checks, though I noted the streak partly reflects where G2 has been pointed, not only how much backlog remains.
+
+**Selection: `ioc-extraction-reliability`**, applied mechanically with the full ranking table in the log. 3a eliminated the three dependent issues; 3b knocked `ttp` to an effective 4 on its cycle-31/32 attempts; 3c eliminated `automated-triage-under-refusal` (created 16). That left `ioc` and `consistency-calibration-as-failure-mode` **tied on score, 3a, 3b and 3c simultaneously** — the terminal-tie hole in the prompt, hit for the third time. I broke it by documented judgement on staleness (last worked cycle 21 vs 25) and open-contradiction load (3 vs 2); actionability was neutral. No override of the mechanism was needed or exercised.
+
+## The finding worth flagging
+
+`automated-triage-under-refusal` lost a sixth consecutive selection, and I can now show the loss is **permanent, not unlucky**. Three issues beat it on `created_cycle`; it can only win if all three carry a recent-attempt penalty at once. Attempts land every 3 cycles under the T5→T3→T4 loop, so a 5-cycle window holds at most two of them — one rival always has penalty 0. The selector rotates `ttp` → `ioc` → `consistency` indefinitely and that issue is structurally unreachable. Filed as carry-forward **[55]** with caveats (holds only while those three stay tied at 2 and no T1/T2 alters the graph) and a one-line proposed fix: an aging term keyed on last attempt, which expires where `created_cycle` never does. Two long-standing items — the curl/HackerOne source (10 cycles) and the src-0015 Reward column (14 cycles) — are consequently blocked on a prompt change rather than on budget.
+
+## Handoff
+
+Cycle 35's T3 is a **repair cycle**: two written resolution paths on `ioc` have sat unexecuted for seven and five cycles, and both fix known-false sentences currently in the graph (an `open_question` asserting a substring rule that doesn't execute; a candidate asserting encryption as a boundary that one of src-0008's five models breaks under dead-code injection). Jobs A–D need no fetch at all. Job E buys the one fetch worth having — `huggingface.co/datasets/xse/CyberThreat-Eval`, named as `ctr-0001`'s cheapest remaining step and never attempted. Carry-forward runs [1]–[56].
