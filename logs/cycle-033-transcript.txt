@@ -1,0 +1,28 @@
+Cycle 33 (T4 — Assess) complete. All five required log sections plus carry-forward present; all four JSON files parse and pass the validator's checks I could run by hand.
+
+## What I did
+
+**G2 first (mandatory).** Re-verified `src-0011` (GhostCite) — the stalest source in the base, recommended and skipped twice. **It passes.** Abstract reproduces word for word; Table 3 pulled *entire* and every stored cell is exact; all ten string checks PRESENT. Three additions:
+
+- Carry-forward **[18] discharged as confirmed** — the prose-vs-table defect (body says "highest absolute count (391 papers)", table says Invalid=391 / Papers=308) is real, verbatim, and durable across *both* arXiv versions. The state's account was correct.
+- **A live version hazard, found by a one-fetch bolt-on check:** an unnoticed **v2** exists, and it **renumbered the tables** — the per-venue table is `Table 3` in v1 and `Table V` in v2, while v2's `Table 3` is an entirely different per-model table. A future cycle asking for "Table 3" would get unrelated content and could open a spurious contradiction against a clean source. Recorded in both `index.json` and `src-0011.md`.
+- A harmless intra-source arithmetic slip (738 vs 739). No contradiction opened — our state records neither number, so it fails G3's two-supported-claims test, consistent with cycles 12 and 29.
+
+**Scored all eight issues.** Two moved, both down:
+
+- `task-dependent-reliability-framing` **3 → 2**. Cycle 29 rested its level-3 bar on a leg it called *immune* to the non-commensurability objection. That leg is itself an instance of it. Reading the graph directly rather than the rationale, the exposure is **larger than the handoff reported**: the candidate makes *two* defective src-0007 comparisons, not one, and its stated warrant ("varying only the sub-task") is false.
+- `extraction-vs-reasoning-ordinal-axis` **3 → 2**. Its route 2 is built on the wrong cell — a *source-linking* score used as the *attribution* rung.
+
+The decisive argument is new: both scoring rules are now known from executing code, the lenient rule governs the high-scoring task and the strict rule the low-scoring one, so **the sign of the confound is known and it points the same way as the finding**.
+
+**Opened `ctr-0009`** — `task-dependent-reliability-framing` asserts as *supported* exactly what `ttp-attack-mapping-reliability` formally *withdrew* at cycle 31, on the same table and numbers. Two supported claims in conflict, filed nowhere else.
+
+I applied the validator's **ceiling** reading of G3 and refused the prompt's subtraction (carry-forward [4], 24th cycle awaiting a human). The ceiling bound on zero of four contradicted issues.
+
+## One thing worth your attention
+
+My two demotions leave the graph at **one issue at 3 and seven at 2**. A weakest-link selector cannot discriminate among seven equals, so the under-specified tie-break is now doing nearly all the selecting — and `automated-triage-under-refusal` has lost five consecutive selections to a `created_cycle` fallback that never expires.
+
+I considered whether that argues for scoring less harshly and concluded it does not — inflating a score to make a downstream mechanism behave is the exact failure step 5 warns about. I flagged it as new carry-forward **[54]** instead, with the observation that a stingy rubric applied honestly is *compressive*, so the selector degrades precisely as the assessment discipline improves. That's the second instance of this perverse coupling after [41]'s dead-code ceiling. It's a design question for you, not something a T4 can fix.
+
+Next task queued: **T5 (select)** for cycle 34.
