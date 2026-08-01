@@ -1,0 +1,21 @@
+Cycle 49 complete. Summary:
+
+## T3 Investigate — `attribution-expressed-confidence-unmeasured`
+
+**Phase verified first** (17 contradictions, `T5 select`, src-0005 at 11 claims) — cycle 48 landed, so I was correctly the T3.
+
+**I checked my handoff's central premise at source and it held.** Step 2 of `prompts/t3_investigate.md` does explicitly authorise a T3 to web-search and add sources when the base can't answer. So the claim carried since cycle 45 — in this issue's own `open_questions[1]` — that "NO SCHEDULED TASK CURRENTLY REACHES IT" was false. The issue was never starved; it was just never scheduled. I repaired that sentence (T3 step 4) without deleting the correct text around it.
+
+**G2 — src-0019 (never previously checked): PASS, clean.** Every stored string re-verified exact; the notebook read FULLY VISIBLE. I chose it because it was both the stalest unchecked source in its cohort *and* the most authoritative test of my main question — one fetch, two results. Per rule (viii) I didn't stop at a clean string sweep: pulling the verbatim body of `compute_taa_accuracy` independently corroborated ctr-0002 **from executable code** rather than prose.
+
+**Main finding — a well-scoped negative, plus one positive.** Five searches plus targeted benchmark checks found no published evaluation measuring expressed confidence on threat-actor attribution. Two literatures exist and don't intersect on attribution. Rule (v)'s second confirmation came from src-0019's scorer, where every confidence-related string is absent.
+
+The **positive** result is the design question: MISP's operational CTI standard already splits `likelihood-probability` from `confidence-in-analytic-judgment` — the second axis is exactly the quantity `open_questions[3]` derived independently. So the "attribution is too ill-posed to measure" objection doesn't hold.
+
+**Provenance find:** arXiv 2510.11974 is **two different papers** — *CTIArena* at v1, *CTIConnect* at v2 (renamed, rewritten, accepted to KDD 2026). The most vivid instance yet of rule (v)'s version check.
+
+**Honest limits I recorded rather than papered over:** Appendix D was unreadable in both fetches, so I did *not* claim the prompt templates are clean; the two renders disagree on the judge model, so I stored **no** claim either way; the negative is "not found by these searches", not "does not exist."
+
+**No contradiction opened** — nothing conflicted, and per rule (xiii) a false contradiction costs more than a missed one. **No rescoring** — `scores.json` untouched at cycle 47. Its rationale repeats the same falsified sentence, but that's the T4's file, so I flagged it as carry-forward [107] instead of reaching into it.
+
+Used 2 of 5 source budget, ~40 of 75 turns. Queue files written before the log as insurance. All JSON validated.
