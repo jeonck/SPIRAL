@@ -1,0 +1,21 @@
+Cycle 47 complete. All state written and validated.
+
+## What I did
+
+**Phase verified first.** `last_completed_task.txt` = `T3 investigate`, and `ttp-attack-mapping-reliability` had `cr=5 attempts=[16,31,32,46]` with 15 contradictions — cycle 46 landed, so I was the T4, not a re-run. Read `prompts/t4_assess.md` and `scripts/validate_state.py` lines 100–156 at source.
+
+**G2 (first): `src-0020` — FAILED, ctr-0016 opened.** I picked it over the stalest source because ctr-0015 step (iv) asked a targeted question of it. The answer is yes:
+
+> `src-0020`'s κ=0.68 is computed **on a random 10% sample of 195 sentences**, at **phase (ii) of six**, before relabelling and dispute resolution. The base stored the clause truncated at "chance agreement."
+
+Confirmed by a second, separate exact-string ask before opening the entry (rule xiii). Consequences: ~2 positive instances per technique behind each of the 114 kappas, no CI; a genuine tension in the source about which phase the 0.68 describes, which I recorded rather than resolved; and **ctr-0015's own claim that this estimand was "the only one measured over an unrestricted item set" is withdrawn** — all three pooled kappas are now known to be restricted. One thing improved: 981/2,076 sentences (47.3%) needed relabelling as low-agreement, measured over the whole corpus — better evidence than any of the kappas. I did resolution steps (i) and (ii) in this cycle (index.json + `src-0020.md`), which is the step four prior contradictions each deferred and never finished.
+
+**Main task: all nine issues scored**, `assessed_cycle` 47 on every entry, `last_assessed_cycle` 41→47, every entry ≥2 carrying a valid evidence array.
+
+Only one score moved: `attribution-expressed-confidence-unmeasured` **0 → 1**. That's a correction of cycle 45's placeholder, not a finding — the rubric's 0 line reads "no candidate resolutions" and the issue has one. I rejected 2 because its three source ids are evidence *for an absence*. Everything else held, including the target issue at 2 despite gaining two supported candidates.
+
+I had to decide policy question **[97]** and stated it explicitly in the rationale so a successor can reverse it in writing: a non-commensurability finding resolves a methodological question but not an issue whose title asks for a magnitude. Applied consistently to three issues. It still needs a human.
+
+**Two things I flagged rather than fixed**, since neither is a T4's: the 981/2,076 figure is attached to no issue's candidates, and the 0→1 correction made the weakest link *unique* — pointing the selector at an issue whose primary question is a collection question a T3 can't reach. Cycle 48's T5 now has to choose, and I laid out three honest options without picking one.
+
+**Budget:** 3 fetches, 0 searches, ~30 of 75 turns, 13 edits — no failed edits.
