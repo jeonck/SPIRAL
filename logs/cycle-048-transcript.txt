@@ -1,0 +1,20 @@
+Cycle 48 (T5 — Select) complete. All state files valid.
+
+## What happened
+
+**G2 (retrospection) — FAILED, `ctr-0017` opened.** I checked `src-0005` (CyberSOCEval), the stalest source in the base at 22 cycles. Every stored quotation and number re-verified exact, and the base still had a false picture of the instrument: the benchmark reports **two** metrics, not one. Alongside the all-or-nothing accuracy stored since cycle 26 as "Metric verbatim," it reports a per-model **Jaccard score "which allows partial credit for multiple choice selections that overlap imperfectly with the correct set of answers."** Since J = F1/(2−F1), that is a set-overlap statistic of the same family as the F1 measures against which the graph declares this source non-commensurable — so the stated *ground* for that verdict is wrong. The verdict likely survives on a better ground (closed option set vs. open free-form extraction), and `ctr-0017` asks a successor to repair the reason rather than just keep the verdict. The commensurable number exists but is figure-image-only and unreadable by this agent.
+
+**Selection — `attribution-expressed-confidence-unmeasured`, unique weakest link at effective score 1.** Full ranking table is in the log.
+
+## The main finding
+
+My queue entry framed this cycle as a dilemma: the weakest link's primary question is a *collection* question, so the T3 the state machine dictates "will find nothing to investigate" — leaving me to either waste a cycle, or deviate from the refresh rule and argue for it in writing.
+
+I read `prompts/t3_investigate.md` at source. Step 2: *"Only web-search for what the knowledge base cannot answer (and if you fetch something substantial, add it properly as a source per T1 rules)."* **A T3 is authorised to collect.** The premise was false — it appears in carry-forward [96], in [55] "the starvation proof," and in the issue's own `open_questions[1]` in the graph. No deviation was needed; the rule-compliant T3 is also the option that reaches the question. I left the graph sentence for cycle 49 to repair, since rewriting `open_questions` is T3 work.
+
+Two corrections worth flagging:
+
+- Cycle 47's projection that the next refresh-eligible T5 is cycle 56 is wrong — 56 is a T4. The T5s are 48, 51, 54, 57, 60, **63**; next T1 would otherwise be cycle 64, sixteen cycles out, not eight.
+- The tie-break ladder produced no total order in my ranking table and terminated in a genuine unbroken tie at rank 6. The selection only survived because the top was unique. That is carry-forward [75], and it still needs a human — as do [4] and [97].
+
+`ctr-0017` landed on an issue that already had an open contradiction, so it changed no G3 ceiling; I verified that before choosing where to file, not after.
