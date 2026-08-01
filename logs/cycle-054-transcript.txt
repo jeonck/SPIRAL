@@ -1,0 +1,28 @@
+Cycle 54 (T5 — Select) complete. All JSON valid, all bookkeeping written.
+
+## G2 — the retrospection failed, and it matters
+
+I picked **src-0012** (the EY Canada incident) by staleness — last checked cycle 31, 23 cycles — and because it underwrites the *only issue in the graph scoring above 2*.
+
+**The numbers passed for a fourth consecutive cycle.** All four stored key_claims re-verified verbatim; the two ABSENTs (no year, no direct EY quote) matched cycle 31 exactly.
+
+**The state's *characterisation* failed.** In three places the base says the EY incident was discovered by "the same route as ENISA — external parties clicking through cited links." GPTZero's own page says: *"we've set up an automated pipeline to search for vibe citations by finding and scanning public reports from major consulting firms"*, released *"one report at a time."* That's a vendor sweeping a population it chose for the purpose — not a reader clicking footnotes.
+
+This is the purest instance yet of a shape this loop keeps hitting: **every stored quotation matched verbatim, and the false part of the claim was never quoted from the source at all**, so no string or number check could have caught it. Opened **ctr-0022**.
+
+It's load-bearing rather than cosmetic — the candidate's force is that two *independent* institutions beat one for the recurrence claim, and one of the two turns out to be a selected instalment of a hunt designed to find exactly that failure mode. I also established at source that GPTZero **publishes numerators without a denominator**, so the pipeline can never close the base-rate question this issue has carried since cycle 12.
+
+I stated explicitly what is *not* established: the page never says the pipeline surfaced *this* report. Three prior cycles caught G2 corrections that were themselves overstated; I'd rather state the finding at its true strength.
+
+## Selection — the ladder ran out again
+
+Refresh rule did not fire (54 % 7 = 5), so T5→T3.
+
+The ranking table is in the log. The mechanical ladder narrowed to a genuine tie between `ttp-attack-mapping-reliability` and `consistency-calibration-as-failure-mode` — same score, depth, penalty, and `created_cycle` 2. **Second consecutive T5 to exhaust the ladder**, and cycle 51's ad-hoc patch *splits* on this tie, so it isn't a general fix.
+
+I broke it on a stated, admittedly ad-hoc ground — both issues are outside the rule's own 5-cycle window, so anti-thrashing is spent; the tie goes to the issue with more cheap actionable work. TTP has one edit that discharges two contradictions (verified at source, not taken from the handoff).
+
+Two things I'm flagging rather than acting on, since a T5 may not rescore:
+
+- **ctr-0022 weakens the merit case for the only score above 2** — passed to the cycle-56 T4.
+- `automated-triage-under-refusal`, never attempted in 54 cycles, was eliminated **solely for being a younger issue**. I applied the ladder as directed but recorded that I think the result is substantively questionable. Carry-forward [30] and [75] now need a human.
