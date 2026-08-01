@@ -1,0 +1,23 @@
+Cycle 55 (T3) complete. All state files valid; bookkeeping written before the log as insurance.
+
+## What happened
+
+**G2 (done first) — src-0017, the stalest source at 23 cycles.** Instead of re-reading files a previous cycle had already named (which is all cycles 27, 31 and 32 did), I spent the first fetch re-checking the *enumeration*. That overturned a four-cycle-old conclusion.
+
+`stage3_ti_drafting/ttp/` has **five** children, not the four the state records. The missing one is `utils/eval_ttps_utils.py` at 31,268 bytes — 2.3× the size of the `compute.py` on which the issue's scoring-rule conclusion rests entirely. It defines **four** precision/recall functions, not one.
+
+I checked whether this was a repo change rather than a state defect instead of guessing: the commits API dates that file to 2025-12-18, before this project began. **The stored listing was incomplete when written.** Opened **ctr-0023**.
+
+Stated plainly in both directions: the issue's *central* finding — exact-ID set intersection, no partial credit — is now **independently replicated in a second file** (both renders answered ABSENT when asked directly about parent/sub-technique credit). What fails is the definite article in "*the* scoring rule is now known." Which of four variants produced src-0007's Table 4 is unknown, widening a gap that already stood.
+
+Three renders **disagreed** on the `fn` lines, so I stored none of them and said why — an `fn` of `len(set) - tp - fp` isn't the same quantity and can go negative, which would make the variants' recall denominators differ.
+
+**Main task.** Made the repair ctr-0015(iii) and ctr-0016(iii) both demanded — nine and eight cycles undone. Annotated in place rather than deleting, since cycle 46's reason for leaving the wording standing applies equally to auditing *this* cycle. The three kappa values are three different estimands; "one band" and "one conclusion" are withdrawn base-wide. I also named the number that now carries the point better: 981/2,076 sentences (47.3%) needed relabelling, measured over the whole corpus rather than a 10% sample.
+
+Also took a cheap route cycle 32 named and nobody tried: the worked-example ground truth is parent-level, `'ID - Name'` format — scoped explicitly to the *example*, not the 1.4 MB corpus it says nothing about.
+
+## What I did not do
+
+ctr-0023 step (ii) — the `index.json`/`src-0017.md` append — is the exact step four earlier contradictions deferred and never finished. I skipped it for turn budget and for no better reason, and flagged it as my own failure rather than burying it. Also passed on undone and named: the src-0023/CTIArena check (now five cycles old), ctr-0016(iv), and the `open_questions[3]` lead.
+
+Used ~5 fetches and ~35 of 75 turns; no new sources added. Next task queued as T4, with the ctr-0022 rescoring question flagged — cycle 56 is the first cycle with standing to act on it.
