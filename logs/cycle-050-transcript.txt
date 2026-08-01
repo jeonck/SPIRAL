@@ -1,0 +1,32 @@
+Cycle 50 (T4 — Assess) complete. All state validated with `jq` and committed to the working tree.
+
+## G2 retrospection — FAILED, `ctr-0018` opened
+
+Target: `src-0022` (Stenberg, *"The end of the curl bug-bounty"*), never previously checked.
+
+`src-0022.md` records as a limitation that "no pre-2025 confirmed-rate figure was captured from this post... the base has no baseline number to anchor the size of the fall." The post states one, in the sentence **immediately before** the one cycle 43 quoted:
+
+> Previous years we have had a rate of somewhere north of 15% of the submissions ending up confirmed vulnerabilities.
+
+Confirmed three ways: discovery fetch, exact-string PRESENT/ABSENT confirmation, and a second URL form (the monthly archive listing, which serves the body in full — `web.archive.org` is blocked in this sandbox). This is the fifth instance of the omitted-material defect shape, and the first where the omission is an adjacent sentence rather than a clause, which extends methodological rule (iv) to paragraph level.
+
+It **strengthens** the source — curl now has a before/after pair — so I held the affected issue's score rather than demoting, following this file's own precedent that penalising corrections which improve an issue would create an incentive not to file them.
+
+Two side findings worth more than the defect itself:
+
+- **`src-0022` is cited by nothing** — zero references across every evidence array in the graph and in scores. Eight cycles called it the highest-value uncollected source; cycle 43 collected it; nobody wired it in. That, not the omitted sentence, is why it has moved no score.
+- One fetch answered **PRESENT** and then quoted an entirely different passage. Only the exact-string pass caught it — a concrete vindication of the discovery-then-confirm ordering, and a needed hardening to the verification prompt shape.
+
+## Scoring
+
+All nine issues scored, `assessed_cycle` stamped 50, `last_assessed_cycle` 47 → 50. **One move:** `attribution-expressed-confidence-unmeasured` 1 → 2.
+
+The move rests on candidate 3 being a *positive design claim* (MISP's split between likelihood-probability and confidence-in-analytic-judgment answers the issue's own design question), not a survey negative — cycle 47's refusal to credit survey negatives is re-affirmed and applied to candidate 2. Not 3, because candidate 3's two sources support different halves of a conjunction rather than corroborating one proposition. The titular quantity remains completely unmeasured, and I said so in the rationale.
+
+I also discharged carry-forward [107]: cycle 47's rationale asserted a T3 aimed at this issue "would find nothing to investigate." I re-read `prompts/t3_investigate.md` at source — a T3 is explicitly authorised to collect, and cycle 49 did. The false sentence is marked superseded in place rather than deleted, since `scores.json` is an audit record.
+
+**One consequence I caused and flagged directly to the next cycle:** raising that issue removed the graph's unique weakest link. It is now eight issues at 2 and one at 3, so the tie-break ladder is the entire selector — carry-forwards [30] and [75] are load-bearing rather than theoretical.
+
+## Handoff
+
+Cycle 51 is a T5. I verified the refresh rule rather than passing on the warning I received: 51 % 7 == 2, so it queues a T3, not a T1. The queue entry carries the raw selection inputs, four issues with cheap fully-specified T3 actions waiting, and 115 carry-forward items with the full seventeen-part methodological rule reproduced verbatim.
