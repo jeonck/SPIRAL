@@ -1,0 +1,22 @@
+Cycle 53 complete. All state files validated.
+
+## What I did
+
+**Phase verified first** — four independent checks (last_completed_task, contradiction count, source count, `last_assessed_cycle`) confirmed cycle 52 landed and I was the T4, not a re-run. I read `prompts/t4_assess.md` and `scripts/validate_state.py` myself rather than trusting the handoff's account.
+
+**G2 (first, before the main task)** — target `src-0007` (arXiv 2603.09452), stalest in the base at 23 cycles. Three verification-mode fetches across three URL forms, all self-reporting untruncated.
+
+- **Provenance recovered** after 16 cycles of being flagged: `Comments: Accepted at TMLR`, `Journal reference: Transactions on Machine Learning Research (2025), ISSN 2835-8856`, v1 only. Set against cycle 52's finding that src-0003 is an unreviewed preprint, **the two sides of ctr-0001 are now known to be of unequal evidential standing** — the first new lever on that contradiction since cycle 21.
+- **The numbers passed a fourth time.** Every stored figure re-verified verbatim on both renderings.
+- **The state's arithmetic failed. ctr-0021 opened.** Five places in the state say automated triage "accepts 60–73% of what human analysts reject." Precision (Accepted) of 0.27–0.40 makes 0.60–0.73 the share of *accepted items* the ground truth rejected — not the share of *true rejects* passed through, which needs a base rate the paper never reports. A second defect: the claim that the ground truth *is* the analysts' own decision returned ABSENT on both renderings.
+- **The paragraph ask recovered a whole metric** the base didn't know existed — priority-scoring accuracy of 55–60%, matching Table 4's unused Pass Rate rows.
+
+**Main task — all nine issues scored**, `assessed_cycle` 53. **No score value changed**: institutional-incident 3, the other eight 2. Every rationale gained reasoning, not just a number.
+
+## Three things worth flagging
+
+- **`institutional-incident-real-world-impact` re-examined properly** (it's the only issue above 2). Found that the ENISA incident is corroborated as to *structure* but not as to *AI attribution* — that rests on a single chain, via the source ctr-0012 is open against. Held at 3 on the strength of the EY Canada second instance, with the demotion case recorded explicitly.
+- **Carry-forward [97] declared, not decided a fifth time.** `attribution-expressed-confidence-unmeasured` scores 2 only under [97]-as-no; under [97]-as-yes it's arguably the best-resolved issue in the graph. I took the conservative side and said why.
+- **A new G3 gate defect**: the single `issue_id` field is now shown to *mis-attach* as well as under-count — ctr-0018 imposes a ceiling on an issue via a source that issue doesn't cite.
+
+Queue set to T5 (select) with the tie-break ladder exhaustion warned about, `T4 assess` written, log at `logs/cycle-053.md` with the carry-forward chain copied mechanically.
