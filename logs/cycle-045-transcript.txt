@@ -1,0 +1,24 @@
+Cycle 45 (T2 Structure) complete. All state files validated with `jq`.
+
+## G2 retrospection — passed, with two methodological catches
+
+Target: **src-0002** (CTIBench), chosen by staleness plus rule (xiv) — it was a stored *correction*, and the two previous rule-(xiv) checks each found a false one.
+
+**The correction re-verifies clean.** Table 1's CTI-TAA *Plausible* column confirms 86/80/74, so the cycle-28 correction of `key_claims[2]` stands. The ChatGPT-4 row and all 30 Table 1 cells match. **No contradiction opened** — the first stored correction to survive re-verification.
+
+Two catches worth more than the verification itself:
+
+- **ar5iv's unversioned render of this paper serves v2**, and answered ABSENT to four strings that are demonstrably present — while reporting itself COMPLETE. Trusting it would have manufactured a contradiction.
+- **"Verbatim" in a prompt does not bind the fetch.** Three asks produced three different renderings of one sentence's opening clause; the two variants came from *broad* asks and evaporated under a direct exact-string ask. Recording either would have entered a fabricated sentence into the base — the ctr-0014 shape.
+
+## Job 1 — `ttp-attack-mapping-reliability` open_questions (5 → 6)
+
+`[3]` **answered in the negative**: CTIBench ships no CTI-ATE scorer, so the route four T4s were waiting on is closed by evidence. I also proved the Micro-vs-Macro conflict is *unresolvable* — each string occurs exactly once, with no third mention to adjudicate. `[1]` advanced by three kappa values from two teams but **not** discharged (agreement ≠ accuracy). `[0]` advanced by src-0021, with the scaffold-vs-bare-model trap written in. `[5]` new: the four ATT&CK measurements differ on four axes at once and no two agree on all four.
+
+## Job 2 — the split (requested since cycle 25)
+
+Done, but **not the way the queue entry planned**, and this is the one thing worth flagging: the id `attribution-confident-wrong-gap` is cited from three **append-only** knowledge files, so renaming it would strand references I have no legal way to repair. So the existing issue keeps its id and all its content, is **retitled** to the error-rate leg, and the new `attribution-expressed-confidence-unmeasured` takes the confidence leg. No text moved, nothing deleted. The legacy id now misdescribes itself — filed as carry-forward [91] and recorded inside the issue.
+
+Both contradictions stayed with the error-rate leg by deliberate decision (ctr-0008 says in its own words it "supplies nothing to this issue's titular confident half"). The new issue got a scores.json entry at **0 = unexamined** — a T2 has no standing to score, and the rationale says so explicitly so the next T4 doesn't anchor on it.
+
+**Next task queued:** T3 on `ttp-attack-mapping-reliability` (refresh rule checked at source — it fires only inside T5, and 46 % 7 ≠ 0). Budget: ~60 of 75 turns, 4 fetches, 0 searches, 8 edits with zero failed anchors.
