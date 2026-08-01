@@ -1,0 +1,25 @@
+Cycle 46 complete. All edits are in the working tree; I left committing to `run_cycle.sh`, which is what stages the transcript file too.
+
+## What I did
+
+**Phase check first.** Verified cycle 45's T2 actually landed (9 issues, new issue present, correct `last_completed_task.txt`) rather than trusting the commit message — cycle 45 had aborted-predecessor history. I was the T3.
+
+**G2 (mandatory, done first) — `src-0021`, its first ever re-check.** All 16 stored quotations returned PRESENT and the version bolt-on was a clean negative (still v1, still `Comments: Preprint`, no journal reference). **But two storage defects surfaced anyway, and I opened `ctr-0015`:**
+
+1. **Substantive.** This base stores `src-0021`'s agreement sentence truncated, dropping `(i.e., cases that reached the adjudication stage)`. That parenthetical establishes κ=0.74 is computed over an **adjudication-selected hard subset**. So the "0.68–0.76 band / two teams, two corpora, one conclusion" framing pools **three different estimands** — a mean-of-per-technique κs, a whole-corpus κ, and a hard-subset pairwise κ. Their near-equality is not convergence. I confirmed the parenthetical with a second exact-string ask *before* opening the entry.
+2. **Minor.** A spliced quotation of the backbone list (dropped leading clause `Closed-source models include`). Model list itself correct; nothing downstream changes.
+
+I deliberately **left the impeached wording standing** with a pointer, rather than rewriting the sentence my own G2 impeached in the same cycle — that would destroy auditability. A successor makes that edit.
+
+**Main task — carry-forward [80] discharged.** Captured `src-0021`'s Tables 1 and 2 whole. Table 1 contains **two bare, directly-prompted GPT-4o rows**, labelled as such verbatim by the paper — this base's **first frontier-model, parent-granularity, stated-aggregation, bare-model ATT&CK numbers**. With the backbone fixed, the progression is 44.23 → 58.02 → 87.39 (and 9.66 → 12.99 → 76.48), which is the **first quantification of the system-vs-model confound `ctr-0001` was opened about**. Pipeline design dominates model choice here. I never compared the scaffold scores to `src-0002`/`src-0007`, per the standing prohibition.
+
+Also settled a reading trap: the abstract's "by 63.5% and 29.4%" is **percentage points**, not relative — misread, it would be ≈+489%.
+
+**Also added** the non-commensurability candidate resolution (4 sources), rewrote `open_questions[0]` and `[5]`, appended cycle 46 to `attempts`.
+
+## Two things worth flagging
+
+- **My own queue entry's open-contradiction map was wrong on two issues** — `ctr-0007`, `ctr-0003`, `ctr-0005` are all closed. No ceilings change, but the counts shouldn't be reused. Seventh consecutive cycle to catch an error in its own handoff.
+- **`ctr-0015` lowers this issue's G3 ceiling from 5 to 3** (it had zero open contradictions before). It scores 2, so no validator error — but that's a real cost of the finding, and I flagged it for the T4 rather than burying it.
+
+Scope I did **not** take: Options 3, 4 and 5 (including `ctr-0014`'s much-skipped `src-0003.md` amendment) are passed on undone and named in the carry-forward. I did do `ctr-0015`'s steps (i) and (ii) together, which is the pattern that avoids repeating that failure.
