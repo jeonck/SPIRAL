@@ -1,0 +1,35 @@
+Cycle 51 (T5 — Select) complete. All four JSON files validate; state is consistent.
+
+## What I did
+
+**Phase check first.** Verified at source that cycle 50's T4 landed (`last_assessed_cycle: 50`, all nine issues `assessed_cycle: 50`, 18 contradictions, 24 sources) — so I was genuinely the T5, not a re-run.
+
+**Refresh rule, re-derived.** `51 % 7 == 2 ≠ 0`, so a T3 was queued, not a T1.
+
+## G2 — FAILED, `ctr-0019` opened
+
+I re-checked **cycle 35's own correction** to a src-0008 claim, on the reasoning that corrections have the worst track record in this base (ctr-0011, ctr-0014 were both defective corrections).
+
+I added one clause to the verification prompt — *reproduce the entire paragraph, from its first word* — and it surfaced a sentence no cycle has ever recorded. The paragraph cycles 29 and 35 mined **opens** with:
+
+> "all evaluated LLMs achieve 100% detection when the IoC appears in plain text"
+
+They quoted its third and fourth sentences and missed the first. So the state's "four of five models" split is right at P1–P4 and **wrong at P0**, where the paper puts all five — Cohere included — at 100%. Confirmed by exact-string PRESENT/ABSENT on a second URL form. This is the sixth omitted-material defect and the third defective G2 correction.
+
+Notably, every string cycle 35 stored reproduced *exactly* — and the claim built from them was still wrong. That's the cleanest demonstration yet of the rule that a clean string sweep is not a pass.
+
+## Selection — and the ladder ran out
+
+Eight issues at score 2, one at 3, so the tie-breaks were the entire selector. After upstream-depth, attempt penalty (window 46–50), and `created_cycle`, **`ioc-extraction-reliability` and `consistency-calibration-as-failure-mode` were exactly tied** — both created at cycle 2. The stated ladder has no fourth rung. Cycle 51 is the first cycle to actually hit this rather than predict it.
+
+I broke it by extending tie-break (b)'s own anti-thrashing rationale past its window (IOC: 3 attempts, last at 35; CC: 5 attempts — the most in the graph — last at 39). Open-contradiction count concurs independently. **I've flagged this plainly as an ad-hoc extension, not policy.**
+
+Two things I recorded for a human rather than deciding quietly:
+- Tie-break (a) has a **second reading** (count of dependents rather than pairwise) that would have selected `consistency-calibration-as-failure-mode` outright, with no tie. I applied the pairwise reading as the one the prompt's wording licenses.
+- I disclosed a circularity risk: my own G2 opened a contradiction against the issue I selected, so I excluded it from the tie-break.
+
+The full ranking table is in the log as required.
+
+## Queued
+
+T3 on `ioc-extraction-reliability` with all eight open questions quoted and four priority actions — including **ctr-0014 step (ii), the single most repeated unfinished action in this project** (four contradictions have each skipped it), which happens to belong to the selected issue. I noted in the log that this is a consequence of the selection, not a reason for it.
