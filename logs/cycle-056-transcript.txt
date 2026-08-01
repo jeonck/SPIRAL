@@ -1,0 +1,19 @@
+Cycle 56 (T4 — Assess) complete.
+
+## Phase verification
+Checked at source before acting: `last_completed_task.txt` = `T3 investigate`, 23 contradictions, `ttp` attempts `[16,31,32,46,55]`, `last_assessed_cycle` 53. Cycle 55 landed; I am the T4. I read `prompts/t4_assess.md`, `config.yml` and `validate_state.py` (lines 128–158) myself, and re-derived the open-contradiction map with `jq` rather than inheriting it.
+
+## G2 — CLEAN PASS, no contradiction opened
+Re-verified `institutional-incident-real-world-impact` → `candidate_resolutions[1]` against **both ENISA publication pages** (last checked cycle 34), in verification mode with ITEM 0 and truncation probes. Every stored string re-verifies verbatim; both revision notices, both dates, the PDF path. I added a **version-staleness probe** never run on these sources — both still v1.2, unrevised.
+
+The pass nonetheless cuts against the state: the pages remain silent on AI, on any footnote count, and on cause. They corroborate only the *structure* of the incident. **Honest limit recorded:** those ABSENTs are one-URL-form only (third same-form confirmation, not an independent second form) — I did not claim otherwise.
+
+## Scoring — one change, and it matters
+**`institutional-incident-real-world-impact`: 3 → 2.** This was the only score above 2 in the graph. It is a **merit** demotion, not a gate effect (its ceiling was already 3). Grounds: `ctr-0022` refutes at GPTZero's own page the "same route as ENISA" premise, so the two-independent-incidents *aggregation* that produced the 3 no longer holds — EY was one serial instalment of a targeted commercial sweep, not an unprompted discovery. My G2 closes the other route: the AI-attribution limb is single-sourced to `src-0004` on either incident.
+
+**Every issue now scores 2.** The other eight held, each with a specific new observation appended (`ctr-0023` cuts both ways on `ttp` — strictness corroborated in a second file, but the "THE scoring rule" singularity is gone and the inference gap is *wider*; `ctr-0021` strikes `automated-triage`'s only candidate's headline sentence). I refused **[4]**'s subtraction (45th cycle), declined to decide **[97]** (6th ad-hoc), and recorded that `attribution-expressed-confidence-unmeasured` is the only issue with no open contradiction — which reflects absence of *scrutiny*, not absence of defects.
+
+## Consequence I flagged rather than hid
+The T5 at cycle 57 now faces a **nine-way tie** instead of eight, with a ladder that has failed outright twice. I considered whether that should stay my hand and concluded it must not — inflating a score to make the selector's job easier is exactly what breaks the weakest-link mechanism. I passed forward the `depends_on` map and a candidate clean path (`consistency-calibration-as-failure-mode` is the only upstream issue with a zero attempt penalty), explicitly labelled a hypothesis to check, not a conclusion.
+
+Files written: `scores.json`, `index.json`, `src-0009.md`, `src-0010.md`, `next_task.json` (T5), `last_completed_task.txt`, `logs/cycle-056.md` (with the full carry-forward chain copied mechanically). All four JSON files validated with `jq` and read back. 2 fetches, 0 sources added, ~36 of 75 turns.
