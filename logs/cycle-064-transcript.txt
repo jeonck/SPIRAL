@@ -1,0 +1,17 @@
+Cycle 64 (T5 — Select) complete.
+
+**Phase verified first:** `last_completed_task.txt` = `T4 assess`, `last_assessed_cycle` 63, all nine issues at score 2 (sum 18), 18 open of 27 contradictions, 24 sources. Cycle 63 landed; I was genuinely the T5.
+
+**Refresh rule re-derived at source:** `collect_refresh_every: 7`, 64 % 7 = 1 → does not fire → next task is a **T3**, not a T1. Next actual firing is cycle 70.
+
+**Retrospection (G2) — PASS.** Target picked by a stated mechanical rule (64 mod 9, 64 mod 4) → `ioc-extraction-reliability` `candidate_resolutions[0]`, evidence src-0003. Re-checked the three clauses no cycle had re-verified, on two independent renders (v1/v2 of arXiv 2506.11325): 97.6% ✅ text-stated §5.1.1; 43% ✅ §5.2.2; +6% ✅ §5.1.3 but under-specified (source says "over 6% **vs the VT1-trained model**"). Bonus: the fetch answered the question `ctr-0020` calls "cheap to settle" — §5.2.2's method sentence times *"each junior analyst"* while its result sentence says *"the analysts"*, and "was the senior timed?" → ABSENT. So `ctr-0020`'s charge that the state invented a fourth population is **half wrong**; the quantity half stays open. I recorded it in the log only — a T5 alters no issue state — and pointed the T3 at it with an instruction to re-verify at a URL form I didn't use.
+
+**Selection.** Graph is flat, so step 2 separated nothing. 3(a) eliminated the four issues with non-empty `depends_on` (map derived and inverted myself); 3(b) eliminated `consistency-calibration-as-failure-mode` (attempt @62); 3(c) eliminated `automated-triage-under-refusal` (created 16). **Ladder then exhausted — fifth consecutive T5 failure** with ttp/ioc/institutional tied. Patch P3 removed institutional; P2 (oldest last attempt) and P1 (fewest attempts) both chose → **`ioc-extraction-reliability`**. Full ranking table is in the log.
+
+**Two corrections to my handoff, both recorded:**
+- Cycle 63 claimed the (a)/(b) ordering readings "give different winners". I checked all four combinations of {ordering} × {window} — **all four select ioc**. Only a *strengthened* 3(a) (out-degree as rule) diverges, and that's P3, an unratified patch; promoting it would nullify 3(b) exactly where it's designed to bite. `[75]` stays open but did not bind.
+- The "last 5 cycles" window is **material for the first recorded time** (moves institutional between rank 3 and elimination); I used 60–64 and recorded both columns.
+
+`automated-triage-under-refusal` eliminated by `created_cycle` for the **fourth** recorded time while still never investigated in 64 cycles — flagged for a human as a selector defect.
+
+**Files written:** `state/queue/next_task.json` (T3, quoting `open_questions[8]` verbatim), `state/queue/last_completed_task.txt`, `logs/cycle-064.md` (with the inherited carry-forward chain appended by `sed`). All JSON validates; `graph.json`, `scores.json` and `index.json` are untouched.
