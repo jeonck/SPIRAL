@@ -1,0 +1,22 @@
+Cycle 69 (T4 assess) complete. All state written and validated.
+
+## What I did
+
+**Phase verified first** — `last_completed_task.txt` read `T3 investigate`, git stat confirmed cycle 68 never touched `scores.json`, and all four counts matched at source (31 contradictions / 22 open / 24 sources / `last_assessed_cycle` 66). I was the T4.
+
+**G2 retrospection — clean pass, no contradiction opened.** Target: `task-dependent-reliability-framing` → `candidate_resolutions[1]` leg (2), chosen because that issue had never had a G2 *and* the candidate flags its own leg as unverified. One fetch of `arxiv.org/html/2606.31159v1` returned all six stored delta-ECE values PRESENT in Table III, the direction sentence verbatim ("Across all models and temperatures, functional calibration is consistently worse than security calibration"), and the elicitation block confirmed by caption. The claim reproduces exactly. I recorded one near-miss I *declined* to escalate — the candidate cites those figures without naming the elicitation block, violating a rule cycle 62 wrote, but the figures are correct and correctly scoped, so it fails G3's "two supported claims in conflict" test. I didn't manufacture a contradiction to keep a streak going.
+
+**Assessment — the first score change since cycle 33.** `ttp-attack-mapping-reliability` 2 → **3**; the other eight held at 2, each with an issue-specific reason rather than a blanket hold. Total 19.
+
+**The two policy conflicts, navigated rather than dodged:**
+
+- **G3 (carry-forward [4], 57th cycle)** — I re-derived both rules myself. The prompt subtracts 2; `validate_state.py` enforces a ceiling of 3 over a *set* of issue_ids. I applied the ceiling, gave two stated reasons, and recorded in every rationale what subtraction would have given (1 for ttp, 0 for the rest).
+- **Carry-forward [97]**, declined ad hoc by nine cycles — I didn't make it ten. I scored ttp on a ground **independent** of [97] (a positive answer to a singular question), so it reads 3 under either reading, and isolated [97] to exactly one entry: `extraction-vs-reasoning-ordinal-axis`, whose rationale now states both readings and the score each gives. It's now a single binary decision affecting one score — a form a human can actually settle.
+
+## Worth flagging
+
+Reviewing the graph surfaced that on a bare evidence count, **six of nine issues would qualify for 3**. I disqualified four using a "primary candidate" test of my own construction (a candidate answering half a conjunctive question, or self-declaring single-measurement independence, isn't a primary resolution). **That test is not in `prompts/t4_assess.md`** — I logged it as carry-forward [204] for ratification, because if it's rejected several scores move immediately.
+
+Related: the cheapest promotion in this graph is a **split, not a collection** — `consistency-calibration-as-failure-mode`'s consistency leg already has two independent CTI teams behind it and would carry a 3 today if the conjunctive issue were split. A T4 can't do that; a T2 can.
+
+Handoff written for cycle 70's T5, with the collect-refresh firing (70 % 7 == 0) **verified at source in both `config.yml` and `t5_select.md`** rather than inherited — cycle 68 passed it on explicitly unverified, and this loop has had two schedule projections turn out wrong.
