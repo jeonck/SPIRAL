@@ -1,0 +1,26 @@
+Cycle 62 complete. All gates satisfied, all files valid.
+
+## What I did
+
+**T3 investigate** on `consistency-calibration-as-failure-mode`. I verified the phase first (5/5 checks passed — cycle 61 landed, I was the T3, not the T5) and re-derived the refresh rule at source.
+
+**Two findings, both from sources already in the base — zero new collection.**
+
+**1. Elicitation method dominates measured calibration.** `src-0013`'s Table I carries *four* confidence-elicitation blocks; the base had stored only one, for 47 cycles. I pulled the Token Probability block and confirmed its ECE column **cell-for-cell on three URL forms**, each asked differently. On the same benchmark, same model, same temperature, Gemini-2.0-Flash moves from ECE **0.25 verbalized → 0.81 token-probability**. That swing (0.56) is larger than any ECE-vs-Brier gap anywhere in this base.
+
+**2. `ctr-0027` — the two calibration sources are in opposite modalities.** `ctr-0026` step (iv) asked whether the impeached bullet's comparability claim survives. It doesn't, on a limb `ctr-0026` never examined: `src-0001` does **not** use verbalized confidence — it multiplies token log probabilities (quoted verbatim at source). So the base held two studies "methodologically comparable" across exactly the degree of freedom finding 1 measures as the largest source of variation.
+
+The correction is a **gain**: `src-0013`'s Token Probability block is the modality-matched counterpart to `src-0001`, so the base now has its first modality-valid cross-study calibration comparison on a security task.
+
+## G2 retrospection — clean pass
+
+Audited `candidate_resolutions[5]`'s "fine-tuning worsened 7 of 9 rows on both metrics." All 54 Table 6 cells re-verified exact on a *fourth* URL form; the 7-of-9 count and all twelve family means reproduce exactly. Caught a **false-negative ABSENT** — the third on `src-0001` — and opened no contradiction for it, since that's what rule (v) exists to catch.
+
+## What I did not achieve, stated plainly
+
+- **No CTI claim gained a second source.** `src-0013` is secure code generation, not CTI; the cycle-16 scope ruling is untouched.
+- **`open_questions[5]` went unsearched for a 23rd cycle.** I spent the budget on the contradiction leads instead. Real gap, recorded not glossed.
+- **`ctr-0026` left open** despite all three steps being discharged, so its spillover is recorded against it first.
+- I also caught a **numbering clash in my own handoff** ([175]–[177] were already taken; renumbered to [183]+) before it propagated.
+
+Next task written for the **T4** at cycle 63, with an explicit warning not to read `ctr-0027` as a demotion — the G3 ceiling is a set-membership test, so three open contradictions exert exactly the pressure one did.
