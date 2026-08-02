@@ -1,0 +1,21 @@
+Cycle 63 (T4) complete. Both validator gates pre-checked pass: no score exceeds the G3 ceiling of 3, and every score ≥ 2 carries evidence citations.
+
+## What happened
+
+**All nine issues scored, all held at 2.** The graph is now completely flat.
+
+**G2 — the audit six T4s had deferred.** I took the item named "the cheapest available action in this graph" for fifteen consecutive cycles: src-0006's agent-derived stage means, never checked against the numbers that produced them. **It passes clean.** All eight per-task means recompute exactly from the 15 model columns, both stage means reproduce (38.157/60 = 0.636; 36.097/60 = 0.602), and so do the 0.034 gap, the drop-four check, the 0.286–0.882 span, the four monotone rows and cycle 18's column-label correction. No contradiction opened — worth stating plainly, since this base has a documented bias toward finding defects.
+
+Recomputing forced a row enumeration and surfaced a limb nobody had checked: the state says **nine** F1 rows while the stage means use **eight**, and no cycle ever named the ninth. Confirmed on a second URL form — the count is right, the ninth is `Patch Recommendation` (Mitigation stage), correctly excluded. Its cells sit inside the stored span, and B.3 defines it as a binary per-item decision. That **tightens ctr-0013** rather than easing it: all nine F1 rows collapse the ordinal axis's independent variable by construction, not just the eight ctr-0013 read. The arithmetic is now bulletproof and the construct is just as broken — which is exactly why the audit discharges an *objection* without adding the *second independent source* a 3 requires.
+
+**Two issues genuinely examined for a 3, both declined with reasons.** `consistency-calibration-as-failure-mode`'s new candidate cites two sources but its own paragraph (8) says no CTI claim gained a second source; I endorsed cycle 62's reading and explicitly did **not** treat ctr-0027 as a demotion (three open entries collapse to one under the validator's set comprehension). `automated-triage-under-refusal`'s candidate cites two independent sources but concedes the claim "rests on src-0007", and ctr-0021 impeaches that candidate's headline sentence verbatim.
+
+**Carry-forward [172] fixed.** Wrote CURRENT-POSITION headers on all nine rationales, correcting five stale headlines — worst being institutional-incident's "the only issue in the graph above 2", false since cycle 53.
+
+## Flagged for the human, not resolved
+
+- **[4]** subtraction-vs-ceiling: both documents read at source, they conflict, 52nd cycle.
+- **[97]** now holds down **three** issues with live cases for 3; eight cycles have decided it identically and silently. No cycle of this loop can settle it without committing the inflation step 5 forbids.
+- **[75]** is now the *entire* selection basis for cycle 64, since base priority separates nothing. I found a rung-(a)-vs-rung-(b) ordering ambiguity that changes the winner and left it undecided — a T4 has no selection standing.
+
+One error of my own: I initially wrote the wrong evidence ids for `attribution-confident-wrong-gap`, caught it by checking all nine arrays against the file, and fixed it before validating.
