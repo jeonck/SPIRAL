@@ -1,0 +1,17 @@
+Cycle 66 (T4 — Assess) complete. All state written and validated.
+
+## What happened
+
+**Phase verified first.** All four cheap checks matched the handoff (`T3 investigate`, `last_assessed_cycle` 63, 19 open contradictions, 24 sources). I read `prompts/t4_assess.md` and `scripts/validate_state.py` myself rather than trusting the queue entry's summaries of them.
+
+**G2 retrospection found a real defect.** I took `candidate_resolutions[2]` of `attribution-expressed-confidence-unmeasured` — deliberately a different issue from cycles 64 and 65, which had both re-checked `ioc-extraction-reliability`. Three fetches on three URL routes of src-0024; the third reproduced the whole 2.3KB document verbatim, so the ABSENT verdicts are my own reading, not a fetch model's.
+
+Mixed result. All three quoted tag strings pass character for character, and the candidate's self-limiting caveat is true. But **src-0024 defines neither of the two confidence axes** — the candidate's semantic gloss is an inference from the tag *names*, and its claim that the axes "can move independently" is absent from the document entirely. The definitional content lives in the MISP taxonomies page that src-0024 itself points to, **which this base does not hold**. Filed as **ctr-0029**; nothing deleted.
+
+This cuts against convenience: cycle 63 had named that issue as holding the graph's strongest case for a score of 3, and the impeached text *is* that case's constructive half.
+
+**Scoring: all nine issues hold at 2.** The load-bearing argument is that index.json still holds exactly 24 sources, cycle 64 altered no issue state and cycle 65 touched one issue — so nothing could have crossed the two-independent-source bar. I also answered ctr-0020's step (iii) (four qualifications are *at the edge* of "supported" but don't break it) and flagged one call against myself: `automated-triage-under-refusal` is arguably a 1 on a strict rubric reading, and I held it at 2 with the reasoning recorded for a successor to overturn.
+
+**Discharged ctr-0028 step (ii)** — and the answer wasn't reassuring. The misquotation of src-0007 had propagated into `ctr-0010` and into `scores.json` itself, not just the one known location.
+
+**Left undone, and flagged as such:** ctr-0028 steps (iii)/(iv), ctr-0029 steps (ii)–(iv), and the long tail of inherited repairs — all passed forward rather than quietly dropped. Cycle 67's T5 handoff includes the raw selection inputs with three tie-break traps marked, since with all nine issues tied at 2 the entire agenda again falls to unratified tie-break machinery.
