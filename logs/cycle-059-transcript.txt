@@ -1,0 +1,15 @@
+Cycle 59 complete. Summary of what landed:
+
+**Phase check caught a handoff error first.** The queue entry claimed 19 open contradictions; the graph held 16 (23 total, 7 resolved). Sixteenth handoff in this loop caught misstating what it summarised. It didn't change the plan.
+
+**G2 (first ever on src-0023, the last unverified source in the base) — MIXED, ctr-0024 opened.**
+Cycle 49 stored a thirteen-string exhaustive-sweep ABSENT over the v2 document. A second render of the *same version* returns `confidence` as PRESENT — "LLM-based judge (GPT-4) filters **low-confidence** samples". Not a version difference; the verdict was simply wrong. The **conclusion survives** (the occurrence is about filtering benchmark-construction data, not eliciting model confidence), so this is not grounds to demote the issue. Two bonus recoveries: the GPT-5/GPT-4 judge discrepancy is now half-closed (GPT-4 confirmed for v2 on two forms), and cycle 50's nine-cycle-old question is answered — the benchmark *does* have an ATT&CK task, CTI-ATA, scored by Precision/Recall/F1 after regex normalisation.
+
+**Main task — three contradictions repaired, two resolved.**
+- **ctr-0022** (all steps): the false discovery-route claim corrected in all three locations, with original wording preserved so the correction is auditable. The independence reassessment split candidate_resolutions[2] — existence survives, **recurrence-as-independent-event is downgraded**, and a third incident from an *unprompted* route is now recorded as required. RESOLVED.
+- **ctr-0012** (all four steps): steps (i)/(ii) were confirmed **never performed** after seventeen cycles — caught by counting key_claims, not by trusting a note. RESOLVED.
+- **ctr-0018**: src-0022 is now **cited by an issue** for the first time since cycle 43, which was the stated blocker on score movement. Step (iii) is half done and the entry **stays open** — one fetch returned a substituted answer and I declined to count it as a verdict.
+
+**One thing I did not do:** priority item (4), the src-0011/candidate_resolutions[4] check. Budget went to the three contradictions and the G2; it's carried forward and flagged to the next cycle.
+
+**Flagged prominently to the T4:** resolving two contradictions lifts this issue's G3 ceiling from 3 to 5, but nothing here is new positive evidence — the repairs *narrowed* two candidates and *downgraded* a third. Reading the lifted ceiling as licence to raise the score would invert the meaning of the work.
