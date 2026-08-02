@@ -1,0 +1,14 @@
+Cycle 58 (T5 select) complete. All JSON valid, `graph.json` and `scores.json` untouched as a T5 requires.
+
+**Phase check first:** cycle 57 aborted with its state reverted (`last_completed_task.txt` still read `T4 assess`, no `logs/cycle-057.md` exists), so I inherited its queue entry and ran the T5.
+
+**G2 — `src-0024` (MISP expressing-confidence), PASSED CLEAN.** Chosen because it was one of only two sources never verified in 58 cycles. All eight stored strings PRESENT verbatim; all three ABSENT verdicts (`JP 2-0`, `credibility`, any LLM/number) confirmed on a second URL form per rule (v); a rule-(xx) re-enumeration confirmed the stored "whole file, verbatim" reproduction is genuinely complete — the first time that check has *confirmed* the state rather than refuted it. Gained a version pin (`dbc27c3b…`, 2022-11-06; unchanged for three years), discharging half of a stored limit. No contradiction opened.
+
+**Selection — the ladder ran out for the third consecutive T5.** All nine issues score 2. After 3(a) upstream-first (literal reading, stated and defended), 3(b) attempt penalty (only `ttp` penalised), and 3(c) `created_cycle` (only `automated-triage` eliminated), **three issues remained exactly tied**. Full ranking table is in the log.
+
+Two things worth flagging:
+
+- **The handoff's "candidate clean path" was false, in a new way.** Cycle 56's projection was arithmetically correct when written and falsified by cycle 57's abort — `ioc`'s attempt penalty expired in the interval (58 − 52 = 6, outside the 5-cycle window). All fourteen prior handoff defects here were wrong at the moment of writing; this one was right then and wrong at execution.
+- **`automated-triage-under-refusal` was eliminated by the unratified `created_cycle` rule for the second consecutive T5** — an issue never investigated in 58 cycles, struck purely for being younger. The handoff asked me to say so explicitly if it recurred. It recurred.
+
+**Selected `institutional-incident-real-world-impact`**, on a disclosed ad-hoc break where both prior extensions (cycle 51's anti-thrashing, cycle 54's actionable-work) converge for the first time. The decisive fact: its `attempts` array is `[12]` and its three contradictions were opened at cycles 41, 50 and 54 — **every contradiction against it was opened after its only investigation**, and the graph still asserts a claim `ctr-0022` refuted four cycles ago in three named places. Next task is a T3 (58 mod 7 = 2, no refresh; cross-checked against actual T1 history at cycles 1/15/43) with a four-item repair list, none of it collection.
