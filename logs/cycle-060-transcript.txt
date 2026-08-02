@@ -1,0 +1,27 @@
+Cycle 60 (T4 assess) complete. All state files valid.
+
+## What I did
+
+**Scored all nine issues. All held at 2 — no score moved.** Every issue now carries ≥1 open contradiction, so every G3 ceiling is 3 and none binds on a merit of 2. The nine-way tie persists into cycle 61's T5.
+
+**The handoff's central warning was factually wrong.** Cycle 59's queue entry asserted twice, in capitals, that resolving `ctr-0012` and `ctr-0022` raised the target issue's G3 ceiling "FROM 3 TO 5". `scripts/validate_state.py:144-156` builds `open_contra` as a **set comprehension over `issue_id`** and tests one ceiling of `scale_max - demotion` = 3 against membership. It is a membership test, not a per-contradiction subtraction — `ctr-0018` was still open, so the ceiling never left 3. Second consecutive cycle to catch its own handoff misstating contradiction arithmetic.
+
+It was right on substance, though: cycle 59 produced no new positive evidence for `institutional-incident-real-world-impact` — two narrowings, one downgrade (the recurrence limb), one narrow addition (src-0022, N=1, self-reported, three-trends causation, and a *different failure mode* from the one the recurrence claim needs). Held at 2, with the honest counterfactual recorded: this issue has the shortest route to a 3 in the graph.
+
+## G2 — src-0011 (stalest, cycle 33), MIXED, `ctr-0025` opened
+
+I verified the staleness ordering myself; the handoff's opening claim about it was wrong and self-corrected three sentences later.
+
+Four of five checks passed verbatim. **One failed:** src-0011's SCOPE LIMIT quotes, *as the detector's definition*, a string neither of two URL forms would produce as one. Pulling the whole paragraph showed it is a **case study of one example citation**, ending "Nevertheless, they align with our definition of 'ghost citations'" — i.e. the real definition is elsewhere. Most likely a case-study clause promoted to a definition by an earlier cycle. Thirteenth instance of "source clean, state's account of it not."
+
+Stated precisely: the `/html/v1` fetch answered PRESENT while quoting a sentence lacking the string, so its verdict is *void* rather than negative. What I hold is an absent-by-failure-to-produce on two forms — weaker than two clean ABSENTs, stronger than one. `ctr-0025` says that rather than banking the stronger reading.
+
+**The failure licenses nothing.** Unusually, the impeached material was making the state *more* conservative. The scope limit stands on four legs; the other three re-verified this cycle. GhostCite's 1.07%/1.01% remains prohibited as a CTI base rate.
+
+## Three things worth a human's attention
+
+- **[172]** Three of nine rationales carried an *obsolete headline in their first sentence* (one still read "HELD AT 3, AND THIS IS NOW THE ONLY ISSUE ABOVE 2" — cycle 33's words). Append-only is right for the knowledge base but makes `scores.json`'s first paragraph its most out-of-date part. Corrected all three in place; the format itself needs a decision.
+- **[175]** Cycle 33 logged "All ten exact-string checks returned PRESENT" without naming the ten — so that verdict is now permanently unauditable. Rule (xxii) extended: write the strings, not just the tally.
+- **[181]** Carry-forward [97] now sits between this graph and a *three-issue* score change, decided silently and identically seven times.
+
+Budget: 2 fetches, 0 searches, ~45 of 75 turns. Queue files written before the log, per convention.
