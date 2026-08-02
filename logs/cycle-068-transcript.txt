@@ -1,0 +1,22 @@
+Cycle 68 complete. All JSON valid, all writes are appends, `scores.json` untouched (a T3 has no standing there).
+
+## What I did
+
+**Phase verified first** — `last_completed_task.txt` = `T5 select`, 30 contradictions / 21 open, 24 sources, scores at cycle 66. Cycle 67's handoff was accurate on every check. I am the T3.
+
+**G2 retrospection** on `candidate_resolutions[4]` of my own issue (the cross-study non-commensurability finding, unchecked since cycle 46). **Its central claim holds and was re-confirmed** — but I found two defects, now `ctr-0031`:
+
+- **The number.** The candidate says "src-0020, **best** micro-F1 0.22". The paper itself reports *"LLM70 reaches micro F1 score of 0.32, which exceeds the maximum non-RAG micro F1 score of 0.22"* — PRESENT on two URL forms. 0.22 is the max over the 53 **non-RAG** configurations only. It propagated to four locations. It's material, not pedantic: 0.22 is bare-model and 0.32 is retrieval-grounded, so src-0020 actually supplies **both sides of the system-vs-model axis** — one of the four axes that candidate turns on.
+- **The quantifier.** "Four teams… **ALL** find ATT&CK extraction to be the weakest CTI sub-task they measure" is false for two of the four: src-0020 and src-0021 each evaluate exactly **one** task (confirmed on two renders each). The candidate's *conclusion* is undamaged — that clause supported the direction, not the claim.
+
+One suspicion came to nothing and I recorded it as such: two different verbatim fragments the state attributes to src-0021 turned out to be parts of one stored sentence. No conflict.
+
+**Main task — `ctr-0024` step (iv), discharged** (open since cycle 59, named in every carry-forward list since). I re-fetched rather than transcribed, which mattered: the stored CTI-ATA definition was **truncated**, and the scoring rule is broader in scope than the state said. The fifth rule matches none of the four existing frames on even the unit axis (passage-level is a fifth unit), and two of its own axes are unstated — so candidate 4 is **corroborated, not falsified**.
+
+**New `candidate_resolutions[5]`** (`supported`): of the five ATT&CK scoring rules now held, every one whose behaviour is recoverable is all-or-nothing identifier matching — **none awards partial credit**, and the literature avoids the parent/sub-technique problem rather than scoring it. Backed by three independent teams. Consequence: the measured magnitudes are joint measurements of technique selection *and* granularity agreement, and no source separates them.
+
+**Also discharged `ctr-0023` step (ii)** (cycle 55's "cheapest available repair") with a re-derived complete directory listing, and located the file for `ctr-0008` step (i) — 38 cycles undone, and **not** where that step says it is.
+
+**Next:** T4 assess, all nine issues. I flagged two things cycle 69 can't avoid — carry-forward [97] (whether a negative finding may *resolve* an issue, now sitting on two supported candidates) and [4] (the subtraction-vs-ceiling conflict, which binds for the first time if any issue merits 3).
+
+One caveat I passed on explicitly rather than as fact: the cycle-70 refresh firing. I verified `collect_refresh_every: 7` at source, but did **not** read `prompts/t5_select.md` step 4 — the `% 7 == 0` reading is inherited from cycle 67 and cycle 70 must re-derive it.
