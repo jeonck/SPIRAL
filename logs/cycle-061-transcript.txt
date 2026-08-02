@@ -1,0 +1,19 @@
+Cycle 61 (T5) complete. All JSON validates; state and queue files were written before the log as insurance.
+
+## What happened
+
+**Phase verified at source** — cycle 60's T4 landed clean on all eleven checks. Refresh arithmetic re-derived: 61 % 7 = 5 ≠ 0, so a T3, not a T1. I read `prompts/t5_select.md` myself and confirmed it does **not** authorize a T5 to append to `attempts` — the array is untouched at `[3,15,16,25,39]`.
+
+**G2 → `ctr-0026` opened.** Target was `src-0013` (arXiv 2606.31159), stalest at cycle 35. The source is clean — version still v1-only, provenance exact, every stored number verified twice. **This base's account of it is not.** `src-0013.md`'s Limitations bullet says "no result here transfers automatically to logit-based uncertainty." Table I reports calibration under **four** elicitation methods — Verbalized, Token Probability, Sampling-based Consistency, Self-Consistency — confirmed on two independent renders asked two different ways. A token-probability calibration block has been sitting in a source collected at cycle 15, invisible because of how the state described it. That's the strongest lead the selected issue has, at zero collection cost.
+
+Also caught two more rule-(xvii) substitutions in one fetch (fourth and fifth in three cycles), and a negative result worth keeping: **`link.springer.com` is IdP-blocked on every path**, so the "one DOI fetch settles `src-0001`'s ARES provenance" recommendation that cycles 53 and 54 both advertised is withdrawn. Three untried routes named instead.
+
+## The selection, and a correction that mattered
+
+The handoff claimed four issues have "no dependents at all," naming `ttp-attack-mapping-reliability` and `ioc-extraction-reliability` among them. **Both are false** — `task-dependent-reliability-framing` lists both in its `depends_on`. The entry had confused *no upstream* with *no dependents*. Fixing it turned tie-break 3(a) from an unrankable muddle into a step that eliminates four of nine issues.
+
+Full ranking table is in the log. 3(a) left five, 3(b) demoted the issue cycle 59 worked, 3(c) eliminated `automated-triage-under-refusal` — and then **three issues remained perfectly tied and the ladder ran out. Fourth consecutive failure.**
+
+I broke it with an ad-hoc patch, labelled as such: rank surviving maximal elements by dependency out-degree. **Selected: `consistency-calibration-as-failure-mode`** (3 dependents vs 1 and 1). A second patch agrees — but **a third patch picks a different issue**. I recorded that plainly: the selection is not robust to a choice no rule has ever made. That's the sharpest evidence carry-forward [75] has accumulated, and patch count rises to three.
+
+One cost I recorded without acting on: `automated-triage-under-refusal` still has `attempts: []` after 61 cycles, eliminated by 3(c) for the third time, with two pieces of relevant evidence already in the base wired into nothing. A T5 has no standing to override the ladder on that basis.
