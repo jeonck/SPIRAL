@@ -1,0 +1,21 @@
+Cycle 67 (T5 select) is complete. All state files valid, all bookkeeping written.
+
+## What happened
+
+**Phase verified first** — all six checks against the handoff's claims agreed at source (`T4 assess`, `last_assessed_cycle` 66, 29 contradictions / 20 open, 24 sources).
+
+**G2 retrospection — PARTIAL FAIL, filed as `ctr-0030`.** Target: `candidate_resolutions[5]` of `institutional-incident-real-world-impact` (src-0022, the curl bug-bounty closure), deliberately a third distinct issue from cycles 64–66.
+
+All **seven** verbatim quotations passed character-for-character on the monthly-archive URL form, and the "~20%" prohibition was re-confirmed a third time. **The arithmetic failed.** "Somewhere north of 15%" is a *lower* bound; "below 5%" is an *upper* bound — so the ratio is bounded below by 3 and **unbounded above**. A baseline of 30% against 0.5% satisfies both quoted sentences and is a sixty-fold fall. The state renders this as "roughly a three-fold fall" in **four locations**, and the point of origin is `ctr-0018`'s own description — a correction that carried a new defect with it. That's the fourth impeached prior correction, and the first where the correction *introduced* the defect.
+
+One wasted fetch, recorded rather than written off: carry-forward [196]'s verbatim-whole-document technique, which grounded ctr-0029 last cycle on a 2.3 KB file, was **refused on copyright grounds** on a full-length article. The technique doesn't generalise.
+
+**The selection.** All nine issues score 2, so step 2 gave zero discrimination and the ladder ran out for the **sixth consecutive T5**. Full nine-row ranking table is in the log.
+
+The decision hinged on the 3(b) window. I **departed from cycles 61/64's precedent** (63–67) in favour of 62–66, because their stated ground for it — *"a T5 makes no attempts, so including the current cycle is harmless"* — is falsified here: it spends a window slot on a cycle that by construction can never hold an attempt, silently shortening the anti-thrash window from five cycles to four. **The two readings select different issues, for the first time on record** — carry-forward [189] upgraded from "material" to outcome-determining.
+
+**Selected: `ttp-attack-mapping-reliability`** (survives 3(a) as maximal, no penalty, created cycle 2; wins post-ladder patches P3 and P2, loses P1). Last investigated at cycle 55 — the longest gap in the graph — and `ctr-0024` step (iv) has waited there since cycle 59 with its source already collected.
+
+`automated-triage-under-refusal` was eliminated by the `created_cycle` tie-break for the **fifth** recorded time, still the only issue never investigated in 67 cycles. It holds under both window readings.
+
+I wrote nothing to `scores.json` and resolved no contradictions — a T5 has no standing for either.
