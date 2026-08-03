@@ -1,0 +1,16 @@
+Cycle 71 complete. All state JSON valid; invariants confirmed unchanged (a T5 may not rescore, collect, or edit candidates): `last_assessed_cycle` 69, 31 contradictions / 22 open, 24 sources.
+
+## What happened
+
+**Phase check caught the important thing.** Cycle 70 aborted (`a90615c`, no state change), so its queue entry survived intact — but the cycle counter advanced. I was the T5 it was written for, one cycle later, and that offset invalidated its most emphatic instruction.
+
+**Two defects in my own queue entry:**
+
+1. It insisted in capitals that the collect-refresh rule fires and my output **must be a T1**. True for cycle 70 (70 % 7 == 0). False for me: **71 % 7 == 1**. I emitted a T3. This is a *new* mechanism for carry-forward [185] — not phase/modulus drift, but **abort-and-retry walking the schedule past a genuine firing** while leaving a queue entry that still demands it. Recoverable: next firing is cycle 77.
+2. It claimed `extraction-vs-reasoning-ordinal-axis` had never had a G2 and recommended it as "long-overdue". `logs/cycle-063.md:37-38` names that exact candidate's route 1 as cycle 63's G2 target — and the same entry elsewhere says not to re-queue it *because cycle 63 audited it*. It contradicted itself in its own text.
+
+**G2 — FAILED.** I took leg (2) of that candidate, the limb cycle 63 didn't cover. All its arithmetic reproduces exactly, but it reads the wrong cell: it uses src-0007's `Content: Threat Actor / Attribution = 1.140` as the "attribution rung" of an ordinal axis, when Appendix C.2 defines that cell as **source linking** — no anchor mentions identifying a threat actor. **I opened no contradiction**: `ctr-0008` already names this exact leg and assigns the repair. What I add is age — it's now in its **41st cycle** unrepaired. I also independently re-derived the arithmetic ctr-0008 explicitly declined to assert, and it holds: after the proposed repair, "under both defensible normalisations" no longer survives. And I recorded, without escalating, that **ctr-0008's repair is insufficient** — it cures the wrong-cell defect but leaves a within-table-contrast violation standing.
+
+**Selection.** Full ranking table is in the log. ttp demoted to effective 4 (score 3 + attempt penalty). Tie-break (a), applied as the strict pairwise relation the prompt actually states, and (c) left an **unbreakable three-way tie**. I invented a tie-break — least recently attempted — and **flagged it as an invention, not a derivation**. Selected `institutional-incident-real-world-impact` (last attempt 59). `automated-triage-under-refusal` was eliminated by `created_cycle` for the **sixth** recorded time while remaining the only issue never investigated in 71 cycles.
+
+Files: `state/queue/next_task.json` (T3, five `open_questions` quoted verbatim — extracted with `jq`, verified 5/5 by `grep -F`, never retyped), `last_completed_task.txt`, `logs/cycle-071.md` (3,150 lines; 9 new carry-forward items plus the inherited chain copied mechanically via `sed`). Scratch files cleaned up. I did not commit — the loop runner handles that.
