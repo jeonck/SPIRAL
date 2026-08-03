@@ -1,0 +1,19 @@
+Cycle 77 (T5 — Select) complete.
+
+**Phase check** — `last_completed_task.txt` = `T4 assess`, `last_assessed_cycle` = 76, all 9 entries `assessed_cycle` = 76. Cycle 76 landed; I was correctly the T5.
+
+**Refresh rule** — re-derived from source rather than trusted: `meta.json` cycle = 77, `config.yml` `collect_refresh_every: 7`, 77 % 7 == 0 → **fires**, so the next task is a **T1**, not a T3.
+
+**G2 — FAILED, `ctr-0036` opened.** Target: `candidate_resolutions[1]` of `attribution-confident-wrong-gap` (cycle 28), chosen because no G2 had touched that issue in the recorded window. Zero fetches, zero searches — both sides were already stored and source-verified. The candidate describes src-0007's Threat Actor block as a rubric of *"(Relevance / Accuracy / Attribution)"* that *"grades attribution QUALITY"*; src-0007 `key_claims[5]`, entered at cycle 30 from a verbatim Appendix C.2 pull, establishes **six** dimensions and that in that block `Attribution` means **source linking**, with no anchor mentioning identifying a threat actor. The candidate's conclusion (src-0007 measures no expressed confidence) survives *a fortiori*; its stated reason does not. Not a duplicate of `ctr-0008`: that came from the same cycle-30 pull but was scoped to `candidate_resolutions[2]`, so the identical equivocation sat untouched in `[1]` for **47 cycles** — eighth instance of carry-forward [198]. I flagged expressly what I did **not** check: 57 of the 60 files matching `Content: Threat Actor`, the `src-0004` leg, and whether the split issue inherited the framing.
+
+**Selection — `consistency-calibration-as-failure-mode`**, decided at tie-break 3(a) as the unique maximum at 3 dependents among the eight tied at score 2. Reverse-edge map computed, not copied. Full ranking table is in the log.
+
+Three things worth your attention:
+
+1. **The tie-break ambiguity is outcome-determining for the first time.** Cycle 74 tested carry-forward [75]/[64] and recorded it inert. At cycle 77 the ladder reading selects `consistency`; the effective-score reading selects `attribution-confident-wrong-gap`. I used the ladder reading (it's the prompt's literal order and every prior T5's practice, which keeps the table comparable) and said so rather than picking silently. The honest counter-argument is on the record: the ladder reading made me **re-select an issue investigated two cycles ago**, which is the thrashing the penalty clause says it exists to prevent. Rule text versus rule rationale — needs a human.
+
+2. **My queue entry was wrong on the penalty window.** It claimed only `consistency` takes a penalty under either reading of "last 5 cycles"; `institutional-incident`'s cycle-72 attempt falls inside [72,76] and outside [73,77]. Changed no outcome (zero dependents, dies at 3(a) either way), but the invariance claim was false.
+
+3. **`automated-triage-under-refusal` eliminated an eighth time — on a refresh firing.** Zero dependents kills it at 3(a) before any merit criterion is consulted, while cycle 76 assessed it as the weakest issue in the graph and its `attempts` array is still `[]` after 77 cycles. That's the evidence carry-forward [30] has been waiting for.
+
+**Files:** `ctr-0036` appended to `graph.json` (35→36, open 25→26; append-only proven by `diff -q` on before/after dumps); `next_task.json` written as a T1 with all nine target open_questions spliced verbatim by jq and verified by `contains()` nine-for-nine; `last_completed_task.txt` = `T5 select`; `logs/cycle-077.md` with the full ranking table and the carry-forward chain copied mechanically. `scores.json` and `state/knowledge/` untouched — a T5 has no standing there. Scratch files deleted.
