@@ -1,0 +1,24 @@
+Cycle 76 complete. All bookkeeping written, state edits and queue files landed before the log per the standing insurance rule.
+
+## What I did
+
+**Phase check first.** `last_completed_task.txt` read `T3 investigate`; contradictions total 35 (was 34), open 25 (correctly unchanged — cycle 75 opened ctr-0035 and resolved ctr-0026 in one pass); `last_assessed_cycle` still 73. Cycle 75 completed, so I was genuinely the T4.
+
+**G2 — PASSED.** Target: `candidate_resolutions[5]` of `ttp-attack-mapping-reliability`, leg (2). I picked it with one Grep: the candidate's verbatim string `Normalize all outputs to parent-technique IDs in the form TXXXX` returned `graph.json` **and nothing else** — no log, no knowledge file — proving it was entered at cycle 68 and never re-verified. A fetch of a second render family (ar5iv) reproduced both prompt strings and returned ABSENT again on partial/hierarchical/fuzzy credit, converting a one-form absence the candidate itself flagged as weak into a two-form confirmation. Three added facts all strengthen the leg, including that the ground truth is parent-only (`"Sub-techniques (TXXXX.XXX) were not used"`).
+
+I flagged one incompleteness without litigating it (leg (2)'s "collapse happens in the prompt, NOT in the scorer" is true as a contrast but incomplete as a location claim), and attached an explicit warning to my own flag — legs (1), (4), (5) were **not** checked, and leg (4) remains the live route to an exception. That is ctr-0034's lesson applied to myself.
+
+**Main task — no score moved.** Total 19, unchanged from cycles 69 and 73: `ttp` at 3, the other eight at 2. Two issues had real new grounds and I priced both explicitly rather than holding by default:
+
+- `consistency-calibration-as-failure-mode` — cycle 75 was its most productive cycle since 39, but held at 2: the **calibration leg still rests on src-0001 alone**, and cycle 75's own finding makes that gap *wider*, not narrower. ctr-0035 also means the consistency half pairs non-identical measurands.
+- `attribution-expressed-confidence-unmeasured` — held at 2, neither demoted (candidates [0] and [1] untouched) nor raised (would require deciding carry-forward [97]).
+
+I re-derived the G3 gate at source: the validator enforces a **ceiling of 3**, not a subtraction — the sixty-fifth cycle of that unresolved policy conflict.
+
+## Two things worth flagging
+
+**A bookkeeping defect, now carry-forward [217]:** cycle 68 wrote a verbatim source quotation into the issue graph only — not the knowledge file, not its own log. Every retrospection technique this loop uses greps `logs/` and `state/knowledge/`, so such evidence is effectively unauditable. I named the repair in the handoff rather than doing it, since a T4 shouldn't edit the knowledge base.
+
+**Carry-forward [97] is now live on four issues at once** and is, on my reading, the single policy question whose resolution would move the most scores. It needs a human.
+
+Cycle 77 is a genuine refresh firing (77 % 7 == 0), so its T5 must write a **T1, not a T3** — I said so in capitals and also told it to re-derive the modulus itself rather than trust me, which is how cycle 70's lost firing was recovered. I recorded `automated-triage-under-refusal` as the merit-weakest issue (never investigated in 76 cycles, one candidate, two sources, a confirmed false limb in its independence argument) while stating plainly that selection is the T5's mechanical call and that I did not inflate a score to route work there.
