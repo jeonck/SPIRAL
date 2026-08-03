@@ -1,0 +1,26 @@
+Cycle 78 complete. All state edits landed and verified.
+
+## What I did
+
+**Phase check** passed on all four probes — cycle 77 completed as T5, so I ran as the T1 refresh firing.
+
+**G2 retrospection — FAILED, `ctr-0037` opened.** Zero fetches, zero searches; everything checked against `src-0007.md`'s Table 4, verified cell-for-cell at cycles 15/21/30/53.
+
+Target was `candidate_resolutions[1]` of `task-dependent-reliability-framing`. Grepping first (carry-forward [210]) found `ctr-0009` already covers the metric-definition and scoring-rule objections — I confirmed those and did **not** re-file them. Two defects were new:
+
+1. **The headline "roughly a 3x spread" doesn't survive the repair `ctr-0009` itself prescribes.** Of the six rubric dimensions, Attribution (3.168×) is the *only* one reaching 3× and is the maximum — and it's precisely the row `ctr-0008` showed is not like-for-like. Block-mean spread is 2.393×; no comparable row exceeds 2.94×. Nobody had run this arithmetic in 45 cycles.
+2. **"the same four models reach IoC-extraction precision 0.8240-0.8846" excludes one of the four models** — GPT-4o-mini (FT) scores 0.6944. The conclusion survives (including it *widens* the sub-task gap), so what's impeached is accuracy, not direction.
+
+**T1 collect — 4 sources added** (`src-0028`–`src-0031`), against a ceiling of 5.
+
+The real advance is on `open_questions[6]` limb (b), which cycle 75 recorded as never searched: two independent peer-reviewed sources establish that a proper score **decomposes** into calibration + refinement. So src-0001's verbatim claim that ECE and Brier are "two measures of calibration" is wrong as stated — a principled explanation for the Table 6 divergence, compatible with cycle 75's one-row-artefact finding rather than displacing it.
+
+## What I want to be plain about
+
+- **None of the four sources is CTI.** `open_questions[5]` and `[1]` are both still open, and I said so explicitly in the queue entry because reading four new sources as progress on them is the obvious failure mode.
+- **Limb (b) is narrowed, not closed** — neither source states a *preference* between ECE and Brier; src-0028's ABSENT on that is one-form only.
+- `open_questions[5]` is now searched-and-not-found on **six angles across two cycles** — stronger negative evidence, not a proof of non-existence.
+- I fetched arXiv 2604.07470 and **dropped it** rather than pad to five: it measures neither consistency, calibration, nor abstention. Named as a lead for the TTP issue, with its abstract-only figures explicitly kept out of the knowledge base.
+- **`scores.json` untouched** and no issue restructured — a T1 has no standing. My G2 findings are appends, queued for the T2.
+
+Append-only was proved mechanically on both edited files (four silent `diff -q`s), schema keys checked against both embedded `_schema`s, `jq -e .` clean everywhere, scratch files deleted. Final state: 31 sources, 37 contradictions (27 open). Next task written as T2, `attempt_count` 0.
