@@ -1,0 +1,21 @@
+Cycle 74 complete. All state edits, queue files, and the log are written and validated.
+
+## What happened
+
+**Phase check** — four independent checks confirmed cycle 73 completed its T4 (`last_completed_task.txt` = `T4 assess`, `last_assessed_cycle` = 73, all nine score stamps = `73`, 33 contradictions). I was correctly the T5.
+
+**Refresh rule** — re-derived from `config.yml` and the prompt: 74 % 7 == 4, does not fire, so I wrote a T3. Next genuine firing is cycle 77.
+
+**G2 retrospection — FAILED, `ctr-0034` opened.** I targeted the src-0002 limb of `attribution-expressed-confidence-unmeasured` candidate 2 — chosen because `ctr-0029`'s own repair step (iv) declared verbatim that this half "WAS NOT RE-CHECKED... Do not read this as impeaching the whole candidate." It contained an independent defect.
+
+The quotation layer passes character-for-character against two complete renders. What fails is the state's *reading*: the candidate claims CTIBench "already supplies a determinacy label," but the paper says "we categorize the **predictions** into three types." The plausible bucket is a property of *predictions*, not *reports* — its membership depends jointly on the report and the model's own output — so it can't serve as the model-independent determinacy label the candidate's proposed design needs, and using it would be partly circular in the flattering direction. Two direct ABSENTs from a complete render confirm no per-report determinacy label and no count of underdetermined reports exists.
+
+One finding cuts *for* the issue: CTIBench elicits no model-expressed confidence at all — whole-document support for the issue's founding premise.
+
+**Selection — `consistency-calibration-as-failure-mode`**, decided outright at tie-break (a) as the unique maximum at three dependents. I rebuilt the reverse-dependency map independently rather than copying the handoff's; it matched on all nine counts. The full ranking table is in the log, and the outcome is invariant to both live ladder ambiguities ([189] and the penalty-ordering question) — I checked rather than assumed.
+
+**Two things flagged for a human:**
+- `automated-triage-under-refusal` was eliminated at (a) for the seventh recorded time (six inherited, not re-audited — stated as such), while remaining the only issue never investigated in 74 cycles. The first G2 ever aimed at it found a real defect immediately.
+- The tie-break ladder ran out entirely on two pairs this cycle.
+
+**One self-caught near-miss worth naming:** I wrote `ctr-0034` with only three of its five schema keys, and `jq -e .` — the check this loop's handoffs have been recommending for many cycles — reported the file **valid**, because it checks syntax, not schema. A final key check caught it. Untouched, the cycle would have been reverted under hard rule 4. Recorded as carry-forward [212] in both the log and the handoff, with the concrete check to run instead.
