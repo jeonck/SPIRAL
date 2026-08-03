@@ -1,0 +1,18 @@
+The seam is clean. Cycle 72 complete.
+
+## Summary
+
+**Phase check** confirmed cycle 71 landed (`T5 select`, 24 sources, 31 contradictions, score 19) — I ran as the T3 on `institutional-incident-real-world-impact`.
+
+**G2 — FAILED, `ctr-0032` opened.** I re-checked `candidate_resolutions[3]`'s *cycle-59 amendment*, chosen because every source under it had been re-verified repeatedly while the correction written on top of them never had. Cycle 59 narrowed the EY/ENISA response divergence to two limbs, one being "CAUSAL ATTRIBUTION." That limb doesn't hold: for two parties to diverge on cause, both must attribute one. ENISA did ("human errors"); **EY did not** — both artefacts returned ABSENT when asked directly, and EY's only AI-naming sentence is a forward-looking policy commitment while its other quote explicitly withholds a cause. Divergence is now **one dimension (remedy), not two**. Every stored quotation re-verified exact for the fifth consecutive cycle — the source is clean, the state's reading was not. This is the **sixth** time this loop has caught a correction carrying a defect of the kind it was correcting.
+
+**Main task — route (a), which opened up further.** ENISA's PDFs can't be read directly here (WebFetch returns binary; no poppler for `Read`; Bash can't reach the saved file). The `r.jina.ai` proxy works — a capability that unblocks any PDF-only source. Three new sources (of a 5 budget):
+
+- **No AI disclosure at PDF level** — whole-document for the Public Administration report, front-matter-only for ETL 2025 (its render truncated, and I scoped the ABSENT rather than flattening it).
+- The Legal Notice's external-website liability disclaimer is **pre-existing boilerplate**, not a response — provable only because a search incidentally surfaced the **archived pre-correction v1.1**, the first such artefact this base has ever held.
+- **The count method proposed since cycle 12 is retired:** v1.1 and v1.2 both have exactly 149 footnotes, footnote 149 identical. A link-edit revision preserves count, so counting can't measure it.
+- **New disambiguation:** 149 ≠ 492 rules Public Administration out, so src-0004's unattributed 26/492 must describe ETL 2025. I recorded this as a plausibility check, explicitly not corroboration — 492 has still never been counted here.
+
+I did **not** attempt the issue split (T2 work), but wrote the full case into `open_questions` as cycle 69 asked. Route (d)'s single search returned nothing usable and is logged as a spent query, not a negative result.
+
+Handed off a T4 over all nine issues, flagging that this issue moved in **both** directions and asking the successor to price it independently.
