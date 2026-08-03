@@ -1,0 +1,27 @@
+Cycle 75 complete. All state edits, queue files, and the log are written; scratch files deleted; all JSON validates.
+
+## G2 retrospection — PASSED CLEAN
+
+Target: `candidate_resolutions[6]` of the issue — the load-bearing basis of its second standing prohibition. Chosen by first running carry-forward [210]'s cheap Grep for `0.81` across `logs/`, which returned **only cycle 62** — proving in one turn the block had been pulled once and never re-verified. A fourth independent fetch reproduced **all 24 ECE cells exactly**, plus the caption and the paper's explanation sentence. The 0.56 figure the prohibition cites is confirmed at matched temperature.
+
+I suspected an arithmetic defect in the GPT-4o-mini pairing and found none — 0.46/0.80 is a valid same-temperature pair at T=0.40. Not manufacturing a defect is part of the job. One genuinely minor discrepancy (a caption subscript rendered `p-hat-c` vs `p^sec`) is flagged, not litigated: no measurement depends on it.
+
+## Four substantive findings
+
+**1. The ECE-vs-Brier divergence in src-0001's Table 6 is a one-row artefact.** Zero fetches — pure arithmetic on stored cells, closing a hypothesis cycle 62 raised and declined to test. Removing the extraction attack-vector row makes both metrics agree at all three paradigms; that row's ECE−BS discrepancy is −0.33/−0.30/−0.31 where every other row falls within −0.14 to +0.11. **This does not lift the standing prohibition and I say so explicitly in the entry** — dropping a row is a post-hoc choice made after seeing which row flips the mean.
+
+**2. The 23-cycle-old second-source search finally ran — and came back negative.** Four angles, no CTI-task ECE/Brier source other than src-0001. Two leads killed: the FIRST 2025 paper (same first author — fails independence) and "CTIConnect", which is the same arXiv id as the already-killed CTIArena.
+
+**3. ctr-0035 opened.** src-0018's consistency metric counts alternation *"among the values the expert annotators defined as valid"* — instability **within the accepted-answer set**, which can be positive while accuracy is perfect. src-0001 measures variation in *correctness*. These have been paired as corroborating since cycle 25. The core claim and two-source status **stand**; what's impeached is the extra strength claimed from a "matched" control — the temperature is matched, the measurand is not.
+
+**4. src-0018 elicits no model-expressed confidence at all**, which with cycle 74's ctr-0034 licenses a sharper statement of the issue's central gap: src-0001 is the *only* CTI source in this base that elicits model-expressed confidence in any form.
+
+## Housekeeping
+
+Resolved **ctr-0026** — but checked its "done" step at file level first rather than trusting cycle 62's assertion, since cycle 52 caught exactly that failure. It verified. I also **discharged ctr-0035's step (ii) in the same cycle I opened it**, so it doesn't join a backlog whose oldest member is in its 45th cycle.
+
+Contradictions 34→35; open count unchanged at 25 (one opened, one resolved) — the next queue entry warns to use the *total* as the abort test for this reason.
+
+**Near-miss worth naming:** a search returned confidence-scoring prose next to a src-0018 result that the direct fetch shows isn't in src-0018. Crediting it would have inverted finding 4. New carry-forward [213]: a search-engine summary is not a source read.
+
+Budget: 3 fetches, 4 searches, 0 new sources, ~45/75 turns. My queue entry had one trivial error (`created_cycle` 2, not 3); otherwise accurate, and reported as such.
