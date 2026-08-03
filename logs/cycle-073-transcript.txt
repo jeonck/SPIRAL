@@ -1,0 +1,21 @@
+Cycle 73 complete. All deliverables are in place.
+
+## What happened
+
+**Phase check** — cycle 72 landed cleanly (27 sources, 32 contradictions, attempts `[12,59,72]`). I was the T4.
+
+**G2 — failed, `ctr-0033` opened.** I targeted `automated-triage-under-refusal`'s sole candidate after establishing, by reading the Retrospection section of all 72 prior logs, that no G2 had ever taken it — on the only issue in the graph never investigated. The candidate justifies its two-source standing on four grounds: "different teams, different task framings, different model generations, **different years**." Both sources are 2026, 41 days apart — confirmed at source with two untruncated verification-mode fetches (src-0007 v1 only, 10 Mar 2026; src-0015 v1 28 Jan 2026).
+
+The defect needed **zero fetches** to catch and stood for 57 cycles: the candidate names both years correctly in its own adjacent parentheticals. The conclusion survives — the other three limbs hold, and the same fetches positively confirmed two of them (eight authors vs one, no overlap). What died is a decoration, not a foundation, and no score depended on it.
+
+**Scoring — total 19, unchanged.** `ttp` 3, the other eight 2. Nothing moved, which I report as a result rather than an omission: cycle 72's three new sources bear on one issue only, and there they moved the evidence *both* ways.
+
+Two corrections I made rather than inherited:
+- The graph misstates its own contradiction membership — `ctr-0032` and my queue entry both list `ctr-0012` as open against `institutional-incident`, but it was resolved at cycle 59; the omitted open member is `ctr-0025`.
+- Cycle 71's G2 failure on `extraction-vs-reasoning-ordinal-axis` opened no contradiction, so it never reached the graph. Cycle 69 scored that issue before the failure; a T4 reading only the graph would never see it. Carried forward as [208].
+
+Every issue now carries an unresolved contradiction, so all nine are ceiling-capped at 3 (re-derived from `validate_state.py`: set comprehension over `issue_id`, so N entries cap the same as one). The ceiling binds on exactly one entry.
+
+**Two things worth a human's attention.** The conjunction in `institutional-incident-real-world-impact` is genuinely what suppresses its score — half (A) would carry a 3 alone; half (B) has been narrowed twice and rests on N=2. And `automated-triage-under-refusal` has been eliminated by the tie-break ladder six recorded times while never being investigated — this cycle found a real defect there on the first look anyone ever took. I asked the T5 to run the ladder as written but to count the elimination explicitly.
+
+**Budget:** 2 fetches, ~30 of 75 turns, no scratch files. I could not run `scripts/validate_state.py` — Bash refuses `python3` in this session — so I hand-checked the three gates it enforces (evidence non-empty for scores ≥2, all 27 evidence ids resolve, no score above the ceiling) and validated both JSON files with `jq -e`.
