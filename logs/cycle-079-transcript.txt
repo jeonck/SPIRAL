@@ -1,0 +1,31 @@
+Cycle 79 (T2 — Structure) complete. Zero fetches and zero searches spent; everything was answerable from stored files.
+
+## Phase check
+Passed. `last_completed_task.txt` read `T1 collect`; all four confirming checks matched (31 sources, `src-0031` last, 37 contradictions, 27 open). Cycle 78 did not abort.
+
+## Retrospection (G2) — FAILED, `ctr-0038` opened
+Target: `ioc-extraction-reliability` `candidate_resolutions[1]` — the only issue the G2 window 71–78 never touched.
+
+Most of it re-verified exactly (all four `src-0007` precisions, the precision-only absence, the "1 in 6" derivation). One clause does not survive: *"short of even the 86% VirusTotal@threshold=1 baseline"* compares a **precision** (0.8240) against a **baseline F1** — and the candidate's own next sentence cites metric non-comparability as a reason the two studies don't refute each other.
+
+The arithmetic, new to this base: `F1 ≤ 2P/(P+1)` inverts to `P ≥ F1/(2−F1)`. At F1 = 0.86 that gives 0.7544, so VirusTotal's entailed precision interval is **[0.7544, 1.0]** — and 0.8240 sits inside it. The ordering is **undetermined**, and the bound exceeds only 0.6944, the one model the candidate's own scoping excludes. The primary comparison against src-0003's 97.6% F1 is untouched (that one *is* deductively secured at P ≥ 0.9531).
+
+The transferable half: `ctr-0001` and `ctr-0010` both record the METRIC confound as "ELIMINATED" in global terms, but the proof covers only one of the two comparisons `ctr-0001` was filed on. Inherited as global for 44 cycles.
+
+## Main task
+Graph stays at **nine issues** — no create/merge/split, and the reasoning is written down (all four new sources are methodology or out-of-domain context for an existing issue, not new contention). Nine edits, all spliced in one atomic `jq` pass:
+
+- `open_questions[5]` — six-angle negative now attested; `src-0031` recorded as a confirmed non-candidate. **Not marked answered.**
+- `open_questions[6]` limb (b) — **searched at last, structurally answered, prescriptively not. Narrowed, not closed**; `src-0028`'s ABSENT preserved as one-form.
+- `open_questions[8]` — `src-0031` lands off the modality axis; the three named limbs untouched.
+- `open_questions[9]` — **new**: does the refinement term explain cycle 75's outlier row? Recorded as a hypothesis, and as not answerable from this base.
+- `candidate_resolutions[10]` (supported) — the ECE/Brier decomposition, with a capitalised scope banner so a T4 can't read it as CTI support.
+- `candidate_resolutions[11]` (proposed) — instrument-intrinsic run-to-run variation.
+- **`ctr-0039`** — I made the G3 call cycle 78 left open and filed it: `src-0001`'s "two measures of calibration" sentence conflicts with two peer-reviewed sources. Stated narrowly, neither side picked.
+- `ctr-0037` step (iii) executed: **three** primary sites, not the two `ctr-0037` claimed — the third is in `scores.json`, i.e. the defect reached the assessment layer.
+
+Append-only proved mechanically — twelve checks, all true, including string-prefix proofs for the three appended `open_questions` and `ctr-0037`'s description. Schema keys checked on both new contradictions and both new candidates. `index.json`, every `src-*.md` and `scores.json` are byte-unchanged, as a T2 requires.
+
+Queue set to **T3 on `consistency-calibration-as-failure-mode`**, with four priced items named — including two `ctr-0039` steps I explicitly did **not** run and flagged as gaps rather than clearances.
+
+Two new tooling findings cost three turns: `jq --arg` is rejected outright (broader than carry-forward [219] recorded), and a `jq` object constructor is rejected as brace expansion.
