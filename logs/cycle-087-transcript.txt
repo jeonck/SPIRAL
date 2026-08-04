@@ -1,0 +1,15 @@
+Cycle 87 complete. T3 investigate on `consistency-calibration-as-failure-mode`.
+
+**Retrospection (G2)** — took `attribution-confident-wrong-gap` `candidate_resolutions[0]` (the misattribution-rate finding), per the round-2 order that maps cycle 87 → cycle 77's issue. **Partial fail; `ctr-0046` opened.** The five derived rates re-derive exactly and triangulate three ways against separately-stored values, and a `r.jina.ai`/PDF pull reproduced all ten CTI-TAA cells — the first second-render-family confirmation `src-0002`'s numbers have ever had. What failed is one clause: the candidate advertises "two **independent** fetches at cycle 23", but cycle 23's own log records both as `arxiv.org/html/2406.07599` — one render family, and cycle 28's three more are the same. Cycle 74 had two complete PDF renders of that paper in hand and never asked them about the table.
+
+**Main task** — executed `ctr-0044` steps (i), (ii), (iv) and **resolved `ctr-0044`**:
+
+- **(ii), the fetch:** `src-0028` *does* name ECE — three occurrences (Section 2, Appendix A, Appendix F.4), quoted verbatim into its `key_claims`. So "Neither source names ECE" fails on **both** limbs, closing the exact scope limit cycle 85 charged against itself. It names but does not *define* ECE (ABSENT), unlike `src-0029` — I recorded that asymmetry rather than flattening it.
+- **(i):** sentence marked DO-NOT-CITE; paragraph (2) restated on ground that was tested (two ABSENT results) rather than assumed.
+- **(iv), the ruling asked for:** re-grounding on `src-0029`'s "use them together… to get a full evaluation" **works and is near-quotational, but the Bregman apparatus stays** — that sentence establishes *that* the metrics aren't interchangeable and nothing about *why*, and the mechanism is what makes the Table 6 divergence expected rather than anomalous.
+
+Also noticed the false sentence was refutable from paragraph (5) of the same candidate, at zero cost, for six cycles.
+
+**Not done, carried forward explicitly:** step (iii) — `src-0029`'s exact definition strings remain unestablished and must not be quoted; `src-0028`'s ranking ABSENT is still one form taken twice, not two-form.
+
+2 usable fetches (one discarded PDF), 0 searches, 0 new sources, ~50/75 turns. Next task queued: **T4 assess**, at 16KB rather than cycle 86's 82KB — that entry cost four Bash calls just to read, which is now carry-forward [238].
