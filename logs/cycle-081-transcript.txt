@@ -1,0 +1,15 @@
+Cycle 81 complete. Summary:
+
+**Phase check** — all four of cycle 80's confirming checks and both of its "not an abort test" warnings were accurate. Cycle 80 completed; I ran as the T4.
+
+**G2 retrospection — FAILED, `ctr-0041` opened.** Target: `institutional-incident-real-world-impact` `candidate_resolutions[7]` (the cycle-72 disambiguation of src-0004's 26-of-492 footnote figure). Every number and quotation re-verified exactly against the stored artefacts. What failed is the warrant: the 149-footnote count that "rules out" the Public Administration report was measured on **v1.1 and v1.2, both post-publication revisions**, while the 492 figure describes the as-published v1.0 — an artefact this base has never held. `src-0027.md` records that limit in its own Limitations section; all three places the inference is actually stated drop it, including `src-0026.md` key claim 3, which states it as a bare fact. The conclusion very probably holds (149 vs 492 is a factor of 3.3); the modality doesn't.
+
+A second, independent finding fell out: the base has held an ENISA-served **v1.1 PDF at a `/2025-12/` path** since cycle 72, while src-0010's landing page returns ABSENT for any revision notice other than v1.2 — an **undocumented ENISA revision** that no cycle has noticed. It points *upward* on this issue's institutional-response half and was deliberately not scored on.
+
+Zero fetches — the G2 ran entirely against stored files, and that limit is charged inside `ctr-0041` rather than glossed.
+
+**Main task — all nine issues rescored.** Total **19, unchanged for the fourth consecutive assessment** (ttp 3, the other eight 2). Nothing moved, but the three issues with genuinely new ground since cycle 76 were each priced explicitly: `consistency-calibration` absorbed four cycles of work and its calibration leg is still src-0001/gpt4o alone (cycle 80 *weakened* both columns of its Table 6); `extraction-vs-reasoning-ordinal-axis` was the closest call — `ctr-0040` destroyed its sole candidate's mechanism but not its conclusion; `institutional-incident` took my own G2. Two unswept `ctr-0036` exposures were recorded and explicitly **not** acted on — a T4 may not demote on suspicion.
+
+I also found that **`ctr-0033` has been schema-malformed since cycle 73** (three of five required keys) and deliberately left it for a T2/T3, since the validator still counts it correctly as open.
+
+Queue written for a T5 (cycle 82), with the merit ranking, the attempt-penalty derivation, and the three-way tie the ladder will fail to break all handed over to be verified rather than inherited.
