@@ -1,0 +1,23 @@
+Cycle 92 complete. `scores.json` and `index.json` confirmed byte-unchanged; `graph.json` valid.
+
+## What happened
+
+**Phase check** — all five confirming checks passed at source (`last=91 assessed=[91] total=19 n=9`, `ctr=48 open=35`, `srcs=32`). Cycle 91 completed as a T4; I was the T5.
+
+**G2 retrospection — a partial failure, reported plainly.** I re-checked **ctr-0042**, the conclusion cycle 82 entered, targeting the one-form limit cycle 82 charged against itself.
+
+- **Defect 2 is refuted at source.** Cycle 82 filed that src-0015 never defines its false-positive rate. It does: *"False positive rate is the fraction of episodes containing at least one incorrect containment action."* Both renders returned it — including **cycle 82's own render family at the same URL**. That was a retrieval failure inside one render, not a render-family limitation.
+- **Defect 1 is confirmed and now two-form.** No detection-accuracy metric or column exists; Table 1's seven headers re-verify exactly as cycle 82 recorded.
+- **The underlying critique got stronger, not weaker.** With the denominator known, 82.5% means 33 of 40 *episodes* had ≥1 bad containment — so the candidate's "per-decision misfire" gloss is now affirmatively refuted rather than merely unlicensed. Cycle 82 reached the right verdict from a false premise.
+- A **zero-fetch sweep** (ctr-0042 step iii, deferred by four assessments as expensive; cost four calls) found the impeached wording propagated **uncaveated onto a different issue** — invisible there because contradictions are scoped by `issue_id`. `scores.json` came back clean.
+
+**ctr-0049** and **ctr-0050** opened; append-only proofs all passed; neither moves a ceiling (flat ceiling of 3, both issues at 2).
+
+**Selection — `ioc-extraction-reliability`**, next task **T3** (92 mod 7 = 1, no refresh; next T1 at cycle 98). Full auditable table is in the log. The tie-break window endpoints are unspecified by the prompt, so I stated my reading (cycles 87–91) and noted the alternative doesn't pick a different issue — it picks *nothing*, deadlocking with no rule left to apply.
+
+Two things I flagged rather than decided:
+
+- `automated-triage-under-refusal` ranked **second**, one tie-break away. It has `attempts == []` — the only issue never investigated in 92 cycles, and named weakest on merit by every assessment since cycle 76. It lost on `created_cycle` alone, again. I applied the policy mechanically and did not override it, but the policy rewards nothing for never having been investigated. That's a human's call.
+- Carry-forward [4] (validator's flat ceiling vs. the prompt's per-point subtraction) restated, unresolved, in its eightieth cycle.
+
+One deliberate deviation: `next_task.json` is **17.7KB** against the ~15KB guideline. I cut it from 23.4KB, and chose to report the remaining overshoot rather than shave quoted evidence — the target issue's eleven open questions now total 27,921 characters and no longer fit verbatim in any queue entry.
