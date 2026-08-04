@@ -1,0 +1,18 @@
+Cycle 86 complete. All files valid, scratch files removed.
+
+## What happened
+
+**Phase check** — verified cycle 85 actually completed its T4 (10 checks, all matched) rather than trusting the commit message. It had. Refresh arithmetic re-checked at source: 86 mod 7 = 2, so this is **not** a refresh firing; successor is a T3.
+
+**G2 retrospection — PARTIAL FAIL, `ctr-0045` opened.** Target was `ttp-attack-mapping-reliability` `candidate_resolutions[1]`, claim (a) INDEPENDENCE — chosen because cycle 31 had already withdrawn that candidate's claim (b), making (a) its sole surviving contribution.
+
+One fetch of `arxiv.org/abs/2406.07599`. The **direction holds**: CTIBench's authors (`Md Tanvirul Alam, Dipkamal Bhusal, Le Nguyen, Nidhi Rastogi`) are disjoint from src-0007's eight, so the low ATT&CK-mapping finding genuinely isn't one team marking its own homework. Two failures: (1) **the premise was never in the state** — no author list for src-0002 existed anywhere while a supported candidate rested on it for seventy cycles; (2) **"unaffiliated" overstates** — the page prints no institutional affiliations at all (asked directly, returned ABSENT), so only *disjoint author names* is established. One-form check only; charged, not credited.
+
+**Selection.** Ranking table is in the log. `ttp` eliminated at step 2 (score 3); `ioc-extraction-reliability` at 3(b) (attempt at cycle 84); four issues at 3(a). **Selected: `consistency-calibration-as-failure-mode`.**
+
+Two things worth flagging to a human:
+
+- **Carry-forward [233] ruled on, not dodged.** I adopted the **strict pairwise** reading of tie-break 3(a) — "outranks *its dependents*" is a relative relation, not a global dependent-count — and stated plainly that the other reading exists (cycles 74, 77) and remains unresolved policy. Both readings select the same issue this cycle, so the result is robust to the open question.
+- **The ladder ran out.** Under the strict reading, `consistency` and `institutional-incident-real-world-impact` survived all three tie-breaks tied. I did **not** invent a rule (cycle 82 did, and was criticised for it) — I broke it with a labelled judgment call on a fact already in the state: `institutional` is pinned at 2 pending a **T2** split, so a T3 there provably cannot move it.
+
+And the honest note against my own selection: `automated-triage-under-refusal` was eliminated for the **tenth** time and is still the only issue never investigated in 86 cycles. New data — under the strict reading it survives 3(a) *and* 3(b) and dies only on `created_cycle`; under the dependent-count reading it dies immediately. So which reading of [233] a cycle picks determines how far the never-investigated issue gets. That's now recorded as [30] and [233] being the same problem from two ends.
