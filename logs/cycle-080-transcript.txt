@@ -1,0 +1,22 @@
+Cycle 80 (T3 Investigate) complete. Both scratch files deleted; all state edits landed and proved append-only.
+
+## Retrospection (G2) — FAILED, `ctr-0040` opened
+
+Target: `extraction-vs-reasoning-ordinal-axis` `candidate_resolutions[1]` (supported, cycle 18) — the least recently G2-checked issue in the graph. Zero fetches; both sides were already stored.
+
+Its route (2) reads src-0007's `Content: Threat Actor / Attribution` cells (1.140, 2.968) as the **attribution rung** of the ordinal axis. But cycle 30 established at source that in that block "Attribution" means **source linking**, not threat-actor identification. Route (2) selects its evidence by the name of the row, and the name means something else.
+
+All its arithmetic is exact — but **the claimed crossover disappears on the correct cells**: `Content: Root Cause / Attribution` gives 0.7224/0.653 (GPT-4o) and 0.8836/0.8545 (o3-mini) against TTP F1s of 0.2502/0.2337 — all four above, no reversal under either normalisation. The candidate's *conclusion* survives (arguably strengthened: both models violate the ordering, not one); its stated *mechanism* does not. Its "under both defensible normalisations" robustness also turns out to be an artefact of the single row whose name matched — it fails on the block mean under `/5`.
+
+This is the first propagation site `ctr-0036` step (ii) said was "not yet identified." Uncomfortable detail recorded rather than smoothed: `ctr-0036` lists `graph.json` among the files cycle 77 examined, and this site sits in that file — **the sweep was by file, not by claim.**
+
+## Main task — 4 repair steps discharged, 1 contradiction resolved
+
+- **`ctr-0035` step (iii)** (highest-value open repair, named by cycles 76–78, spent by none): src-0018's body swept on **two render families**. Negative — and *deductive*, not merely not-found: its variable-`n` stopping rule pins the reported interval width at the threshold by construction, so it **could not** supply a correctness-variation quantity even in principle. New verbatim from the source: *"higher percentages of IOCs with Pₒ < 1 indicate greater fluctuation in how the LLM interprets ambiguous evidence."* **`ctr-0035` RESOLVED.**
+- **`ctr-0039` step (i)**: `candidate_resolutions[0]` unaffected (about neither metric); `[1]` affected and load-bearing — cycle 39's retirement rests on the impeached premise. Reason falls; claim **not** reinstated; status **UNDETERMINED**.
+- **`ctr-0039` step (ii)**: whole-state `Brier` sweep cycle 79 declined. 67 occurrences, **four** material sites (cycle 79 named none), sorted into four tiers with the ~16 harmless ones listed *as harmless* so nobody edits them.
+- **`ctr-0027` step (ii)**, named for 18 cycles: src-0001's token-log-probability elicitation passage now in the knowledge base, not just the graph.
+
+One fetch spent on `open_questions[9]` route (ii) came back ABSENT as predicted — but returned a new src-0029 §4.4 sentence showing binned ECE is *minimised by an uninformative base-rate predictor*, which cuts against src-0001's ECE column.
+
+Twenty-two append-only proofs, all true. Next: **T4 assess** on the same issue, with the three likely misreadings written into the queue entry — chiefly that resolving `ctr-0035` created **no** G3 headroom, and that this cycle *weakened* what Table 6 can be asked to show.
