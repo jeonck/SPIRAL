@@ -1,0 +1,19 @@
+Cycle 90 complete — T3 investigate on `institutional-incident-real-world-impact`.
+
+**Phase check:** cycle 89 completed as a T5 (all four confirming checks passed). I was the T3.
+
+**G2 retrospection — PASSED.** Target was `consistency-calibration-as-failure-mode` `candidate_resolutions[12]` (cycle 80's conclusion, verified against `logs/cycle-080.md`). One exact-string fetch of `src-0018`: every stored quotation present and exact; the absence claims re-confirmed a third time; `n` still undisclosed, so the candidate's deduction stands. New finding: **all four stored quotations are truncations** whose continuations no cycle had fetched — but every omission is neutral or *reinforcing*, and two upgrade the candidate's "by their own printed definitions" phrase from true-of-one-metric to true-of-both. No contradiction filed; cycle 89's rule held and cut the other way this time.
+
+**Main task — three results:**
+
+1. **`ctr-0018` resolved** — first contradiction closed on this issue since cycle 59. Its last limb was probed as a bare exact-string question (defeating the substitution that beat cycle 59): twelve `slop` sentences returned, no numeral in any. Promoted on two URL forms and two probe types, with three caveats recorded — the probe is lexical, the archive render is known non-exhaustive, and the fetch over-answered.
+2. **New source `src-0032`** — the GPTZero investigation itself, fetched four times since cycle 12 and never collected. Half (A) now has primary artefacts for all three institutions. New two-render facts: the EY report is 44 pages, late 2025; date 14 May 2026 corroborated at primary; method is a commercial detector with human verification on top.
+3. **`ctr-0032` step (v) discharged, negative** — asked for the first time to list every direct EY quotation, the page answered `NO EY QUOTATION`. The only route that could have reinstated the withdrawn causal-attribution limb is spent. Entry stays open (steps iii, iv undone).
+
+**The fetch that earned its keep:** a single direct fetch returned "0 of 27 references hallucinated", conflicting head-on with the base's 16-of-27. The `r.jina.ai` pair exposed it as a JavaScript odometer (`0 1 2 3 4 5 6 7 8 9% Hallucinated`, with `27` absent from the page). One fetch would have entered a wrong contradiction that looked entirely reasonable.
+
+**No contradiction opened, deliberately.** Two items looked like one — the odometer, and a `72%` numeral collision on the same page — and neither is: a render that cannot read a tile cannot impeach the outlet that reported it. Both are argued in the log and parked as `open_questions[7]` rather than filed.
+
+**Not claimed:** no score movement (half (A) only; half (B) still N=2), no split, and `src-0032` is explicitly *not* independent of `src-0012`.
+
+Budget: 5 fetches, 0 searches, 1 new source, ~45 of 75 turns. Next task written as T4 (assess), `last_completed_task.txt` set, log written with all 48 carry-forward blocks inherited, scratch file deleted.
