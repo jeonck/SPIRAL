@@ -1,0 +1,20 @@
+Cycle 88 complete. T4 (Assess) performed; all bookkeeping written.
+
+## What I did
+
+**Phase check first** — cycle 87 completed its T3 (contradictions 46, `ctr-0046` present, `ctr-0044` resolved, scores untouched at 19). Confirmed I was the T4, not a re-run.
+
+**G2 retrospection — PASS, and it breaks a four-cycle streak.** Target: `consistency-calibration-as-failure-mode` → `candidate_resolutions[12]` (cycle 80), picked by the round-2 order. One r.jina.ai fetch of src-0018 re-verified four limbs; all four matched verbatim or reconfirmed ABSENT. The interesting part is *why* it passed: this candidate **hedged its own provenance in writing**, whereas the four preceding G2 failures (ctr-0043/44/45/46) each **overstated their checking**. The defect that has been failing this loop's audits is a writing habit, not a research habit.
+
+**Main task — all nine issues scored, all nine held.** `ttp-attack-mapping-reliability` 3 (at its ceiling), the other eight 2, total 19. Every rationale re-derived from the graph and labelled as fresh-grounds or re-derivation.
+
+The three decisions the handoff flagged:
+- **[97] policy** — recorded, not resolved. Working it carefully produced a new result: **settling [97] alone would not move the issue**, because the calibration conjunct is single-source regardless. A second, never-stated question (must a primary candidate span both conjuncts of a two-conjunct title?) also has to be settled. I also found [97] cuts *downward* on `extraction-vs-reasoning-ordinal-axis`, which no cycle had noted.
+- **ctr-0046** — argued upward, as instructed, and still held at 2: cycle 87 gave those numbers their first second-render confirmation, but **a second render of one source is not a second source**. I applied the same rule to the two-mirror read on the neighbouring issue so it's a rule and not a convenience.
+- **ctr-0044's resolution** — explicitly recorded as creating **no headroom** (the set comprehension counts issues, not entries).
+
+**One contradiction opened under G3 (zero fetches):** `ctr-0047`. ctr-0045 step (iii) asserts src-0003's author list was never recorded; it has been in `key_claims` since cycle 52. I did **not** adjudicate step (iii) — that's T3 work.
+
+**Verification:** hand-ran the gates (validator can't execute here). G3 ceiling holds on all nine; schema keys exact; append-only proof ran fifteen checks, all true — no score, evidence array, or prior rationale text was altered.
+
+**Handed forward:** a T5 entry (16.0 KB — slightly over the 15 KB target I set, but well inside the Read limit that constraint exists to protect), flagging that the `collect_refresh_every` rule has two readings and no cycle has ever ruled, with the last T1 eleven cycles back.
