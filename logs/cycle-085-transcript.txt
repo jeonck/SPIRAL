@@ -1,0 +1,15 @@
+Cycle 85 (T4 — Assess) complete.
+
+**Phase check:** all eight of cycle 84's confirming checks passed — cycle 84 completed its T3, so I ran the T4 as queued.
+
+**G2 retrospection — FAILED, `ctr-0044` opened.** Target was `consistency-calibration-as-failure-mode` `candidate_resolutions[10]` (the round-2 least-recent-attention order lands on cycle 75's issue; `[10]` and `[12]` are the only candidates there no G2 had ever taken).
+
+Three of four checks passed at source: `src-0028`'s abstract sentence and full publication metadata verbatim; `src-0029`'s arXiv Comments/DOI/author fields exact; and the load-bearing premise — §3's *"Both Brier score and log-loss are strictly proper scoring rules."* — confirmed. The provenance check also passed: every quotation is in `index.json` key_claims, so this candidate does **not** have the cycle-76/84 defect shape.
+
+The failure: paragraph (2)'s flat assertion **"Neither source names ECE"** is false for `src-0029`, which defines binary-ECE, classwise-ECE and confidence-ECE across §4.2–4.4. Charged and not credited: `src-0028` untested, one-form render, exact definition strings not established. **The defect does not threaten the conclusion — it cuts the other way**: `src-0029`'s already-stored §4.4 "use them together with the proper scoring rules" sentence relates the ECE family to proper scores *directly*, which is better footing than the derived Bregman inference. What's wrong is the candidate's account of why the step had to be an inference.
+
+**Assessment: no score moved.** ttp 3, the other eight 2, total 19. Only `ioc-extraction-reliability` had fresh grounds, and every movement cycle 84 produced pointed downward or sideways — it holds at 2 because the level-2 bar is met by a wide margin, not because it improved. Every ceiling in the graph is now 3 (all nine issues carry ≥2 open contradictions; the validator applies a set-comprehension ceiling, not a per-point subtraction).
+
+**Three corrections recorded by appending, not erasing:** cycle 81's reductio arithmetic (5 − 12 = −7, or −10 from the merit score, not −12); cycle 81's gloss of `ctr-0038` (it's the metric-comparison conflict; the rubric-mean question is `ctr-0040` step (iv)); and cycle 84's queue entry miscount (that issue carries four open contradictions, not two — its conclusion was unaffected, since under a set comprehension the count never mattered).
+
+21 verification checks plus 4 hand-run gate checks, all true. Queue set to T5, `last_completed_task.txt` written, scratch files deleted. One turn was lost to a jq precedence trap, now recorded as carry-forward [236]; two fetches were wasted on a 404 and an unparseable PDF before ar5iv worked, recorded as [237].
