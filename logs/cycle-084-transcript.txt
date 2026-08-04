@@ -1,0 +1,20 @@
+Cycle 84 complete. All state edits, queue files, and the log are written and validated.
+
+## What happened
+
+**Phase check** — cycle 83 aborted on this exact queue entry and was reverted. I re-ran it as attempt 2, verifying all eight of cycle 82's confirming checks against the state before touching anything, and appended **84** (not 83) to the attempts array.
+
+**G2 retrospection — FAILED, `ctr-0043` opened.** Target: `attribution-expressed-confidence-unmeasured` `candidate_resolutions[1]`, its src-0019 limb. Three defects:
+1. The confidence-string sweep it cites appears **nowhere** in `src-0019.md` or `index.json` — only in cycle 49's log prose.
+2. Log 49 records one fetch with "fourteen numbered items" and enumerates eleven results, none a confidence string, while asserting an eleven-string absence. Eleven plus eleven doesn't fit in fourteen.
+3. The load-bearing one: `evaluation.ipynb` is the **scorer**, but a confidence construct is elicited by a **prompt**. The elicitation file `model-prediction.ipynb` was flagged by src-0019 itself at cycle 43 as "the one cheap unfinished step" and went unread for thirty-five cycles.
+
+I read it on two mirrors under different owners. The result **strengthens** the conclusion — no confidence strings on either render, and the prompts it does contain ("You are a cybersecurity expert…", the CTI-RCM instruction) elicit no confidence. So the defect is in the evidence's provenance and shape, not its direction, and I've told the T4 explicitly not to demote on it.
+
+**Main task — `ctr-0038` steps (i) and (iv) discharged.**
+- Step (i), no fetch: F1 = 0.86 entails P ≥ 0.7544, so the "short of even the 86% baseline" clause is **undetermined** for both vanilla models (0.8240, 0.8503). One sharpening ctr-0038 missed: 0.6944 sits *below* the floor and is determinately lower.
+- Step (iv), **rejected at source**: src-0003's "coverage" is labelled-over-extracted, not recall — the P = 0.8810 route is invalid. The same fetch found "84%" is absent from the body; it's the complement of a text-stated 16%, sound as a number but a derivation, not a quotation.
+
+Also repaired `ctr-0033`'s two missing schema keys, which cycles 81 and 82 both noticed and neither fixed.
+
+**Honestly not done:** ctr-0038 steps (ii) and (iii) (propagating the correction into ctr-0001 and ctr-0010) — reported undone in the entry, the log, and the carry-forward, not quietly dropped. The issue's six open contradictions all remain open. Budget: 3 fetches, 0 searches, 0 new sources, ~45 of 75 turns.
