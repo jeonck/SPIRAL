@@ -1,0 +1,22 @@
+Cycle 82 complete.
+
+## What I did
+
+**Phase check** — all four of cycle 81's confirming checks passed at source (`last_assessed_cycle` 81, 41 contradictions ending at `ctr-0041`, 30 open, rationale grown to 61,250 chars). Cycle 81 was a valid T4, so I ran the T5.
+
+**G2 retrospection — FAILED, `ctr-0042` opened.** Target: `automated-triage-under-refusal`'s sole candidate (the round-robin's least-recently-examined issue, last G2'd at cycle 73). One verification fetch of `arxiv.org/html/2601.21083v3` found two independent defects:
+
+1. The sentence that justifies this issue existing separately from the accuracy-shaped issues — *"All models correctly identify the ground-truth threat when they act; the calibration gap is not in detection but in restraint"* — is **asserted three times (Intro, Discussion, Table 1 caption) and measured zero times**. No detection-accuracy column exists. The candidate calls this "locating the defect precisely."
+2. The paper **never defines "false positive"**, so the base has carried 82.5/65/57.5/45 % for 66 cycles with an unknown denominator. The neighbouring definition *does* exist — *"Blast radius is the ratio of false positive to correct containment actions per episode"* — and this base doesn't hold it.
+
+The candidate is not withdrawn: src-0007's half and src-0015's measured over-triggering half both survive.
+
+**Selection — `ioc-extraction-reliability`.** Ladder applied mechanically; full ranking table in the log.
+
+## The thing worth your attention
+
+Applying step 3(a) surfaced a live methodological conflict. Cycle 64 **rejected in writing** the "rank by number of dependents" reading; cycle 71 recorded [211] agreeing that the prompt's wording is strictly pairwise. **Cycles 74 and 77 then both used the rejected reading anyway**, without citing either. At cycle 82 the two readings diverge: dependent-count would have selected `consistency-calibration` for the third time running, two cycles after its own attempt — the exact thrashing 3(b) exists to prevent. I applied pairwise and flagged that logs 74/77's ranking tables are **not commensurable** with logs 71/82's. Filed as [233] for a human ruling.
+
+Also recorded plainly: the `created_cycle` tie-break eliminated `automated-triage-under-refusal` for the **ninth** time — still the only issue never investigated in 82 cycles, and now the issue where all three G2 passes ever run on it have found a defect.
+
+**Budget:** 1 fetch, 0 searches, 0 new sources, ~26 turns. State edits, queue files, then log — in that order.
