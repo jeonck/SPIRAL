@@ -1,0 +1,27 @@
+Cycle 89 complete. Summary:
+
+## Phase check
+Passed — cycle 88 landed `T4 assess`; all four confirming checks matched. I ran as T5.
+
+## G2 retrospection — **FAILED**, `ctr-0048` opened
+Target was cycle 79's only supported conclusion, `consistency-calibration-as-failure-mode` `candidate_resolutions[10]`. I tested the limb **cycle 87 made load-bearing without re-fetching**: `src-0029`'s Section 4.4 guidance sentence.
+
+Three limbs passed (sentence exists, confirmed in **two render families**; section title and metrics newly recorded; cycle 87's referent ruling correct and now pinned to the antecedent "all ECE/MCE measures"). One failed: the stored sentence is a **mid-sentence excerpt**. Its original opens "**Thus,** it is good practice…", and the preceding sentence — never fetched by any cycle — states that ECE/MCE measures "can be minimised by predicting the overall class distribution, regardless of the given instance." Cycle 87 asserted that sentence "says NOTHING ABOUT WHY." That preceding sentence *is* the why, and it states the refinement-insensitivity point cycle 87 said only `src-0028` carried.
+
+The candidate's conclusion and cycle 87's conclusion both survive; only cycle 87's stated reason is falsified. **Cycle 87's claim was true of the base as stored and false of the source** — stripping the leading conjunction made a fragment look like a whole sentence.
+
+## Selection — `institutional-incident-real-world-impact`
+Full ranking table is in the log. Three policy questions the queue entry left open, all now ruled and recorded:
+
+1. **Refresh rule: no T1.** 89 % 7 = 5. I also found the rule is arithmetically defective — T1 requires a cycle to be both a T5 (period 3) and ≡0 mod 7, so it fires every **21** cycles, not 7. Of the three T1s ever run (14, 41, 78), only cycle 14 satisfied it.
+2. **Tie-break 3(a): pairwise, not global in-degree** — the text says "**its** dependents"; the global reading would return the same issue every cycle forever.
+3. **3(b) window: cycles 84–88** — under 85–89 the selection would have been formally unresolvable, since six issues share `created_cycle: 2`.
+
+**The instrument chose the target, not my judgement** — and I said so in the log. On merit I'd have picked `automated-triage-under-refusal` (never investigated in 89 cycles), eliminated for the eleventh time by birth order. The selector has no term for evidential depth: the best-audited and least-audited issues in the graph both score 2 and no tie-break separates them.
+
+I verified before committing to the target that a T3 has real work there: `ctr-0018` step (iii) needs one exact-string fetch to close.
+
+## Changes
+One state edit (`ctr-0048` appended; 47→48, open 35→36), plus both queue files and the log. Append-only proof ran in one call, eight checks, all true, before the install. Scores byte-unchanged, no new sources. Budget: 2 fetches, 0 searches, ~22/75 turns.
+
+One thing I'd flag: the queue entry is **15.9KB against a ~15KB guideline**. I trimmed twice and stopped rather than cut the phase check or the `ctr-0018` probe text.
