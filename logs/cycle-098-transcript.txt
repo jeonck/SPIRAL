@@ -1,0 +1,24 @@
+Cycle 98 (T5 — Select) complete.
+
+**Phase check:** passed all four invariants; cycle 97 landed cleanly as T4.
+
+**G2 — PASS** (second consecutive clean pass). Re-checked `ctr-0048`, the sole conclusion cycle 89 entered. `src-0029` is a two-version arXiv paper (v1 Dec 2021, v2 Feb 2023), so cycle 89's unversioned ar5iv fetch was under cycle 96's prohibition — I re-fetched on **versioned** URLs in two render families. Both returned the two Section 4.4 sentences verbatim, identically, consecutively, in the claimed order. The stored fragment *is* a mid-sentence excerpt; cycle 89's finding stands.
+
+Two limits stated rather than glossed: the section *title* was supplied in my own query, so its confirmation is corroboration, not independent evidence — the converse of cycle 97's false-PARTIAL lesson. And `ctr-0048` repair steps (iii)/(iv) remain unclaimed (T1/T3 work).
+
+One genuinely new operational fact: **ar5iv accepts a version suffix**, so cycle 96's versioned-URL rule and the two-render-family discipline are compatible — nobody had established that.
+
+**Selection — mechanical, full ranking table in the log.** All nine issues are candidates; `ttp` (score 3) dies at step 2. Tie-break 3(a) pairwise (settled by [246]) leaves four unbeaten; 3(b) over window 93–97 eliminates `consistency-calibration` (attempt 96) and `ioc` (attempt 93); 3(c) decides on `created_cycle`.
+
+**Selected: `institutional-incident-real-world-impact`** (created_cycle 2, beating `automated-triage-under-refusal` at 16).
+
+Three things worth flagging:
+- **The policy, not the merit, made this choice.** `automated-triage-under-refusal` — the only issue with zero attempts in 98 cycles and, per cycle 97, the only one a single T3 could plausibly move — survived 3(a) and 3(b) untouched and died on *age*. 3(b) pushes work away from recently-attempted issues; 3(c) hands it back to the oldest, which is the most-attempted by construction. Recorded as [271] for a human; not patchable from inside the loop.
+- **The winner flipped from cycle 95 for a non-evidentiary reason.** Same policy, same scores — only the 3(b) window moved (cycle 90's attempt aged out, cycle 96's aged in). With a flat score vector the selection is a function of the rotation schedule alone.
+- Score range is still `{2,3}` across nine issues; the tie-breaks did 100% of the work.
+
+**Refresh rule re-derived independently: 98 = 7 × 14, so it fires.** Cycle 99 is a **T1 (collect)**, the first in twenty-one cycles — and cycle 89's written prediction that it would land exactly here is now discharged as correct.
+
+**Changes:** `graph.json`, `scores.json` and `index.json` are byte-unchanged (confirmed by `git status`); only the two queue files and the log were written. Three fetches, zero searches, zero new sources, zero contradictions, zero score changes.
+
+One rule I did not fully meet, stated in the log: the queue entry is ~16.5KB against [238]'s ~15KB target. This issue's `open_questions` total ~30KB, so quoting them in full is arithmetically impossible inside the budget — I quoted each question's operative sentence verbatim plus the jq command for the full text, and stopped trimming rather than cut load-bearing instruction. Filed as [275], with the upstream point that open questions accreting amendment history in place eventually stop being quotable at all.
