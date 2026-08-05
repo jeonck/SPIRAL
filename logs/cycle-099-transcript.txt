@@ -1,0 +1,22 @@
+Cycle 99 complete. `graph.json` and `scores.json` are byte-unchanged, as a T1 requires; the scratch file is deleted.
+
+## What I did
+
+**Phase check** — `last_completed_task.txt` read `T5 select`, and all three jq fingerprints matched the queue's expected values (`srcs=32`, `ctr=51 open=38 last=ctr-0051 issues=9`, `last=97 total=19`). I was the T1.
+
+**G2 — PASS** (third clean pass running). Cycle 90's `candidate_resolutions[8]` rests on three verbatim strings from `src-0032`; I re-fetched the live URL on both render families and all three came back character-identical. I did *not* re-run cycle 90's *negative* probe (that the page quotes EY not at all), and said so — the pass covers the positive strings only.
+
+**Collection — 5 sources, the ceiling exactly.** Index 32 → 37, first addition since cycle 90.
+
+- **Lead 1 (ranked first, untried for 27 cycles) — tried, negative.** The Dietrich/if(is) writeup exists on the institute's own domain, but a third targeted fetch for its credit line returned `Quelle: Der Standard` — it's a re-post of an outlet that itself cites Der Spiegel. The only route claimed to reach the 26/492 figure independently doesn't reach it at all (`492`, `26`, `Spiegel` all ABSENT on both renders). Collected as `src-0033` for the verbatim Dietrich quote and ENISA's restated cause.
+- **Lead 2 — the one that paid.** GPTZero's sweep has moved on since cycle 13; I substituted the newer KPMG and PwC instalments for the stale Deloitte targets, and said why. `src-0034` (KPMG incident, counts two-render confirmed), `src-0035` (**KPMG's response statement, verbatim** — half (B) moves N=2 → N=3, its first movement since cycle 12), `src-0036` (independence check), `src-0037` (PwC, fifth institution).
+- **Lead 4 — dead by infrastructure.** A snapshot exists (Wayback availability API confirms timestamp `20260709102539`) but `web.archive.org` is blocked outright to this agent. Recorded as a standing limit, not a retryable failure.
+- **Lead 3 — run, nothing collected.** One search on the re-framed corrections-policy angle surfaced no publisher policy pages. Reported as a null result rather than padded.
+
+**G3 — no contradiction, near-miss argued.** `src-0034` publishes a denominator (45 citations) where the base says GPTZero withholds one — but those are different denominators (per-report vs sweep-level), so `open_question [0]` is untouched. I recorded the reasoning inside the source so it isn't refiled as a fresh conflict. Two render disagreements (a date, and percentage tiles) are recorded **unresolved** rather than adjudicated.
+
+**Two unlooked-for findings** that a later cycle should weigh: `open_question [0]`'s proposed link-resolution sweep is blind to both failure modes I found — fabricated claims about named third parties who denied them, and references that resolve but anchor to no claim.
+
+I entered no candidate resolution and no score. The KPMG/EY response symmetry is suggestive but I left it in `key_claims` with its rival hypothesis attached, and warned the T2 not to promote it while restructuring.
+
+**Handoff** — T2 (structure) at cycle 100, 15KB, headlined on `open_question [6]`: a split proposal parked at cycle 72 for the next T2, which three task types have since read without standing to act. I told it plainly that my own work cuts both ways on that decision, and gave it the jq to re-derive `[6]`'s stale contradiction list rather than the answer to copy.
