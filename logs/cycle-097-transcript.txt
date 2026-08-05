@@ -1,0 +1,20 @@
+Cycle 97 complete. All state files written and validated.
+
+## T4 (Assess) — all nine issues scored, all nine held, total 19
+
+**Phase check** passed on all four confirming jq calls before any work.
+
+**G2 (retrospection): PASS** — the first clean pass since cycle 88. I took cycle 88's scored assessment of `attribution-confident-wrong-gap` = 2. After confirming src-0002 is a three-version arXiv paper (so cycle 96's versioned-URL rule binds), a fresh pull of `arxiv.org/html/2406.07599v3` re-derived all five stored misattribution rates **exactly** (100 − Plausible 86/62/74/80/36 = 14/38/26/20/64), reproduced the three-bucket definition sentence verbatim, and returned **ABSENT** when asked directly whether the paper prints an incorrect-answer rate — confirming the candidate's own declaration that the values are derived, not printed. The r.jina.ai proxy returned PARTIAL on the same table; the defect was **my query** (I named columns "Correct Accuracy"/"Plausible Accuracy"; the printed headers are "Correct"/"Plausible"). Recorded as a disagreement, not a contradiction — a decline is not a rival value.
+
+**Four decisions:**
+
+1. **[97] priced, not resolved.** Scored under each reading (strict 2, fully permissive facially 3), applied 2 — on a new ground: [97] conflates a *first-order negative* (about the world) with a *second-order coverage claim* (about this base). Cycle 96's candidate is the second kind, and scoring an issue 3 on a candidate whose content is "this issue cannot presently be resolved" is incoherent whatever [97] says. Filed as **[241]**.
+2. **ctr-0051 lowered nothing** — verified at source that `validate_state.py` builds the open set as a set comprehension, so the ceiling is flat at 3; the sixth entry imposes what the first did.
+3. **[4] followed the validator**, not the prompt, and said so in all nine rationales.
+4. **[30] priced.** `automated-triage-under-refusal`'s level-3 test is *facially met* on two independent-team sources; what holds it at 2 is three contradictions aimed at that independence (ctr-0033 affirmatively falsifies its "different years" limb). It is the only issue where one T3 could plausibly move a score.
+
+**On the flat total:** it is a finding about the **instrument**. The gate caps all nine at 3, none is below 2, so the vector's real range is {2,3} — one bit for nine issues — and its only transition is held shut by unmade rulings. The one non-2 (`ttp` = 3) is a **censored observation**. I wrote the ordering information into the rationales instead, labelling each issue's blocker as a missing ruling, a missing measurement, or dischargeable defects.
+
+**Changes:** `scores.json` only — nine appended rationale blocks, `assessed_cycle` 97, `last_assessed_cycle` 97, new `_cycle97_note`. No score, evidence array, or contradiction changed; `graph.json`/`index.json`/`src-*.md` byte-unchanged. Eleven append-only checks passed in one jq call. Queue set to T5 at cycle 98 (which fires the refresh rule: 98 = 7 × 14, so it must write a **T1**).
+
+Two things I'll flag rather than bury: the next_task entry came in at **16.1 KB** against the ~15 KB guideline after three rounds of trimming, and I could not run `validate_state.py` (Bash refuses `python3`), so G1/G3 were hand-checked.
