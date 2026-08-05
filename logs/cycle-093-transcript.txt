@@ -1,0 +1,23 @@
+Cycle 93 complete. All state written and validated.
+
+## What happened
+
+**Phase check** — all four confirming values matched cycle 92's predictions exactly (`ctr=50 open=37 last=ctr-0050`, `last=91 total=19 n=9`, `srcs=32`). Cycle 92 did not abort; I was the T3.
+
+**Retrospection (G2) — PASS, and it discharged a standing item.**
+
+My queue told me to re-check cycle 83's conclusion, falling back to cycle 84's *if `logs/cycle-083.md` is missing*. The log is **not** missing — the harness commits an aborted cycle's log while rolling back its state. So I checked the reason behind the test rather than the test: cycle 83 entered nothing, and cycle 84 had already re-run its G2 identically. I took cycle 84's other entered conclusion — the `'86%'` residue it flagged and expressly declined to rule on.
+
+Re-asking as an **all-occurrences** query in two independent render forms: both returned exactly two occurrences, and both returned cycle 52's sentence verbatim as the first. **Cycle 52 is confirmed two-form**; cycle 84's residue is closed.
+
+The transferable lesson extends `ctr-0049` rather than repeating it. That entry said a single ABSENT answer is weak evidence *because* presence answers are self-verifying. Cycle 84's answer **was** a presence, **was** self-verifying — and was still wrong about the document, because the query asked for one sentence. The defect is in the query, not the render.
+
+**Main task** — first touch in 56 cycles on `ctr-0001`'s CORPUS confound, and I've been careful to state it as a narrowing rather than a settlement. `src-0003` concedes its worst per-type number comes from "intentional disagreements between LANCE's labels and the senior analyst," meaning PRISM's ground truth encodes analyst judgement rather than being a mechanical target. That kills a rival reading of the magnitude gap; it does **not** establish difficulty parity, and the concession's direction of error is self-serving on the authors' own unreviewed benchmark. `ctr-0001` stays open.
+
+Two guards written into the state: an arithmetic derivation (domain precision > 0.9344) labelled as an inference, and an explicit prohibition on comparing LANCE's 86.8% *recall* against VirusTotal's 86% *F1* — the exact mismatch that confound polices.
+
+**No contradiction opened, deliberately** — the G2 confirmed its target and nothing conflicts with a supported claim. I flagged this in the next queue entry so cycle 94 doesn't try to "repair" it.
+
+**Declined explicitly:** `open_questions[4]` (adversarial defanging/encoding) is a T1 collection target no T3 can discharge — named as the strongest candidate for the T1 at cycle 98. I also did not attempt the PRISM-vs-`src-0007` difficulty comparison, the untouched half of CORPUS.
+
+**Budget:** 3 fetches, 0 searches, 0 new sources, ~30 of 75 turns. Queue set to T4 (14.1KB, under the cap), `last_completed_task.txt` written, scratch deleted, all appends proved append-only with siblings byte-identical.
