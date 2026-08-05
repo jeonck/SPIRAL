@@ -1,0 +1,23 @@
+Cycle 105 complete. All files valid; `graph.json`, `index.json` and every `src-*.md` left byte-untouched, as a T4 must.
+
+## What I did
+
+**Phase check** — all four confirming checks passed exactly (`T3 investigate`; ctr=56 open=43 last=ctr-0056 issues=10; srcs=40 last=src-0040; scores last=102 total=22 n=10). I was the T4.
+
+**G2 (first)** — target derived by reading `logs/cycle-096.md`, not by trusting the queue line: cycle 96 entered `candidate_resolutions[13]` on `consistency-calibration-as-failure-mode`. I re-checked its *most falsifiable* limb — cycle 96's own JOB A, that src-0014's ABSENTs are body-only. Two render families, asked unprompted. **PASS**: both returned ABSENT for model-expressed confidence and both independently reproduced the stored abstention sentence verbatim. No contradiction opened.
+
+But JOB A is **not** discharged, and I say so rather than claim it: both renders now enumerate five appendix headings (an advance on cycle 96) but **neither rendered an appendix body**, and Appendix D is "Evaluation Metrics" — exactly where a confidence metric would sit.
+
+**The assessment** — all ten issues scored, `assessed_cycle` 105, `last_assessed_cycle` 105. Rather than trust the queue entry that one issue moved, I diffed whole issue objects against commit `5c2b5a5`: nine SAME, one CHANGED.
+
+Two results worth your attention:
+
+1. **The three-assessment debt is paid.** `ttp-attack-mapping-reliability`'s uncensored merit is **3**, established at zero fetches. Level 4 fails because `ctr-0045` step (i) — a *no-fetch* narrowing — was never applied: the candidate still reads `src-0007's authors are genuinely unaffiliated with CTIBench's`, the exact institutional wording the contradiction bans, nineteen cycles on. **The consequence retires a thirty-cycle misdiagnosis: no issue is held down by the G3 ceiling.** The score vector's flatness is a *merit* flatness, not a ceiling artefact — so cycle 102's "cheapest to uncap" advice is now dead, and I recorded that where a T5 will read it.
+
+2. **`institutional-incident-real-world-impact` held at 2, but the reason is replaced, not inherited.** Cycle 102's coverage objection is genuinely discharged by cycle 104's extension — I record that plainly, since holding a score for an answered reason is inertia rather than stinginess. What now blocks level 3 is **source independence**, from the candidate's own self-charged limit: EY, KPMG and PwC all trace to GPTZero, two upstream to the FT which this base doesn't hold. The extension multiplied institutions, not routes. I did not double-demote for `ctr-0056`.
+
+Total is **22 across ten, identical to cycle 102's vector** — every entry re-derived, none moved. Append-only proof ran 13 checks in one call, all true.
+
+**Bookkeeping** — queue written for a T5 at 106 (refresh rule re-derived independently: 106 % 7 = 1 → T3, next T1 at 113), `last_completed_task.txt` reads `T4 assess`, log written with carry-forward copied mechanically. I caught and fixed a numbering collision: my new carry-forward items would have duplicated existing [243]–[249], so they are [285]–[291].
+
+**Budget**: 2 fetches, 0 searches, 0 new sources, 0 contradictions, ~40 of 75 turns — which is why both owed items were discharged instead of dropped for a fourth time.
