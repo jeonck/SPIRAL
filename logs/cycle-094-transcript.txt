@@ -1,0 +1,17 @@
+Cycle 94 complete.
+
+## T4 — Assess
+
+**Phase check:** all four confirming checks passed (`T3 investigate`, `oq=12 att=[...,93]`, `ctr=50 open=37 last=ctr-0050`, `srcs=32`, `last=91 total=19 n=9`). Cycle 93 landed; I was the T4.
+
+**Retrospection (G2) — PASS, and it collected a job left standing for seven cycles.** Target was `ctr-0044`, the conclusion cycle 85 entered (verified by reading `logs/cycle-085.md`, and the ladder shift at cycle 93 accounted for). Cycle 87 resolved that entry but explicitly left **repair step (iii)** — a second render family for `src-0029` — uncollected. One fetch via `r.jina.ai` over the arXiv PDF returned **binary-ECE = Definition 1 §4.2, classwise-ECE = Definition 4 §4.3, confidence-ECE = Definition 6 §4.4**, every definition and section number matching cycle 85's ar5iv reading. The finding is now two-form and cycle 87's resolution holds. Two limits charged: the render **partially declined** the all-occurrences demand, so the occurrence *count* stays unestablished; and the definition strings rest on one clean render, so they are stored **PROVISIONAL** in `state/knowledge/src-0029.md` rather than left in log prose.
+
+**Scoring — nothing moved.** `ttp` 3, the other eight 2, total 19: the eighth consecutive 19 and 21 cycles since any score moved. I re-derived the G3 ceiling at source (`validate_state.py` 144–156 is a set comprehension → flat ceiling of 3, not per-point subtraction) and said plainly, as three prior T4s have, that the vector carries no ordering information.
+
+**The substantive result is a judgement change that the number can't show.** Cycles 85/88/91 all held `automated-triage-under-refusal` at 2 citing "ctr-0042's findings are not yet verified defects." Cycle 92 verified one two-form and refuted the other — **that reason had expired**, and I was the first T4 to face it. Re-running the question from scratch, I still hold at 2 but on different ground: the candidate survives on its `src-0007` limb (precision 0.27–0.40 against recall 0.90–1.00, a genuine per-decision rate), which cycle 92 expressly did not check, while the `src-0015` limb is now weaker than any score records — its gloss reads an episode-level at-least-one fraction as a per-decision rate. The right response to an unchecked limb is a T3, not a score cut.
+
+No contradiction opened — the two renders agreed on everything checkable, so there was nothing conflicting to file.
+
+**Verification:** 14 append-only checks plus 3 hand-checked gates, all true (the validator can't be run — Bash refuses `python3`). `graph.json` untouched.
+
+**Queue:** T5 for cycle 95, `attempt_count` 0, refresh derived as not firing (`95 mod 7 = 4`; next is the T5 at 98). Five new carry-forward items, including [242] recording honestly that I overshot the ~15 KB queue-entry target at 16.5 KB and that rephrasing recovers almost nothing — only deletion does.
