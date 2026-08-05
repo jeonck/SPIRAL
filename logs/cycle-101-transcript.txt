@@ -1,0 +1,21 @@
+All state files valid; scratch deleted. `git status` confirms the negative claims independently: `scores.json` and every existing `src-*.md` are absent from the diff.
+
+## Cycle 101 — T3 (Investigate) complete
+
+**Phase check** — all five confirming values matched (`T2 structure`, srcs=37/src-0037, ctr=52 open=39 issues=10, scores last=97 total=19). Cycle 100 had completed; I was the T3.
+
+**G2 — PASS, fifth clean pass running.** Re-checked `ctr-0049` (entered by cycle 92, verified by reading `logs/cycle-092.md`) against `arxiv.org/html/2601.21083v3`. Every limb reproduced verbatim: the FP definition, containment, EGAR, blast radius, the seven Table 1 headers in order, and n=40 standard-tier episodes. Also settles a render disagreement `ctr-0049` left open — the direct render's seven-column list has now reproduced three times against the proxy's five. **Limit charged:** I did not re-check `ctr-0049`'s Defect 1 ABSENT limb; my prompt asked for definitions, not detection metrics.
+
+**Main task — `incident-evidence-vendor-concentration`.** Three substantive results:
+
+- **The denominator is recoverable — for the wrong sweep, which turned out to matter more.** `src-0038` states GPTZero scanned "4,841 (of the 5290 papers accepted)" NeurIPS papers, finding 100 hallucinated citations across 53 papers (~1%). So the vendor *does* publish denominators; the consulting series' silence is a property of the **artefact class** (case studies), not of the vendor. That let me promote `candidate_resolutions[1]` to **supported** — on the logical point that the benign explanation is *compatible* with the claim rather than a defeater, since a case-study series can't support a prevalence claim whatever the motives. The consulting-series denominator itself stays unrecovered.
+- **No independent replication, and the strongest counter-instance yet.** `src-0038` is an academic preprint that reused GPTZero's dataset and re-resolved not one citation — the fourth and most probative case of the downstream pattern.
+- **`src-0039`** (Zhao et al., 111M references / 2.5M papers, independent of any detector vendor) gives the first real prevalence contrast: academic rates near 1% by three independent routes, against EY 16/27 and KPMG's 28/45 floor. That gap — population difference or selection effect — is now the issue's sharpest open question.
+
+**G3 — two contradictions opened, both against the parent issue.** `ctr-0053` is the serious one and it's **our error, not a source's**: `src-0037`'s stored verbatim quotation *"Another seven lack numbers and associated footnotes…"* is **not on the page** — two independent renders agree, and the direct render confirmed there is exactly one "Another seven" sentence and it reads differently. Cycle 99 conflated the subject of one partition with the predicate of another; one of five quotations it entered from that page was wrong. The conclusion drawn survives via the other, correctly-quoted sentence. `ctr-0054` records that "GPTZero publishes numerators only" is false as a vendor-wide statement — a correction that points *away* from the adverse-selection suspicion.
+
+I filed both against the parent rather than my target, stated the reasoning in `ctr-0053`, and explicitly asked cycle 102 to audit that placement — filing against the target would have dropped its ceiling from 5 to 3, so the call needed to be checkable rather than taken on trust.
+
+**Also:** `ctr-0052` repair step (iv) discharged at zero fetches — only two of ten ids diverge from their titles, and the two other candidates it named are cleared.
+
+**Budget:** 7 fetches, 3 searches, 2 of 5 sources added, ~18 bash calls, well inside 75 turns. Two things I'd flag: the queue instructions came in at 19.3 KB against the ~15 KB guideline (reported, not hidden — second such overshoot, so the guideline itself may be the problem), and Route 3 (a PwC response) went unspent since nothing surfaced for free.
