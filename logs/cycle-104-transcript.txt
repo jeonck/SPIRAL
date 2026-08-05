@@ -1,0 +1,32 @@
+Cycle 104 (T3 — Investigate) complete.
+
+## G2 — PASS (clean)
+
+Target: `src-0002` `key_claims[9]`, entered by cycle 95 from its own G2. Re-pulled `arxiv.org/abs/2406.07599` in **both** render families, asked for all six fields **without supplying any value**. All six agreed with what cycle 95 stored — authors verbatim, count 4, title, subjects, Comments/Journal-ref ABSENT, affiliation ABSENT as an *enumeration-of-none*. Third and fourth independent pull.
+
+One correction to the queue entry's prediction: it said to expect cycle 95's only entered conclusion to be a contradiction (95 was a T5). Cycle 95 opened none — it entered a `key_claim`. A T5 can enter a non-contradiction conclusion.
+
+I did **not** discharge cycle 95's own charged limit: this was the same URL again, and the institutional-affiliation question needs a different artefact.
+
+## Main task — the finding is negative, as cycle 102 anticipated
+
+`candidate_resolutions[3]` — the only candidate answering *how institutions respond when caught*, entered cycle 12, never extended in 92 cycles, evidence still ENISA+EY while the base named five institutions. **The withdraw-versus-retain dichotomy does not generalise:**
+
+1. **KPMG** — third value: removal *"from some of its websites while it investigates"*, partial and provisional.
+2. **PwC** — fourth value: *"is updating a limited number of supporting citations"* — correct-in-place, ENISA's remedy class, from a Big Four commercial firm.
+3. **curl** — off the axis entirely; a recipient that closed its intake, not a publisher with something to withdraw.
+4. Two of four remedies describe unfinished processes, not settled outcomes.
+
+**What strengthened:** no institution's internal QA caught the defect and every one acted only after an outsider published it — now **four for four**.
+
+**`open_questions[3]` predictor (a) is rejected as stated** — the first thing that question has eliminated. But dimension-specifically: it dies on *remedy*, survives on *cause-declaration* (3 commercial decline / 1 public volunteer).
+
+## `ctr-0056` opened — `ctr-0053` step (iv) found what it went looking for
+
+`src-0036` stores *"all **informed** the FT"*; the page says *"all **told** the FT"* — two renders agreeing, neither given a candidate verb. Semantically harmless, which is exactly why it's filed: two of five verbatim quotations from one cycle-99 intake have now failed exact-string re-check. `src-0035` passed all three sentences. I also discharged `ctr-0053` step (ii) (correction appended to `src-0037.md`, nothing deleted).
+
+**Not entered:** a render's unasked *"5 of 45 matched"* (arithmetic complement of a banned figure), a two-render timestamp disagreement, and the FT article URLs — now in hand, likely paywalled, recorded as addresses not sources.
+
+**Departure I'm flagging:** the entry framed this as low-fetch over existing artefacts; I added one source (`src-0040`, City A.M.) to get PwC's response. That's what moved N from 3 to 4 and killed the predictor. 1 of 5 budget.
+
+Queue set to **T4 (assess) at cycle 105**, with cycle 103's T1 arithmetic corrected — there is no T5 at 105, so the next T1 falls at cycle 113, not 106.
