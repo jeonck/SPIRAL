@@ -1,0 +1,27 @@
+Cycle 100 complete. All gates hand-checked (validator can't be run — `python3` is refused in this sandbox).
+
+## What I did
+
+**Phase check** passed exactly: `T1 collect`, srcs=37/src-0037, ctr=51 open=38 issues=9, scores last=97 total=19.
+
+**G2 (cycle 91's entered conclusion) — PASS**, fourth clean pass running. Cycle 91's `_cycle91_note` is a set of measurements about the state itself, and every limb re-derived exactly: 48 contradictions with 13 resolved at cycle 91, 15 opened / 4 resolved in cycles 74–91, sources 27→32, all nine issues carrying an open entry, and `validate_state.py` 144–156 implementing a flat ceiling via a set comprehension. Recorded one **supersession, not a failure**: cycle 91's "the base measures impact not at all" was true of its 32 sources; cycle 99's `src-0036` (four named organisations publicly rebutting fabricated claims) is the nearest thing to a real-world consequence this base holds. No contradiction opened on it.
+
+**Main task — the split proposal is discharged, and I declined to split.** Five grounds, four unavailable to cycle 72:
+
+1. **The precedent didn't work.** The cycle-45 split's strong half was 2 pre-split, 2 at cycle 47, and is 2 today — 52 cycles, no movement. The cycle-16 split fared no better. **This loop is 0 for 2 on splits**, and all six T4 endorsements were written without checking that.
+2. **The central premise is falsified** — cycle 99 strengthened half (B) as a by-product of collecting for half (A).
+3. **The contradiction arithmetic inverts** once the 28-cycle-stale list is re-derived: 3 of 4 open entries land on half (A), not 1. The split buys half (A) no ceiling relief at all.
+4. **The real blocker is carry-forward [240]**, a ruling; splitting evades it and destroys one of only two test cases for settling it.
+5. **`ctr-0052`** — see below.
+
+**`ctr-0052` (G3, new).** Three consecutive assessments pin this score on a "real-world IMPACT" conjunct that appears in the issue's **id** but not in its **title** (which asks only occurrence and response — both of which those same assessments say the base documents *well*). Cycle 45 established ids here can be legacy. I recorded three competing readings and **picked none**, and deliberately did not retitle, because every available retitle smuggles in one side.
+
+**New issue** `incident-evidence-vendor-concentration`: five institutions, but only **three discovery routes** — GPTZero surfaced three of the five. Two candidates (structure supported, inference left proposed with the benign explanation written in), no score entry.
+
+Five open questions amended by append (spent route, blocked route, N=2→3 with the new sector confound stated, sweep method now known blind to two failure modes).
+
+**Append-only proof**: contradictions and issue ids are exact prefixes; all 8 open_questions satisfy `startswith`; the other 8 issues and all sibling fields byte-identical; no dangling references. No sources added, `scores.json` untouched.
+
+**Next**: T3 at cycle 101 on the new issue — the only issue in the graph with a ceiling of 5 rather than 3, which makes it the one place a T3 could give the stuck score vector ordering information back.
+
+Two things I'd flag rather than let pass: the queue instructions are **17.4 KB against a ~15 KB guideline** (trimmed from 18.7; I judged the overrun better than a re-derived decision, but [238] is not discharged), and one turn was lost to my own `jq` proof-query bug (`.` rebinding inside `map`) — the data was never wrong, the query was.
