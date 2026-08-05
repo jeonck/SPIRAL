@@ -1,0 +1,16 @@
+Cycle 95 complete.
+
+**Phase check** — all six confirming checks matched (`T4 assess`, scores `94/19/9/[94]`, contradictions `50/37/ctr-0050`, sources `32`, nine attempt arrays). I was the T5. Refresh re-derived: 95 mod 7 = 4, so no T1 fires; next refresh is the T5 at cycle 98 → T1 at 99.
+
+**G2 (retrospection)** — took the conclusion cycle 86 *entered* (`src-0002` `key_claims[7]`, the CTIBench authorship record), after verifying in `logs/cycle-086.md` that cycle 86 entered anything at all. Cycle 86 charged a one-form limit against itself; I discharged it with one fetch through the second render family. **PASS** — both renders agree exactly on all six fields (authors verbatim + count 4, title, Subjects, Comments ABSENT, Journal-ref ABSENT, affiliation ABSENT). So the disjointness finding is now two-form and `ttp` `candidate_resolutions[1]` claim (a) survives. `ctr-0045` stays open and is *strengthened*: affiliation absent in two forms is still absence of evidence, not evidence of non-affiliation. No contradiction opened — the defect is already filed, and G3 needs two supported claims in conflict.
+
+**Selection** — `consistency-calibration-as-failure-mode`. Eight issues tied at 2 and the ninth at its ceiling, so the tie-break decided it, as it has since cycle 73. I adopted the **strict pairwise** reading of 3(a) and said why, computed the dependent-count reading too, and they agree — plus both tie-break orderings and both attempt-window boundaries. So this selection adds no evidence to carry-forward [233], which stays unsettled.
+
+Two things worth flagging:
+
+- **New defect [244]:** ranks 2–6 are not a well-defined order. Interleaving 3(a) (partial order) with 3(c) (total order) produces intransitive triples. The winner is safe only because it's a Condorcet winner — it beats all eight others pairwise. A T5 needing a *second* choice would find the policy underdetermined.
+- **Carry-forward [30] again:** `automated-triage-under-refusal` (never investigated in 95 cycles, called weakest on merit by every assessment since 76) lost at 3(c) on `created_cycle` 16 vs 2, to an issue with nine prior attempts. I applied the policy as written rather than redesigning it, but the mechanical policy and the recorded merit ranking have now diverged for twenty consecutive cycles.
+
+**Budget: 1 fetch, 0 searches, 0 new sources, 0 contradictions, 0 score changes, ~40 turns.** `scores.json` and `graph.json` are byte-unchanged. The `index.json` append passed a six-check append-only proof.
+
+Two honest misses: the queue entry landed at **16.75 KB against a ~15 KB target**, and it cost eight turns of trimming — precisely the failure carry-forward [242] described one cycle earlier, so I filed [245] with the concrete fix (budget by blocks before writing; push the selection argument into the log, since a T3 doesn't need to know how it was chosen). And the affiliation question is unresolved rather than closed — settling it needs a *different artefact*, not a third render of the same URL.
