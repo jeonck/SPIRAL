@@ -34,6 +34,15 @@ is ready to run.
    Worth reporting in the paper: on free CI, scheduled-trigger latency is a first-class
    variable the design must absorb, not an implementation detail — and it is large
    enough (≈2.5 h) to dominate a 3 h nightly window if ignored.
+8. **The window end bounds finishing, not starting (fixed after cycle 92, 2026-08-06)**:
+   the stop check compared the *nominal* next slot (`previous start + interval`) against
+   the deadline. Once cycles began outrunning the 10-min interval — they now average
+   ~15 min — the real start drifted past the nominal one, so cycles were begun after the
+   window closed. Observed overrun grew with cycle length: −3, +2, +8, +22 min on
+   08-01..08-04, i.e. research was still running at 06:22 local against an 06:00 promise.
+   The check now uses the actual next start and additionally requires the longest cycle
+   seen that night to fit before the deadline. Costs at most the final cycle — which is
+   also, on three of five nights, the one that died on the exhausted quota anyway.
 6. **Rollback covers agent death, not just gate rejection (fixed after cycle 31,
    2026-07-30)**: `run_cycle.sh` ran under `set -e`, so a `claude -p` that exited
    non-zero aborted the script *before* `validate_state.py` — skipping both the gates

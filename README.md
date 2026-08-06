@@ -95,6 +95,9 @@ T1 Collect ──→ T2 Structure ──→ T3 Investigate ──→ T4 Assess �
   throughput against depth rather than against correctness.
 - Nightly window: `schedule.cycle_interval_min` (start-to-start spacing, so the
   subscription quota refills between cycles) and `schedule.window_end_utc` (hard stop).
+  A cycle is started only if the longest cycle seen that night would still fit before
+  the hard stop, so the window end bounds when research *finishes*, not merely when it
+  is last allowed to begin. Cost is at most the final cycle.
 
 ## Circuit breakers (unattended-run safety)
 

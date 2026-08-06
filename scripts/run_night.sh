@@ -50,6 +50,7 @@ echo "SPIRAL night batch — start $(date -u +%FT%TZ), window ${START_UTC}Z-${EN
 n=0
 consec_fail=0
 consec_invalid=0
+LONGEST=0        # worst cycle length seen tonight, in seconds
 while true; do
   n=$((n + 1))
   START=$(date +%s)
@@ -116,13 +117,31 @@ print(f\"{t} {n.get(t,'')}\".strip())
     exit 1
   fi
 
-  # The next slot must *start* inside the window; a cycle is never begun late.
+  NOW=$(date +%s)
+
+  # Track the worst cycle length seen tonight, so the stop decision below is made
+  # against how long a cycle actually takes rather than against the nominal interval.
+  DUR=$((NOW - START))
+  [ "$DUR" -gt "$LONGEST" ] && LONGEST=$DUR
+
+  # When a cycle overruns the interval the next one starts as soon as this one ends,
+  # not at the nominal slot — so the slot time is a floor, not the actual start.
+  # Testing the nominal slot instead of the real one is what let cycles begin after
+  # the window closed and finish up to 22 min past 06:00 local.
   NEXT=$((START + INTERVAL_SEC))
-  if [ "$NEXT" -ge "$DEADLINE" ]; then
-    echo "next slot falls outside the window — stopping after ${n} cycle(s)"
+  [ "$NEXT" -lt "$NOW" ] && NEXT=$NOW
+
+  # A cycle is only begun if it can be expected to *finish* inside the window: the
+  # window end is a promise about when research stops, and a cycle that starts at
+  # 10:59 does not keep it. Costs at most the final cycle, which is also the one that
+  # most often dies on the exhausted quota anyway.
+  if [ $((NEXT + LONGEST)) -ge "$DEADLINE" ]; then
+    LEFT=$(( (DEADLINE - NEXT) / 60 ))
+    echo "stopping after ${n} cycle(s): ${LEFT} min left in the window, but cycles have" \
+         "been running up to $((LONGEST / 60)) min tonight"
     break
   fi
-  SLEEP=$((NEXT - $(date +%s)))
+  SLEEP=$((NEXT - NOW))
   if [ "$SLEEP" -gt 0 ]; then
     echo "sleeping ${SLEEP}s until the next slot"
     sleep "$SLEEP"
