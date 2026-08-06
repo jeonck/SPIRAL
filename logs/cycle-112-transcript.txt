@@ -1,0 +1,18 @@
+Cycle 112 (T4 — Assess) is complete. All ten issues scored, gates hand-checked, bookkeeping written.
+
+**Phase check** — `last_completed_task.txt` read `T3 investigate`, HEAD was cycle 111's T3, and all three confirming checks matched (`srcs=40 last=src-0040`, `ctr=57 open=42 issues=10`, `last=109 total=22`). This was the T4.
+
+**G2 — PARTIAL FAIL, `ctr-0058` opened.** Target was the conclusion cycle 102 entered (its `ctr-0052` partial ruling), re-checked against the state at **zero fetches**, which is the right instrument for a claim about the state. Three of its four premises verify. The fourth is false: cycle 102 wrote that `candidate_resolutions[3]` is *the only* candidate addressing how institutions respond when caught — but `candidate_resolutions[5]` (cycle 59, supported) says in its own text that it answers exactly that question for curl. Cycle 102 ran an **evidence-array sweep** and then wrote a claim about **candidate text**; different instruments, different questions. Its conclusion survives (curl is off the remedy axis, and `[5]` is single-source on `src-0022`), but the premise had already been inherited by cycle 105, which is why an entry is owed rather than a footnote.
+
+**Main task.** No integer moved — vector holds at 3, 3 and eight 2s, total 22. The substance is in four rulings that prior cycles left to a T4, all recorded in `consistency-calibration-as-failure-mode`:
+
+- **`[240]`** — a primary candidate must span both conjuncts of a two-conjunct title. Ruled only after showing it isn't load-bearing: the lenient reading also gives 2, because `candidate_resolutions[12]`'s two-source limb is the *existence* of run-to-run variation, while variation in *correctness* is single-source.
+- **`[97]`, never ruled by any cycle** — object-level negatives resolve; coverage-level negatives don't. `candidate_resolutions[13]` is the base's best-attested claim here and still cannot be primary. Costs the score nothing in either direction.
+- **Cross-domain support, open since cycle 15** — a cross-domain source counts toward the generality it actually measures, never toward a domain-scoped candidate. Consequence: the calibration conjunct holds exactly one CTI source, now searched-and-not-found on eight angles.
+- **`candidate_resolutions[2]`** — ruled for scoring (may never count as four-source support); declined the structural split, which is a T2 act, and said so rather than deferring a fourth time.
+
+Also supplied `ttp-attack-mapping-reliability`'s **uncensored merit** — asked for by cycles 97 and 102, unanswered until now: it is **3**, so merit and ceiling coincide and both 3s in the vector are now uncensored. Level 4 fails because `ctr-0047` is an error *inside* a contradiction entry. Marked moderate-confidence and outline-level.
+
+Two things I did not do, flagged in the queue rather than glossed: `ctr-0058`'s repair step (ii) (zero-fetch sweep of the other nine issues for the same substitution), and any move on `automated-triage-under-refusal`, which has never been investigated in 96 cycles and is unreachable by the selector — a T4's only lever there is the integer, and pulling it would falsify the instrument.
+
+One new schedule fact worth surfacing: **cycle 112 was 7 × 16 but was a T4**, so the refresh was skipped. The rule fires only when a multiple of 7 lands on a T5, and with a 3-cycle ladder that means `collect_refresh_every: 7` gives an effective **21-cycle** collect interval. Next T1 falls at cycle 120 via the T5 at 119.
