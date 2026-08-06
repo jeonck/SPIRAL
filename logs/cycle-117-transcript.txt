@@ -1,0 +1,20 @@
+Cycle 117 complete. Summary:
+
+## Phase check
+All five confirmations passed — `last_completed_task.txt` read `T5 select`, HEAD touched only queue/meta/log files, and the three `jq` invariants matched exactly (`last=115 total=22`, `ctr=61 open=46 issues=10`, `srcs=41 last=src-0041`).
+
+## G2 — cycle 108's conclusion: **PASSES**
+Re-checked at **zero fetches** via git history (`92b7f57`, `d2c7c49`). All four claimed discharges are present in the state and were provably added at cycle 108 (ctr-0001 grew 10900→15426 chars there; ctr-0010 4730→8412). The generalisable precision-floor result I re-derived from first principles rather than inheriting: P ≥ F1/(2−F1) is minimised at R=1, and 0.976→0.9531, 0.86→0.7544, with margins of 6.9 and 12.9 points — all matching. Attributions checked ("eighth investigation", "first since 93") and correct. One limb — src-0007's Table 4 row — is source-level and was **not** re-fetched; I say so rather than implying otherwise.
+
+## Main task — ctr-0020 closed after 65 cycles
+The defect: `annotation time` was **this state's invented word** for a quantity src-0003 never names. Repaired in **all three** locations that carried it (candidate_resolutions[0], index.json key_claims[11], src-0003.md), by append under a DO-NOT-CITE marker with the measurement-bearing sentence beside it.
+
+The fourth location ctr-0020 named, `scores.json`, **needed no repair** — I checked rather than assumed, and found it carries the *correction*, not the defect. A mechanical repair there would have damaged it.
+
+Stated three times in the state, deliberately: closure does **not** mean the bad strings are gone — append-only forbids removing them; they now simply carry markers. The abstract-citation ban survives the closure.
+
+The [304] single-source audit (scope re-derived, exactly one candidate) found 2 of src-0003's 3 limitations already carried; the third is recorded, and I noted it is largely superseded by five cycles of re-verification. No score change proposed — a T3 doesn't score.
+
+**Zero fetches, zero new sources, no promotion or demotion.** `[4]` declined for the fifth time on the same ground. Append-only proofs: ten conjuncts `true` on graph.json, six on index.json (with byte-equality, stronger than prefix), and src-0003.md shows 60 insertions / 0 deletions.
+
+Two things worth flagging: `open` legitimately fell 46→45, but the ten-of-ten open-contradiction spread **still holds**, so every issue stays capped at 3 — verified, not assumed, and passed to cycle 118. And I found the published append-only proof form in [221]/[308] is **wrong** — issue objects have no `summary` field, so it crashes; the corrected form is recorded as carry-forward [315]. `scripts/validate_state.py` could not be run (Bash refuses `python3` entirely), so gates were hand-checked with `jq`.
