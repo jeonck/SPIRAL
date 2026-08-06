@@ -1,0 +1,25 @@
+Cycle 113 (T5 — Select) complete.
+
+## Phase check
+All five checks agreed (`T4 assess`; scores `last=112 total=22`; graph `ctr=58 open=43 issues=10`; index `srcs=40`). No abort.
+
+## Retrospection (G2)
+Target: the conclusion **cycle 103** entered — its selection plus ranking table. I re-derived every input from the state *as cycle 103 read it* (commit `5c2b5a5`), at zero fetches. **All ten rows reproduce exactly**, including the 3(b) window finding and the "no attempts array contains 78 or 99" claim. The selection holds.
+
+But a supporting paragraph in the same log restates the false cycle-102 premise — that `candidate_resolutions[3]` is the only candidate addressing institutional response — and stamps it *"I verified all of that at source this cycle."* I confirmed `ctr-0058`'s premise independently by re-reading `candidate_resolutions[5]` at source. The new finding: **`ctr-0058` says the clause travelled through two cycles; it travelled through three**, and cycle 103 sits between the two it names. Worse, `ctr-0058`'s repair step (ii) sweeps *scored rationales* in the *other nine* issues — cycle 103's instance is in a **log**, on **this** issue, so the sweep as written cannot find it. Opened as **`ctr-0059`** (append-only proof: seven checks, all true; `.issues` byte-identical).
+
+The general lesson recorded: an at-source verification stamp is not evidence the check hit the right object. Cycle 103 verified three array-checkable parts correctly and the stamp silently covered a fourth that only candidate *text* could test.
+
+## Selection
+Tie-break 3(b) was **not** inert this cycle — it eliminated `ioc` (attempt 108) and `consistency-calibration` (attempt 111). I used window 108–112 (the five completed prior cycles), the reading cycles 97/98/103 used, and recorded that the alternative 109–113 reading would have left `ioc` and the winner tied and reproduced the cycle-103 policy exhaustion.
+
+**Selected: `institutional-incident-real-world-impact`** (score 2, unbeaten at 3(a), no penalty, oldest `created_cycle`). Verified the winner is the same under both tie-break orderings.
+
+Two things I'm flagging rather than fixing:
+- **`automated-triage-under-refusal` was eliminated for the 14th time**, at 3(c) on age, still `attempts == []` after 113 cycles. This was the closest it has come — 3(b) displaced two of its three rivals, the third escaping by three cycles — which empirically confirms cycle 107's structural diagnosis. I did not steer the ranking to reach it; every step is reproducible from `graph.json`. This needs a human ruling.
+- **The T2 backlog is three deep** and `prompts/t5_select.md` has no branch to schedule a T2 outside the all-issues-at-5 case. I scheduled the T3 the prompt requires and recorded the backlog rather than inventing a task type.
+
+## Next task
+**T3 at cycle 114** (113 % 7 = 1, so no refresh; next T1 falls at 120 via the T5 at 119). The entry leads with what actually blocks the score — the independence bar, not breadth — names two leads attacking it, supplies a zero-fetch fallback, and quotes all eight `open_questions` by index/length/opening with a `jq` command, saying plainly that their ~48 KB cannot fit the ~15 KB cap.
+
+**Budget:** 0 fetches, 0 searches, ~20 bash calls, ~28 turns — well inside `max_turns: 75`. `scores.json` and `index.json` confirmed byte-unchanged; scratch deleted.
