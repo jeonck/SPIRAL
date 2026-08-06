@@ -1,0 +1,21 @@
+Cycle 120 complete.
+
+## What I did
+
+**Phase check** passed on all four gates before anything else (`T5 select`, b4dd32e touching only bookkeeping paths, `srcs=41 last=src-0041`, `ctr=61 open=45 issues=10`), so I ran as a T1 on the collect-refresh beat rather than re-deriving a T3.
+
+**G2 retrospection** — re-checked cycle 111's provenance closure on src-0001 by re-fetching OpenAlex without supplying any values. It returned title, year 2025, conference-paper, LNCS, pages **343–364**, DOI and authors Mezzi/Massacci/Tuma — every value matching. **Passes.** I spent one fetch and said so plainly: the conclusion is about an external artefact, so a state-internal re-derivation would only confirm cycle 111 copied itself consistently. No failed re-verification and no supersession this cycle.
+
+**Main task** — spent the ninth angle (search by CTI sub-task name, per cycle 111's suggestion) in three queries. **Negative for `open_questions[5]`: eleven angles across five cycles now.** But it failed informatively — unlike angles 1–8 it returned security-domain material, and its three best returns were all sources this base already holds (arXiv 2601.21083 = src-0015, 2606.31159 = src-0013, the SentinelLabs report = src-0018). I checked each identifier against `index.json` before proposing it, which is the only reason none was entered twice. I've recorded that as evidence of *saturation*, explicitly not as proof of non-existence.
+
+**One source added of a permitted five.** src-0042 (arXiv 2606.20502, *Calibration Without Comprehension*), found via the fine-tuning secondary brief. Its title is a trap — ECE, Brier and reliability diagrams are all absent, and it carries no CTI task — so it's recorded as *not* answering `open_questions[5]`. It does corroborate the **accuracy leg only** of src-0001's fine-tuning-worsens pattern; the calibration leg remains unreplicated anywhere. Two leads were fetched and dropped on the merits (2601.04486 evaluates Logistic Regression and Random Forest, not LLMs; 2606.22659 is classical prompt-injection detectors).
+
+## One thing worth flagging
+
+An apparent contradiction against the load-bearing cycle-62 elicitation conclusion surfaced mid-cycle: a first fetch of src-0013 returned per-benchmark aggregates that read as though a *benchmark* effect had been misattributed to an *elicitation* effect. A second, targeted fetch at the right granularity dissolved it — cycle 62's conclusion survives independent re-elicitation. **No contradiction opened**, and the episode is written up as carry-forward [325]: re-fetch at the granularity a conclusion was made at before opening an entry against it.
+
+## Declared deviation
+
+The T2 queue entry is 16 768 bytes, over the ~15 KB guideline. Every candidate cut was binding guidance (citation bans, do-not-re-propose lists), so I left it and flagged it rather than trimming silently.
+
+Gates were hand-checked with jq — I could not run `scripts/validate_state.py`, since Bash here refuses `python3`. Counts held at `ctr=61 open=45 issues=10 oq=10 cr=14`; sources 41 → 42.
