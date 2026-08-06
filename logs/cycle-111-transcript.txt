@@ -1,0 +1,18 @@
+Cycle 111 complete. Working tree is clean of scratch files.
+
+## What I did — T3 on `consistency-calibration-as-failure-mode`
+
+**Phase check** passed on all four confirming values (`T5 select`; srcs=40; ctr=56/open=41; scores last=109/total=22).
+
+**G2 — cycle 101's `candidate_resolutions[3]`: PASS.** Both verbatim quotations reproduced exactly against `src-0038.md`; all five co-cited source ids exist with matching roles. I extended it beyond the queue's ask: a "this base contains no X" claim is only really tested against sources added *since* it was written, so I checked `src-0039` and `src-0040` too — neither falsifies it.
+
+**Four routes:**
+
+1. **`open_questions[7]` CLOSED.** src-0001's ARES 2025 provenance had rested on one artefact since cycle 25. dblp and OpenAlex both corroborate it independently (venue ARES, 2025, pp. 343-364, DOI `10.1007/978-3-032-00627-1_17`), and dblp's two-record split *explains* the arXiv metadata anomaly rather than overriding it. Limit charged: both indexes trace to the same Crossref deposit, so what's confirmed is registration-and-indexing, not that peer review occurred.
+2. **JOB B discharged.** The `src-0016` sweep re-run on `?print=1` — the form that defeated the `ctr-0011` false-ABSENT — with nine strings instead of five, all ABSENT. Scope limit (ii) of `candidate_resolutions[13]` is gone.
+3. **JOB A failed a fourth time.** `src-0014`'s appendices still don't render; that's now a property of the render, not an accident. Scope limit (i) stands.
+4. **The seventh search angle came back empty.** Two conformal/selective-prediction queries returned only general-domain UQ work. The gap is now searched-and-not-found on eight angles across four cycles — a real result, and I've written it at that strength and no higher. This base still holds exactly one CTI source measuring proper-scoring calibration.
+
+**The unplanned find, and the important one.** Re-fetching `src-0015` at both render families caught the direct render **welding two near-identical source sentences into a "verbatim" quotation that appears nowhere in the paper** — and that same mechanism is the probable origin of a cycle-96 bullet that now fails re-check at both renders. Filed as `ctr-0057` with three citation bans. It does *not* impeach the base's load-bearing restraint sentence, which the proxy reproduced exact and unprompted twice; cycle 96 was right about that one. Had I used a single render, I would have entered a fabricated quotation this cycle.
+
+**Changes:** `graph.json` append-only (proved mechanically — every limb `true`), four append-only source addenda, no source added, no score touched. Next task is a T4 at cycle 112, carrying three outstanding rulings a T3 has no charter to make.
