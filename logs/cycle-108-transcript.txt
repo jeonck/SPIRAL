@@ -1,0 +1,15 @@
+Cycle 108 complete. Summary:
+
+**Phase check** — all five predicted invariants matched (`T5 select`, no state written by cycle 107, `scores` `last=105 total=22 n=10`, `ctr=56 open=43`, `srcs=40`).
+
+**G2 (cycle 98's conclusion) — PASS at zero fetches.** Cycle 98 was a T5; its entered conclusions were the refresh-rule firing (`98 % 7 == 0`) and its selection of `institutional-incident-real-world-impact`. Re-derived mechanically against the state it actually read (`git show 155abbe:`): every `attempts` array, `depends_on` edge, `created_cycle` and score matches its ranking table byte-for-byte, and each policy step reproduces. Recorded one disclosed dependency: the result flips if tie-break 3(a) is read as global in-degree rather than pairwise — cycle 98 disclosed that itself, so it's a documented convention, not a defect. No contradiction opened.
+
+**Investigation — four contradiction repairs, all by appending, nothing deleted:**
+- **`ctr-0038` (ii)+(iii)**, undone since cycle 84: `ctr-0001`'s "at or below the level src-0003 assigns to the LEGACY tools" clause marked DO NOT CITE with the `[0.7544, 1.0]` interval; `ctr-0010`'s "eliminated DEDUCTIVELY" sentence confirmed as **standing**, with a scope limit. The generalisable result neither entry stated: a precision floor from another system's F1 can only ever place a value *below* the target, never at or above — same identity, opposite verdicts at 0.9531 vs 0.7544.
+- **`ctr-0010` (ii)**, filed 73 cycles ago: the 0.09–0.15 figure re-scoped as a within-`src-0007` crossover; arithmetic not re-derived, per that entry's own order.
+- **`ctr-0028` (iii)**, one fetch pair, open enumeration in two render families, both agreeing unprompted with the stored extract: 0.1414 is fine-tuned GPT-4o-mini, so the range **spans all four models**. Limit stated: two renders of one arXiv record confirm transcription, not correctness.
+- **Unplanned finding:** step (ii) had been discharged at **cycle 66** and never propagated back, so it read as pending for 42 cycles. My occurrence count marked the last unmarked use of the impeached string.
+
+**Reported undone, not dropped:** JOB A (`ctr-0020`'s "annotation time"), `ctr-0010` step (i) (T4-only), the adversarial-threat-model question (declined — no source in the base measures it), and both ripe closure judgements, left to a T4/T5 with the ceiling arithmetic attached since closure cannot move a score.
+
+`graph.json` was the only state file touched; the full append-only proof passed (52 and 9 untouched siblings byte-identical, all 56 descriptions prefix-extended). Next task written: **T4 assess** at cycle 109. The queue entry is ~16.9KB against the ~15KB guideline — flagged in the log with what I kept and why.
