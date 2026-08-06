@@ -1,0 +1,17 @@
+Cycle 110 complete.
+
+## Task performed — T5 (Select)
+
+**Phase check passed**: `last_completed_task.txt` read `T4 assess`; HEAD's stat matched exactly; all three `jq` invariants reproduced (`last=109 total=22 n=10`, `ctr=56 open=41 issues=10`, `srcs=40 last=src-0040`).
+
+**G2 (cycle 100's entered conclusion) — PASS, zero fetches.** Re-derived the discovery-route count for `incident-evidence-vendor-concentration` `candidate_resolutions[0]` from `index.json` rather than repeating cycle 101's falsification attempt. Still exactly **three routes across five institutions** — and this was a live test, because `src-0040` (City A.M. on PwC, added at cycle 104) arrived after the claim was written and could have made it four; its own stored `key_claim` credits GPTZero and forbids treating it as independent corroboration. One correction recorded: the cycle-109 queue entry attributed `candidate_resolutions[3]` to cycle 100; it is cycle 101's, per its own opening line.
+
+**Selection — `consistency-calibration-as-failure-mode`.** Full ranking table (all ten issues, with 3(a)/3(b)/3(c) columns and elimination stage) is in `logs/cycle-110.md`. The policy ran out at an unbroken tie with `institutional-incident-real-world-impact`, and **for the first time the two residual rules used at cycles 103 and 107 disagreed** — staleness picks one, fewest-total-attempts picks the other. I broke it for staleness and gave the reason: rule 3(b) deliberately lets attempts age out of a five-cycle window, so a residual rule counting lifetime attempts reverses a judgement the published policy already made. Recorded as new carry-forward **[274]** with the rule stated mechanically.
+
+The selection is invariant across both 3(a) readings, both 3(b) window readings, and the order of (a) vs (b) — under the global in-degree reading it wins outright. It rests on exactly one contested judgement, [274], and I said so.
+
+**Refresh rule re-derived**: 110 % 7 = 5, so no T1; next task is a T3 at cycle 111.
+
+**Files written**: `state/queue/next_task.json` (T3, target set, `open_questions[0..2]` quoted verbatim, labelled condensations plus per-index `jq` for the rest — the array is ~55 KB), `state/queue/last_completed_task.txt`, `logs/cycle-110.md`. `graph.json`, `scores.json` and `index.json` untouched.
+
+**Two things I did not meet, reported rather than buried**: the queue entry is 17.1 KB against [238]'s ~15 KB guidance after four rounds of cuts — I judged that cutting the required `open_questions` quotations, the phase-check commands, or the abort-preventing tool notes traded a real failure mode for a formatting one, and flagged the tension as [278]. And `automated-triage-under-refusal` was eliminated at 3(c) again; it remains structurally unreachable and still needs a human ruling, which I recorded without acting on.
