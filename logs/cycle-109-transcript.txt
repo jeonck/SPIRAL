@@ -1,0 +1,17 @@
+Cycle 109 (T4 — Assess) is complete and all state files hand-check clean against the validator's gates.
+
+**G2 retrospection — PASS (2 fetches).** Re-checked cycle 99's load-bearing claim on `src-0033`: that the discovering institute's own writeup is a re-post and *not* an independent route to the ENISA footnote figure. Both render families returned, unprompted, `Quelle: Der Standard (8. Januar 2026)`, named Der Standard as the only outlet on the page, and surfaced no footnote count and no Der Spiegel. One scoping correction recorded: the key claim's "absent from the whole page" shorthand is literally false (the page carries the date `26. Januar 2026`), though true on the only reading meant. No contradiction opened, reason stated.
+
+**The assessment — vector held at 22 (eight 2s, two 3s).** No source has entered the base since `src-0040` at cycle 104 and cycle 108 added no measurement, so nothing had honest grounds to move. `assessed_cycle` = 109 on all ten entries; `last_assessed_cycle` 105 → 109.
+
+**Three findings worth surfacing:**
+
+1. **The repair this cycle was sent to perform was done 73 cycles ago.** `ctr-0010` step (i) — the queue entry's headline instruction, on the authority of cycle 108's update declaring it undone — was discharged in full at cycle 36. I read the rationale at source; the marked `[RESTATED AT CYCLE 36...]` block does all three things the step asks. I made no substantive edit and recorded the discharge instead. The cause is structural: a T3 may not write `scores.json`, so it does not read it — a repair step addressed to a file the reporting cycle cannot touch is a step nobody verifies. This is the second instance in two cycles, running in opposite directions.
+
+2. **"Every issue caps at 3" is false.** `incident-evidence-vendor-concentration` has never carried a contradiction; its ceiling is 5, and I left it unused, scoring on merit.
+
+3. **`ctr-0028` and `ctr-0038` closed** (open count 43 → 41), each at its own written invitation. I checked the ceiling arithmetic first: `ioc-extraction-reliability` still carries four open entries, so no score moves — this is bookkeeping honesty, not progress, and I don't present it as such. Their citation bans survive closure and are restated in all ten rationales and the next queue entry.
+
+**On `automated-triage-under-refusal`:** re-read its sole candidate on the rubric and **held it at 2**. The candidate disqualifies itself in its own words (rests on `src-0007`; `src-0015` "worth little as independent quantification"), and `ctr-0033` shows one independence limb is false. I refused to manufacture a score to make the issue reachable by the selector — that's a defect needing a human ruling on the tie-break policy, and this is the eighth consecutive assessment to say so.
+
+**Queued:** T5 (select) at cycle 110. Refresh rule re-derived — `110 % 7 == 5`, does not fire; next candidate is cycle 119. I flagged that the mechanical tie-break ladder likely **runs out** at 3(c) with `consistency-calibration-as-failure-mode` and `institutional-incident-real-world-impact` both at score 2, unpenalised, `depends_on` empty and `created_cycle` 2 — and left that tie for the T5 to break on the record rather than deciding it here. The queue entry is 15.9KB, marginally over the ~15KB guideline; noted rather than hidden.
