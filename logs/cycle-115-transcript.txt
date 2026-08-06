@@ -1,0 +1,17 @@
+Cycle 115 complete. All state written and verified.
+
+## What was done
+
+**Phase check** — `last_completed_task.txt` read `T3 investigate`; all five confirming checks passed exactly (`ctr=61 open=46 issues=10`, `srcs=41 last=src-0041`, `last=112 total=22`, attempts `[12,59,72,90,104,114]`, 10 distinct issue_ids in the open set). I was the T4.
+
+**G2 (before the main task) — PASSED.** Target was the conclusion cycle 105 entered: `ttp-attack-mapping-reliability`'s uncensored merit ruling of 3. All five checkable limbs re-verified at **zero fetches** — six of six candidates supported; primary resting on exactly five ids; and the decisive one, `ctr-0045` step (i)'s no-fetch repair, still unapplied with the banned institutional wording verbatim in the candidate and no occurrence of "disjoint" anywhere in it. Cycle 105 called that nineteen cycles unamended; it is now twenty-nine. No contradiction opened.
+
+I deliberately picked a *different* conclusion of cycle 105 than the one `ctr-0058` already impeaches, and recorded plainly that the cycle-105 block is partly impeached and partly re-verified. One limb of its wider instrument finding is now obsolete — that is a **state change, not a re-verification failure**, and I said so rather than logging a false G2 failure.
+
+**The assessment.** No integer moved (3, 3, eight 2s, total 22) but a **ceiling** did: `ctr-0061` is the first contradiction ever filed against `incident-evidence-vendor-concentration`, so **all ten issues are now capped at 3** and that issue is pinned exactly at its ceiling. Cycle 105's "nothing is held down by the gate" finding survives on a substitute ground I derived rather than inherited.
+
+Four pieces of named work discharged: the `ctr-0058` and `ctr-0059` corrective appends (append-only — no prior text edited); the "only candidate" sweep recorded as negative, which I re-counted independently by `jq` rather than taking on trust; and `ctr-0060` step (iii), where I adopted a bounded standing rule that single-source candidates must carry their source's Limitations forward.
+
+**Honest limits:** `scripts/validate_state.py` cannot be run here (bash refuses `python3`), so every gate is hand-derived by `jq` and the log says so. Several per-issue judgements are marked outline-level — I did not re-read all forty-nine candidate summaries end to end.
+
+**Append-only proof** passed in one pass: `newkey=_cycle115_note lostkey= last=115 total=22 cycles=115 prefix_ok=true scores_same=true ev_same=true`. Queue advanced to a T5 for cycle 116; `graph.json` and `index.json` untouched; scratch deleted.
