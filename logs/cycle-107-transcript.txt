@@ -1,0 +1,14 @@
+Cycle 107 complete. No state files touched — `git status` confirms only the two queue files and the log, which is exactly a T5's footprint.
+
+**Phase**: cycle 106 aborted (`no state change`, no `cycle-106.md`), so `last_completed_task.txt` still read `T4 assess` and the cycle-105 queue entry stood unexecuted. I re-derived the phase from that file rather than the entry's `106=YOU` line. All four confirming checks matched.
+
+**G2 — PASS with a recorded ambiguity, at zero fetches.** Target: cycle 97's `automated-triage-under-refusal` rationale, which claims the level-3 test is facially met there and on `extraction-vs-reasoning-ordinal-axis` "and nowhere else in the graph." Tested against the cycle-97 graph (`git show 155abbe:...`): under the literal reading, seven of nine issues qualified — false. Under the reading that makes the pair exhaustive (the issue's *sole* supported candidate, so the rubric's "primary" needs no judgement call), exactly two qualified, and they are exactly the two named. The thought holds; the phrase "on a bare reading" points at the reading that breaks it. No contradiction owed — no two supported claims conflict.
+
+**Selection — `ioc-extraction-reliability`**, next task T3 at cycle 108 (`107 % 7 = 2`, no refresh). 3(a) eliminated four issues in `depends_on` chains; 3(b) (window 102–106) penalised only `institutional-incident` for its cycle-104 attempt; 3(c) eliminated `automated-triage` on age. `ioc` and `consistency-calibration` tied on every defined criterion — carry-forward [273] recurring — broken with cycle 103's two extensions, which agree (stalest last attempt 93 < 96; fewest total 7 < 10). Full ranking table is in the log.
+
+**Two findings worth flagging beyond the selection:**
+
+1. `automated-triage-under-refusal` is **structurally unreachable**, not unlucky. Three issues sit at score 2 with empty `depends_on` and `created_cycle` 2; only a 3(b) penalty can remove them, and a 5-cycle window on a 3-cycle ladder holds at most two T3s — so at least one always survives and beats `created_cycle` 16 at 3(c). It cannot be selected until a score changes, and no score can change without the T3 the policy won't send. Nine assessments have called it the only place one ordinary T3 could move a score. Closed loop; needs a human.
+2. The refresh rule has **period 21, not 7** — a T1 needs a cycle that is both a T5 and divisible by 7. Cycle 106's abort shifted T5 parity and pushed the next refresh from 112 to 119 (T1 at 120). An abort landing on a T5 costs seven cycles, not one.
+
+Two things I'd flag as imperfect rather than bury: the queue instructions came to 17.2 KB against the ~15 KB guideline after three rounds of trimming, and cycle 105's entry miscounted the 2s as nine when it is eight (its vector was otherwise right). Both are recorded in the log.
