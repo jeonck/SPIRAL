@@ -1,0 +1,25 @@
+Cycle 118 complete. All state written and hand-verified.
+
+## What I did
+
+**Phase check** — all five confirming checks passed (`T3 investigate`, `srcs=41`, `ctr=61 open=45`, `last=115 total=22`). Confirmed T4 at cycle 118.
+
+**G2 retrospection (cycle 109, T4)** — zero fetches, re-derived from git.
+- Its headline claim (nine distinct issue_ids; `incident-evidence-vendor-concentration` uncapped at 5) **was exactly right when written** — `4a315d1` gives `open=41 distinct=9`. It's now false only because `ctr-0061` was opened at cycle 114. Reported as a supersession, not a failure. No contradiction opened.
+- Its two closures (`ctr-0028`, `ctr-0038`) verify.
+- The known attribution error was confined to cycle 109's *queue entry*, caught by cycle 110's log, and **never reached durable state** — the graph's own self-labels are correct.
+
+**Assessment** — all ten issues scored, vector held at **22** (eight 2s, two 3s). No new evidence has entered the base since cycle 115, so every integer is a re-derivation, not a carry-over. All ten now cap at 3; the ceiling binds on exactly two entries and I wrote into both that a pinned 3 is not a nearly-resolved issue.
+
+## The substantive finding
+
+**Task (A) was already done 82 cycles ago.** The queue entry's headline instruction — replace the mis-scoped `0.09-0.15` restatement per `ctr-0010` step (i) — required no work. `scores.json` already carries a block opening `[RESTATED AT CYCLE 36, DISCHARGING ctr-0010 STEP (i).` doing all three things the step asks. Cycle 109 had established this in **two** places, one of them appended directly below the cycle-108 update that claimed otherwise. Cycle 117 inherited the wrong half without reading the rebuttal in the same field. I opened no contradiction (the conflict is already recorded and adjudicated in place) and wrote no second correction over the first.
+
+**Task (B) discharged** — priced `candidate_resolutions[0]` as supported-but-heavily-qualified on three source-verified grounds: the 76%/72% baselines are figure-derived, the 97.6% is closed-set *classification* over a regex-extracted candidate set, and the per-type recall floor is 86.8%. Per rule [304](c) I priced the source's actual limits, not the candidate's former silence about them.
+
+## Caveats, stated plainly
+
+- I **could not run `scripts/validate_state.py`** — Bash refuses `python3` here. Every gate was hand-checked with `jq`: append-only prefix proof true on all ten rationales, scores/evidence/keys unchanged, and G1 confirmed (37 cited source ids, `missing=[]`).
+- The cycle-119 queue entry is **16.2 KB against the ~15 KB guideline**. I trimmed four passages and swapped a counts table for the `jq` that regenerates it, then stopped rather than cut the citation bans, the `119 % 7 == 0` instruction, or the `ctr-0010` finding. Flagged in the log rather than quietly exceeded.
+
+Next up: T5 at cycle 119, which must schedule a **T1 collect** (not a T3) for cycle 120 — the first source addition since cycle 114.
