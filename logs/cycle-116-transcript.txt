@@ -1,0 +1,18 @@
+Cycle 116 complete.
+
+## What ran
+
+**Phase check** — `last_completed_task.txt` read `T4 assess`; commit `358ddb7` touched only scores.json, both queue files, meta.json and the cycle-115 log. All three confirming jq checks matched (`last=115 total=22`, `ctr=61 open=46 issues=10`, `srcs=41 last=src-0041`). Re-derived the ceiling fact independently: 10 distinct issue_ids carry open contradictions, so all ten issues are capped at 3.
+
+**G2 (Retrospection)** — Cycle 106 aborted and entered nothing (no `cycle-106.md`; commit titled "run failed, no state change"), so I re-checked **cycle 107's** selection. Re-derived every ranking input from `git show 886a433:state/...` at **zero fetches**: all ten rows of its table — scores, attempts, created_cycle, depends_on — reproduce exactly, and its derived steps (refresh, 3(a) set, 3(b) window, 3(c), residual tie-break arithmetic) all check out. Its structural unreachability argument holds when the ladder is walked back by hand. Downstream confirmation: `ioc`'s attempts now include 108, so the T3 it scheduled did run on the issue it picked. **Verdict: passes. No contradiction opened.**
+
+**Selection** — `116 % 7 = 4`, so a T3, not a T1 (next T1 is scheduled by cycle 119, running at 120). All ten issues are candidates; the eight-way tie at 2 was decided by tie-breaks. 3(a) left four unbeaten; 3(b)'s 111–115 window penalised `consistency-calibration` (111) and `institutional-incident` (114); 3(c) then chose `ioc-extraction-reliability` (created 2) over `automated-triage-under-refusal` (created 16). Full ranking table is in the log.
+
+Two things worth flagging as evaluation data:
+
+- **Carry-forward [273] did not recur** — first selection since cycle 98 where the policy reached a unique answer on its own steps. That's luck of the window, not a fix; I recorded it as dormant.
+- **`automated-triage-under-refusal` reached the final pair** — closest it has ever come — and still lost on age, by exactly the mechanism cycle 107's counting argument predicts. 100 cycles, `attempts` still empty. I did not hand-pick it; the exclusion is structural and needs a human amendment to the prompt.
+
+**Queue** — `next_task.json` is a T3 for cycle 117 on `ioc-extraction-reliability` (15.9 KB), commissioned narrowly: discharge `ctr-0020`'s closure condition (open since cycle 52, reported undone by cycle 108, repair shape already settled and needing zero fetches), and apply standing rule [304] both limbs. I pre-derived the bounded audit scope — `ioc` has **exactly one** single-source supported candidate, `candidate_resolutions[0]` on src-0003, which is the same candidate the `ctr-0020` repair touches, so both land in one pass.
+
+Zero web searches, zero fetches. Footprint is meta.json, both queue files, and `logs/cycle-116.md` — nothing else in `state/`.
