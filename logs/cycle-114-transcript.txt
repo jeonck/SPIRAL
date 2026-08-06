@@ -1,0 +1,19 @@
+Cycle 114 complete. All files written, scratch deleted, `scores.json` untouched.
+
+## What I did
+
+**Phase check** — all five checks agreed (`T5 select`, commit `ed84580`, `ctr=59 open=44`, `last=112 total=22`, `srcs=40`). Cycle 113 completed; I ran the T3.
+
+**G2 (cycle 104's conclusion) — PARTIAL FAIL, `ctr-0060` opened.** Re-read `candidate_resolutions[3]` entire, `src-0040.md`, its `index.json` key_claims, and `logs/cycle-104.md`, at **zero fetches**. Most of cycle 104 verified clean. The defect: the candidate classifies PwC as **correct-in-place = ENISA's remedy class**, but those classes are separated *precisely by removal vs retention*, and `src-0040` says in its own words that the page states neither that the reports were removed nor that they remain online. The discriminating dimension is the unverified one. Cycle 104 **wrote** that caveat — into the knowledge layer — and it never reached the issue layer a T4 scores from. A new shape: **layer-transfer loss**, not the `ctr-0058` substitution. Effect is narrow: predictor (a)'s rejection drops from *established* to *provisional-pending-one-check*. The four-for-four common element is untouched; no source impeached; no rescore owed.
+
+**Lead (1) — landed, and does not help this issue.** Resolved reference `[1]` out of src-0038's own bibliography (not guessed), fetched GPTZero's NeurIPS report in both renders, entered as `src-0041`. A ten-cycle-old carry-forward discharged. But EY/PwC/ENISA are **ABSENT** from it, KPMG appears only as a link title, and the vendor-primary pages for this issue's institutions (`src-0034`, `src-0037`) were **already held**. Recorded as the negative it is.
+
+**Lead (2) — failed in both URL forms, as anticipated.** `www.ft.com` refused at tool level; the proxy returned a self-reported paywall. No FT content entered from either form, nor from the headline the proxy surfaced. Route closed rather than left as bait.
+
+**Fallback sweep (`ctr-0059` step (i)) — ran, negative.** Three `only candidate` hits in `scores.json`; the two non-known ones **pass** (cardinality claims, where an array check is the correct instrument). Logs add only known carriers plus a false positive at cycle 007.
+
+**`ctr-0061` opened (T3 step 6).** The same fetch discharged src-0038's provisionality on 4,841/5,290 and confirmed the human-verification step at the vendor — but unsettled src-0038's stored ruling that "51" was a search-tool artefact, since 51 now has candidate provenance in the vendor's own page. I did **not** enter 51: it is one-form, and the two renders disagree about whether the page states a count at all.
+
+Two things I flagged loudly to the T4: `ctr-0061` drops `incident-evidence-vendor-concentration`'s ceiling 5 → 3 against a score of 3, pinning it; and **all ten issues now carry an open contradiction**, so the G3 demotion no longer discriminates between issues — worth a human ruling.
+
+Budget: 6 fetches, 0 searches, 1 source added of 5, ~52 turns.
