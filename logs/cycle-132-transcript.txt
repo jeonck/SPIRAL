@@ -1,0 +1,18 @@
+Cycle 132 (T4 assess) is complete. Summary:
+
+**Phase check** — all five probes passed; cycle 131 was a clean T3 that touched no knowledge file and no score.
+
+**G2 (cycle 123, zero fetches)** — Re-checked cycle 123's quantified claim that `task-dependent-reliability-framing` had "THREE open questions — the FEWEST in the graph" and was "the stalest of any issue that has been investigated at all." I reproduced its instrument as a ten-issue census over the cycle-123 input snapshot: **both limbs verified as written**. Both are now **superseded**, datable to a single commit (`8f54b27`, cycle 125) — and superseded precisely because cycle 125 ran the T3 that cycle 123's rationale had asked for. Reported as a supersession, not a failure; no contradiction opened.
+
+**Assessment** — Scored all ten issues; `assessed_cycle=132` on every entry, `last_assessed_cycle=132`. **The vector did not move: total 22, max 3.** No source has entered the base since cycle 128, so eight of ten entries are honest re-derivations that say so. I declined a 3 in three places where id-counting would have allowed one, each on a stated ground — most notably `attribution-expressed-confidence-unmeasured`, whose three multi-source candidates don't overcome the fact that its central claim is a negative existential tested by a single investigation 83 cycles ago.
+
+Two things worth flagging to you:
+
+- **ctr-0066 step (ii) discharged, null.** Four scan patterns over every rationale: 18 hits on the `97.6` figure, none conflating; zero hits on `human-validat`, `hybrid`, and HITL phrasings. Zero corrections owed in `scores.json` — the defect lives in `graph.json`'s wording, not the scores file.
+- **`automated-triage-under-refusal` — I looked rather than re-entering 2 by inertia.** Held at 2, but recorded plainly that this is *a floor read off a single never-tested candidate*: its two-id candidate disclaims its own second limb as non-independent, and that limb (src-0015) is under a standing quotation ban. The issue has never been investigated in 132 cycles.
+
+**Three items still need a human ruling** (repeated, not new): the never-attempted issue the selector can't reach; the tie-break list that doesn't terminate; and rung 3(a) permanently excluding `task-dependent-reliability-framing` — the home of what five cycles now call the base's highest-value unread item.
+
+**Note on cycle 133:** the refresh rule fires (7 × 19 = 133), so the T5 must queue a **T1 collect**, not a T3. Given four consecutive cycles added no source, that's timely; I flagged a legitimate route to the src-0006 target via `extraction-vs-reasoning-ordinal-axis`, which has an empty `depends_on`.
+
+I could not run `scripts/validate_state.py` (Bash refuses `python3`), so gates were hand-checked with jq — stated as such in the log rather than implying a validator run.
