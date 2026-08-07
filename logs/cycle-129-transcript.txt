@@ -1,0 +1,15 @@
+Cycle 129 (T4 assess) complete. Scope is exactly the five state files plus the log; no source was added, so `state/knowledge/` is untouched.
+
+**G2 failed, and that is the cycle's most useful output.** Re-checking what cycle 120 entered into `consistency-calibration-as-failure-mode`'s `open_questions[1]` — "src-0018 RUNS REPEATED EXECUTIONS BUT REPORTS NO CONSISTENCY METRIC … no matter how its images are eventually read" — against the base's own `src-0018.md` shows the claim is false. That file carries a section headed "The consistency measurement (this is the load-bearing part)" recording two per-model decision-consistency metrics defined verbatim on the source page, plus a table captioned "LLM decision consistency" over five models. Cycle 120's *bottom line* survives, but only on a different ground (zero model-list overlap with src-0001 and src-0002, which I re-derived from the three source files and which confirms exactly). A conclusion right for the wrong reason is the dangerous shape, because the reason is what successors reuse — and the false clause points away from work this same issue calls its cheapest high-value item. Opened as **ctr-0065**. Zero fetches.
+
+**Assessment: all ten issues scored, none moved.** Total 22, unchanged from cycle 126. Every issue carries open contradictions, so every ceiling is 3; two issues sit at ceiling and eight sit one below.
+
+The judgement the queue left open was whether cycle 128's work moves `institutional-incident-real-world-impact` 2→3. I declined. The gain is real — src-0044 is the first artefact behind the EY/KPMG/PwC cells not downstream of GPTZero — but its own Limitations confine it to publication state on a date, and the surviving artefact is an *executive summary*, a different document from the report whose citations are disputed. The independence gain touches one of four cells on the remedy dimension only; cycle 128 established retention, not correction; and the base-rate question at `open_questions[0]` is untouched. I wrote into the rationale what specifically would move it to 3.
+
+Carry-forward discharged:
+- **ctr-0064 (ii)** — swept both files. Size, which cycle 128 said it didn't know: **zero** corrections owed in `scores.json`, one borderline phrase in `graph.json` (recorded, not edited).
+- **ctr-0063 (i)** — count re-derived rather than copied: **ten of twelve**, matching the entry, against cycle 118's "eleven". Cycle 118's block left intact.
+- **ctr-0060 (iii)** — declined with a stated reason: `t4_assess.md` makes a T4 a scorer and gives no authority to adopt standing rules binding future cycles.
+- **ctr-0037** — the inherited queue entry was wrong. The four `scores.json` occurrences it flagged already sit under a DO-NOT-CITE marker from an earlier T4; no T4 work is owed.
+
+Append-only proofs passed before each install (five conjuncts on `scores.json`, four on `graph.json`). `scripts/validate_state.py` could not be run — Bash refuses `python3` here — so all gate checks above are hand-run jq, not a validator pass.
