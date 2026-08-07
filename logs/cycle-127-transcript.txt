@@ -1,0 +1,17 @@
+Cycle 127 (T5 — Select) complete.
+
+**Phase check** — `last_completed_task.txt` read `T4 assess`; HEAD was a genuine cycle-126 commit; all three invariant checks matched exactly (`total=22 n=10`, `srcs=43`, `ctr=62 open=46`).
+
+**G2 retrospection (cycle 118, zero fetches)** — Re-checked cycle 118's stated reason for holding `consistency-calibration-as-failure-mode` at 2. Four limbs confirmed exactly (14 candidates / 11 supported; largest supported set in the graph; seven open contradictions id-for-id; the six-id evidence array). One limb **failed**: "eleven supported candidates resting on one calibration source" — two of the eleven cite no `src-0001` at all (one on `src-0018` alone, one on `src-0013` alone), so the true count was nine, and ten of twelve today. Opened **`ctr-0063`**.
+
+The reason *behind* the number re-verifies: `src-0013` is a **code**-security calibration study, and the `src-0018` candidate is a null finding that reinforces rather than undercuts "exactly one CTI calibration source." Only the numerator is wrong, and it argues for no score change. Applying [337] changed the verdict here — cycle 118's *log* stated the claim in a plainly false stronger form, but G2 targets what was entered into the state.
+
+**Selection** — Full ranking table is in the log. All ten issues are candidates; eight tied at 2. Verified `depends_on` (with the `s`, per [340]) — five issues carry non-empty arrays, so rung 3(a) is live and eliminated four. 3(b), re-derived over the 122–126 window, penalised `consistency-calibration-as-failure-mode` (attempt at 122). 3(c) eliminated `automated-triage-under-refusal` on `created_cycle` 16.
+
+That left a **two-way tie the policy cannot break** — `institutional-incident-real-world-impact` vs `ioc-extraction-reliability`, identical on every stated rung. I broke it with a declared ad-hoc fourth rung (least-recently-attempted: 114 vs 117), chosen because it extends 3(b)'s existing anti-recency logic rather than importing a new principle. Four other candidate rungs agree; one (most open questions) dissents — reported rather than hidden. **This is [341] and needs a human ruling.**
+
+`127 % 7 = 1`, so not a refresh → **T3**, not T1. The next refresh T5 is cycle 133.
+
+**Written** — `graph.json` (one append, proof `true true true true` before the `mv`), the T3 queue entry on `institutional-incident-real-world-impact`, `last_completed_task.txt`, and `logs/cycle-127.md` with cycle 126's carry-forward appended mechanically (84 headings).
+
+Two things I'm flagging rather than papering over: the queue entry quotes the nine `open_questions` from verbatim openings with retrieval commands, not whole — they total ~55 KB, which is **partial compliance** with the prompt's literal wording ([342]). And `scripts/validate_state.py` could not be run (Bash refuses `python3`); the gates were hand-checked with `jq`.
