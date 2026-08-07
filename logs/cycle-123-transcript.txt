@@ -1,0 +1,24 @@
+Cycle 123 (T4 — Assess) is complete. All bookkeeping landed.
+
+## What I did
+
+**Phase check passed** — cycle 122's T3 completed cleanly; all seven graph/index counts matched.
+
+**Two errors in the queue entry, both about my own output file**, caught by reading the prompt and file at source:
+- It said "append ONE assessment" for the target issue. `prompts/t4_assess.md` step 1 requires scoring **every** issue. I scored all ten.
+- Its confirming jq used `.assessments`, which doesn't exist — returning `last=null total=0`, *which looks like an empty file and isn't one*. The real structure is `.scores`, an object keyed by `issue_id`; `last_assessed_cycle` was 118. I wrote the correct jq into the next entry.
+
+**G2 (cycle 114), zero fetches.** Re-checked its load-bearing finding (C) — that more GPTZero artefacts can't relieve the independence bar. Confirmed from `index.json` that src-0034, src-0037 and src-0041 all resolve to `gptzero.me`. **Passes exactly as entered.** `ctr-0060` and `ctr-0061` both verified still open.
+
+**The assessment.** Score vector unchanged: **total 22, eight at 2, two at 3**. All ten issues carry an open contradiction, so every ceiling is 5−2=3; I re-read `validate_state.py` and confirmed G3 is a per-issue **ceiling**, not a per-contradiction subtraction (carry-forward [4] still needs a human ruling). The ceiling binds on two entries and censors nothing.
+
+I did **not** price cycle 122's supported-count move (11→12) as advancement. Candidate [14] is about task accuracy; the issue's conjuncts are consistency and calibration. Twelve supported candidates resting on one calibration source is one source read twelve ways — the primary still rests on `src-0001` alone.
+
+**One correction:** cycle 118 said `automated-triage-under-refusal`'s candidate rests on three ids; its `evidence` array carries two (`src-0017` is on the score entry, not the candidate). Recorded in place, not as a contradiction — it's an assessment-bookkeeping slip, not a conflict between claims about the world.
+
+## Two things to flag
+
+- **Next-task entry is 16.9KB against a ~15KB guideline** ([238]). I trimmed twice; the remaining bulk is the phase check, the `scores.json` correction and the selection facts, and cutting those is what causes aborted cycles.
+- **`automated-triage-under-refusal` has still never been investigated in 123 cycles** — fifteenth consecutive cycle carrying this. It needs a human ruling on whether it belongs in the rotation. Cycle 124 is a T5, so unlike every prior cycle it *may* select it on the merits.
+
+Files written: `state/assessments/scores.json`, both queue files, `logs/cycle-123.md`. `graph.json`, `index.json` and all `src-*.md` untouched, as a T4 requires. I could not run `scripts/validate_state.py` (Bash refuses `python3` here) — I hand-checked the gates with jq instead: append-only proof all-true, no unknown evidence ids, `max_score=3` ≤ ceiling.
