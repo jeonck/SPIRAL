@@ -1,0 +1,19 @@
+Cycle 122 complete. Both `ctr-0062` repair steps discharged at source.
+
+**Phase check** — all four confirming checks agreed (`T2 structure`; commit 36a4324 with a clean T2 footprint; `srcs=42`; `ctr=62 open=46 issues=10 oq=12 cr=15 oq6=8`).
+
+**G2 (cycle 113's `ctr-0059`) — PASSES, zero fetches.** All four checkable claims re-verify: `ctr-0058` step (ii)'s scoping is verbatim as charged; cycle 103's re-use sits at `logs/cycle-103.md:218` in a *log* on the *same* issue, so a sweep as written cannot find it; the at-source stamp is at line 220; and `candidate_resolutions[5]` reads `supported`/`[src-0022]`/"ADDED CYCLE 59" with the belongs-clause verbatim. One wrinkle reported: there is no `entered_cycle` field in this schema — candidate provenance lives in prose.
+
+**Main task.**
+
+- **Step (i) confirms exact.** Two renders of `arxiv.org/html/2603.09452v1` (direct + `r.jina.ai`), values asked for without being supplied, both agreeing cell-for-cell with the transcription stored since cycle 15: IoC precision 0.8240→0.8846 (helps), TTP precision 0.2787→0.2387 (hurts), Article precision 0.3037→0.2717 (hurts). Fourth independent pull across cycles 15/21/30/122.
+- **Step (ii): the [19] anomaly does not touch those rows.** Gaps between GPT-4o (FT) and o3-mini run 0.0087–0.1093 against a 0.001 threshold — but the decisive argument is **sign reversal**: GPT-4o (FT) is above o3-mini on IoC precision and below it on the other six rows, and a duplication artefact cannot cross.
+- **Unasked-for third finding:** *Content: Root Cause* is also clean (gaps 0.095–0.290), which no cycle had ever checked. **[19] is six cells, not a column.** Cause still unknown.
+
+**`ctr-0062` is advanced, not resolved** — `resolved_cycle` left `null` because steps (iii) and (iv) are reserved to a T2 by the entry's own text. On substance it lands on side (b): `src-0007` has carried in-domain CTI corroboration since cycle 9. `src-0042` is not impeached, and cycle 120's block was not edited.
+
+**`candidate_resolutions[14]` promoted `proposed`→`supported`** — the promotion test cycle 121 wrote into it was met exactly, and objections (iii)/(iv)/(v) and both scope limits are explicitly left standing. It is task-accuracy evidence and **does not lift this issue**, whose title conjuncts are consistency and calibration; that warning is now in the candidate and leads the T4 entry.
+
+**`open_questions[11]`, angle 1: negative.** The best unprompted hit was `src-0042` itself (already known to report no proper score). Three unverified leads recorded as leads, not claims. No new source, no contradiction opened — the Root Cause finding narrows [19] rather than conflicting with it.
+
+Six edits to `graph.json` in one splice, thirteen append-only clauses all true. `index.json`, `scores.json` and every `src-*.md` untouched. Gates hand-checked with `jq` — the validator could not be run (Bash refuses `python3`). Two flagged judgement calls rather than quiet ones: the `ctr-0038` recall-range ban boundary (recorded in `ctr-0062` so a successor can overrule it, costing only the 0.0087 gap), and the decision not to mirror this work into `src-0007.md` (carry-forward [333]).
