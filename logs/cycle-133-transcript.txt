@@ -1,0 +1,15 @@
+Cycle 133 (T5 select) complete.
+
+**Phase check** — `last_completed_task.txt` read `T4 assess`; HEAD stat matched a clean T4 (no `knowledge/`, no `graph.json`); all three confirming `jq` checks passed exactly (`ctr=66 open=50 issues=10`, `last=132 n=10 total=22 max=3`, `srcs=44`).
+
+**G2 retrospection on cycle 124 — FAILED, and it is a real defect, not a supersession.** Cycle 124's selection rested on the stated ground that tie-break 3(a) was "inert in this graph" because `depend_on` was `null` on all ten issues. I reproduced that instrument first (it returns `null` 10/10, exactly as reported) — the observation is right, the inference is wrong: **the field is `depends_on`**. On the same snapshot, six of ten issues carry a non-empty `depends_on`, and the issue cycle 124 selected carries the largest in the graph (five upstreams). It should have been eliminated at the first tie-break. Entered as **ctr-0067** (precedent: cycle 127's T5 opened ctr-0063 the same way). Cycle 125's findings are *not* impeached — they rest on sources, not the selector. Zero fetches.
+
+**Selection** — ten candidates → base score cuts to the eight at 2 → 3(a) leaves the four roots → 3(b) penalises `ioc-extraction-reliability` (c131) and `institutional-incident-real-world-impact` (c128) → 3(c) `created_cycle` 2 beats 16. **`consistency-calibration-as-failure-mode` wins uniquely.** The tie-break list terminated this time and I invented no fourth rung.
+
+**Next task = T1 collect** — `133 % 7 == 0` (config `collect_refresh_every: 7`, re-read at source), so the refresh rule overrode T5→T3. This is also what the state needs: no source has entered the base since cycle 128 and the score vector hasn't moved since 118.
+
+Three things escalated to you:
+
+1. `automated-triage-under-refusal` has still never been investigated in 133 cycles. It came closer than ever — survived 3(a) and 3(b), lost only the final `created_cycle` rung. Does the selector need a staleness term?
+2. The tie-break list still doesn't terminate (4th time raised). It didn't bite this cycle, which is luck.
+3. Rung 3(a) permanently excludes every issue with a non-empty `depends_on`, so the selector can *never* reach the two issues carrying ctr-0009 step (iii) — src-0006's unfetched scoring definitions, which five cycles call the highest-value unfetched item in the base. Cycle 132's queue entry proposed routing around this via `extraction-vs-reasoning-ordinal-axis` "which has an empty `depends_on`" — **that is false**; its `depends_on` is `[task-dependent-reliability-framing]`. I declined to invent the authority to target it anyway.
