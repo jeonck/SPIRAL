@@ -1,0 +1,25 @@
+Cycle 128 complete. All state files valid, scope exactly as declared.
+
+## Cycle 128 — T3 Investigate, `institutional-incident-real-world-impact`
+
+**Phase check** — all four confirming checks matched exactly (`ctr=63 open=47 issues=10`, `last=126 n=10 total=22`, `srcs=43`).
+
+**G2 (cycle 119), zero fetches — RE-VERIFIED IN FULL.** Cycle 119 was a T5 that entered only its queue entry, so per [337] I re-checked the selection itself against the `b4dd32e` snapshot. Every input reproduced: the refresh rule (119 % 7 == 0), the score distribution, the four empty-`depends_on` survivors, the 114–118 penalty window, the 3(c) age tie-break, and the derived open-contradiction sum of 45. No defect.
+
+**The commission — run at last, and both limbs returned.** Four consecutive cycles had carried `ctr-0060` step (ii) without executing it.
+
+- **PwC: all four reports remain published** on `pwc.com/m1` as of 2026-08-07, no withdrawal or correction notice on any. The unverified retention limb is now verified, so predictor (a)'s rejection moves **PROVISIONAL → ESTABLISHED for the remedy dimension** (still untested on cause-declaration).
+- **KPMG: the removal is still partial 56 days on.** The disputed report's executive summary is still retrievable from KPMG's own `assets.kpmg.com` (added as `src-0044`, identity confirmed on the cover title, two-render), while three other KPMG-owned addresses return KPMG's own 404s.
+
+Both are **the issue's first non-GPTZero evidence** — but I stated the limit everywhere I entered it: this widens the base on the *remedy* dimension only; on citation accuracy the issue still rests on one vendor's sweep.
+
+**G3 — `ctr-0064` opened.** `src-0035` renders the KPMG removal with the partitive "some"; `src-0036` renders it without. My observation agrees with the former and is inconsistent with the latter read as complete. Opened rather than silently resolved; it impeaches neither source and moves no score.
+
+**Two findings worth your attention:**
+
+1. **A G1 revert hazard.** `pwc.com` returns 403 to plain clients but renders fine through the proxy. The validator checks new source URLs with an ordinary client, so entering any PwC URL as a source would have failed G1 and **reverted the whole cycle**. I added no PwC source and recorded the retention as a dated first-person observation instead — the form the contradiction actually asked for. **G1 as written has no slot for a first-person observation, and this issue's cheapest remaining routes are all of that shape.** Flagged as [344] for a human ruling.
+2. Search handed me a stale PDF filename that 404'd while the report was live under a different name. Recording that 404 would have entered a false removal into the state.
+
+**Not done, stated plainly:** retention is not correction — whether any PwC citation actually changed is still unobserved; the base-rate question is untouched; N is still 4; `ctr-0037` site (2) wasn't reached. I could not run `validate_state.py` (`python3` is refused here), so the gates were hand-checked with `jq` — dangling evidence 0, append-only proved before each write.
+
+Next task queued: **T4 assess** on the same issue, with the case for and against a score move stated at equal strength.

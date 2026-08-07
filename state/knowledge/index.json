@@ -664,6 +664,20 @@
         "KC3 (BOTH RENDERS). The apparent gain from LLM label expansion was an evaluation artefact: selecting checkpoints on a small (121-CVE) test split maximises over many noisy evaluations and produced recall@5 differences of up to 0.05 between otherwise identical runs, so a single run and a five-seed average supported opposite conclusions until the protocol was corrected.",
         "KC4 (BODY RENDER ONLY, AND AN AUTHORS' INFERENCE RATHER THAN A MEASUREMENT). The authors state that mapping a CVE to ATT&CK is genuinely hard and partly subjective and that classifier and LLM reach similar agreement against gold (~0.39-0.41), which they read as an inherent task ceiling rather than a modelling failure. These are model-versus-gold agreements; NO human-versus-human inter-annotator figure is reported on either render."
       ]
+    },
+    {
+      "id": "src-0044",
+      "url": "https://assets.kpmg.com/content/dam/kpmg/pe/insights/fy26/enero/GM-IB-01347_ADV---CEE-Report---Exec-Summary_V5.pdf",
+      "title": "Total Experience: Redefining excellence in the age of agentic AI / Global Customer Experience Excellence 2025-2026 report — Executive summary (KPMG International)",
+      "type": "report",
+      "added_cycle": 128,
+      "file": "state/knowledge/src-0044.md",
+      "key_claims": [
+        "THE DISPUTED KPMG REPORT'S EXECUTIVE SUMMARY REMAINED RETRIEVABLE FROM A KPMG-OWNED ADDRESS ON 7 AUGUST 2026, 56 DAYS AFTER THE 12 JUNE 2026 STATEMENT. src-0035 records KPMG as having 'removed the report from some of its websites while it investigates how the publication made it into the wild'. On 2026-08-07 this agent retrieved the artefact from assets.kpmg.com, KPMG's own asset host, at the Peru path. The cover reads verbatim 'Total Experience: Redefining excellence in the age of agentic AI / Global Customer Experience Excellence 2025-2026 report' and the document is labelled 'Executive summary', so identity with the artefact named in src-0034 and src-0035 is established ON THE COVER TITLE ITSELF and not inferred from the filename.",
+        "THE RETRIEVAL IS TWO-RENDER CONFIRMED, WHICH MATTERS BECAUSE THE NEGATIVE OBSERVATIONS BESIDE IT COULD OTHERWISE BE BOT-BLOCKING. The direct fetch returned the PDF binary (183.9KB, application/pdf); the r.jina.ai render returned the cover text. The embedded XMP metadata reports a last modification of 14 October 2025, consistent with an October 2025 report and showing NO post-statement re-issue at this address.",
+        "THREE OTHER KPMG-OWNED ADDRESSES FOR THE SAME ARTEFACT RETURNED KPMG'S OWN NOT-FOUND PAGES ON THE SAME DATE, SO THE REMOVAL IS REAL BUT STILL PARTIAL: the assets.kpmg.com Colombia path ('the asset that you're looking for is no longer available'), the assets.kpmg.com China path ('Error: File not found'), and the kpmg.com Belgium landing page ('Error 404'). All three were observed through the SAME proxy that rendered the live copy, so they are KPMG's own error pages rather than a retrieval failure at this agent's end. THE WORD 'some' IN src-0035'S STATEMENT IS THEREFORE STILL ACCURATE ON 7 AUGUST 2026, and the KPMG remedy has NOT converged on EY Canada's full withdrawal in the intervening period.",
+        "THE ARTEFACT AT THIS ADDRESS IS AN EXECUTIVE SUMMARY AND THE RENDER REPORTED NO FOOTNOTE OR REFERENCE LIST IN IT (ABSENT). This is a LIMIT ON WHAT SURVIVED, not a finding about the full report: what remains live at this address is not, on the render's own report, the citation-bearing artefact the disputed counts were computed over. A successor MUST NOT upgrade 'the executive summary is live' into 'the report with the defective citations is live'. THIS SOURCE IS EVIDENCE OF PUBLICATION STATE ON A DATE AND OF NOTHING ELSE; no cause may be inferred from it and it supports no claim about citation accuracy."
+      ]
     }
   ],
   "_schema": {
