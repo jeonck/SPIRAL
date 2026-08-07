@@ -1,0 +1,22 @@
+Cycle 125 complete. All state files valid, scratch removed.
+
+## What I did
+
+**G2 (zero fetches).** Re-checked cycle 116's conclusion — a T5 selection plus its ten-row ranking table — by re-deriving every input from `git show 218abd2^`. **It passes**: score vector, `depends_on`, `created_cycle`, all four `attempts` arrays, and every derived tie-break step reproduce exactly, and the issue it queued (`ioc-extraction-reliability`) is the one its policy selects.
+
+**A second finding, kept separate.** The same re-derivation exposed a field-name error in **cycle 124's** selection — the one that queued this cycle. The schema field is `depends_on`; cycle 124 queried `.depend_on` (singular), which returns `null` ten times, and concluded tie-break (a) was inert. Five of ten issues carry a non-empty `depends_on`. Re-running the policy correctly eliminates `task-dependent-reliability-framing` at 3(a) — it has the graph's longest `depends_on` — leaving a two-way tie between two other issues. **The issue I was assigned was not the policy's output.** I executed the assignment anyway rather than adding a second undocumented deviation, and filed it as `[340]` with a prominent block in the next queue entry so the T5 at cycle 127 doesn't repeat it. This also partly falsifies cycle 124's `[339]`.
+
+**Main task — T3, the first on this issue since cycle 16 (109 cycles).**
+
+- **Discharged five owed repair steps** (`ctr-0009` i/ii, `ctr-0037` i/ii/iv) that three open contradictions had reserved to "a T3 targeting this issue." Withdrew the false within-study warrant, corrected the four-model IoC range to 0.6944–0.8846, and corrected the headline magnitude: **"roughly 3× spread" → 2.393× on block means, 2.936× max on any comparable row**. Per `ctr-0037` step (iv) I re-derived every ratio rather than copying — all reproduce cycle 78's values exactly, 47 cycles apart.
+- **Entered `src-0042`** (untouched since cycle 120) as a **complication**, not a support. I had to correct the framing I was handed: its direction instability runs across model and tuning corpus, *not* across sub-tasks, and both renders return ABSENT on cross-task direction. What is real is a threshold-shift mechanism that manufactures apparent task-dependence — a second such mechanism this base hadn't recorded.
+- **Re-ran both stale searches.** LANCE/PRISM replication: still nothing, third search across 119 cycles — a refreshed negative. The other produced **`src-0043`** (arXiv 2607.25572), added with two renders; its second render caught an author-count, date, venue and macro-F1 disagreement, the last of which is now under a citation hold rather than in the base as a citable number.
+- **Rewrote `open_questions` 3 → 6**, preserving the binding cycle-16 split note verbatim.
+
+**No contradiction opened**, with the reasoning stated: `src-0043` corroborates rather than conflicts with ttp's unconvertible-units candidate, and G3's test is conflict between *supported* claims — both new candidates are `proposed`.
+
+## The honest bottom line
+
+I don't think this issue got stronger. The repair **narrowed** its claim: the src-0007 magnitudes are withdrawn, this base now has no established cross-study magnitude for task-dependence at all, both new candidates are non-CTI and can't count toward CTI multi-source support, and new `open_questions[3]` records that the only surviving multi-source CTI support rests on `src-0006`'s scoring definitions that **no cycle has ever read**. I did not fetch them and said why. That is the next thing to do.
+
+**Two things I flagged rather than quietly absorbed:** the queue entry is 19.0 KB against `[238]`'s ~15 KB guideline (second overrun running — needs a human ruling), and I did not fetch `src-0006`.
