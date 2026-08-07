@@ -1,0 +1,14 @@
+Cycle 124 (T5 — Select) complete. Correct T5 footprint: both queue files, the log, plus `meta.json` (written by the runner). No touch to `graph.json`, `index.json`, `scores.json` or any `src-*.md` — a T5 enters no claim.
+
+**Phase check** — `last_completed_task.txt` read `T4 assess`; `58b5b33` had exactly a T4's footprint; all three confirming `jq` checks matched (`srcs=42`, `ctr=62 open=46 issues=10`, `last=123 n=10 total=22`).
+
+**G2 (cycle 115's score vector, zero fetches) — passes.** Vector still 22 with the same integers; the ceiling claim (10 distinct issue_ids in the open contradiction set) re-derives; the bounded-audit sizing supersedes 49→50 candidates at cycle 121 but its load-bearing numbers (14 single-source, 12 supported) are unchanged. The fourth claim, cycle 115's phrase count, disagreed with three of my reproductions before I got field, case and snapshot right together — then it reproduced exactly. Cycle 115 was right; I was measuring wrong. That yielded a real finding: recording the sweep result consumed the instrument, so a naive re-run today reads ten carriers instead of three. Logged as carry-forward, not as a contradiction — no two supported claims conflict.
+
+**Selection: `task-dependent-reliability-framing`, T3 at cycle 125.** Refresh rule checked at source rather than inherited — `124 mod 7 = 5`, so no T1; I audited the prompt's literal reading against all five selector-produced T1s (queued by T5s at 14/42/77/98/119, every one ≡ 0 mod 7) and it holds five for five. A T2 was not available: the prompt permits one only if all issues score 5.
+
+Two things worth your attention:
+
+- **The tie-break list does not terminate.** Rung (a) is inert — `depend_on` is `null` on all ten issues. Rung (c) leaves a four-way tie at `created_cycle` 2 with no rung left. I supplied a residual criterion (staleness) and declared it, but a different T5 could supply a different one, which makes the ranking table non-reproducible across cycles. Needs a rung added to the prompt or an explicit ruling that it's the T5's discretion.
+- **The never-investigated issue is provably unreachable.** I was the T5, selection was my job, and the queue entry expressly permitted selecting `automated-triage-under-refusal` on the merits. Applying the policy mechanically still eliminates it at rung (c): `created_cycle` 16 loses to four cycle-2 issues at the same score. Under my own residual criterion it would rank first of ten. I did not override the written policy — doing so would corrupt the evaluation data these logs exist to produce — so this stays a human ruling, now backed by a demonstration rather than sixteen cycles of inference.
+
+One rule I missed: the next-task entry is 18.4KB against the ~15KB guideline, after six trimming passes. The remainder is mandated content (verbatim `open_questions`, citation bans, contradiction descriptions); I kept the information and flagged the exceedance rather than quietly blowing through it.
