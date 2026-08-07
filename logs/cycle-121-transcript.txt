@@ -1,0 +1,19 @@
+Cycle 121 (T2 — Structure) is complete. Zero fetches, zero searches, zero new sources.
+
+**Phase check** passed, with one wrinkle worth noting: `HEAD` was a *human* commit (`ace8647`, a `run_night.sh` change touching no `state/` files), so I walked back to `06605fb cycle 120: T1 collect` to stat. Both confirming jq checks matched their predictions exactly.
+
+**G2 (cycle 112's "ruling 4" — the cross-domain exclusion rule): RE-VERIFIED**, premise and consequence, from state alone. I picked it deliberately rather than at random — it governed three acts of my main task — and said so in the log. Cycle 120 had independently applied the rule correctly to a case its author never saw, which is better attestation than a restatement.
+
+**The main task turned up something the queue did not anticipate.** The queue asked me to consider splitting `open_questions[3]` by leg. Reading `[3]` from the top, cycle 120's finding is filed under a question that asks something else — `[3]` asks about fine-tuning **data volume**, the finding is about **setting/domain**. Then one `Grep` for `fine-tun` across `state/knowledge/` found the real problem: **`src-0007` (CyberThreat-Eval) is a CTI source, held since cycle 9, that already contains within-CTI before-and-after fine-tuning accuracy rows** — GPT-4o → GPT-4o (FT) precision 0.8240→0.8846 on IoC extraction (helps), 0.2787→0.2387 on TTP identification (hurts), 0.3037→0.2717 on triage (hurts), with its own stored note drawing the link to `src-0001` explicitly. Cycle 120 recorded that corroboration as happening *for the first time* at cycle 120 and *necessarily from outside CTI*. That is now **`ctr-0062`**.
+
+The distinction matters beyond chronology: an in-domain corroboration is not barred by the very exclusion rule that bars `src-0042`.
+
+Five writes, all to `graph.json`: the `[3]` scope-mismatch block; `open_questions[10]` (accuracy leg) and `[11]` (calibration leg, zero sources, and a recorded argument for why it is *not* a duplicate of `[5]`); `candidate_resolutions[14]` (`proposed`, with two scope limits written in — chiefly that it cannot resolve an issue whose title begins "Beyond raw accuracy"); `ctr-0062`; and one open question routing `src-0042` to `extraction-vs-reasoning-ordinal-axis`. Append-only proved in two parts (a whole-array prefix comparison fails when an element is edited in place — expected, now a carry-forward). Gates hand-checked with jq; `scripts/validate_state.py` **could not be run** (`python3` is refused), and I don't imply otherwise.
+
+Three things I'm flagging rather than glossing:
+
+- **I verified no `src-0007` row at source** — the entire finding is a zero-fetch read of stored text. That is exactly why it went in as a contradiction with repair steps rather than a promotion. Repair step (ii) is the one that could kill it: carry-forward `[19]`'s unexplained GPT-4o (FT) column anomaly has only ever been checked against the *rubric* rows, never the precision/recall rows these pairs come from.
+- The next-task instructions ran **16.1 KB against the ~15 KB guideline**; I chose the overrun over cutting the repair steps or the `src-0007` ban list.
+- **`automated-triage-under-refusal` still has an empty `attempts` array after 121 cycles** — twelfth consecutive cycle reporting it. A T2 can't fix it by fiat. It needs a human ruling.
+
+Queued T3 at cycle 122 on the same issue to discharge `ctr-0062` steps (i) and (ii) — bounded cost, and both outcomes are full results.
