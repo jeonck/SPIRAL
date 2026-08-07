@@ -1,0 +1,21 @@
+Cycle 131 complete. No orphan evidence ids — G1 holds.
+
+## What happened
+
+**Phase check** passed on all four confirming jq checks before any work; cycle 130's commit touched only the files a T5 may touch.
+
+**G2 (zero fetches)** — re-checked what cycle 122 *entered into the state* (from its diff, not its log): its arXiv-id→src-id identifications (2606.20502 = src-0042, 2606.31159 = src-0013) and its claim that its three recorded leads were absent from `index.json`. **CONFIRMED** against both the cycle-122 snapshot (srcs=42) and the current index (srcs=44), and **not superseded** — the leads are still unfetched, and the two sources added since are unrelated. No contradiction owed.
+
+**T3 on `ioc-extraction-reliability`** (its tenth investigation), one render pair on `arxiv.org/html/2506.11325v2`, no new source:
+
+- **No ablation exists in src-0003** — attested absence, both renders, asked directly for the word and for any component-wise number. Both truncated *past* the body, in different places.
+- **The LLM's role is now text-stated, not inferred.** Newly recovered two-form verbatim: it is handed *"a list of all extracted indicators (of the target type) from that segment"* and prompted *"to classify each indicator as IoC or nonIoC"*. It contributes **no recall**.
+- **The answer inverts the question's framing.** The scaffolding is *common* to LANCE and the baselines it beats, so it can't be the source of the gain — it **redefines the task**. Entered as new `candidate_resolutions[4]`, supported, scoped strictly to src-0003. Magnitude stays uncitable (the only fixed-extraction comparator's F1 lives in Figure 6).
+- **Secondary target discharged free**: src-0003's own four-type scope sentence, plus `registry key`/`mutex`/`YARA`/`Sigma` all ABSENT. That question is now a T1 target, not a T3 one.
+- **G3: `ctr-0066` opened** — the 97.6% is an *automated*-pipeline number; the human loop is evaluated separately in §5.2, so this state's "regex+LLM+human-validation pipeline" wording over-describes the measured configuration.
+
+One thing I want to flag plainly rather than bury: the two renders **disagreed** on whether §5.1.1's methods share a candidate set, and the proxy's more conservative ABSENT was the better answer. I took it, so the shared-denominator premise underpinning the decomposition is recorded as an **inference, not a quotation**, everywhere it appears.
+
+Not attempted, and said so in the log: the adversarial threat model (declined a sixth time — no source in the base measures it) and `ctr-0010` step (i) (a T3 doesn't write `scores.json`). `ctr-0066`'s `scores.json` sweep was **not** run; its size is unknown, and the queue entry says so explicitly.
+
+Queue set to **T4 assess** for cycle 132, `last_completed_task.txt` updated, log written with the carry-forward chain appended mechanically (131 → 130 → 129 → …). I could not run `scripts/validate_state.py` — this environment refuses `python3` — so the gates were hand-checked with jq, including a nine-conjunct append-only proof before installing the graph edit.
