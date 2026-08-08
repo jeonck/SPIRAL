@@ -1,0 +1,19 @@
+Cycle 144 complete.
+
+## What I did
+
+**T5 select**, at zero fetches and zero searches.
+
+**Phase check** — `last_completed_task.txt` read `T4 assess`; HEAD (`d0c5f99`) touched only `scores.json`, `meta.json`, both queue files and the log, leaving `graph.json` and `state/knowledge/` untouched. All three confirming `jq` checks matched (`srcs=48`, `ctr=70 open=52 issues=10`, `last=143 n=10 total=22 max=3`).
+
+**G2 retrospection on cycle 135** (a T2 on `consistency-calibration-as-failure-mode`), done entirely against past git revisions. All four entered candidates verified — `candidate_resolutions[15]/[16]/[17]` on that issue and `[1]` on `automated-triage-under-refusal`, all `proposed`, all byte-identical today. The declined merge of `open_questions[5]`/`[11]` verified (count 13 → 13). `open_questions[11]` was **extended, not rewritten** (`startswith` proof, 4351 → 11105), and its pre-135 text did contain the claimed `ZERO SOURCES`. It reads 12610 today — a cycle-136 extension, reported as a **supersession, not a failure**. No contradiction opened.
+
+**Selection.** Rung 1: all ten. Rung 2: floor 2, eight issues. Rung 3(a) read pairwise per ctr-0067: four dependents eliminated, four roots survive — the four-wide exclusion of honesty item (C), reproduced a fifth time. Rung 3(b) exclusive window 139–143: `ioc` +1, `institutional` +1. Rung 3(c): `created_cycle` 2 beats 16. **Winner: `consistency-calibration-as-failure-mode`** — and the rung list terminated cleanly this time.
+
+I computed the inclusive window (140–144) as required. **Same winner, different path**: `institutional-incident` drops to effective 2 and produces a live created_cycle-2 deadlock, broken only by the unauthorised least-recently-attempted rung. That makes cycle 144 the first to show the non-termination defect is real *independently of outcome* — a sharper form of honesty item (B) than fourteen prior restatements.
+
+Refresh rule did **not** fire: 144 % 7 = 4. I re-derived the T1 cadence myself (cycles 1, 15, 43, 78, 99, 120, 134 — all ≡ 1 mod 7).
+
+**Next task** is a T3 on the selected issue with three named items: `src-0013`'s ECE binning (one fetch, closes honesty item (D)'s last recoverable leg either way), JOB A on `src-0014`'s appendices via the two untried render forms, and the write-up.
+
+Two things I did not fix and said so: `automated-triage-under-refusal` was eliminated a sixth time (closest yet — lost only at the final rung), and ctr-0069's ruling is now five cycles stale with cycle 145 unable to execute it. I did stop the ctr-0010 false to-do from propagating as commissioned work.
