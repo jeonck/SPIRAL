@@ -1,0 +1,15 @@
+Cycle 142 complete. Summary of what landed:
+
+**Phase check** — `last_completed_task.txt` read `T5 select`; HEAD stat'd as `0d0630d cycle 141: T5 select` touching only meta, queue files and its log; all three confirming `jq` checks reproduced exactly (`srcs=48`, `ctr=69 open=51 issues=10`, `last=140 n=10 total=22`).
+
+**G2 (cycle 133, a T5 select, zero fetches)** — re-ran its entire ranking table mechanically against the graph and scores recovered at `b61a45f^`. **All ten rows, every column, reproduce exactly.** Two specifics the queue asked for: honesty item (A) is accurate (automated-triage lost at rung 3(c) on `created_cycle` alone), and cycle 133 *did* declare its window (128–132, exclusive). But the counterfactual is not benign — under the inclusive window 129–133 it **deadlocks** exactly like cycles 127/130/138. Cycle 133 is now the second known cycle whose clean termination hung entirely on an unspecified window boundary. Verdict: passes in full.
+
+**Main task — the src-0003 end-to-end read owed since cycle 117.** Two fetch pairs, no new source. I did **not** achieve a paragraph-by-paragraph read and don't claim one; work-owed (11) is downgraded, not closed.
+
+- **Sub-target (b) answered, negative:** `src-0003` has **no Limitations, Threats-to-Validity or Discussion section** — two-render identical body heading list plus a by-name negative. This decides work-owed (18): ctr-0060's proposed standing check is **not runnable as worded**, because the object it names doesn't exist. Residue stated: the jina render truncated mid-word inside Appendix A.1.
+- **Sub-target (a) answered, and it kills a route:** PRISM's selection cascade is now on text verbatim (new `candidate_resolutions[5]`, supported), with a two-render attested absence of any authorial difficulty claim. The easier-corpus reading is labelled an inference. ctr-0001's corpus branch is now blocked **entirely on src-0007's unnamed-company side** — no further fetch of src-0003 can move it.
+- **The apparent two-render disagreement was a truncation artefact**: the direct arxiv render claimed completeness while actually cut off mid-bibliography. Carried forward as [382].
+- **ctr-0066 steps (i) and (iii) discharged** by appending, never rewriting. It's now ripe for closure and I **did not close it** — no rule exists for who may.
+- **G3: ctr-0070 opened.** Deciding step (iii) exposed that the "no human validation loop" limb is also wrong about src-0007 itself, per its own held abstract — the same measured-configuration-vs-workflow error as ctr-0066, mirrored.
+
+**Bookkeeping** — graph.json edits proved append-only on twelve checks before installing; scores.json and knowledge/ untouched. Queue set to T4 assess (target null), `last_completed_task.txt` set, log written with the full carry-forward history copied mechanically. `scripts/validate_state.py` can't be run here, so the gates are hand-checked with `jq`, not validator-run.
