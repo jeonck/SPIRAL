@@ -1,0 +1,15 @@
+Cycle 137 complete. Files written: `state/assessments/scores.json`, both `state/queue` files, `logs/cycle-137.md`. `state/issues/graph.json` and `state/knowledge/` untouched, as a T4 requires.
+
+**Phase check** — all four confirming checks reproduced exactly (`ctr=68 open=50 issues=10`, `ccafm_cand=19 oq=14 att=136`, `srcs=47`, `scores last=132 total=22`).
+
+**G2 (cycle 128's conclusion, zero fetches).** Diffed the graph either side of `c28f38f` rather than trusting the log: cycle 128 added no candidate and no open question, so its entered conclusion is **ctr-0064**. It **re-verifies in full** — src-0035 carries the partitive "some of its websites" (3 hits), src-0036 renders the same act without it, and src-0044 records the 2026-08-07 retrieval from `assets.kpmg.com` alongside three not-found KPMG addresses. I also re-ran its step (ii) sweep (addressed to "a T2 or T4"): zero corrections owed in `scores.json`, reproducing cycle 129's null. That leaves ctr-0064 with no outstanding work while still counting toward the g3 demotion — a second instance of honesty item (E), now widened in the next queue entry.
+
+**Scoring.** All ten issues scored; all ten carry ≥1 open contradiction, so the −2 demotion fires everywhere and the ceiling is 3. **No score moved — total 22, max 3.** The two closures at cycle 136 were both on consistency-calibration-as-failure-mode, which still has nine open, so no demotion state changed. That issue's new `candidate_resolutions[18]` raises nothing on its own scope limits (methodological, non-CTI, and it states the calibration leg stays single-source on src-0001) and lowers nothing (it impeaches no number). I recorded which leg drove the number: consistency reaches level-3 arithmetic on src-0001 + src-0018; calibration cannot.
+
+Re-derived rather than inherited: ctr-0063's 13/11/4, the vendor-concentration ban-adjusted support, every candidate evidence array, and every `attempts` array — which caught an error in my own draft (ioc's attempts are `[9,21,35,52,65,84,93,108,117,131]`), fixed before the splice.
+
+**Append-only proof, all five conjuncts `true`**; G1 hand-check `unknown_evidence_ids=0`. Two evidence arrays grew (ccafm 8→13, triage 3→4), both as prefix-preserving appends.
+
+Two things a human still needs to rule on, both flagged in the log and carried forward: the non-terminating T5 tie-break list, and whether the selector needs a staleness term — `automated-triage-under-refusal` has now gone 137 cycles without a single investigation. I ran the honesty-item-(C) contingency and confirmed that unblocking `task-dependent-reliability-framing` would need four dependencies to leave tier 2 at once; none had an honest case, so I scored honestly and left it blocked rather than engineering a selection.
+
+`scripts/validate_state.py` was not run — this environment's Bash refuses `python3`. Every gate above was hand-checked with `jq`.
