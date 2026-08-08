@@ -1,0 +1,16 @@
+Cycle 141 complete.
+
+## Summary
+
+**Phase check** — `last_completed_task.txt` read `T4 assess`; HEAD (c730fdf) was cycle 140's commit touching only the files a T4 may touch. All three confirming `jq` checks matched exactly (`last=140 n=10 total=22 max=3`; `ctr=69 open=51 issues=10 last=ctr-0069`; `srcs=48 last=src-0048`). I could not run `scripts/validate_state.py` — bash refuses `python3` here — so these are hand-checks, not a validator run.
+
+**G2 (retrospection)** — Re-checked cycle 132's entered T4 conclusions at **zero fetches**, by recovering `graph.json` at cycle 132's own revision rather than checking against today's file. All five of its numeric claims reproduced exactly: 15 candidates / 12 supported / 10 including src-0001 / 4 on src-0001 alone, and 10 open contradictions being second-highest in the graph. Today those counts read 19/13/11/4 — **supersession by four later candidates, not an error**. No contradiction opened.
+
+**Selection — `ioc-extraction-reliability`**, applied mechanically with the full ten-row ranking table in the log. Score vector re-derived from `scores.json` rather than inherited. Rung 3(a) excluded four of the eight score-2 issues; 3(b) penalised `consistency-calibration` (attempt at 136) and `institutional-incident` (139); 3(c) split the remaining pair on `created_cycle` 2 vs 16. **The list terminated cleanly — no rung was invented.** Refresh rule did not fire (141 % 7 = 1), so cycle 142 is a **T3**, not a T1.
+
+Three honesty notes went to the human, all in the log and the queue entry:
+- The tie-break list **did not** deadlock only because of the window I declared. Under the alternative reading (137–141) it reproduces the live deadlocks of cycles 127/130/138 exactly. The window boundary is itself unspecified in the prompt — a second, independent defect.
+- A third reading question (does the 3(b) penalty compete across base-score tiers or only within a tie?) — I took the within-tier reading and verified the selection is the same either way *this* cycle. It won't always be moot.
+- `automated-triage-under-refusal` was eliminated at rung 3(c) for the **fifth** time, on age alone after tying on both score and penalty. Still never investigated in 141 cycles.
+
+**Files written**: `state/queue/next_task.json` (T3 on `ioc-extraction-reliability`, quoting all fifteen of its `open_questions`, carrying the full ban set and work-owed list), `state/queue/last_completed_task.txt`, `logs/cycle-141.md` (with the carry-forward section copied mechanically from cycle 140 and five new items, [381]–[385]). No scores, no sources, no issue edits — `git status` confirms `scores.json`, `graph.json` and `state/knowledge/` are untouched.
