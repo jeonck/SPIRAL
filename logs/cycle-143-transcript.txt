@@ -1,0 +1,21 @@
+Cycle 143 (T4 assess) is complete. All state files are written and hand-verified.
+
+## What I did
+
+**Phase check** passed on all four confirming jq checks (`srcs=48`, `ctr=70 open=52 issues=10`, `last=140 n=10 total=22`, `oq=16 cr=6`). HEAD was cycle 142's commit and touched no scores or knowledge, as a T3 must not.
+
+**G2 retrospection** — cycle 134's entered conclusions (a T1 collect: `src-0045/0046/0047`). **Re-verified in full at zero fetches**: ids, URLs and titles in `index.json`; every quantity the log claims present in the `key_claims`; the graph diff is exactly one contradiction append and no issue edit; `scores.json` untouched. Two supersessions reported plainly (`ctr-0068` now resolved at 136; `srcs` now 48), neither a failure.
+
+**Assessment** — all ten scored, re-derived from the graph rather than copied. Vector held: `ttp` 3, `vendor-concentration` 3, the other eight 2 (total 22). Ten rationale blocks appended at the tails, with a jq proof that all ten old rationales are strict prefixes of the new ones and that every score and evidence array is byte-identical.
+
+## Three findings worth your attention
+
+1. **`ioc-extraction-reliability` did not move despite real new evidence.** Cycle 142's new supported candidate closes a route (the corpus branch of `ctr-0001` is now blocked on `src-0007`'s side) rather than resolving the central conflict, and the issue's open-contradiction count went *up* to five.
+
+2. **The queue entry's headline secondary task was already done — for the fourth time.** `ctr-0010` step (i) was discharged at cycle 36; I found the correction block at character offset 17505 of the rationale and audited all eight occurrences of `0.09-0.15` — none asserts the mis-scoped reading. The error is in the instruction chain, not the state. Recorded as work-owed (32); the remedy is a graph note, which a T4 cannot write.
+
+3. **The G3 demotion gate is inert, confirmed by reading the code myself.** `validate_state.py` implements it as a ceiling (`score > 3` errors), not the subtraction `prompts/t4_assess.md` step 3 implies. Literal subtraction would drop all ten issues by two and flatten the selector. I applied the ceiling reading and said so explicitly in every rationale; nothing in this vector is demoted, including the issue carrying thirteen open contradictions. A human should rule on the wording.
+
+I also ran the `scores.json` half of `ctr-0070` step (ii) — a seven-pattern sweep of all ten rationales returned **zero** instances of the `src-0007` measured-configuration/workflow conflation. The `state/knowledge/` half remains a T2's.
+
+Queued for cycle 144: **T5 select**, with the full selection input set and a flag that the penalty-window boundary is live this time — attempts at cycles 139 and 142 fall on opposite sides of it, so the exclusive and inclusive readings may give different survivors. I did not compute the winner; that is the T5's work.
