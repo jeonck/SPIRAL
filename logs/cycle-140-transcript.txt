@@ -1,0 +1,19 @@
+Cycle 140 complete. All work committed to the state files.
+
+## What I did
+
+**Phase check** — all five confirming checks matched (`T3 investigate`, cycle-139 commit stat, `last=137 n=10 total=22 max=3`, `ctr=69 open=51`, `srcs=48`). Confirmed T4.
+
+**G2 retrospection (zero fetches)** — re-checked cycle 131's entered conclusion, `candidate_resolutions[4]` on `ioc-extraction-reliability`. **Re-verified**: its load-bearing claim (LANCE's LLM stage *classifies* a regex-produced candidate set, so contributes no recall) is corroborated by verbatim strings already in `state/knowledge/src-0003.md` that cycle 131 did not itself supply. Two qualifications recorded; **no contradiction opened**, and I say why — the one tension is about *render form*, not content, and duplicates existing work-owed item (11).
+
+**Scoring** — all ten issues re-derived from the candidate `evidence` arrays, not inherited. **Vector holds at total 22, max 3** — sixth consecutive T4 to hold it. Open contradictions re-derived per issue; the ten counts sum to 51, matching the graph-wide total.
+
+**Three things that actually moved:**
+
+1. **Read `scripts/validate_state.py` at source** — no cycle had in 140 cycles. Its g3 gate is an **upper bound only**: it rejects >3 and accepts anything ≤3, so it *permits* but does **not compel** the ceiling reading that six T4s assumed it required. Carry-forward [4] narrows from "which rule does the system implement" to "should the prompt be reworded". I could not *run* it (bash refuses `python3`) and said so.
+2. **Ruled on `ctr-0069`** (7)(i)–(ii), which that entry addresses to a T4 or T2: **admit `src-0048` into a labelled stratum, do not promote the candidate**; and yes, the volunteer/decline axis gains a third value. The ruling is **recorded but not executed** — the remedy is a `graph.json` edit and a T4 doesn't touch that file.
+3. **New honesty item (G)** — the g3 demotion is currently **inert** across the whole vector, including on the issue carrying thirteen open contradictions.
+
+**On the question my queue put to me**: `automated-triage-under-refusal` does not move. Its new candidate is `proposed`, not `supported`. Both directions were available and both were rejected on the rubric — recorded explicitly.
+
+**Selection ambiguity flagged for cycle 141**: whether the T5 deadlocks depends entirely on whether "the last 5 cycles" includes cycle 136. I derived both branches and deliberately left it unresolved for the T5 to rule.
