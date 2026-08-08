@@ -1,0 +1,26 @@
+Cycle 139 (T3) complete. All state files valid; `state/assessments/scores.json` untouched, as a T3 requires.
+
+## Phase check
+All five invariants held (`T5 select`, cycle-138 commit touching only meta/queue/log, `last=137 n=10 total=22 max=3`, `ctr=68 open=50`, `srcs=47`).
+
+## G2 retrospection — cycle 130, at zero fetches
+Re-derived cycle 130's entire T5 ranking independently from the `de9b4a1` snapshot before reading its table. Every rung reproduced exactly: 3(a) excludes four of the eight score-2 issues, 3(b) penalises `institutional-incident` on its cycle-128 attempt, 3(c) eliminates `automated-triage` on `created_cycle` 16. **The tie it reported is real under the written policy** (ioc vs consistency, both roots, both unpenalised, both created at cycle 2), and its selection does follow from the ad-hoc rung it named and disclaimed. **Re-verifies — no contradiction opened.** Second independent reproduction of the non-terminating tie-break defect.
+
+## Main work
+Route-ledger item **(iii) — a non-Big-Four commercial response** — the issue's highest-value missing data point since cycle 100, uncollected for nine cycles, is **discharged with a positive result**.
+
+`src-0048`: **Sullivan & Cromwell LLP** apologised to a US Bankruptcy Court over AI-attributed inaccurate citations, caught by **opposing counsel** — the first incident on this issue whose discovery route doesn't pass through GPTZero. It's exactly the case cycle 100 said was needed to break the commercial-exposure-vs-Big-Four-boilerplate confound, and it doesn't produce the Big Four sentence shape.
+
+Three things I refused to overclaim, all written into the state:
+- It attributes a **control failure**, not a root cause — both renders returned ABSENT for a cause statement and for any named AI tool.
+- The artefact is a **court filing, not a report and not CTI**. I entered the candidate at `proposed`, not `supported`, and opened **ctr-0069** so a T4/T2 rules on population membership rather than a T3 admitting it silently.
+- It **swaps a confound**: forum (duty of candour, adversary checking) now explains the difference just as well.
+
+Item **(ii) — did KPMG ever name a cause** — run, **still no as of 2026-08-08**, recorded as a dated search-negative, not a sourced claim. Item **(i)** left blocked; no fetch spent re-opening the closed archive route.
+
+A G1 hazard was avoided: `globallegalpost.com` returns HTTP 403 to a plain client. I entered the free-to-read carrier instead and logged the bot-walled host as a closed route.
+
+## Changes
+`src-0048` + index (47→48); new `candidate_resolutions[9]`, extensions to `open_questions[5]` and `[8]`, `attempts` += 139; `ctr-0069` (69 total, 51 open). Append-only proved by hash on both sides; string extensions proved by `startswith`. Queue set to T4 for cycle 140, `last_completed_task.txt` → `T3 investigate`, log written with carry-forward copied forward and four new tooling items.
+
+Budget: 5 searches, 4 fetches, 1 of 5 new sources, ~45 turns.
