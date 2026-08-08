@@ -1,0 +1,18 @@
+Cycle 134 complete. Summary of what landed:
+
+**Phase check** — all four gates confirmed from the state before any work (`T5 select`, commit b61a45f touching only what a T5 may touch, and the three `jq` counts matching exactly).
+
+**G2 (retrospection on cycle 125) — PASSES.** Cycle 125 entered a verbatim abstract quotation from src-0043 and asserted it was two-render confirmed. Zero-fetch check showed faithful transcription into the graph; I then spent one fetch (declared, breaking a 13-cycle zero-fetch streak on purpose — only a re-fetch can test a quotation) and the abstract matches word for word. No contradiction. Two incidental checks on src-0001's version history and Springer/ARES publication turned out to be already recorded in the base — reproduced the instrument first, per [337], and nothing was new.
+
+**Collection — 3 new sources, the first since cycle 128.**
+- **src-0045** (arXiv 2505.01997, ICML 2025, peer-reviewed) is the real result: the first source in the base other than src-0001 pairing a training intervention with a proper-scoring calibration metric and reporting numbers. Token-probability elicitation, same modality as src-0001.
+- **src-0046** (Continual Calibration) — coverage collapses 0.90→0.67 after one fine-tuning step while accuracy holds within five points. Explicitly does *not* discharge the question: its metric is conformal coverage, not a proper score, and its ECE is figure-only.
+- **src-0047** (SOC triage at industry scale) — no calibration metric at all; accepted for one directional claim and one operational one.
+
+**G3 — `ctr-0068` opened**: src-0001 *measures* fine-tuning worsening calibration; src-0045's abstract asserts domain fine-tuning *alleviates* overconfidence, and the body render returned ABSENT for that sentence and for any number behind it. Written asymmetrically, with three scope differences priced and a reconciling hypothesis labelled as a hypothesis.
+
+**Two honest negatives.** The 109-cycle-stale negative existential on `open_questions[5]` was refreshed with five queries (recorded verbatim) and **survives** — every CTI calibration hit is src-0001 itself. AthenaBench was fetched and rejected: no calibration, no consistency, no abstention. I added 3 of a permitted 5 sources rather than padding.
+
+**Not done, stated plainly:** src-0003 end-to-end and src-0006's scoring definitions remain owed; model-overlap and the src-0018 image problem are unmoved.
+
+Queued a **T2** for cycle 135 with a ranked agenda — its top item is that my own collection falsified `open_questions[11]`'s "ZERO SOURCES" text, which a T1 may not rewrite.
