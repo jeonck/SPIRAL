@@ -1,0 +1,21 @@
+Cycle 135 (T2 structure) complete. All work committed to the working tree.
+
+**Phase check** — `last_completed_task.txt` read `T1 collect`; HEAD d7e7771 stat matched the predicted file set; all four confirming jq checks passed exactly (`ctr=68 open=52 issues=10 last=ctr-0068`, `srcs=47 last=src-0047`, `last=132 n=10 total=22 max=3`). `scripts/validate_state.py` could not be run — Bash refuses `python3` here — so every gate was hand-checked with jq.
+
+**G2 (zero fetches)** — Re-checked cycle 126's T4 conclusion on `task-dependent-reliability-framing`. **Passes**, with one supersession: cycle 126 wrote "THREE open entries here" and there are now four (`ctr-0067` opened at cycle 133). No score moves — the G3 gate is a per-issue ceiling, not a subtraction. Hit the [337] instrument trap again: the field is `opened_cycle`, not `cycle_opened`, and a wrong name returns null silently.
+
+**Main task** — ten append-only edits to `state/issues/graph.json`, spliced in one jq pass and proved before the `mv`:
+
+1. **`ctr-0068` step (6)(iii) discharged** — `open_questions[11]`'s "ZERO SOURCES" headline is false as of cycle 134 and now says so. Partially discharged, not closed: no source yet replicates supervised task fine-tuning of a *base* model worsening a *proper score* on a *generation* task.
+2. **Fine-tuning census refreshed** — was four files short; now eleven files mention fine-tuning, seven actually fine-tune, exactly **two** pair it with a proper score (src-0001, src-0045) against one at cycle 121. Bounded the `ECE` pattern per [349]; src-0043 returns zero calibration hits.
+3. **Three new candidates** (indices 15–17) from src-0045/0046/0047, all `proposed` — none is CTI, so the calibration leg stays single-source on src-0001.
+4. **First candidate since cycle 16 on `automated-triage-under-refusal`** from src-0047 — that issue now has a defined piece of work for the first time in 135 cycles.
+5. **Relocation decision made** (cycles 121 and 122 both declined it): hold `candidate_resolutions[14]` here permanently — relocation would truncate a within-study cross-sub-task contrast to a true-looking half.
+6. **`ctr-0065` (i)+(ii)** and **`ctr-0062` (iii)** discharged by dated appends; **`ctr-0067` (6)(i)** decided — rung 3(a) reads **pairwise**, not strictly. It changes no outcome today and I say so; it narrows honesty item (C) rather than fixing it.
+7. **`ctr-0063` counts re-derived** — denominator unchanged at 12 supported (10 cite src-0001, 4 rest on it alone); not resolved.
+
+**Append-only proof**: schema/issue-ids/contradiction-ids identical, all 68 descriptions prefix-extensions, eight issues byte-identical, `cand[0:14]` identical, `[14]` summary-only extension. G1: every cited source id exists (`missing=NONE`).
+
+**New honesty item (E)** for the human: there is no convention for who may close a contradiction whose repair steps are all discharged, so the "52 open contradictions" figure — which the G3 ceiling keys off — is an overcount of live disputes.
+
+Queued **T3 for cycle 136** on the same issue, headed by `ctr-0068` steps (6)(i)/(6)(ii): one fetch on src-0045 Section 5.1 could close that contradiction, and recording its ECE binning attacks the cross-source-ECE-uninterpretability ceiling.
