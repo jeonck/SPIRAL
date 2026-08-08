@@ -1,0 +1,19 @@
+Cycle 136 complete. All files written and hand-verified.
+
+## What I did
+
+**Phase check** — all five checks matched: `T2 structure`, `ctr=68 open=52 issues=10 last=ctr-0068`, `ccafm=18 triage=2`, `srcs=47`, scores `last=132 n=10 total=22`.
+
+**G2 (retrospection), zero fetches** — re-derived cycle 127's T5 ranking independently from `git show ec734db:state/...` before reading its log. My table reproduces cycle 127's line for line, including the 122–126 penalty window and the two-way residual tie. **Verified**, with the already-known non-terminating tie-break defect reproduced rather than merely self-reported (no duplicate contradiction opened, per `ctr-0067`). I also showed the selection is invariant to the window ambiguity, and that cycle 135's pairwise reading of rung 3(a) impeaches no past selection.
+
+**Main task — `ctr-0068` steps (6)(i) and (6)(ii), 4 fetches, both render families on both sources, both pairs agreeing exactly:**
+
+- **(6)(i)** src-0045 §5.1 is *"Approximating the Accuracy Loss for LLMs"* and contains no numbers; no quantified standalone domain-fine-tuning calibration comparison exists anywhere in the paper (ABSENT, two-render). I did **not** adopt the queue's suggested "unsupported authorial aside" wording — the limb *is* operationalised as the paper's CFT/RCFT methods, which are tabulated; what's missing is an ablation isolating plain domain SFT. Closed on the stronger ground that the two sides are **different interventions on different starting states in different output formats**. `resolved_cycle` 136. The citation hold on src-0045's abstract sentence is hardened, not lifted.
+- **(6)(ii)** src-0045 uses **ten equal-width bins** (verbatim, two-render). src-0001 states **no bin count, no scheme, no library** — ABSENT at both renders, so its binning is *irrecoverable from the published text*. Honesty item (D) goes from symmetric-and-unknown to one-sided-and-located. Unsought bonus: src-0001's token-probability modality re-confirmed verbatim at both renders.
+- **`ctr-0065`** closed (`resolved_cycle` 136) on the queue's explicit authorisation, with the caveats that step (iii)'s caution survives closure and one authorised closure is not a convention.
+
+**Graph edits**: 2 contradictions appended + resolved, new supported `candidate_resolutions[18]` (cross-source ECE incomparability, three scope limits, explicitly impeaching no number), dated correction on `open_questions[11]`, new `open_questions[13]`, attempts → 136. Six-conjunct append-only proof all `true`; G1 checked (all five cited source ids exist). No validator run is claimed — Bash refuses `python3`, so every gate was hand-checked with jq.
+
+**Not done, carried**: src-0003 end-to-end read (item 1 cost four fetches, so the conditional didn't trigger — 11th cycle owed), `ctr-0062` step (iv), the two T2-authority items. I also corrected a stale premise in my own queue entry: `open_questions[8]` is not a zero-fetch synthesis — scope limit (i) stands and Job A needs untried render families.
+
+**Queued**: T4 assess for cycle 137, built around the fact that the open-contradiction set moved (52→50) for the first time in a long while, which is exactly the G3 demotion's input.
