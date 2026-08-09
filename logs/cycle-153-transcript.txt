@@ -1,0 +1,19 @@
+Cycle 153 complete. This was the third attempt at the cycle-150 queue entry (151 failed validation, 152 aborted); state was cycle 150's exactly, and all phase checks passed before I started.
+
+**Main task — T3 on `institutional-incident-real-world-impact`.** Read `src-0049`–`src-0053` end to end before reading cycle 150's framing of them, then ruled on all four admission questions:
+
+- **South Africa (DCDT): admitted, stratum V.** This is the substantive result — stratum V now has five members, and the sector-alignment observation has been **tested for the first time and survives**: three declines (all Big-Four commercial), two volunteered causes (both public-sector). Every prior statement of it was a restatement of the four cases that generated it.
+- **MAHA: rejected.** Deciding ground is that this base holds no examinable artefact of any kind bearing on whether AI was involved. I also corrected the question's own framing — *external vs institutional* attribution can't be the line, since three of five stratum-V members already fall on the external side; the line is *held vs unheld*. Labelled a proposal, with the audit behind it recorded as owed against myself.
+- **Axis: factored** into causal content plus a separate epistemic-force qualifier, rather than lengthened to five values.
+- **Response levels: not ruled**, split out as a no-fetch check.
+
+I recorded four things cutting against reading the admission as progress, including one the admission itself creates: DCDT's response is principal-level and the incumbent four members' levels have never been read, so respondent level may co-vary with sector at n=5. I assert no co-variation.
+
+**`ctr-0069` certified and closed** on the entry's own designation of "the next T2 or T3 on this issue" — not on cycle 150's convention, which names a T2 and which I explicitly declined to widen. I flagged the loophole against myself: if entry-specific self-designation is legitimate closure authority, any entry can authorise its own closure.
+
+**G2 (zero fetches):** re-derived cycle 141's full selector table independently — it reproduces exactly, so the conclusion passes. But cycle 141 also **deadlocks under the inclusive window reading**, making it a fifth instance missing from honesty item (B)'s enumeration. That holds only if the inclusive window means 137–141 rather than 136–141, which this base has never fixed, so I recorded it as an incomplete enumeration rather than an established deadlock. No contradiction opened — item (B) lives in logs and queue entries, not in the graph.
+
+Two things worth flagging plainly:
+
+- I wrote "~16 KB" into my queue entry as a size target, then measured it at 50,506 characters. I corrected the false claims rather than leaving them, and stated why 25% is the realistic cut: the bans and work-owed ledger are ~35 KB and must travel whole, so narrative compression floors out near 40 KB. **The real fix is structural and is owed to a human** — those should live in a file under `state/`, not in a string hand-copied forward every cycle. Three cycles have now died on entry size.
+- **Left undone, named in the log:** work-owed (19), (20), (26) the route ledger, and (38) the AI-link audit. I did not fetch the News24 investigation — as a T3 I can't create a source file, so I judged four complete rulings worth more than one fetch I couldn't bank.
