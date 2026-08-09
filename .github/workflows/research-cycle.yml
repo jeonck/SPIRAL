@@ -1,16 +1,22 @@
 name: research-cycle
 
 on:
-  schedule:
-    # Fires 2.5h before the research window opens (08:00-11:00 UTC = 03:00-06:00 CDT,
-    # config.yml schedule.window_{start,end}_utc). GitHub's scheduled events have run
-    # 77, 100, 151 and 149 min late here — the delay has settled near 150 min, so the
-    # lead time is sized to absorb that in full. Firing at 08:00 cost all but 3 of 18
-    # cycles on 2026-07-28; 06:00 recovered 14 of 18 on 07-29, still losing ~29 min to
-    # the residual delay. The job holds until the window opens, so an on-time firing
-    # still starts at 03:00 local and the extra lead time costs nothing.
-    # In winter (CST, UTC-6) the whole window lands an hour earlier: 02:00-05:00 local.
-    - cron: "30 5 * * *"
+  # DEPLOYMENT FROZEN 2026-08-09 at cycle 154 for analysis. The schedule below is
+  # commented out rather than deleted so the deployed configuration stays legible in
+  # the artefact; workflow_dispatch still works if the run is ever resumed. Uncomment
+  # the cron to restart — but note that resuming after a gap breaks the contiguity of
+  # the cycle series the analysis rests on.
+  #
+  # schedule:
+  # # Fires 2.5h before the research window opens (08:00-11:00 UTC = 03:00-06:00 CDT,
+  # # config.yml schedule.window_{start,end}_utc). GitHub's scheduled events have run
+  # # 77, 100, 151 and 149 min late here — the delay has settled near 150 min, so the
+  # # lead time is sized to absorb that in full. Firing at 08:00 cost all but 3 of 18
+  # # cycles on 2026-07-28; 06:00 recovered 14 of 18 on 07-29, still losing ~29 min to
+  # # the residual delay. The job holds until the window opens, so an on-time firing
+  # # still starts at 03:00 local and the extra lead time costs nothing.
+  # # In winter (CST, UTC-6) the whole window lands an hour earlier: 02:00-05:00 local.
+  # - cron: "30 5 * * *"
   workflow_dispatch: {}
 
 concurrency:

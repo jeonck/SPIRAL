@@ -1,0 +1,156 @@
+cycle,commit,task,n_sources,n_issues,score_min,score_mean,open_contradictions,dangling_refs,citation_validity_rate
+0,b2486d9a,Initial commit: SPIRAL research automati,0,0,,,0,0,
+1,ce44b222,cycle 1: T1 collect,5,0,,,0,0,1.0
+2,37f5d78e,cycle 2: T2 structure,5,6,,,0,0,1.0
+3,061402d5,cycle 3: T3 investigate,5,6,,,0,0,1.0
+4,b5b908ed,cycle 4: T4 assess,5,6,1,2.17,0,0,1.0
+5,2155d553,cycle 5: T5 select,5,6,1,2.17,0,0,1.0
+6,1d43d2e6,cycle 6: T3 investigate,6,6,1,2.17,0,0,1.0
+7,88d61070,cycle 7: T4 assess,6,6,2,2.5,0,0,1.0
+8,9bc0238c,cycle 8: T5 select,6,6,2,2.5,0,0,1.0
+9,292291e8,cycle 9: T3 investigate,8,6,2,2.5,1,0,1.0
+10,cb66eaf8,cycle 10: T4 assess,8,6,2,2.5,1,0,1.0
+11,fe342ae5,cycle 11: T5 select,8,6,2,2.5,1,0,1.0
+12,5b796996,cycle 12: T3 investigate,12,6,2,2.5,1,0,1.0
+13,530cc202,cycle 13: T4 assess,12,6,2,2.67,1,0,1.0
+14,ae413855,cycle 14: T5 select,12,6,2,2.67,1,0,1.0
+15,d5ed1ee4,cycle 15: T1 collect,16,6,2,2.67,1,0,1.0
+16,7436e0f1,cycle 16: T2 structure,16,8,2,2.67,1,0,1.0
+17,52943da5,cycle 17: T3 investigate failed validati,16,8,2,2.67,1,0,1.0
+18,66bdd71d,cycle 18: T3 investigate,16,8,2,2.67,1,0,1.0
+19,3d0675a4,cycle 19: T4 assess,16,8,2,2.75,1,0,1.0
+20,b3eb63a5,cycle 20: T5 select,16,8,2,2.75,1,0,1.0
+21,c5f6e676,cycle 21: T3 investigate,17,8,2,2.75,1,0,1.0
+22,e636e1c2,cycle 22: T4 assess,17,8,2,2.62,1,0,1.0
+23,79cf4025,cycle 23: T5 select,17,8,2,2.62,2,0,1.0
+24,6fdc9833,"cycle 24: T3 investigate run failed, no ",17,8,2,2.62,2,0,1.0
+25,b5504727,cycle 25: T3 investigate,18,8,2,2.62,3,0,1.0
+26,3f4eb505,cycle 26: T4 assess,18,8,2,2.5,3,0,1.0
+27,b05d08a7,cycle 27: T5 select,18,8,2,2.5,4,0,1.0
+28,7edbb916,cycle 28: T3 investigate,18,8,2,2.5,5,0,1.0
+29,905590be,cycle 29: T4 assess,18,8,2,2.38,6,0,1.0
+30,1e65c254,cycle 30: T5 select,18,8,2,2.38,7,0,1.0
+31,3bd4379b,"cycle 31: T3 investigate run failed, no ",18,8,2,2.38,6,0,1.0
+32,9daa4881,cycle 32: T3 investigate,18,8,2,2.38,6,0,1.0
+33,a53a9eb6,cycle 33: T4 assess,18,8,2,2.12,7,0,1.0
+34,e71b8137,cycle 34: T5 select,18,8,2,2.12,7,0,1.0
+35,de070bce,cycle 35: T3 investigate,18,8,2,2.12,7,0,1.0
+36,b7b0aef9,cycle 36: T4 assess,18,8,2,2.12,7,0,1.0
+37,2fdd52d4,cycle 37: T5 select,18,8,2,2.12,7,0,1.0
+38,a4326bc6,"cycle 38: T3 investigate agent aborted, ",18,8,2,2.12,7,0,1.0
+39,ba073eed,cycle 39: T3 investigate,18,8,2,2.12,6,0,1.0
+40,94e97d66,"cycle 40: T4 assess agent aborted, state",18,8,2,2.12,6,0,1.0
+41,33d05d7e,cycle 41: T4 assess,18,8,2,2.12,7,0,1.0
+42,b35ebd13,cycle 42: T5 select,18,8,2,2.12,8,0,1.0
+43,6adc41b0,cycle 43: T1 collect,22,8,2,2.12,9,0,1.0
+44,7538c07d,"cycle 44: T2 structure agent aborted, st",22,8,2,2.12,9,0,1.0
+45,3f1e4800,cycle 45: T2 structure,22,9,0,1.89,9,0,1.0
+46,aba325c0,cycle 46: T3 investigate,22,9,0,1.89,10,0,1.0
+47,8f738ec0,cycle 47: T4 assess,22,9,1,2.0,11,0,1.0
+48,c8bb0e31,cycle 48: T5 select,22,9,1,2.0,12,0,1.0
+49,abe58190,cycle 49: T3 investigate,24,9,1,2.0,12,0,1.0
+50,db9dfe84,cycle 50: T4 assess,24,9,2,2.11,13,0,1.0
+51,2ea83dcb,cycle 51: T5 select,24,9,2,2.11,14,0,1.0
+52,72be904d,cycle 52: T3 investigate,24,9,2,2.11,13,0,1.0
+53,fbdf2f27,cycle 53: T4 assess,24,9,2,2.11,14,0,1.0
+54,0e25b0fb,cycle 54: T5 select,24,9,2,2.11,15,0,1.0
+55,4e244c26,cycle 55: T3 investigate,24,9,2,2.11,16,0,1.0
+56,a8453710,cycle 56: T4 assess,24,9,2,2.0,16,0,1.0
+57,c8235f55,"cycle 57: T5 select run failed, no state",24,9,2,2.0,16,0,1.0
+58,4881517a,cycle 58: T5 select,24,9,2,2.0,16,0,1.0
+59,44b08c17,cycle 59: T3 investigate,24,9,2,2.0,15,0,1.0
+60,ca43c3da,cycle 60: T4 assess,24,9,2,2.0,16,0,1.0
+61,a41928fe,cycle 61: T5 select,24,9,2,2.0,17,0,1.0
+62,1660381c,cycle 62: T3 investigate,24,9,2,2.0,18,0,1.0
+63,4bae6d6a,cycle 63: T4 assess,24,9,2,2.0,18,0,1.0
+64,a7a949d4,cycle 64: T5 select,24,9,2,2.0,18,0,1.0
+65,e0188e8b,cycle 65: T3 investigate,24,9,2,2.0,19,0,1.0
+66,cdea01b7,cycle 66: T4 assess,24,9,2,2.0,20,0,1.0
+67,2b172002,cycle 67: T5 select,24,9,2,2.0,21,0,1.0
+68,b85e613f,cycle 68: T3 investigate,24,9,2,2.0,22,0,1.0
+69,2a7f70d4,cycle 69: T4 assess,24,9,2,2.11,22,0,1.0
+70,a90615c2,"cycle 70: T5 select run failed, no state",24,9,2,2.11,22,0,1.0
+71,ff584207,cycle 71: T5 select,24,9,2,2.11,22,0,1.0
+72,263d233b,cycle 72: T3 investigate,27,9,2,2.11,23,0,1.0
+73,6c030c57,cycle 73: T4 assess,27,9,2,2.11,24,0,1.0
+74,9e909479,cycle 74: T5 select,27,9,2,2.11,25,0,1.0
+75,e0b355fd,cycle 75: T3 investigate,27,9,2,2.11,25,0,1.0
+76,025d9028,cycle 76: T4 assess,27,9,2,2.11,25,0,1.0
+77,bb79d1e7,cycle 77: T5 select,27,9,2,2.11,26,0,1.0
+78,11e181c9,cycle 78: T1 collect,31,9,2,2.11,27,0,1.0
+79,65ffce71,cycle 79: T2 structure,31,9,2,2.11,29,0,1.0
+80,294b4333,cycle 80: T3 investigate,31,9,2,2.11,29,0,1.0
+81,7f417bab,cycle 81: T4 assess,31,9,2,2.11,30,0,1.0
+82,1e83f908,cycle 82: T5 select,31,9,2,2.11,31,0,1.0
+83,99dcb095,"cycle 83: T3 investigate agent aborted, ",31,9,2,2.11,31,0,1.0
+84,63fd6503,cycle 84: T3 investigate,31,9,2,2.11,32,0,1.0
+85,f76d5277,cycle 85: T4 assess,31,9,2,2.11,33,0,1.0
+86,05201133,cycle 86: T5 select,31,9,2,2.11,34,0,1.0
+87,a1073ba5,cycle 87: T3 investigate,31,9,2,2.11,34,0,1.0
+88,3cf56de1,cycle 88: T4 assess,31,9,2,2.11,35,0,1.0
+89,6bc35f37,cycle 89: T5 select,31,9,2,2.11,36,0,1.0
+90,a05647ef,cycle 90: T3 investigate,32,9,2,2.11,35,0,1.0
+91,153fe3b2,cycle 91: T4 assess,32,9,2,2.11,35,0,1.0
+92,31c2db7d,cycle 92: T5 select,32,9,2,2.11,37,0,1.0
+93,eda5fbaa,cycle 93: T3 investigate,32,9,2,2.11,37,0,1.0
+94,413f1e5e,cycle 94: T4 assess,32,9,2,2.11,37,0,1.0
+95,b09ed64d,cycle 95: T5 select,32,9,2,2.11,37,0,1.0
+96,d48cca5a,cycle 96: T3 investigate,32,9,2,2.11,38,0,1.0
+97,155abbe4,cycle 97: T4 assess,32,9,2,2.11,38,0,1.0
+98,b64195ef,cycle 98: T5 select,32,9,2,2.11,38,0,1.0
+99,cd402049,cycle 99: T1 collect,37,9,2,2.11,38,0,1.0
+100,164432a6,cycle 100: T2 structure,37,10,2,2.11,39,0,1.0
+101,d0859cf8,cycle 101: T3 investigate,39,10,2,2.11,41,0,1.0
+102,5c2b5a55,cycle 102: T4 assess,39,10,2,2.2,41,0,1.0
+103,bdf9bdc2,cycle 103: T5 select,39,10,2,2.2,42,0,1.0
+104,2af4f149,cycle 104: T3 investigate,40,10,2,2.2,43,0,1.0
+105,0e5ea70c,cycle 105: T4 assess,40,10,2,2.2,43,0,1.0
+106,886a433c,"cycle 106: T5 select run failed, no stat",40,10,2,2.2,43,0,1.0
+107,92b7f57b,cycle 107: T5 select,40,10,2,2.2,43,0,1.0
+108,d2c7c492,cycle 108: T3 investigate,40,10,2,2.2,43,0,1.0
+109,4a315d19,cycle 109: T4 assess,40,10,2,2.2,41,0,1.0
+110,86d3cf07,cycle 110: T5 select,40,10,2,2.2,41,0,1.0
+111,e32717e8,cycle 111: T3 investigate,40,10,2,2.2,42,0,1.0
+112,ee262b20,cycle 112: T4 assess,40,10,2,2.2,43,0,1.0
+113,ed845808,cycle 113: T5 select,40,10,2,2.2,44,0,1.0
+114,2b3078d9,cycle 114: T3 investigate,41,10,2,2.2,46,0,1.0
+115,358ddb77,cycle 115: T4 assess,41,10,2,2.2,46,0,1.0
+116,218abd25,cycle 116: T5 select,41,10,2,2.2,46,0,1.0
+117,962c401f,cycle 117: T3 investigate,41,10,2,2.2,45,0,1.0
+118,d1c525ee,cycle 118: T4 assess,41,10,2,2.2,45,0,1.0
+119,b4dd32e3,cycle 119: T5 select,41,10,2,2.2,45,0,1.0
+120,06605fb8,cycle 120: T1 collect,42,10,2,2.2,45,0,1.0
+121,36a4324d,cycle 121: T2 structure,42,10,2,2.2,46,0,1.0
+122,ed5860c1,cycle 122: T3 investigate,42,10,2,2.2,46,0,1.0
+123,58b5b336,cycle 123: T4 assess,42,10,2,2.2,46,0,1.0
+124,57732b0e,cycle 124: T5 select,42,10,2,2.2,46,0,1.0
+125,8f54b271,cycle 125: T3 investigate,43,10,2,2.2,46,0,1.0
+126,fbf86831,cycle 126: T4 assess,43,10,2,2.2,46,0,1.0
+127,ec734dbc,cycle 127: T5 select,43,10,2,2.2,47,0,1.0
+128,c28f38f4,cycle 128: T3 investigate,44,10,2,2.2,48,0,1.0
+129,9c485137,cycle 129: T4 assess,44,10,2,2.2,49,0,1.0
+130,de9b4a11,cycle 130: T5 select,44,10,2,2.2,49,0,1.0
+131,e605eca3,cycle 131: T3 investigate,44,10,2,2.2,50,0,1.0
+132,33262b60,cycle 132: T4 assess,44,10,2,2.2,50,0,1.0
+133,b61a45fb,cycle 133: T5 select,44,10,2,2.2,51,0,1.0
+134,d7e7771e,cycle 134: T1 collect,47,10,2,2.2,52,0,1.0
+135,3630426b,cycle 135: T2 structure,47,10,2,2.2,52,0,1.0
+136,a162864f,cycle 136: T3 investigate,47,10,2,2.2,50,0,1.0
+137,e37d7efa,cycle 137: T4 assess,47,10,2,2.2,50,0,1.0
+138,768f3070,cycle 138: T5 select,47,10,2,2.2,50,0,1.0
+139,ed35672c,cycle 139: T3 investigate,48,10,2,2.2,51,0,1.0
+140,c730fdff,cycle 140: T4 assess,48,10,2,2.2,51,0,1.0
+141,0d0630d7,cycle 141: T5 select,48,10,2,2.2,51,0,1.0
+142,df3f3376,cycle 142: T3 investigate,48,10,2,2.2,52,0,1.0
+143,d0c5f99a,cycle 143: T4 assess,48,10,2,2.2,52,0,1.0
+144,7cb403e6,cycle 144: T5 select,48,10,2,2.2,52,0,1.0
+145,bb7c89b0,cycle 145: T3 investigate,48,10,2,2.2,52,0,1.0
+146,589b9728,cycle 146: T4 assess,48,10,2,2.2,52,0,1.0
+147,26916826,cycle 147: T5 select,48,10,2,2.2,52,0,1.0
+148,8c1e4658,cycle 148: T1 collect,53,10,2,2.2,52,0,1.0
+149,ecd7f92f,"cycle 149: T2 structure agent aborted, s",53,10,2,2.2,52,0,1.0
+150,8c38ac31,cycle 150: T2 structure,53,10,2,2.2,50,0,1.0
+151,9689611e,cycle 151: T3 investigate failed validat,53,10,2,2.2,50,0,1.0
+152,000f0095,"cycle 152: T3 investigate agent aborted,",53,10,2,2.2,50,0,1.0
+153,a8bf9300,cycle 153: T3 investigate,53,10,2,2.2,49,0,1.0
+154,909ccf6e,"cycle 154: T4 assess agent aborted, stat",53,10,2,2.2,49,0,1.0

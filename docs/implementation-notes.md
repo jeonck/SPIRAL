@@ -165,6 +165,43 @@ techniques, building new CTI tooling.
 - No DST transition falls inside this window (US DST ends 2026-11-01), so the UTC cron
   holds at 03:00–06:00 local throughout.
 
+## Deployment frozen — 2026-08-09, cycle 154
+
+The nightly schedule is commented out in the workflow (`workflow_dispatch` still
+works). Day 0 = 2026-07-26; the run covers 15 days and 12 nights. Resuming after a gap
+would break the contiguity the accumulation series depends on, so the freeze is the end
+of the deployment arm, not a pause.
+
+| | |
+|---|---|
+| cycles | 154 (155 commit snapshots) |
+| outcome | 140 completed · 7 agent-aborted · 5 hard-failed · 2 gate-rejected |
+| task mix | T3 32% · T5 29% · T4 28% · T2 6% · T1 5% |
+| final state | 53 sources · 10 issues · 70 contradictions (49 open) · 89 open questions |
+| gate integrity | dangling refs 0 throughout · citation validity 1.0 (53/53 URLs live) |
+| scores | 2.17 start → 2.75 peak (c19) → 2.20 final; no existing issue moved after c69 |
+| model | claude-opus-5, pinned from cycle 7; cycles 1–6 unattributable |
+
+Three findings the series supports, each with the alternatives tested and excluded:
+
+1. **Scores do not converge.** Not evidence starvation (7 new sources at c78 moved
+   nothing), not framing (two issue splits at c16 and c45, neither moved a score —
+   the c100 T2 refused a third on that evidence), not G3 saturation (T4 rationales
+   score on merit below a non-binding ceiling).
+2. **Verification dismantles support faster than collection builds it.** Contradictions
+   per source rose to ~1.45 and held; resolution rate ~26%. Adding sources adds
+   contradictions (7 sources → 11 contradictions on 08-04). Late contradictions are
+   opened against the loop's own prior reasoning, not against sources, so the defect
+   supply does not run out when the corpus does.
+3. **Per-cycle cost grows with cycle count.** State re-read every cycle grew 135 KB →
+   2.83 MB (21×, ~20 KB/cycle) with no shrink mechanism, since `key_claims` are
+   append-only. Cycle duration went 4–5 min → 22 min and the turn budget was exhausted
+   at two successive settings (50 on 07-31, 75 on 08-09). Raising it defers the wall
+   rather than removing it: the loop is O(n²) in total work.
+
+Finding 3 is independent of 1 and 2 — even a converging loop could not run indefinitely
+under this state discipline.
+
 ## Next milestones (corresponds to outline §8 roadmap)
 
 - [x] Record the deployment start date — Day 0 = 2026-07-26.
