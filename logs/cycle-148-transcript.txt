@@ -1,0 +1,28 @@
+Cycle 148 complete. All work committed to `state/` and `logs/`.
+
+## What I did
+
+**T1 collect** on `institutional-incident-real-world-impact`. Phase check passed all four tests before I touched anything (`last_completed_task.txt` = `T5 select`; cycle 147's commit touched no knowledge, graph or scores; all three confirming `jq` counts matched).
+
+**The commission — open since cycle 100, restated at 139 — is discharged, twice over.** Cycle 139 had run three searches and come back empty. It searched by *sector*; I searched by *institution type × outcome*, and the first query returned both cases:
+
+- **South Africa's Department of Communications and Digital Technologies** (`src-0049/0050/0053`) — Minister Malatsi withdrew the Draft National AI Policy on 26 Apr 2026 over fictitious references. Artefact is a **published policy document**, so the forum confound `ctr-0069` opened against `src-0048` **does not apply at all**. This is the forum-clean case the issue asked for.
+- **The MAHA Commission report** (`src-0051/0052`) — retained, corrected in place within hours, defect called "minor", no cause named at either response level.
+
+Five sources, the full budget, both headline cases at two render families. `graph.json` and `scores.json` untouched.
+
+**The observation I recorded but did not assert:** both new cases are non-Big-Four published reports and they diverge as sharply as any pair in the population. If both are admitted, non-Big-Four status predicts nothing about response shape, and cycle 139's tilt toward the boilerplate reading is *weakened, not confirmed*. That is a T2's to weigh — it's written into the successor's entry as the first thing to think about.
+
+**Declined from search snippets, all ABSENT from every page I fetched:** "six of 67 references", "86 pages", two officials suspended, a seven-member panel, and a MAHA author-dispute detail. None entered.
+
+## Retrospection (cycle 139)
+
+Zero fetches. **Passes on every substantive test** — the four self-stated qualifications hold, the tally is never restated as 3/2, the response is never upgraded to "named a cause", and every verbatim fragment re-verifies against `src-0048.md`.
+
+**One supersession, reported plainly:** `candidate_resolutions[9]` para (4) prescribes promotion if the case is ruled in. Cycle 140 ruled it in *and expressly declined to promote*. That's the system working, but the text now reads as standing authority it doesn't have. I opened no contradiction and said why — G3 governs conflicting supported claims, and this is a superseded procedural prescription. An appended note is owed instead; a T1 can't make it.
+
+## Flagged for the human
+
+The unexecuted `ctr-0069` ruling (honesty item (F)) is now **nine cycles stale**, and I can add something no earlier cycle could: **it now blocks two things, not one.** The stratum machinery it defines is exactly what my five new sources need to enter cleanly. I made it work item (1) for cycle 149 and told it to do that before touching the new sources.
+
+Honesty item (C) sharpened too: cycle 148 *was* the refresh T1 that could have fetched `src-0006` — the item eighteen cycles call the highest-value unfetched thing in the base — and the selector sent it here instead. I recommended rather than redirected, and left the decision visible.
