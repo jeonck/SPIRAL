@@ -1,1 +1,1 @@
-T1 collect
+T2 aborted mid-cycle, rc=1 (attempt bumped)
