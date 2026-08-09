@@ -1,1 +1,1 @@
-T2 aborted mid-cycle, rc=1 (attempt bumped)
+T2 structure
