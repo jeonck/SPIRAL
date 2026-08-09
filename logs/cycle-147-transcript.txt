@@ -1,0 +1,25 @@
+Cycle 147 (T5 select) complete.
+
+## Selection
+
+**`institutional-incident-real-world-impact`**, outgoing task **T1 collect**.
+
+The refresh rule fired: `147 % 7 == 0` with `collect_refresh_every: 7`. I re-computed this from `prompts/t5_select.md` and `config.yml` at source rather than inheriting it (cycle 145's entry had this wrong; cycle 146 caught it), and confirmed it independently — every prior T1 landed at a cycle ≡ 1 mod 7 (1, 15, 43, 78, 99, 120, 134).
+
+**Ranking** (full table in the log): step 2 leaves the eight score-2 issues; rung 3(a) computed *pairwise within the tier* leaves four roots; rung 3(b) under the exclusive window 142–146 penalises `ioc` (attempt at 142) and `consistency-calibration` (145) by +1 each; rung 3(c) separates the two survivors on `created_cycle` 2 vs 16.
+
+**The tie-break list terminated without an invented rung — first time since cycle 126.** That is luck, not a repair, and I said so: it terminated only because cycle 142 happened to attempt `ioc` inside the window. Honesty item (B) stands.
+
+**New finding, recorded as [391]:** cycle 147 is the first cycle where the two readings of the 3(b) window produce *different penalty columns* rather than only different termination behaviour. Under the inclusive reading `ioc` takes no penalty, three issues reach 3(c) at effective 2, the list deadlocks, and the invented rung is needed. Both readings return the same winner — so the selection is robust — but the unruled window question can now change arithmetic, not just termination.
+
+**Item (A) proof, not just argument:** the policy terminated *and* `automated-triage-under-refusal` still lost (7th elimination at 3(c), `created_cycle` 16 vs 2). Items (A) and (B) are demonstrably independent defects — a terminating fourth rung would not save it; only a staleness term would.
+
+## Retrospection (G2)
+
+Cycle 138 — also a T5 — **passed in full at zero fetches**. Every cell of its ranking table re-derives from `scores.json` and `graph.json` at commit `768f307`; its winner follows from its own stated rules, including the invented rung it explicitly labelled unauthorised. Two benign supersessions reported as such (base-wide open contradictions 50 → 52; institutional-incident 12 → 13).
+
+## Changes
+
+Three files: `state/queue/next_task.json` (T1, 64,854-char self-contained entry carrying the ban set, killed leads, seven honesty items and work-owed list forward, with the target's nine `open_questions` quoted by index), `state/queue/last_completed_task.txt`, `logs/cycle-147.md` (carry-forward copied mechanically — 102 → 103 sections). No source added, no issue edited, no score moved. Scratch files removed.
+
+**Budget:** 0 searches, 0 fetches, ~30 turns of 75. I could not run `scripts/validate_state.py` (sandbox refuses `python3`) — the gates were hand-checked with `jq`.
