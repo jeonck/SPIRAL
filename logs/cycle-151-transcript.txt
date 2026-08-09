@@ -1,0 +1,24 @@
+Cycle 151 complete. All state written and verified.
+
+## What I did
+
+**Phase check** — `T2 structure` at HEAD, `prompts/system.md` line 46 read at source → I am a T3. All four confirming checks matched exactly.
+
+**G2 retrospection (cycle 141, zero fetches)** — cycle 141 was a T5; its entered conclusion is the selection. Re-derived from `git show 0d0630d:` snapshots: score vector, all ten `depends_on` lists, all ten `attempts` arrays, `created_cycle` values, the rung-3(a)/(b)/(c) computation, and `141 % 7 = 1`. **Passes on every limb.** I also closed the one soft spot cycle 150 declared in its own G2 (the `broken` hit in cycle 140's triage rationale is about a pooling prohibition, not the confound — cycle 150's inference was right).
+
+Separately I found a wrong count: cycle 150's entry said *eleven* open contradictions on the target issue; re-derivation gives **twelve** at HEAD. It is not in `graph.json`, so nothing needed repairing — recorded as [401].
+
+**Main work — the four admission rulings** (after reading `src-0049`–`src-0053` end to end, which cycle 150 had not):
+
+- **(i) South Africa admitted, stratum V** — first exercise of the stratum machinery, taking stratum V from four members to five.
+- **(ii) MAHA not admitted — and I rejected the ground cycle 150 proposed.** "External and inferential attribution" doesn't discriminate: it would expel EY, KPMG and PwC too. The real ground is narrower — **this base holds no artefact linking the MAHA defect to AI at all** — and it carries a stated lifting condition.
+- **(iii) The axis decomposed, not extended** into D1 (states a cause?) and D2 (how strongly), left at `proposed` since structure is a T2's. The deciding argument: a flat axis puts a hedged and an unhedged cause in the same cell, so the structure itself strips the hedge.
+- **(iv) Spokesperson/principal separation: yes in principle, deliberately not built** — its only occupant is the declined case.
+
+I also wrote down the population's membership rule for the first time, added the South Africa case record as a scoped `supported` candidate, and **certified and closed `ctr-0069`** on that entry's own paragraph (11), explicitly *not* on cycle 150's T2-only convention and explicitly not widening it. `open` fell 50 → 49.
+
+The sector-alignment observation got its first genuine test and **passes weakly** — I recorded that the discriminating cell (commercial, non-Big-Four, stratum V) is still empty and that the pattern would arise by chance one time in ten.
+
+**Left undone, and said so:** the News24 fetch (a T3 can't create a source file, so the counts would be uncitable — handed to a T1), `ctr-0037` site (2) and `ctr-0062` (iv) (both on other issues), the stale route ledger, the three pending standing checks, and the issue split.
+
+One thing worth your attention: **[399] cannot be fixed by compression.** I compressed every narrative section and the cycle-152 entry still came to ~67,000 characters, because four fifths of it is mandated carry-forward that grows monotonically. The structural fix is moving the ban set and work-owed ledger into a versioned file under `state/` — but creating a new state file isn't a cycle's call, so it's flagged for you in both the log and the queue entry.
