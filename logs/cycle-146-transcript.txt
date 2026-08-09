@@ -1,0 +1,23 @@
+Cycle 146 (T4 assess) is complete.
+
+## What I did
+
+**Scored all ten issues. All ten held.** Vector unchanged: `ttp-attack-mapping-reliability` 3, `incident-evidence-vendor-concentration` 3, the other eight at 2. Total 22, max 3, `last_assessed_cycle` 146.
+
+I proved the premise for that rather than asserting it — `git diff --stat d0c5f99 HEAD -- state/` shows `graph.json` as the *only* research file touched since the last assessment, with `knowledge/` and `scores.json` untouched. Nine of ten issues had strictly unchanged inputs; the tenth (cycle 145's T3 target) moved within its existing structure with no status change. Manufacturing movement there would have been inflation, which the rubric's step 5 forbids.
+
+Re-derived first-hand, zero fetches: the open-contradiction census (52, per-issue), the full candidate status/evidence vectors, the ctr-0063 concentration counts (13 supported / 11 citing src-0001 / two non-src-0001 both single-source), that `automated-triage`'s second candidate is still PROPOSED, that work-owed (20)'s bad range stands at exactly one site, and that every evidence id resolves (zero orphans).
+
+**G3:** I read `scripts/validate_state.py` lines 144–157 myself. The gate is an upper bound only — it errors when a score exceeds 3, and compels nothing. I applied the **ceiling** reading and said so in every rationale. It binds nothing anywhere in this vector; a human should rule on the "loses points" wording.
+
+## G2 — cycle 137 passes in full
+
+Zero fetches, via two `git show <rev>:path` dumps and a jq diff. It moved no score; all ten rationale extensions were append-only (`startswith` true on all ten); its six added evidence ids all resolve; its counts re-derive exactly today. I tried to break its "ten equal-width bins" label for src-0045 — the quote it cited says "ten bins" but not equal-width — and **failed**: cycle 136's candidate carries a second verbatim string that states it explicitly. No contradiction opened. Two benign supersessions, both dated (open-contradiction count 50→52; attempts 13→14).
+
+## One correction I'm passing forward
+
+My own queue entry said *"cycle 147 is NOT a refresh cycle."* Reading `prompts/t5_select.md` at source: step 4 keys on `current_cycle`, which for that rule is the T5's own number. **147 % 7 = 0, so the refresh fires** — cycle 147's edge is T5→T1, not T5→T3. Cycle 145 computed `146 % 7` and drew a conclusion about 147. Confirmed independently: every T1 in this base landed at a cycle ≡ 1 mod 7.
+
+This nearly cost the loop its one instrument for fresh evidence, which is what almost every held score is waiting on. Recorded as [390] and work-owed (33), with the T1 targets pre-named for each root the selector could land on — and cycle 147 told to re-compute it itself rather than trust my paragraph.
+
+Files written: `state/assessments/scores.json` (ten appended blocks, append-only proved on all ten before the `mv`), `state/queue/next_task.json`, `state/queue/last_completed_task.txt`, `logs/cycle-146.md` (carry-forward chain copied whole). Nothing written to `state/knowledge/` or `state/issues/graph.json`. I could not run the validator (`python3` is refused here) — the gate checks above are hand-checks with jq.
