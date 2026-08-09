@@ -1,1 +1,1 @@
-T3 failed validation (attempt bumped)
+T3 aborted mid-cycle, rc=1 (attempt bumped)
