@@ -211,9 +211,68 @@ under this state discipline.
 ## Next milestones (corresponds to outline §8 roadmap)
 
 - [x] Record the deployment start date — Day 0 = 2026-07-26.
-- [ ] ~Day 14: run baselines (B1–B4, per `eval/baselines/README.md`).
-- [x] Rubric-scoring pipeline (included in v2).
-- [x] Per-cycle error-accumulation measurement script (included in v2).
+- [x] Deployment arm complete — 154 cycles, ended 2026-08-09.
+- [x] Per-cycle error-accumulation series — `eval/metrics.csv`, 155 snapshots.
+- [ ] Baselines B1–B4 — **not run**, see below.
+- [ ] RQ1 rubric comparison — **blocked** on two `export_report.py` defects, see below.
+- [x] Rubric-scoring pipeline (included in v2, not yet exercised end to end).
+
+## Unfinished at shutdown, and what blocks each (2026-08-09)
+
+Recorded so this is actionable without the conversation that found it.
+
+### 1. `export_report.py --blind` does not blind the report
+
+`--blind` strips top-level metadata only. The body still carries the loop's internal
+vocabulary, measured on the 2026-08-09 export of `eval/report_blind.md`:
+
+| pattern | lines |
+|---|---|
+| `src-00NN` | 308 |
+| `cycle NN` | 268 |
+| `\bT[1-5]\b` | 196 |
+| `ctr-00NN` | 188 |
+| `candidate_resolution` | 104 |
+| `G2` / `G3` | 85 |
+| `claude` / `opus` | 13 |
+
+Live text includes `"cycle 15's G2"` and `"[CYCLE-31 T3, APPENDED NOT SUBSTITUTED]"`.
+A judge identifies the producing system on sight, which voids the blind protocol in
+`eval/rubric.md` ("Judges see: rubric + blinded report"). Any RQ1 score collected from
+the current export is invalid, not merely noisy.
+
+### 2. The export is a state dump, not a report
+
+`eval/report_blind.md` is **1,091 KB**; a one-shot deep-research output is 15–30 KB.
+At ~50× it exceeds judge context windows, and D1 (Coverage) would favour length
+mechanically. The deeper problem is genre: the rationales are internal deliberation
+("I re-checked X against the graph rather than against the previous rationale"), not
+reader-facing findings. A comparable artefact has to be *written from* the state, not
+serialised from it — which likely means an LLM pass, breaking the script's current
+"deterministic, no LLM" property. That property is worth preserving for the raw dump;
+the judged artefact should be a separate output.
+
+Both defects are on SPIRAL's side of the comparison and are independent of the
+baselines, so they can be fixed in any order relative to them.
+
+### 3. Baselines B1–B4 were never run
+
+`eval/baselines/` holds only the protocol. B1–B3 require three commercial
+deep-research products run once each — an operator task, not automatable from this
+repo. The frozen prompt is `state/meta.json` → `topic.scope`, verbatim, identical for
+every run; record date, tool + model version, wall-clock, and cost per the protocol.
+
+**Contamination constraint, which the protocol does not currently state:** a baseline
+must not be produced by an agent that has seen this repository's state. Two weeks of
+exposure to the issue graph, contradictions and source list makes any resulting
+"one-shot" report a laundered copy of SPIRAL's output, inverting the comparison. If a
+model-generated baseline is wanted as a supplementary arm, it must run in a context
+holding nothing but the scope string, and be labelled as its own condition rather than
+folded into B1–B3. This belongs in `eval/baselines/README.md` under Fairness rules.
+
+Note also that the protocol requires baselines to run inside Day 10–18 for tool-version
+contemporaneity. That window closes 2026-08-13; baselines run after it need the date
+gap disclosed.
 
 ## Note on repository language
 

@@ -24,4 +24,12 @@ Record for each: date, tool + version/model, wall-clock time, cost (if metered).
 - Baselines get the SAME topic scope text — not the issue graph (that's SPIRAL's output).
 - Do not iterate on baseline prompts. First output counts.
 - Run baselines within the deployment window (Day 10–18) so model/tool versions are
-  contemporaneous with SPIRAL's cycles.
+  contemporaneous with SPIRAL's cycles. The deployment ran 2026-07-26 to 08-09, so this
+  window closed 2026-08-13; a later run must disclose the gap.
+- **No baseline may be produced by an agent that has seen this repository's state.**
+  Exposure to the issue graph, contradiction list or source index makes the resulting
+  "one-shot" report a laundered copy of SPIRAL's accumulated output — it would inflate
+  the baseline with exactly what the comparison is supposed to measure, inverting the
+  result. This applies to a human operator working from the repo as much as to a model.
+  A model-generated baseline is acceptable only in a context holding nothing but the
+  scope string above, and is then its own labelled condition (B5+), never one of B1–B3.
