@@ -165,12 +165,18 @@ techniques, building new CTI tooling.
 - No DST transition falls inside this window (US DST ends 2026-11-01), so the UTC cron
   holds at 03:00–06:00 local throughout.
 
-## Deployment frozen — 2026-08-09, cycle 154
+## Deployment ended — 2026-08-09, cycle 154
 
-The nightly schedule is commented out in the workflow (`workflow_dispatch` still
-works). Day 0 = 2026-07-26; the run covers 15 days and 12 nights. Resuming after a gap
-would break the contiguity the accumulation series depends on, so the freeze is the end
-of the deployment arm, not a pause.
+Day 0 = 2026-07-26; the run covers 15 days and 12 nights. Stopped in two independent
+ways, either of which is sufficient:
+
+- the `schedule:` trigger is commented out in `.github/workflows/research-cycle.yml`
+- the workflow is **disabled** at GitHub (`gh workflow disable research-cycle`), so it
+  will not fire even if the cron is uncommented
+
+To restart, both must be undone — deliberately, since resuming after a gap breaks the
+contiguity of the cycle series the accumulation analysis depends on. This is the end of
+the deployment arm, not a pause.
 
 | | |
 |---|---|
